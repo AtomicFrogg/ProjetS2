@@ -9,6 +9,7 @@ Tour::Tour(float r, int x, int y):range(r)
 
 Tour::~Tour()
 {
+	
 }
 
 float Tour::getRange()

@@ -14,7 +14,7 @@ class EnsembleEnnemie
 		bool retirerEnnemie(int index);
 		void reinitialiser();
 		int getTaille();
-		int getVie(int index);
+		Ennemie* getEnnemie(int index);
 	private:
 		vector<Ennemie*> tableau;
 };

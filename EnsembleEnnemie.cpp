@@ -34,16 +34,9 @@ int EnsembleEnnemie::getTaille()
 }
 
 
-int EnsembleEnnemie::getVie(int index)
+Ennemie* EnsembleEnnemie::getEnnemie(int index)
 {
-	if(index >= 0 and index < tableau.size())
-	{
-		return tableau.at(index)->getVie();
-	}
-	else
-	{
-		return -1;
-	}
+	return tableau.at(index);
 }
 
 
