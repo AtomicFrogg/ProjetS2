@@ -3,6 +3,8 @@ using namespace std;
 
 Ennemie::Ennemie(int v, int vit, int pos):vie(v), vitesse(vit), position(pos)
 {
+	coordonnee.x = 0;
+	coordonnee.y = 0;
 }
 
 Ennemie::~Ennemie()
@@ -34,7 +36,10 @@ void Ennemie::setVitesse(int v)
 	vitesse = v;
 }
 
-
+void Ennemie::setCoordonnee(Dimension coord)
+{
+	coordonnee = coord;
+}
 
 
 

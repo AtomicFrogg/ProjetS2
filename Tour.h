@@ -20,6 +20,7 @@ class Tour
 	private:
 		float range;
 		Dimension dim;
+		int cout;
 };
 
 

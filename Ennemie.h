@@ -1,7 +1,7 @@
 #ifndef ENNEMIE_H
 #define ENNEMIE_H
 
-
+#include "dimension.h"
 using namespace std;
 
 
@@ -16,10 +16,13 @@ class Ennemie{
 		void setVie(int v);
 		virtual void setVitesse(int v) = 0;
 		virtual void setPosition(int p) = 0;
+		void setCoordonne(Dimension coord);
+		
 	private:
 		int vie;
 		int vitesse;
 		int position;
+		Dimension coordonnee;
 };
 
 
