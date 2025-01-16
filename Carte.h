@@ -1,9 +1,11 @@
 #ifndef CARTE_H
 #define CARTE_H
 
+#include "EnsembleTour.h"
+#include "EnsembleEnnemie.h"
 
-const int hauteur = 15;
-const int largeur = 30;
+const int HAUTEUR = 15;
+const int LARGEUR = 30;
 
 
 class Carte
@@ -21,7 +23,7 @@ class Carte
 		void setArgent(int a);
 		
 	private:
-		int map[hauteur][largeur];
+		int map[HAUTEUR][LARGEUR];
 		int vie;
 		int argent;
 		EnsembleTour tableauTour;
