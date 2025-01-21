@@ -1,19 +1,20 @@
 #ifndef ENSEMBLETOUR_H
 #define ENSEMBLETOUR_H
 
+#include <vector>
 
 class EnsembleTour
 {
 	public:
 		bool ajouterTour(Tour* nouvelleTour);
-		bool retirerTour(int index);
+		int retirerTour(int index);
 		bool reinitialiser();
 		int getTaille();
 	 	Tour* getTour(int index);
 
 	private:
-		Vector<Tour*> tableau;
-}
+		vector<Tour*> tableau;
+};
 
 
 

@@ -7,12 +7,14 @@
 const int HAUTEUR = 15;
 const int LARGEUR = 30;
 
-
 class Carte
 {
 	public:
 		bool ajouterTour(Tour* ptr);
 		bool vendreTour(int index);
+		
+		
+		
 		
 		bool ajouterEnnemie(Ennemie* ptr);
 		bool lancerVague(int index);

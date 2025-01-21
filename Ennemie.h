@@ -16,7 +16,7 @@ class Ennemie{
 		void setVie(int v);
 		virtual void setVitesse(int v) = 0;
 		virtual void setPosition(int p) = 0;
-		void setCoordonne(Dimension coord);
+		void setCoordonnee(Dimension coord);
 		
 	private:
 		int vie;

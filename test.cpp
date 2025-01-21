@@ -1,6 +1,8 @@
 void Test::testTour()
 {
-	
+	cout << "Tour de base" << endl;
+	Tour TestTour();
+	TestTour.afficher(cout);
 }
 
 void Test::testEnnemie()

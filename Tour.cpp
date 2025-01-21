@@ -34,3 +34,18 @@ Dimension Tour::getPosition()
 {
 	return dim;
 }
+
+void attaquer();
+
+void afficher(ostream &s)
+{
+	s << "Tour (range = " << range << ", x = " << dim.x << ", y = " << dim.y << ", cout = " << prix << endl;
+}
+
+
+
+
+
+
+
+
