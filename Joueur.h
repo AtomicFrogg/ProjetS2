@@ -1,5 +1,6 @@
-#include "Tour.h"
+
 #include <string.h>
+#include "Defenseur.h"
 
 
 #ifndef JOUEUR_H
