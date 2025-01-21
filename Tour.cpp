@@ -1,11 +1,10 @@
 #include "Tour.h"
 using namespace std;
 
-Tour::Tour(float r, int x, int y):range(r)
+Tour::Tour(float r, int x, int y, int p, int t):range(r),prix(p),tier(t)
 {
 	dim.x = x;
 	dim.y = y;
-	prix = 100;
 }
 
 Tour::~Tour()
@@ -38,12 +37,29 @@ Dimension Tour::getPosition()
 
 void Tour::afficher(ostream &s)
 {
-	s << "Tour (range = " << range << ", x = " << dim.x << ", y = " << dim.y << ", cout = " << prix << ")" << endl;
+	s << "Tour (range = " << range << ", x = " << dim.x << ", y = " << dim.y << ", cout = " << prix << ", tier = " << tier << ")" << endl;
 }
 
 
+void Tour::setTier(int t)
+{
+	tier = t;
+}
 
+int Tour::getTier()
+{
+	return tier;
+}
 
+int Tour::getPrix()
+{
+	return prix;
+}
+
+void Tour::setPrix(int p)
+{
+	prix = p;
+}
 
 
 

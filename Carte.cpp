@@ -55,16 +55,6 @@ void Carte::setArgent(int a)
 
 
 
-ajouterHarpon
-{
-Tour *ptr = new Harpon
-ajouterTour(ptr);
-}
-
-
-
-
-
 
 
 
