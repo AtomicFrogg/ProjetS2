@@ -5,6 +5,7 @@ Tour::Tour(float r, int x, int y):range(r)
 {
 	dim.x = x;
 	dim.y = y;
+	prix = 100;
 }
 
 Tour::~Tour()
@@ -35,12 +36,12 @@ Dimension Tour::getPosition()
 	return dim;
 }
 
-void attaquer();
-
-void afficher(ostream &s)
+void Tour::afficher(ostream &s)
 {
-	s << "Tour (range = " << range << ", x = " << dim.x << ", y = " << dim.y << ", cout = " << prix << endl;
+	s << "Tour (range = " << range << ", x = " << dim.x << ", y = " << dim.y << ", cout = " << prix << ")" << endl;
 }
+
+
 
 
 

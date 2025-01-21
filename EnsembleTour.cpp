@@ -23,11 +23,12 @@ int EnsembleTour::retirerTour(int index)
 
 bool EnsembleTour::reinitialiser()
 {
-	for(int i = 0; i < tableau.getTaille(); i++)
+	for(int i = 0; i < getTaille(); i++)
 	{
-		tableau.retirerTour(i);
+		retirerTour(i);
 	}
 	tableau.clear();
+	return TRUE;
 }
 
 int EnsembleTour::getTaille()

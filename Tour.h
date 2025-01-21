@@ -10,7 +10,7 @@ class Tour
 	public:
 		Tour(float r = 1, int x = 0, int y = 0);
 		virtual ~Tour();
-		void attaquer();
+//		vitual void attaquer() = 0;
 		void setPosition(int x, int y);
 		Dimension getPosition();
 		float getRange();

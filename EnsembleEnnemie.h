@@ -4,13 +4,16 @@
 #include <vector>
 #include "Ennemie.h"
 
+#ifndef BOOL
+#define BOOL
 const bool TRUE = 1;
 const bool FALSE = 0;
+#endif
 
 class EnsembleEnnemie
 {
 	public:
-		bool ajouterEnnemieFin(Ennemie* mob);
+		bool ajouterEnnemie(Ennemie* mob);
 		bool retirerEnnemie(int index);
 		void reinitialiser();
 		int getTaille();

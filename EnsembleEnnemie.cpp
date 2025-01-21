@@ -1,6 +1,6 @@
 #include "EnsembleEnnemie.h"
 
-bool EnsembleEnnemie::ajouterEnnemieFin(Ennemie* mob)
+bool EnsembleEnnemie::ajouterEnnemie(Ennemie* mob)
 {
 	if(mob == nullptr) return FALSE;
 	tableau.push_back(mob);
@@ -26,9 +26,9 @@ bool EnsembleEnnemie::retirerEnnemie(int index)
 
 void EnsembleEnnemie::reinitialiser()
 {
-	for(int i = 0; i < tableau.getTaille(); i++)
+	for(int i = 0; i < getTaille(); i++)
 	{
-		tableau.retirerTour(i);
+		retirerEnnemie(i);
 	}
 	tableau.clear();
 }

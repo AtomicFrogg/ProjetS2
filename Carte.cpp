@@ -43,19 +43,23 @@ int Carte::getArgent()
 	return argent;
 }
 
-void setVie(int v)
+void Carte::setVie(int v)
 {
 	vie = v;
 }
 
-void setArgent(int a)
+void Carte::setArgent(int a)
 {
 	argent = a;
 }
 
 
 
-
+ajouterHarpon
+{
+Tour *ptr = new Harpon
+ajouterTour(ptr);
+}
 
 
 

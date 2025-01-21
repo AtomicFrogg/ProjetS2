@@ -10,6 +10,7 @@ const int LARGEUR = 30;
 class Carte
 {
 	public:
+		Carte();
 		bool ajouterTour(Tour* ptr);
 		bool vendreTour(int index);
 		

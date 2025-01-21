@@ -1,7 +1,9 @@
+#include "test.h"
+
 void Test::testTour()
 {
 	cout << "Tour de base" << endl;
-	Tour TestTour();
+	Tour TestTour;
 	TestTour.afficher(cout);
 }
 
