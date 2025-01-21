@@ -11,5 +11,8 @@ class Joueur{
         string nom;
     public:
         Joueur();
+        Joueur(string n = "joueur");
         ~Joueur();   
+        string getNom();
+        void setNom(string n);
 };
