@@ -1,7 +1,7 @@
 #include "Defenseur.h"
 using namespace std;
 
-Defenseur::Defenseur(float r, int x, int y, int p, int t):range(r),prix(p),tier(t)
+Defenseur::Defenseur(float r, int x, int y):range(r)
 {
 	dim.x = x;
 	dim.y = y;
@@ -37,7 +37,7 @@ Dimension Defenseur::getPosition()
 
 void Defenseur::afficher(ostream &s)
 {
-	s << "Defenseur (range = " << range << ", x = " << dim.x << ", y = " << dim.y << ", cout = " << prix << ", tier = " << tier << ")" << endl;
+	s << "Defenseur (range = " << range << ", x = " << dim.x << ", y = " << dim.y << ")" << endl;
 }
 
 
