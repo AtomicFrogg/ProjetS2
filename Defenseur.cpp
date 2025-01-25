@@ -1,7 +1,7 @@
 #include "Defenseur.h"
 using namespace std;
 
-Defenseur::Defenseur(float r, int x, int y):range(r)
+Defenseur::Defenseur(int d,float r, int x, int y):range(r),degat(d)
 {
 	dim.x = x;
 	dim.y = y;

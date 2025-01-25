@@ -27,6 +27,14 @@ bool Carte::ajouterEnnemie(Ennemie* ptr)
 	return TRUE;
 }
 
+bool Carte::retirerEnnemie(int index)
+{
+	if(index < this->tableauEnnemie.getTaille() and index > 0)
+	{
+		tableauEnnemie.retirerEnnemie(index);
+		
+	}
+}
 
 bool Carte::lancerVague(int index)
 {
@@ -52,6 +60,25 @@ void Carte::setArgent(int a)
 {
 	argent = a;
 }
+
+
+void Carte::afficher(ostream &s)
+{
+
+}
+
+
+EnsembleTour* Carte::getTour()
+{
+	return &tableauTour;
+}
+
+
+EnsembleEnnemie* Carte::getEnnemieTaille()
+{
+	return &tableauEnnemie;
+}
+
 
 
 

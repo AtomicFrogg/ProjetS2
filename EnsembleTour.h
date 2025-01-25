@@ -2,6 +2,7 @@
 #define ENSEMBLETOUR_H
 
 #include "Tour.h"
+#include <iostream>
 #include <vector>
 
 #ifndef BOOL

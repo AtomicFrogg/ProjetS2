@@ -8,7 +8,7 @@ using namespace std;
 class Defenseur
 {
 	public:
-		Defenseur(float r = 1, int x = 0, int y = 0);
+		Defenseur(int d = 1, float r = 1, int x = 0, int y = 0);
 		virtual ~Defenseur();
 		virtual void attaquer() = 0;
 		void setPosition(int x, int y);
@@ -20,6 +20,7 @@ class Defenseur
 	private:
 		float range;
 		Dimension dim;
+		int degat;
 };
 
 

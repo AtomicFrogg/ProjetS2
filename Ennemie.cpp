@@ -28,7 +28,14 @@ int Ennemie::getPosition()
 
 void Ennemie::setVie(int v)
 {
-	vie = v;
+	if(v > 0)
+	{
+		vie = v;
+	}
+	else
+	{
+		
+	}
 }
 
 void Ennemie::setVitesse(int v)
@@ -41,6 +48,11 @@ void Ennemie::setCoordonnee(Dimension coord)
 	coordonnee = coord;
 }
 
+
+Dimension Ennemie::getCoordonnee()
+{
+	return coordonnee;
+}
 
 
 
