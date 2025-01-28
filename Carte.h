@@ -13,17 +13,19 @@ class Carte
 		Carte();
 		bool ajouterTour(Tour* ptr);
 		bool vendreTour(int index);
-		
-		
-		
+		void afficher(ostream &s);
 		
 		bool ajouterEnnemie(Ennemie* ptr);
+		bool retirerEnnemie(int index);
+		
 		bool lancerVague(int index);
 		
 		int getVie();
 		int getArgent();
 		void setVie(int v);
 		void setArgent(int a);
+		EnsembleTour* getTour();
+		EnsembleEnnemie* getEnnemie();
 		
 	private:
 		int map[HAUTEUR][LARGEUR];

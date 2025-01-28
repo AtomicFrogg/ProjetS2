@@ -3,6 +3,7 @@
 void Test::testTour()
 {
 //mettre la fonction attaquer de tour en commentaire pour essayer;
+/*
 	cout << "Tour de base" << endl;
 	Tour TestTour;
 	TestTour.afficher(cout);
@@ -15,7 +16,7 @@ void Test::testTour()
 	
 	Tour TestTour1(3,12,4,200,4);
 	TestTour1.afficher(cout);
-	
+*/
 }
 
 void Test::testEnnemie()

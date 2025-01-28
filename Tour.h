@@ -1,29 +1,24 @@
 #ifndef TOUR_H
 #define TOUR_H
 
+#include "Carte.h"
 #include "dimension.h"
+#include "Defenseur.h"
 #include <iostream>
 using namespace std;
 
-class Tour
+class Tour: public Defenseur
 {
 	public:
-		Tour(float r = 1, int x = 0, int y = 0, int p = 100, int t = 0);
-		virtual ~Tour();
-//		vitual void attaquer() = 0;
-		void setPosition(int x, int y);
-		Dimension getPosition();
-		float getRange();
-		void setRange(float r);
-		void afficher(ostream &s);
+		Tour(int d,float r, int x, int y, int p, int t, Carte* c);
+		~Tour();
 		int getPrix();
 		void setPrix(int p);
 		int getTier();
 		void setTier(int t);
+		virtual void afficher(ostream &s);
 		
 	private:
-		float range;
-		Dimension dim;
 		int prix;
 		int tier;
 };
