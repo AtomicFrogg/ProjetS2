@@ -1,9 +1,8 @@
 #include "Tour.h"
 using namespace std;
 
-Tour::Tour(int d,float r, int x, int y, int p, int t, Carte* c):Defenseur(d,r, x, y), prix(p),tier(t)
+Tour::Tour(int v, int d,float r, int x, int y, int p, int t, Carte* c):Defenseur(d,r, x, y), prix(p),tier(t),vitesse(v)
 {
-
 }
 
 Tour::~Tour()
@@ -19,7 +18,7 @@ void Tour::afficher(ostream &s)
 
 void Tour::setTier(int t)
 {
-	tier = t;
+	if(t >= 0) tier = t;
 }
 
 int Tour::getTier()
@@ -34,8 +33,21 @@ int Tour::getPrix()
 
 void Tour::setPrix(int p)
 {
-	prix = p;
+	if(p >= 0) prix = p;
 }
+
+void Tour::setVitesse(int v)
+{
+	if(v >= 0) vitesse = v;
+}
+
+
+int Tour::getVitesse()
+{
+	return vitesse;
+}
+
+
 
 
 

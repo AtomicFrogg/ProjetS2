@@ -20,14 +20,14 @@ float Defenseur::getRange()
 
 void Defenseur::setRange(float r)
 {
-	range = r;
+	if(r >= 0) range = r;
 }
 
 
 void Defenseur::setPosition(int x, int y)
 {
-	dim.x = x;
-	dim.y = y;
+	if(x >= 0) dim.x = x;
+	if(y >= 0) dim.y = y;
 }
 
 Dimension Defenseur::getPosition()
