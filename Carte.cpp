@@ -20,21 +20,7 @@ bool Carte::vendreTour(int index)
 	}
 }
 
-bool Carte::ajouterEnnemie(Ennemie* ptr)
-{
-	if(ptr == nullptr) return FALSE;
-	tableauEnnemie.ajouterEnnemie(ptr);
-	return TRUE;
-}
 
-bool Carte::retirerEnnemie(int index)
-{
-	if(index < this->tableauEnnemie.getTaille() and index > 0)
-	{
-		tableauEnnemie.retirerEnnemie(index);
-		
-	}
-}
 
 bool Carte::lancerVague(int index)
 {
@@ -73,11 +59,6 @@ EnsembleTour* Carte::getTour()
 	return &tableauTour;
 }
 
-
-EnsembleEnnemie* Carte::getEnnemieTaille()
-{
-	return &tableauEnnemie;
-}
 
 
 

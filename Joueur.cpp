@@ -20,3 +20,25 @@ string Joueur::getNom(){
 void Joueur::setNom(string n){
     nom = n;
 }
+
+bool Joueur::ajouterEnnemie(Ennemie* ptr)
+{
+	if(ptr == nullptr) return FALSE;
+	tableauEnnemie.ajouterEnnemie(ptr);
+	return TRUE;
+}
+
+bool Joueur::retirerEnnemie(int index)
+{
+	if(index < this->tableauEnnemie.getTaille() and index > 0)
+	{
+		tableauEnnemie.retirerEnnemie(index);
+		
+	}
+}
+
+EnsembleEnnemie* Joueur::getEnnemieTaille()
+{
+	return &tableauEnnemie;
+}
+

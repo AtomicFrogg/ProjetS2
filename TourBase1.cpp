@@ -13,9 +13,9 @@ TourBase1::~TourBase1()
 void TourBase1::attaquer()
 {
 	double distance = 1000;
-	for(int i = 0; i < carte->getEnnemie->getTaille(); i++)
+	for(int i = 0; i < carte->getEnnemie[i]->getTaille(); i++)
 	{
-		distance = sqrt(carre(carte->getEnnemie[i]->getPosition().x - this->dim.x) + carre(carte->getEnnemie[i]->getPosition().y - this->dim.y);
+		distance = sqrt(carre(carte->getEnnemie[i]->getPosition().x - this->dim.x) + carre(carte->getEnnemie[i]->getPosition().y - this->dim.y));
 		if(this->distance < carte->getEnnemie[i]->getRange())
 		{
 			if ((int vie = (carte->getEnnemie[i]->getVie - this->degat)) > 0)
