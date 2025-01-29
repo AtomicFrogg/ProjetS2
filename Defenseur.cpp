@@ -5,6 +5,8 @@ Defenseur::Defenseur(int d,float r, int x, int y):range(r),degat(d)
 {
 	dim.x = x;
 	dim.y = y;
+	attaque = true;
+	compteurAttaque = 0;
 }
 
 Defenseur::~Defenseur()

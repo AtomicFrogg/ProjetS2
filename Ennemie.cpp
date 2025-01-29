@@ -1,7 +1,7 @@
 #include "Ennemie.h"
 using namespace std;
 
-Ennemie::Ennemie(int v, int vit, int pos):vie(v), vitesse(vit), position(pos)
+Ennemie::Ennemie(int v, int vit, int pos, int r):vie(v), vitesse(vit), position(pos),revenu(r)
 {
 	coordonnee.x = 0;
 	coordonnee.y = 0;
@@ -9,6 +9,7 @@ Ennemie::Ennemie(int v, int vit, int pos):vie(v), vitesse(vit), position(pos)
 
 Ennemie::~Ennemie()
 {
+	carte->setArgent(carte->getArgent + revenu);
 }
 
 int Ennemie::getVie()
@@ -54,9 +55,22 @@ Dimension Ennemie::getCoordonnee()
 	return coordonnee;
 }
 
+int Ennemie::getRevenu()
+{
+	return revenu;
+}
 
-
-
+void Ennemie::setRevenu(int r)
+{
+	if(r >= 0)
+	{
+		revenu = r;
+	}
+	else
+	{
+		revenu = -r;
+	}
+}
 
 
 
