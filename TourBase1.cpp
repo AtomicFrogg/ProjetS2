@@ -8,7 +8,7 @@ TourBase1::TourBase1(int d,float r, int x, int y, int p, int t, Joueur* j):Tour(
 TourBase1::~TourBase1()
 {}
 
-
+//Yo le code ne fonctionne pas parce que c'est pas possible d'accéder aux éléments privés des autres classes
 
 void TourBase1::attaquer()
 {

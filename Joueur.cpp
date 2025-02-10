@@ -10,7 +10,7 @@ Joueur::Joueur(string n){
 }
 
 Joueur::~Joueur(){
-    nom = null;
+    nom = "";
 }
 
 string Joueur::getNom(){
@@ -30,7 +30,7 @@ bool Joueur::ajouterEnnemie(Ennemie* ptr)
 
 bool Joueur::retirerEnnemie(int index)
 {
-	if(index < this->tableauEnnemie.getTaille() and index > 0)
+	if(index < this->tableauEnnemie.getTaille() && index > 0)
 	{
 		tableauEnnemie.retirerEnnemie(index);
 		

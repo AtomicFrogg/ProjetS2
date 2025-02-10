@@ -9,7 +9,7 @@ bool EnsembleTour::ajouterTour(Tour* nouvelleTour)
 
 int EnsembleTour::retirerTour(int index)
 {
-	if(index >= 0 and index < tableau.size())
+	if(index >= 0 && index < tableau.size())
 	{
 		delete tableau.at(index);
 		tableau.erase(tableau.begin() + index);

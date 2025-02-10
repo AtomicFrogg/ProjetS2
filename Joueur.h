@@ -19,7 +19,9 @@ class Joueur{
         string getNom();
         void setNom(string n);
         
-    	EnsembleEnnemie* getEnnemie();
+    	EnsembleEnnemie* getEnnemieTaille();
         bool ajouterEnnemie(Ennemie* ptr);
 		bool retirerEnnemie(int index);
 };
+
+#endif
