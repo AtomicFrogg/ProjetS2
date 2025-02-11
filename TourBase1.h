@@ -1,6 +1,8 @@
 #ifndef TOURBASE1_H
 #define TOURBASE1_H
 
+#include "Tour.h"
+
 class TourBase1: public Tour
 {
 	public:

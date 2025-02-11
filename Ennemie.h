@@ -2,13 +2,14 @@
 #define ENNEMIE_H
 
 #include "dimension.h"
+#include "Carte.h"
 using namespace std;
 
 
 
 class Ennemie{
 	public:
-		Ennemie(int v = 100, int vit = 1, int pos = 0);
+		Ennemie(int v = 100, int vit = 1, int pos = 0,int r = 2);
 		virtual ~Ennemie();
 		int getVie();
 		int getVitesse();
@@ -18,12 +19,15 @@ class Ennemie{
 		virtual void setPosition(int p) = 0;
 		Dimension getCoordonnee();
 		void setCoordonnee(Dimension coord);
-		
+		void setRevenu(int r);
+		int getRevenu();
+	
 	private:
 		int vie;
 		int vitesse;
 		int position;
 		Dimension coordonnee;
+		int revenu;
 };
 
 

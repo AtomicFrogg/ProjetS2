@@ -21,6 +21,9 @@ class Defenseur
 		float range;
 		Dimension dim;
 		int degat;
+		int vitesseAttaque;
+		int compteurAttaque;
+		bool attaque;
 };
 
 
