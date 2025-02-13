@@ -2,6 +2,7 @@
 #define TOURBASE1_H
 
 #include "Tour.h"
+#include "Defenseur.h"
 
 class TourBase1: public Tour
 {

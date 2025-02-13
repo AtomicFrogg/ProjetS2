@@ -10,7 +10,7 @@ bool Carte::ajouterTour(Tour* ptr)
 
 bool Carte::vendreTour(int index)
 {
-	if(index >= 0 and index < tableauTour.getTaille())
+	if(index >= 0 && index < tableauTour.getTaille())
 	{
 		this->setArgent(this->getArgent() - tableauTour.retirerTour(index));
 		return TRUE;
