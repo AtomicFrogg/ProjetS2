@@ -1,7 +1,7 @@
 #include "Tour.h"
 using namespace std;
 
-Tour::Tour(int v, int d,float r, int x, int y, int p, int t, Carte* c):Defenseur(d,r, x, y), prix(p),tier(t),vitesse(v)
+Tour::Tour(int v, int d,float r, int x, int y, int p, int t, Carte* c):Defenseur(d,r, x, y), prix(p),tier(t),vitesse(v),map(c)
 {
 }
 

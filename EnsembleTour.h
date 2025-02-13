@@ -15,7 +15,7 @@ class EnsembleTour
 {
 	public:
 		bool ajouterTour(Tour* nouvelleTour);
-		int retirerTour(int index);
+		bool retirerTour(int index);
 		bool reinitialiser();
 		int getTaille();
 	 	Tour* getTour(int index);

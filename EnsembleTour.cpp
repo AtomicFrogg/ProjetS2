@@ -7,7 +7,7 @@ bool EnsembleTour::ajouterTour(Tour* nouvelleTour)
 	return TRUE;
 }
 
-int EnsembleTour::retirerTour(int index)
+bool EnsembleTour::retirerTour(int index)
 {
 	if(index >= 0 and index < tableau.size())
 	{

@@ -17,6 +17,14 @@ void Test::testTour()
 	Tour TestTour1(3,12,4,200,4);
 	TestTour1.afficher(cout);
 */
+
+	cout<< "Tourbase1" <<endl;
+	Tour* *TestTour = new TourBase1*();
+	TestTour->afficher(cout);
+	TestTour->ameliorerRange();
+	TestTour->afficher(cout);
+	TestTour->ameliorerDegat();
+	TestTour->afficher(cout);
 }
 
 void Test::testEnnemie()
