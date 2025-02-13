@@ -1,7 +1,7 @@
 #ifndef CARTE_H
 #define CARTE_H
 
-#include "EnsembleTour.h"
+#include "EnsembleEnnemie.h"
 
 const int HAUTEUR = 15;
 const int LARGEUR = 30;
@@ -10,8 +10,6 @@ class Carte
 {
 	public:
 		Carte();
-		bool ajouterTour(Tour* ptr);
-		bool vendreTour(int index);
 		void afficher(ostream &s);
 
 		bool lancerVague(int index);
@@ -20,14 +18,21 @@ class Carte
 		int getArgent();
 		void setVie(int v);
 		void setArgent(int a);
-		EnsembleTour* getTour();
-	
+		
+		EnsembleEnnemie* getEnnemie();
+        bool ajouterEnnemie(Ennemie* ptr);
+		bool retirerEnnemie(int index);
+		
+		bool ajouterEnnemie(int index, Ennemie* mob);
+		bool retirerEnnemie(int index);
+		void reinitialiserEnnemie();
+		int getTailleEnnemie();
 		
 	private:
 		int map[HAUTEUR][LARGEUR];
 		int vie;
 		int argent;
-		EnsembleTour tableauTour;
+		EnsembleEnnemie tableauEnnemie;
 
 };
 

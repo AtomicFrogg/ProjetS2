@@ -21,24 +21,29 @@ void Joueur::setNom(string n){
     nom = n;
 }
 
-bool Joueur::ajouterEnnemie(Ennemie* ptr)
+bool Joueur::ajouterTour(Tour* nouvelleTour)
 {
-	if(ptr == nullptr) return FALSE;
-	tableauEnnemie.ajouterEnnemie(ptr);
-	return TRUE;
+	return tableauTour->ajouterTour(nouvelleTour);
 }
 
-bool Joueur::retirerEnnemie(int index)
+bool Joueur::retirerTour(int index)
 {
-	if(index < this->tableauEnnemie.getTaille() && index > 0)
-	{
-		tableauEnnemie.retirerEnnemie(index);
-		
-	}
+	return tableauTour->retirerTour(int index);
 }
 
-EnsembleEnnemie* Joueur::getEnnemieTaille()
+
+bool Joueur::reinitialiserTour()
 {
-	return &tableauEnnemie;
+		return tableauTour->reinitialiser();
+}
+
+int Joueur::getTaille()
+{
+	return tableauTour->getTaille();
+}
+
+Tour* Joueur::getTour(int index)
+{
+	return tableauTour->getTour(index);
 }
 

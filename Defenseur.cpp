@@ -5,8 +5,6 @@ Defenseur::Defenseur(int d,float r, int x, int y):range(r),degat(d)
 {
 	dim.x = x;
 	dim.y = y;
-	attaque = true;
-	compteurAttaque = 0;
 }
 
 Defenseur::~Defenseur()
@@ -22,14 +20,14 @@ float Defenseur::getRange()
 
 void Defenseur::setRange(float r)
 {
-	range = r;
+	if(r >= 0) range = r;
 }
 
 
 void Defenseur::setPosition(int x, int y)
 {
-	dim.x = x;
-	dim.y = y;
+	if(x >= 0) dim.x = x;
+	if(y >= 0) dim.y = y;
 }
 
 Dimension Defenseur::getPosition()

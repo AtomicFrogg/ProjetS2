@@ -44,7 +44,25 @@ Ennemie* EnsembleEnnemie::getEnnemie(int index)
 	return tableau.at(index);
 }
 
+int EnsembleEnnemie::getPosition(int index)
+{
+	return getEnnemie(index)->getPosition();
+}
 
+void EnsembleEnnemie::setPosition(int index, int pos)
+{
+	getEnnemie(index)->setPosition(pos);
+}
+
+Dimension EnsembleEnnemie::getCoordonnee(int index)
+{
+	return getEnnemie(index)->getCoordonnee();
+}
+
+void EnsembleEnnemie::setCoordonnee(int index, Dimension coord)
+{
+	getEnnemie(index)->setCoordonnee(coord);
+}
 
 
 

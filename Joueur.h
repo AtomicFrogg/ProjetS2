@@ -11,7 +11,7 @@ class Joueur{
 
     private:
         string nom;
-        EnsembleEnnemie tableauEnnemie;
+		EnsembleTour tableauTour;
     public:
         Joueur();
         Joueur(string n = "joueur");
@@ -19,9 +19,14 @@ class Joueur{
         string getNom();
         void setNom(string n);
         
-    	EnsembleEnnemie* getEnnemieTaille();
-        bool ajouterEnnemie(Ennemie* ptr);
-		bool retirerEnnemie(int index);
+		bool ajouterTour(Tour* nouvelleTour);
+		int retirerTour(int index);
+		bool reinitialiserTour();
+		int getTaille();
+	 	Tour* getTour(int index);
+	
+
+    	
 };
 
 #endif
