@@ -49,44 +49,47 @@ void Carte::setArgent(int a)
 }
 
 
-void Carte::afficher(ostream &s)
+void Carte::afficher(ostream& s)
 {
 
 }
 
 
 
-bool Carte::ajouterEnnemie(Ennemie* ptr)
+bool Carte::ajouterEnnemie(Enemie* ptr)
 {
-	if(ptr == nullptr) return FALSE;
+	if (ptr == nullptr) return FALSE;
 	tableauEnnemie.ajouterEnnemie(ptr);
 	return TRUE;
 }
 
 bool Carte::retirerEnnemie(int index)
 {
-	if(index < this->tableauEnnemie.getTaille() and index > 0)
+	bool result = false;
+	if (index < this->tableauEnnemie.getTaille() and index > 0)
 	{
 		tableauEnnemie.retirerEnnemie(index);
-		
+		result = true;
+
 	}
+	return result;
 }
 
-EnsembleEnnemie* Carte::getEnnemieTaille()
+EnsembleEnemie* Carte::getEnnemie()
 {
 	return &tableauEnnemie;
 }
 
 
-bool Carte::ajouterEnnemie(Ennemie* mob)
+/*bool Carte::ajouterEnnemie(Enemie* mob)
 {
 	return tableauEnnemie.ajouterEnnemie(mob);
-}
+}*/
 
-bool Carte::retirerEnnemie(int index)
+/*bool Carte::retirerEnnemie(int index)
 {
 	return tableauEnnemie.retirerEnnemie(index);
-}
+}*/
 
 void Carte::reinitialiserEnnemie()
 {
@@ -98,14 +101,3 @@ int Carte::getTailleEnnemie()
 {
 	return tableauEnnemie.getTaille();
 }
-
-
-
-
-
-
-
-
-
-
-

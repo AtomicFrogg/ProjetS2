@@ -1,16 +1,12 @@
-#ifndef ENNEMIE_H
-#define ENNEMIE_H
-
+#pragma once
 #include "dimension.h"
-#include "Carte.h"
-using namespace std;
+//#include "Carte.h"
 
-
-
-class Ennemie{
+class Enemie
+{
 	public:
-		Ennemie(int v = 100, int vit = 1, int pos = 0,int r = 2);
-		virtual ~Ennemie();
+		Enemie(int v = 100, int vit = 1, int pos = 0, int r = 2);
+		virtual ~Enemie();
 		int getVie();
 		int getVitesse();
 		int getPosition();
@@ -21,7 +17,7 @@ class Ennemie{
 		void setCoordonnee(Dimension coord);
 		void setRevenu(int r);
 		int getRevenu();
-	
+
 	private:
 		int vie;
 		int vitesse;
@@ -30,9 +26,3 @@ class Ennemie{
 		int revenu;
 };
 
-
-
-
-
-
-#endif

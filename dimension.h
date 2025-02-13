@@ -1,19 +1,11 @@
-#ifndef DIMENSION_H
-#define DIMENSION_H
-
-
+#pragma once
 struct Dimension
 {
 	int x;
 	int y;
 };
 
-int carre(int x)
+/*int carre(int x)
 {
 	return x * x;
-}
-
-
-
-
-#endif
+}*/
