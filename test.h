@@ -2,7 +2,7 @@
 #define TEST_H
 
 #include "Joueur.h"
-
+#include "TourBase1.h"
 
 class Test
 {

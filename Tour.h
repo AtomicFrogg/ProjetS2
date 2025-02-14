@@ -21,7 +21,9 @@ class Tour: public Defenseur
 		int getVitesse();
 		
 		virtual void afficher(ostream &s);
-		
+		virtual void attaquer() = 0;
+		virtual bool ameliorerRange() = 0;
+		virtual bool ameliorerDegat() = 0;
 	private:
 		int vitesse;
 		int prix;
