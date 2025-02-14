@@ -2,7 +2,7 @@
 
 #include <string.h>
 #include "Defenseur.h"
-#include "EnsembleEnnemie.h"
+#include "EnsembleTour.h"
 
 #ifndef JOUEUR_H
 #define JOUEUR_H
@@ -20,7 +20,7 @@ class Joueur{
         void setNom(string n);
         
 		bool ajouterTour(Tour* nouvelleTour);
-		int retirerTour(int index);
+		bool retirerTour(int index);
 		bool reinitialiserTour();
 		int getTaille();
 	 	Tour* getTour(int index);

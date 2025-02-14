@@ -56,7 +56,7 @@ void Carte::afficher(ostream& s)
 
 
 
-bool Carte::ajouterEnnemie(Enemie* ptr)
+bool Carte::ajouterEnnemie(Ennemie* ptr)
 {
 	if (ptr == nullptr) return FALSE;
 	tableauEnnemie.ajouterEnnemie(ptr);
@@ -75,13 +75,13 @@ bool Carte::retirerEnnemie(int index)
 	return result;
 }
 
-EnsembleEnemie* Carte::getEnnemie()
+EnsembleEnnemie* Carte::getEnnemie()
 {
 	return &tableauEnnemie;
 }
 
 
-/*bool Carte::ajouterEnnemie(Enemie* mob)
+/*bool Carte::ajouterEnnemie(Ennemie* mob)
 {
 	return tableauEnnemie.ajouterEnnemie(mob);
 }*/
@@ -100,4 +100,21 @@ void Carte::reinitialiserEnnemie()
 int Carte::getTailleEnnemie()
 {
 	return tableauEnnemie.getTaille();
+}
+
+Dimension Carte::getCoordonnee(int index)
+{
+	if(index >= 0 && index < getTailleEnnemie()) return tableauEnnemie.getCoordonnee(index);
+	Dimension autre;
+	autre.x = -1;
+	autre.y = -1;
+	return autre;
+}
+
+
+
+
+int carre(int x)
+{
+	return x * x;
 }

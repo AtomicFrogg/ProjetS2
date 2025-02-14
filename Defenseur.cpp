@@ -41,3 +41,30 @@ void Defenseur::afficher(ostream &s)
 }
 
 
+int Defenseur::getDegat()
+{
+	return degat;
+}
+
+void Defenseur::setDegat(int d)
+{
+	degat = d;
+}
+
+int Defenseur::getCompteurAttaque()
+{
+	return compteurAttaque;
+}
+void Defenseur::setCompteurAttaque(int c)
+{
+	compteurAttaque = c;
+}
+int Defenseur::getVitesseAttaque()
+{
+	return vitesseAttaque;
+}
+
+void Defenseur::setVitesseAttaque(int v)
+{
+	vitesseAttaque = v;
+}

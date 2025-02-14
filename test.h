@@ -1,7 +1,7 @@
 #ifndef TEST_H
 #define TEST_H
 
-#include "Carte.h"
+#include "Joueur.h"
 
 
 class Test

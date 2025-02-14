@@ -23,27 +23,27 @@ void Joueur::setNom(string n){
 
 bool Joueur::ajouterTour(Tour* nouvelleTour)
 {
-	return tableauTour->ajouterTour(nouvelleTour);
+	return tableauTour.ajouterTour(nouvelleTour);
 }
 
 bool Joueur::retirerTour(int index)
 {
-	return tableauTour->retirerTour(int index);
+	return tableauTour.retirerTour(index);
 }
 
 
 bool Joueur::reinitialiserTour()
 {
-		return tableauTour->reinitialiser();
+		return tableauTour.reinitialiser();
 }
 
 int Joueur::getTaille()
 {
-	return tableauTour->getTaille();
+	return tableauTour.getTaille();
 }
 
 Tour* Joueur::getTour(int index)
 {
-	return tableauTour->getTour(index);
+	return tableauTour.getTour(index);
 }
 

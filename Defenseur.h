@@ -16,13 +16,22 @@ class Defenseur
 		float getRange();
 		void setRange(float r);
 		virtual void afficher(ostream &s);
-		
+		int getDegat();
+		void setDegat(int d);
+		int getCompteurAttaque();
+		void setCompteurAttaque(int c);
+		int getVitesseAttaque();
+		void setVitesseAttaque(int v);
+
+
 	private:
 		float range;
 		Dimension dim;
 		int degat;
 		int vitesseAttaque;
 		int compteurAttaque;
+	
+	protected:
 		bool attaque;
 };
 

@@ -1,7 +1,6 @@
 #include "TourBase1.h"
 
-
-TourBase1::TourBase1(int d,float r, int x, int y, int p, int t, Carte& c):Tour(d,r,x,y,p,t,j)
+TourBase1::TourBase1(int v, int d,float r, int x, int y, int p, int t, Carte* c):Tour(v,d,r,x,y,p,t,c)
 {}
 
 
@@ -16,29 +15,32 @@ void TourBase1::attaquer()
 	if(attaque == true)
 	{
 		double distance;
-		for(int i = 0; i < map->getTaille(); i++)
+		for(int i = 0; i < map->getTailleEnnemie(); i++)
 		{
-			distance = sqrt(carre(map->getCoordonne(i).x - this->dim.x) + carre(map->getCoordonne(i).y - this->dim.y));
-			if(this->distance < this->range))
+			distance = sqrt(carre(map->getCoordonnee(i).x - this->getPosition().x) + carre(map->getCoordonnee(i).y - this->getPosition().y));
+			if(distance < getRange())
 			{
-				if ((int vie = (map->getVie() - this->degat)) > 0)
+				this->attaque = false;
+				int vie = (map->getVie() - getDegat());
+				if (vie > 0)
 				{
 					map->setVie(vie);
-					this->attaque = false;
-					this->compteurAttaque = this->vitesseAttaque;
-					break
+				
+					setCompteurAttaque(getVitesseAttaque());
+					break;
 				}
 				else
 				{
-					map->retirerEnnemie[i];
+					map->retirerEnnemie(i);
+					break;
 				}
 			}
 		}
 	}
 	else
 	{
-		compteurAttaque--;
-		if (compteurAttaque == 0)
+		setCompteurAttaque(getCompteurAttaque() - 1);
+		if (getCompteurAttaque() == 0)
 		{
 			attaque = true;
 		}
@@ -49,10 +51,10 @@ void TourBase1::attaquer()
 
 bool TourBase1::ameliorerRange()
 {
-	if(tier < 4 /*and carte->getArgent() >= (200 * range)*/)
+	if(getTier() < 4 /*and carte->getArgent() >= (200 * range)*/)
 	{
-		range = range + 1;
-		tier++;
+		setRange(getRange() + 1);
+		setTier(getTier() + 1);
 		return true;
 	}
 	return false;
@@ -61,10 +63,10 @@ bool TourBase1::ameliorerRange()
 
 bool TourBase1::ameliorerDegat()
 {
-	if(tier < 4 /*and carte->getArgent() >= (400 * degat)*/)
+	if(getTier() < 4 /*and carte->getArgent() >= (400 * degat)*/)
 	{
-		degat = degat * 2;
-		tier++;
+		setDegat(getDegat() * 2);
+		setTier(getTier() + 1);
 		return true;
 	}
 	return false;
