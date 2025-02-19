@@ -28,7 +28,7 @@ int Ennemie::getPosition()
 
 void Ennemie::setVie(int v)
 {
-	if (v > 0)
+	if (v >= 0)
 	{
 		vie = v;
 	}

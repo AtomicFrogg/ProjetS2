@@ -21,6 +21,12 @@ class EnsembleTour
 	 	Tour* getTour(int index);
 		void afficher(ostream &s);
 
+		int getPrix(int index);
+		void setPrix(int index,int p);
+		int getTier(int index);
+		void setTier(int index, int t);
+		void setVitesse(int index, int v);
+		int getVitesse(int index);
 	private:
 		vector<Tour*> tableau;
 };

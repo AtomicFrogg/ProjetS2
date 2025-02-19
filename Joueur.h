@@ -21,11 +21,17 @@ class Joueur{
         
 		bool ajouterTour(Tour* nouvelleTour);
 		bool retirerTour(int index);
-		bool reinitialiserTour();
+		bool reinitialiser();
 		int getTaille();
-	 	Tour* getTour(int index);
-	
+		Tour* getTour(int index);
+		void afficherTour(ostream& s);
 
+		int getPrix(int index);
+		void setPrix(int index, int p);
+		int getTier(int index);
+		void setTier(int index, int t);
+		void setVitesse(int index, int v);
+		int getVitesse(int index);
     	
 };
 

@@ -58,7 +58,35 @@ void EnsembleTour::afficher(ostream& s)
 	
 }
 
+int EnsembleTour::getPrix(int index)
+{
+	return getTour(index)->getPrix();
+}
 
+void EnsembleTour::setPrix(int index,int p)
+{
+	getTour(index)->setPrix(p);
+}
+
+int EnsembleTour::getTier(int index)
+{
+	return getTour(index)->getTier();
+}
+
+void EnsembleTour::setTier(int index, int t)
+{
+	getTour(index)->setTier(t);
+}
+
+void EnsembleTour::setVitesse(int index,int v)
+{
+	getTour(index)->setVitesse(v);
+}
+
+int EnsembleTour::getVitesse(int index)
+{
+	return getTour(index)->getVitesse();
+}
 
 
 
