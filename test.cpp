@@ -55,10 +55,15 @@ void Test::testEnsembleTour()
 	TestVecteur.ajouterTour(TestTour);
 	TestVecteur.ajouterTour(TestTour1);
 	TestVecteur.ajouterTour(TestTour2);
-	TestVecteur.afficher(cout)
+	TestVecteur.afficher(cout);
+	cout << TestVecteur.getTaille() << endl;
+	TestVecteur.getTour(1)->setDegat(12);
 	TestVecteur.retirerTour(0);
 	TestVecteur.afficher(cout);
-
+	cout << TestVecteur.getTaille() << endl;
+	TestVecteur.reinitialiser();
+	TestVecteur.afficher(cout);
+	cout << TestVecteur.getTaille()<<endl;
 }
 
 void Test::testCarte()

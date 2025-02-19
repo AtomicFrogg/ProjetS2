@@ -42,12 +42,20 @@ Tour* EnsembleTour::getTour(int index)
 }
 
 void EnsembleTour::afficher(ostream& s)
-{	
+{
 	cout << "ENSEMBLE DE TOUR" << endl;
-	for (int i = 0; i < getTaille(); i++)
-	{
-		getTour(i)->afficher(s);
+	if (getTaille() != 0)
+	{ 
+		for (int i = 0; i < getTaille(); i++)
+		{
+			getTour(i)->afficher(s);
+		}
 	}
+	else
+	{
+		s << "Il n\'y a pas de tour" << endl;
+	}
+	
 }
 
 
