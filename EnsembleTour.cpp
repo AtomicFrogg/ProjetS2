@@ -13,7 +13,6 @@ bool EnsembleTour::retirerTour(int index)
 	{
 		delete tableau.at(index);
 		tableau.erase(tableau.begin() + index);
-		tableau.shrink_to_fit();
 		return TRUE;
 	}
 	else{
@@ -42,7 +41,14 @@ Tour* EnsembleTour::getTour(int index)
 	return tableau.at(index);
 }
 
-
+void EnsembleTour::afficher(ostream& s)
+{	
+	cout << "ENSEMBLE DE TOUR" << endl;
+	for (int i = 0; i < getTaille(); i++)
+	{
+		getTour(i)->afficher(s);
+	}
+}
 
 
 

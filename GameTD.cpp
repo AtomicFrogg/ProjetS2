@@ -4,9 +4,24 @@
 
 int main(){
 Test test; 
-test.testTour();
+test.testEnsembleTour();
+	//vector<int> vecteur;
+	//for (int i = 0; i < 12; i++)
+	//{
+	//	vecteur.push_back(i);
+	//}
+	//cout << vecteur.size() << endl;
+	//cout << vecteur.at(1)<<endl;
+	//vecteur.erase(vecteur.begin() + 1);
+	//cout << vecteur.size() << endl;
+	//cout << vecteur.at(1) << endl;
 
 
 
+
+	//for (int i = 0; i < vecteur.size(); i++)
+	//{
+	//	cout << vecteur.at(i) << endl;
+	//}
 return 0;
 }

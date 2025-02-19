@@ -19,6 +19,7 @@ class EnsembleTour
 		bool reinitialiser();
 		int getTaille();
 	 	Tour* getTour(int index);
+		void afficher(ostream &s);
 
 	private:
 		vector<Tour*> tableau;

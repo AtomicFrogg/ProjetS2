@@ -7,7 +7,7 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-
+const int MAX_TIER = 5;
 class Tour: public Defenseur
 {
 	public:
