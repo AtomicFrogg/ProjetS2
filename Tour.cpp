@@ -12,7 +12,7 @@ Tour::~Tour()
 
 void Tour::afficher(ostream &s)
 {
-	s << "Tour (range = " << getRange() << ", x = " << getPosition().x << ", y = " << getPosition().y << ", cout = " << prix << ", tier = " << tier << ")" << endl;
+	s << "Tour (range = " << getRange() << ", Degat = " << getDegat() << ", x = " << getPosition().x << ", y = " << getPosition().y << ", cout = " << prix << ", tier = " << tier << ")" << endl;
 }
 
 

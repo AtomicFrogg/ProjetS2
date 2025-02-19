@@ -17,11 +17,13 @@ void Test::testTour()
 	Tour TestTour1(3,12,4,200,4);
 	TestTour1.afficher(cout);
 */
-	Carte map; 
+	Carte* map = new Carte(); 
 	cout<< "Tourbase1" <<endl;
-	Tour* TestTour = new TourBase1(2,5,3,0,0,300,1,&map);
+	Tour* TestTour = new TourBase1(2,5,3,0,0,300,1,map);
 	TestTour->afficher(cout);
 	TestTour->ameliorerRange();
+	TestTour->afficher(cout);
+	TestTour->ameliorerDegat();
 	TestTour->afficher(cout);
 	TestTour->ameliorerDegat();
 	TestTour->afficher(cout);

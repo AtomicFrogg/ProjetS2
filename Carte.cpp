@@ -1,5 +1,15 @@
 #include "Carte.h"
 
+Carte::Carte(int v, int a):vie(v),argent(a)
+{
+	for (int i = 0; i < HAUTEUR; i++)
+	{
+		for (int j = 0; j < LARGEUR; j++) 
+		{
+			map[i][j] = 0;
+		}
+	}
+}
 /*
 bool Carte::ajouterTour(Tour* ptr)
 {

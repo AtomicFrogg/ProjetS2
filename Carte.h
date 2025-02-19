@@ -9,7 +9,7 @@ const int LARGEUR = 30;
 class Carte
 {
 public:
-	Carte();
+	Carte(int v = 100, int a = 400);
 	void afficher(ostream& s);
 
 	bool lancerVague(int index);
