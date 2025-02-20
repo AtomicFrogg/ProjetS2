@@ -27,6 +27,7 @@ public:
 	int getTailleEnnemie();
 	Dimension getCoordonnee(int index);
 
+	int getVieEnnemie(int index);
 
 
 private:

@@ -65,3 +65,8 @@ void EnsembleEnnemie::setCoordonnee(int index, Dimension coord)
 {
 	if(index >= 0 && index < getTaille()) getEnnemie(index)->setCoordonnee(coord);
 }
+
+int EnsembleEnnemie::getVie(int index)
+{
+	return getEnnemie(index)->getVie();
+}

@@ -121,6 +121,10 @@ Dimension Carte::getCoordonnee(int index)
 	return autre;
 }
 
+int Carte::getVieEnnemie(int index)
+{
+	return getEnnemie()->getVie(index);
+}
 
 
 

@@ -21,6 +21,7 @@ public:
 	bool ajouterEnnemie(Ennemie* mob);
 	bool retirerEnnemie(int index);
 	Ennemie* getEnnemie(int index);
+	int getVie(int index);
 private:
 	vector<Ennemie*> tableau;
 };
