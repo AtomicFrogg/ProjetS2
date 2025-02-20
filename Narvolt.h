@@ -6,8 +6,8 @@
 class Narvolt : public Tour
 {
 public:
-	Narvolt(int v, int d, float r, int x, int y, int p, int t, Carte* c);
-	­~Narvolt();
+	Narvolt(int v, int d, float r, int x, int y, int p, int t, Carte* c, int rb, float re);
+	~Narvolt();
 	void attaquer();
 	bool ameliorerRange();
 	bool ameliorerDegat();

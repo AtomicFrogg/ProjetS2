@@ -47,7 +47,22 @@ int Tour::getVitesse()
 	return vitesse;
 }
 
+bool Tour::faireDegat(int i)
+{
+	int vie = (map->getVieEnnemie(i) - getDegat());
+	if (vie > 0)
+	{
+		map->setVie(vie);
 
+		setCompteurAttaque(getVitesseAttaque());
+		return true;
+	}
+	else
+	{
+		map->retirerEnnemie(i);
+		return false;
+	}
+}
 
 
 

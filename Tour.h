@@ -30,7 +30,7 @@ class Tour: public Defenseur
 		int tier;
 	
 	protected:
-		bool faireDegat();
+		bool faireDegat(int i);
 		Carte* map; 
 };
 
