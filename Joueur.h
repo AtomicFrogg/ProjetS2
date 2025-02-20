@@ -7,7 +7,7 @@
 #ifndef JOUEUR_H
 #define JOUEUR_H
 
-class Joueur{
+class Joueur: public Defenseur{
 
     private:
         string nom;
