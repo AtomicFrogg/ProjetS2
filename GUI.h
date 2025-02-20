@@ -15,9 +15,10 @@ class GUI
     void moveJoueurDroite(int x);
     void moveJoueurGauche(int x);
     Dimension getCoordonneeJoueur();
-    int getInput();
 
     void draw(const Dimension& coordonneeJoueur, const char joueur);
-};
 
-ostream& operator<<(ostream& os, const )
+    private:
+    Joueur* j;
+    Carte* c;
+};
