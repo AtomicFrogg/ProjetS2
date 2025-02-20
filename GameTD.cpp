@@ -1,10 +1,14 @@
+#include "Input.h"
 #include "Tour.h"
 #include "Ennemie.h"
 #include "test.h"
 
+
 int main(){
-Test test; 
-test.testEnsembleTour();
+	input();
+
+//Test test; 
+//test.testEnsembleTour();
 	//vector<int> vecteur;
 	//for (int i = 0; i < 12; i++)
 	//{

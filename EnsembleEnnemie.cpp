@@ -2,9 +2,9 @@
 
 bool EnsembleEnnemie::ajouterEnnemie(Ennemie* mob)
 {
-	if (mob == nullptr) return FALSE;
+	if (mob == nullptr) return false;
 	tableau.push_back(mob);
-	return TRUE;
+	return true;
 }
 
 bool EnsembleEnnemie::retirerEnnemie(int index)
@@ -14,11 +14,11 @@ bool EnsembleEnnemie::retirerEnnemie(int index)
 		delete tableau.at(index);
 		tableau.erase(tableau.begin() + index);
 		tableau.shrink_to_fit();
-		return TRUE;
+		return true;
 	}
 	else
 	{
-		return FALSE;
+		return false;
 	}
 }
 

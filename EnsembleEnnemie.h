@@ -2,11 +2,6 @@
 #include <vector>
 #include "Ennemie.h"
 
-#ifndef BOOL
-#define BOOL
-const bool TRUE = 1;
-const bool FALSE = 0;
-#endif
 using namespace std;
 class EnsembleEnnemie
 {

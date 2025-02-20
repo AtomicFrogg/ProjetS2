@@ -13,9 +13,9 @@ Carte::Carte(int v, int a):vie(v),argent(a)
 /*
 bool Carte::ajouterTour(Tour* ptr)
 {
-	if(ptr == nullptr) return FALSE;
+	if(ptr == nullptr) return false;
 	tableauTour.ajouterTour(ptr);
-	return TRUE;
+	return true;
 }
 
 bool Carte::vendreTour(int index)
@@ -23,11 +23,11 @@ bool Carte::vendreTour(int index)
 	if(index >= 0 && index < tableauTour.getTaille())
 	{
 		this->setArgent(this->getArgent() - tableauTour.retirerTour(index));
-		return TRUE;
+		return true;
 	}
 	else
 	{
-		return FALSE;
+		return false;
 	}
 }
 */
@@ -35,7 +35,7 @@ bool Carte::vendreTour(int index)
 
 bool Carte::lancerVague(int index)
 {
-	return FALSE;
+	return false;
 }
 
 int Carte::getVie()
@@ -68,9 +68,9 @@ void Carte::afficher(ostream& s)
 
 bool Carte::ajouterEnnemie(Ennemie* ptr)
 {
-	if (ptr == nullptr) return FALSE;
+	if (ptr == nullptr) return false;
 	tableauEnnemie.ajouterEnnemie(ptr);
-	return TRUE;
+	return true;
 }
 
 bool Carte::retirerEnnemie(int index)

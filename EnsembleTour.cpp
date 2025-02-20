@@ -2,9 +2,9 @@
 
 bool EnsembleTour::ajouterTour(Tour* nouvelleTour)
 {
-	if(nouvelleTour == nullptr) return FALSE;
+	if(nouvelleTour == nullptr) return false;
 	tableau.push_back(nouvelleTour);
-	return TRUE;
+	return true;
 }
 
 bool EnsembleTour::retirerTour(int index)
@@ -13,10 +13,10 @@ bool EnsembleTour::retirerTour(int index)
 	{
 		delete tableau.at(index);
 		tableau.erase(tableau.begin() + index);
-		return TRUE;
+		return true;
 	}
 	else{
-		return FALSE;
+		return false;
 	}
 }
 
@@ -27,7 +27,7 @@ bool EnsembleTour::reinitialiser()
 		retirerTour(i);
 	}
 	tableau.clear();
-	return TRUE;
+	return true;
 }
 
 int EnsembleTour::getTaille()
