@@ -16,11 +16,7 @@ class GUI
     void moveJoueurGauche(int x);
     Dimension getCoordonneeJoueur();
 
-<<<<<<< HEAD
     void draw(Dimension getCoordonneeJoueur(), const char joueur);
-=======
-    void draw(const Dimension& coordonneeJoueur, const char joueur);
->>>>>>> origin/main
 
     private:
     Joueur* j;
