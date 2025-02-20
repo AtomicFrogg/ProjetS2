@@ -12,8 +12,9 @@ class Joueur: public Defenseur{
     private:
         string nom;
 		EnsembleTour tableauTour;
+		Carte* map;
     public:
-        Joueur();
+        Joueur(Carte* c);
         Joueur(string n = "joueur");
         ~Joueur();   
         string getNom();
@@ -25,13 +26,14 @@ class Joueur: public Defenseur{
 		int getTaille();
 		Tour* getTour(int index);
 		void afficherTour(ostream& s);
-
+		void attaquer();
 		int getPrix(int index);
 		void setPrix(int index, int p);
 		int getTier(int index);
 		void setTier(int index, int t);
 		void setVitesse(int index, int v);
 		int getVitesse(int index);
+
     	
 };
 
