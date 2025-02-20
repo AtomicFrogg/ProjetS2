@@ -1,8 +1,9 @@
 #include "Joueur.h"
 
 
-Joueur::Joueur(){
+Joueur::Joueur(Carte* c):map(c){
     nom = "Jacob";
+
 }
 
 Joueur::Joueur(string n){
@@ -80,4 +81,43 @@ int Joueur::getVitesse(int index)
 void Joueur::afficherTour(ostream& s)
 {
 	tableauTour.afficher(s);
+}
+
+void Joueur::attaquer()
+{
+	
+	if(attaque == true)
+	{
+		double distance;
+		for(int i = 0; i < map->getTailleEnnemie(); i++)
+		{
+			distance = sqrt(carre(map->getCoordonnee(i).x - this->getPosition().x) + carre(map->getCoordonnee(i).y - this->getPosition().y));
+			if(distance < getRange())
+			{
+				this->attaque = false;
+				int vie = (map->getVieEnnemie(i) - getDegat());
+				if (vie > 0)
+				{
+					map->setVie(vie);
+				
+					setCompteurAttaque(getVitesseAttaque());
+					break;
+				}
+				else
+				{
+					map->retirerEnnemie(i);
+					break;
+				}
+			}
+		}
+	}
+	else
+	{
+		setCompteurAttaque(getCompteurAttaque() - 1);
+		if (getCompteurAttaque() == 0)
+		{
+			attaque = true;
+		}
+		
+	}
 }
