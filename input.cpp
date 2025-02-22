@@ -1,51 +1,107 @@
-
 #include "Input.h"
 
-void input()
+
+void Input::input(GUI* gui)
 {
 	cout << "Voulez-vous jouer manette ou clavier?" << endl << "1: Manette" << endl << "2: Clavier" << endl;
-	int peripherique;
+	char peripherique;
 	cin >> peripherique;
-	int i = 0;
+	bool time;
 	switch (peripherique)
 	{
-	case 1:
+	case '1':
 		cout << "Vous avez choisi la manette" << endl;
 
 		break;
-	case 2:
-		cout << "Vous avez choisi le clavier2" << endl;
+	case '2':
+		cout << "Vous avez choisi le clavier" << endl;
 
 		while (1)
 		{
+			time = 0;
 			if (GetKeyState(87) & 0x8000)
 			{
-				cout << "W" << endl;
+				time = 1;
+				cout << "W" ;
+				//gui->moveJoueurUp(1);
+
 			}
 			if (GetKeyState(65) & 0x8000)
 			{
-				cout << "A" << endl;
+				time = 1;
+				cout << "A" ;
+				//gui->moveJoueurGauche(1);
 			}
 			if (GetKeyState(83) & 0x8000)
 			{
-				cout << "S" << endl;
+				time = 1;
+				cout << "S" ;
+				//gui->moveJoueurDown(1);
 			}
 			if (GetKeyState(68) & 0x8000)
 			{
-				cout << "D" << endl;
+				time = 1;
+				cout << "D";
+				//gui->moveJoueurDroite(1);
 			}
-			//cout << i << endl;
-			i++;
+			if (GetKeyState(13) & 0x8000)
+			{
+				time = 1;
+				cout << "Enter";
+				
+			}
+			if (GetKeyState(32) & 0x8000)
+			{
+				time = 1;
+				cout << "Space";
+				
+			}
+			if (GetKeyState(27) & 0x8000)
+			{
+				time = 1;
+				cout << "Esc";
+				
+			}
+			if (GetKeyState(69) & 0x8000)
+			{
+				time = 1;
+				cout << "E";
+				
+			}
+			if (GetKeyState(81) & 0x8000)
+			{
+				time = 1;
+				cout << "Q";
+				
+			}
+			if (GetKeyState(82) & 0x8000)
+			{
+				time = 1;
+				cout << "R";
+				
+			}
+			if (GetKeyState(70) & 0x8000)
+			{
+				time = 1;
+				cout << "F";
+				
+			}
+			if (time = 1)
+			{
+				Sleep(100);
+
+			}
+			//cout << i << endl
 		}
 		break;
 	default:
-		input();
+		input(gui);
 		break;
 	}
 }
 
 
-int checkKey()
+int Input::checkKey()
 {
 	cout << " Press Any Key:" << endl;
 	while (true) {

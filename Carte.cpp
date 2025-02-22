@@ -33,10 +33,6 @@ bool Carte::vendreTour(int index)
 */
 
 
-bool Carte::lancerVague(int index)
-{
-	return false;
-}
 
 int Carte::getVie()
 {

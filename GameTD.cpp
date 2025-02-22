@@ -5,8 +5,10 @@
 
 
 int main(){
-	input();
-
+	GUI *gui;
+	Input test;
+	test.input(gui);
+	test.checkKey();
 //Test test; 
 //test.testEnsembleTour();
 	//vector<int> vecteur;

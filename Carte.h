@@ -12,7 +12,6 @@ public:
 	Carte(int v = 100, int a = 400);
 	void afficher(ostream& s);
 
-	bool lancerVague(int index);
 
 	int getVie();
 	int getArgent();
