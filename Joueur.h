@@ -3,6 +3,9 @@
 #include <string.h>
 #include "Defenseur.h"
 #include "EnsembleTour.h"
+#include "TourBase1.h"
+#include "Canonnier.h"
+#include "Narvolt.h"
 
 #ifndef JOUEUR_H
 #define JOUEUR_H
@@ -19,8 +22,14 @@ class Joueur: public Defenseur{
         string getNom();
         void setNom(string n);
         
-		bool ajouterTour(Tour* nouvelleTour);
+		int ajouterTour(Tour* nouvelleTour);
 		bool retirerTour(int index);
+		int ajouterTourBase();
+		int ajouterTourSniper();
+		int ajouterTourCanonnier();
+		int ajouterTourNarvolt();
+		
+
 		bool reinitialiser();
 		int getTaille();
 		Tour* getTour(int index);
