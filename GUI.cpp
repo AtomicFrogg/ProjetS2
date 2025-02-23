@@ -78,11 +78,11 @@ ostream& operator<<(ostream& os, const Joueur*);
 
 bool GUI::ajouterTourBase()
 {
-    if (tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type == 0)
+    if (getDonneesJoueur()->type == 0)
     {
-        tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type = 2;
-        tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].ptr = j->ajouterTourBase();
-        tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].index = j->getTaille();
+        getDonneesJoueur()->type = 2;
+        getDonneesJoueur()->ptr = j->ajouterTourBase();
+        getDonneesJoueur()->index = j->getTaille();
         return true;
     }
     else
@@ -93,11 +93,11 @@ bool GUI::ajouterTourBase()
 
 bool GUI::ajouterTourSniper()
 {
-    if (tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type == 0)
+    if (getDonneesJoueur()->type == 0)
     {
-        tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type = 3;
-        tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].ptr = j->ajouterTourSniper();
-        tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].index = j->getTaille();
+        getDonneesJoueur()->type = 3;
+        getDonneesJoueur()->ptr = j->ajouterTourSniper();
+        getDonneesJoueur()->index = j->getTaille();
         return true;
     }
     else
@@ -108,11 +108,11 @@ bool GUI::ajouterTourSniper()
 
 bool GUI::ajouterTourCanonnier()
 {
-    if (tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type == 0)
+    if (getDonneesJoueur()->type == 0)
     {
-        tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type = 4;
-        tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].ptr = j->ajouterTourCanonnier();
-        tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].index = j->getTaille();
+        getDonneesJoueur()->type = 4;
+        getDonneesJoueur()->ptr = j->ajouterTourCanonnier();
+        getDonneesJoueur()->index = j->getTaille();
         return true;
     }
     else
@@ -123,11 +123,11 @@ bool GUI::ajouterTourCanonnier()
 
 bool GUI::ajouterTourNarvolt()
 {
-    if (tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type == 0)
+    if (getDonneesJoueur()->type == 0)
     {
-        tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type = 5;
-        tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].ptr = j->ajouterTourNarvolt();
-        tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].index = j->getTaille();
+        getDonneesJoueur()->type = 5;
+        getDonneesJoueur()->ptr = j->ajouterTourNarvolt();
+        getDonneesJoueur()->index = j->getTaille();
         return true;
     }
     else
@@ -138,5 +138,37 @@ bool GUI::ajouterTourNarvolt()
 
 bool GUI::retirerTour(int x, int y)
 {
+    int index = getDonneesJoueur()->index;
+    if (getDonneesJoueur()->type >= 2)
+    {
+        if (j->retirerTour(index))
+        {
+            for (int i = 0; i < HAUTEUR; i++)
+            {
+                for (int j = 0; j < LARGEUR; j++)
+                {
+                    if (tableauDonnees[i][j].index >= index and tableauDonnees[i][j].type >= 2)
+                    {
+                        tableauDonnees[i][j].index = tableauDonnees[i][j].index - 1;
+                    }
+                }
+            }
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+   
+}
 
+
+Donnees* GUI::getDonneesJoueur()
+{
+    return &tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x];
 }

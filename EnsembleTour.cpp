@@ -2,7 +2,7 @@
 
 Tour* EnsembleTour::ajouterTour(Tour* nouvelleTour)
 {
-	if(nouvelleTour == nullptr) return false;
+	if(nouvelleTour == nullptr) return nullptr;
 	tableau.push_back(nouvelleTour);
 	return getTour(getTaille());
 }

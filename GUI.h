@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Joueur.h"
 #include "Carte.h"
-#include "Données.h"
+#include "Donnees.h"
 
 using namespace std;
 
@@ -22,8 +22,8 @@ class GUI
         bool ajouterTourSniper();
         bool ajouterTourCanonnier();
         bool ajouterTourNarvolt();
-        bool retirerTour(int index);
-
+        bool retirerTour(int x, int y);
+        Donnees* getDonneesJoueur();
         
     private:
         Donnees tableauDonnees[HAUTEUR][LARGEUR];
