@@ -1,10 +1,10 @@
 #include "EnsembleTour.h"
 
-bool EnsembleTour::ajouterTour(Tour* nouvelleTour)
+Tour* EnsembleTour::ajouterTour(Tour* nouvelleTour)
 {
 	if(nouvelleTour == nullptr) return false;
 	tableau.push_back(nouvelleTour);
-	return getTaille();
+	return getTour(getTaille());
 }
 
 bool EnsembleTour::retirerTour(int index)

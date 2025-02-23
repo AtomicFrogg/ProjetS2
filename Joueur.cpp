@@ -18,7 +18,7 @@ void Joueur::setNom(string n){
     nom = n;
 }
 
-int Joueur::ajouterTour(Tour* nouvelleTour)
+Tour* Joueur::ajouterTour(Tour* nouvelleTour)
 {
 	return tableauTour.ajouterTour(nouvelleTour);
 }
@@ -123,25 +123,25 @@ void Joueur::attaquer()
 	tableauTour.attaquer();
 }
 
-int Joueur::ajouterTourBase()
+Tour* Joueur::ajouterTourBase()
 {
 	Tour* newTour = new TourBase1(10,15,4,this->getPosition().x, this->getPosition().y, 400, 0, map);
 	return ajouterTour(newTour);
 }
 
-int Joueur::ajouterTourSniper()
+Tour* Joueur::ajouterTourSniper()
 {
 	Tour* newTour = new TourBase1(50,50, 100, this->getPosition().x, this->getPosition().y, 600, 0, map);
 	return ajouterTour(newTour);
 }
 
-int Joueur::ajouterTourCanonnier()
+Tour* Joueur::ajouterTourCanonnier()
 {
 	Tour* newTour = new Canonnier(20, 25, 3, this->getPosition().x, this->getPosition().y, 500, 0, map, 1);
 	return ajouterTour(newTour);
 }
 
-int Joueur::ajouterTourNarvolt()
+Tour* Joueur::ajouterTourNarvolt()
 {
 	Tour* newTour = new Narvolt(15, 20, 5, this->getPosition().x, this->getPosition().y, 700, 0, map, 5, 5);
 	return ajouterTour(newTour);

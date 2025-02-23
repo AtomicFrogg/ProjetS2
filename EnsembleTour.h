@@ -10,7 +10,7 @@
 class EnsembleTour
 {
 	public:
-		int ajouterTour(Tour* nouvelleTour);
+		Tour* ajouterTour(Tour* nouvelleTour);
 		bool retirerTour(int index);
 		bool reinitialiser();
 		int getTaille();

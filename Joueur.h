@@ -22,12 +22,12 @@ class Joueur: public Defenseur{
         string getNom();
         void setNom(string n);
         
-		int ajouterTour(Tour* nouvelleTour);
+		Tour* ajouterTour(Tour* nouvelleTour);
 		bool retirerTour(int index);
-		int ajouterTourBase();
-		int ajouterTourSniper();
-		int ajouterTourCanonnier();
-		int ajouterTourNarvolt();
+		Tour* ajouterTourBase();
+		Tour* ajouterTourSniper();
+		Tour* ajouterTourCanonnier();
+		Tour* ajouterTourNarvolt();
 		
 
 		bool reinitialiser();
