@@ -23,7 +23,6 @@ class Defenseur
 		int getVitesseAttaque();
 		void setVitesseAttaque(int v);
 
-
 	private:
 		float range;
 		Dimension dim;

@@ -89,7 +89,23 @@ int EnsembleTour::getVitesse(int index)
 }
 
 
+void EnsembleTour::attaquer()
+{
+	for (int i = 0; i < getTaille(); i++)
+	{
+		getTour(i)->attaquer();
+	}
+}
 
+bool EnsembleTour::ameliorerRange(int index)
+{
+	return getTour(index)->ameliorerRange();
+}
+
+bool EnsembleTour::ameliorerDegat(int index)
+{
+	return getTour(index)->ameliorerDegat();
+}
 
 
 

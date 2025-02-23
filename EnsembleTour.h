@@ -23,6 +23,9 @@ class EnsembleTour
 		void setTier(int index, int t);
 		void setVitesse(int index, int v);
 		int getVitesse(int index);
+		void attaquer();
+		virtual bool ameliorerRange(int index);
+		virtual bool ameliorerDegat(int index);
 	private:
 		vector<Tour*> tableau;
 };

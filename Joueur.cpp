@@ -1,12 +1,8 @@
 #include "Joueur.h"
 
 
-Joueur::Joueur(Carte* c):map(c){
-    nom = "Jacob";
-
-}
-
-Joueur::Joueur(string n){
+Joueur::Joueur(int d, float r, int x, int y, Carte* c, string n):map(c),Defenseur(d,r,x,y)
+{
     setNom(n);
 }
 
@@ -83,7 +79,7 @@ void Joueur::afficherTour(ostream& s)
 	tableauTour.afficher(s);
 }
 
-void Joueur::attaquer()
+void Joueur::attaquerJoueur()
 {
 	
 	if(attaque == true)
@@ -120,4 +116,9 @@ void Joueur::attaquer()
 		}
 		
 	}
+}
+
+void Joueur::attaquer()
+{
+	tableauTour.attaquer();
 }
