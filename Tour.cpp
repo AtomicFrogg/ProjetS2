@@ -1,7 +1,7 @@
 #include "Tour.h"
 using namespace std;
 
-Tour::Tour(int v, int d,float r, int x, int y, int p, int t, Carte* c):Defenseur(d,r, x, y), prix(p),tier(t),vitesse(v),map(c)
+Tour::Tour(int d,float r, int x, int y, int va, int p, int t, Carte* c):Defenseur(d,r, x, y,va), prix(p),tier(t),map(c)
 {
 }
 
@@ -38,13 +38,13 @@ void Tour::setPrix(int p)
 
 void Tour::setVitesse(int v)
 {
-	if(v >= 0) vitesse = v;
+	if(v >= 0) setVitesseAttaque(v);
 }
 
 
 int Tour::getVitesse()
 {
-	return vitesse;
+	return getVitesseAttaque();
 }
 
 bool Tour::faireDegat(int i)

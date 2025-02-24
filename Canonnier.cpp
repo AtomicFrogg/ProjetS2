@@ -1,6 +1,6 @@
 #include "Canonnier.h"
 
-Canonnier::Canonnier(int v, int d, float r, int x, int y, int p, int t, Carte* c, float re) :Tour(v, d, r, x, y, p, t, c), rangeExplosion(re)
+Canonnier::Canonnier(int d, float r, int x, int y, int va, int p, int t, Carte* c, float re) :Tour(d, r, x, y,va, p, t, c), rangeExplosion(re)
 {
 }
 

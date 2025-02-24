@@ -2,6 +2,8 @@
 
 GUI::GUI()
 {
+    c = new Carte(100, 400);
+    j = new Joueur(5, 1.5, 0, 0, 4, c, "Jacob");
     for (int i = 0; i < HAUTEUR; i++)
     {
         for (int j = 0; j < LARGEUR; j++)
@@ -11,12 +13,12 @@ GUI::GUI()
             tableauDonnees[i][j].index = -1;
         }
     }
-
-};
+}
 
 GUI::~GUI()
 {
-    
+    delete c;
+    delete j;
 };
 
 Dimension GUI::getCoordonneeJoueur()
@@ -26,7 +28,7 @@ Dimension GUI::getCoordonneeJoueur()
 
 void GUI::moveJoueurUp(int y)
 {
-    if(y < HAUTEUR and y >= 0)
+    if(getCoordonneeJoueur().y + 1 < HAUTEUR and getCoordonneeJoueur().y >= 0)
     {
         int currX = getCoordonneeJoueur().x;
         int currY = getCoordonneeJoueur().y;
@@ -37,7 +39,7 @@ void GUI::moveJoueurUp(int y)
 
 void GUI::moveJoueurDown(int y)
 {
-    if (y < HAUTEUR and y >= 0)
+    if (getCoordonneeJoueur().y < HAUTEUR and getCoordonneeJoueur().y > 0)
     {
         int currX = getCoordonneeJoueur().x;
         int currY = getCoordonneeJoueur().y;
@@ -45,10 +47,9 @@ void GUI::moveJoueurDown(int y)
         j->setPosition(currX, newY);
     }
 };
-
 void GUI::moveJoueurDroite(int x)
 {
-    if (x < LARGEUR and x >= 0)
+    if (getCoordonneeJoueur().x + 1 < LARGEUR and getCoordonneeJoueur().x >= 0)
     {
         int currX = getCoordonneeJoueur().x;
         int currY = getCoordonneeJoueur().y;
@@ -59,7 +60,7 @@ void GUI::moveJoueurDroite(int x)
 
 void GUI::moveJoueurGauche(int x)
 {
-    if (x < LARGEUR and x >= 0)
+    if (getCoordonneeJoueur().x < LARGEUR and getCoordonneeJoueur().x > 0)
     {
         int currX = getCoordonneeJoueur().x;
         int currY = getCoordonneeJoueur().y;
@@ -68,54 +69,66 @@ void GUI::moveJoueurGauche(int x)
     }
 };
 
-void GUI::draw(Donnees tableauDonnees[HAUTEUR][LARGEUR], const char joueur)
+void GUI::draw()
 {
     int m, n;
-    for(m = 0; m < HAUTEUR; m++)
+    for (int i = 0; i < 30; i++)
     {
+        cout << endl;
+    }
+    for(m = HAUTEUR - 1; m >= 0; m--)
+    {
+        cout << endl;
+
         for(n = 0; n < LARGEUR; n++)
-        {
-            if(m == 0 || m == 14)
+        {            
+            if (getCoordonneeJoueur().x == n and getCoordonneeJoueur().y == m)
             {
-                cout << "____";
+                cout << "j";
             }
-            if(n == 0 || n == 29)
+            else if(m == 0 || m == HAUTEUR - 1)
             {
-                cout << "|\n|";
+                cout << "_";
             }
-            if(tableauDonnees[m][n].type == 1)
+            //if(n == 0 || n == 29)
+            //{
+            //    cout << "|\n|";
+            //}
+
+            else if(tableauDonnees[m][n].type == 1)
             {
                 cout << "1";
             }
-            if(tableauDonnees[m][n].type == 2)
+            else if(tableauDonnees[m][n].type == 2)
             {
                 cout << "2";
             }
-            if(tableauDonnees[m][n].type == 3)
+            else if(tableauDonnees[m][n].type == 3)
             {
                 cout << "3";
             }
-            if(tableauDonnees[m][n].type == 4)
+            else if(tableauDonnees[m][n].type == 4)
             {
                 cout << "4";
             }
-            if(tableauDonnees[m][n].type == 5)
+            else if (tableauDonnees[m][n].type == 5)
             {
                 cout << "5";
+
             }
-            cout << "\n";
-            if(getCoordonneeJoueur().x == n)
+            else if((n == 0 || n == LARGEUR - 1) and tableauDonnees[m][n].type == 0 and m != 0 and m != HAUTEUR - 1)
             {
-                if(getCoordonneeJoueur().y == m)
-                {
-                    cout << "j";
-                }
+                cout << "|";
+            }
+            else if(tableauDonnees[m][n].type == 0)
+            {
+                cout << " ";
             }
         }
     }
 }
 
-ostream& operator<<(ostream& os, const Joueur*);
+
 
 
 bool GUI::ajouterTourBase()
@@ -178,7 +191,7 @@ bool GUI::ajouterTourNarvolt()
     }
 }
 
-bool GUI::retirerTour(int x, int y)
+bool GUI::retirerTour()
 {
     int index = getDonneesJoueur()->index;
     if (getDonneesJoueur()->type >= 2)
@@ -213,4 +226,14 @@ bool GUI::retirerTour(int x, int y)
 Donnees* GUI::getDonneesJoueur()
 {
     return &tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x];
+}
+
+Carte* GUI::getCarte()
+{
+    return c;
+}
+
+Joueur* GUI::getJoueur()
+{
+    return j;
 }

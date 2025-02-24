@@ -17,7 +17,7 @@ class Joueur: public Defenseur{
 		EnsembleTour tableauTour;
 		Carte* map;
     public:
-        Joueur(int d, float r, int x, int y, Carte* c, string n);
+        Joueur(int d, float r, int x, int y, int va, Carte* c, string n);
         ~Joueur();   
         string getNom();
         void setNom(string n);

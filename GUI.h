@@ -17,17 +17,21 @@ class GUI
         void moveJoueurGauche(int x);
         Dimension getCoordonneeJoueur();
 
-        void draw(Donnees tableauDonnees[HAUTEUR][LARGEUR], const char joueur);
+        void draw();
         bool ajouterTourBase();
         bool ajouterTourSniper();
         bool ajouterTourCanonnier();
         bool ajouterTourNarvolt();
-        bool retirerTour(int x, int y);
+        bool retirerTour();
         Donnees* getDonneesJoueur();
+
+        Joueur* getJoueur();
+        Carte* getCarte();
         
     private:
         Donnees tableauDonnees[HAUTEUR][LARGEUR];
-        Joueur* j;
-        Carte* c;
+        Carte *c;
+        Joueur *j;
+        
 };
 
