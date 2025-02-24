@@ -5,4 +5,7 @@ struct Dimension
 	int y;
 };
 
-
+/*int carre(int x)
+{
+	return x * x;
+}*/
