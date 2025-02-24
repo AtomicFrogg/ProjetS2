@@ -68,9 +68,51 @@ void GUI::moveJoueurGauche(int x)
     }
 };
 
-void GUI::draw(Dimension getCoordonneeJoueur(), const char joueur)
+void GUI::draw(Donnees tableauDonnees[HAUTEUR][LARGEUR], const char joueur)
 {
-    
+    int m, n;
+    for(m = 0; m < HAUTEUR; m++)
+    {
+        for(n = 0; n < LARGEUR; n++)
+        {
+            if(m == 0 || m == 14)
+            {
+                cout << "____";
+            }
+            if(n == 0 || n == 29)
+            {
+                cout << "|\n|";
+            }
+            if(tableauDonnees[m][n].type == 1)
+            {
+                cout << "1";
+            }
+            if(tableauDonnees[m][n].type == 2)
+            {
+                cout << "2";
+            }
+            if(tableauDonnees[m][n].type == 3)
+            {
+                cout << "3";
+            }
+            if(tableauDonnees[m][n].type == 4)
+            {
+                cout << "4";
+            }
+            if(tableauDonnees[m][n].type == 5)
+            {
+                cout << "5";
+            }
+            cout << "\n";
+            if(getCoordonneeJoueur().x == n)
+            {
+                if(getCoordonneeJoueur().y == m)
+                {
+                    cout << "j";
+                }
+            }
+        }
+    }
 }
 
 ostream& operator<<(ostream& os, const Joueur*);
