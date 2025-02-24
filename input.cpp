@@ -23,26 +23,26 @@ void Input::input(GUI* gui)
 			{
 				time = 1;
 				cout << "W" ;
-				//gui->moveJoueurUp(1);
+				gui->moveJoueurUp(1);
 
 			}
 			if (GetKeyState(65) & 0x8000)
 			{
 				time = 1;
 				cout << "A" ;
-				//gui->moveJoueurGauche(1);
+				gui->moveJoueurGauche(1);
 			}
 			if (GetKeyState(83) & 0x8000)
 			{
 				time = 1;
 				cout << "S" ;
-				//gui->moveJoueurDown(1);
+				gui->moveJoueurDown(1);
 			}
 			if (GetKeyState(68) & 0x8000)
 			{
 				time = 1;
 				cout << "D";
-				//gui->moveJoueurDroite(1);
+				gui->moveJoueurDroite(1);
 			}
 			if (GetKeyState(13) & 0x8000)
 			{
@@ -66,25 +66,26 @@ void Input::input(GUI* gui)
 			{
 				time = 1;
 				cout << "E";
+				gui->ajouterTourBase;
 				
 			}
 			if (GetKeyState(81) & 0x8000)
 			{
 				time = 1;
 				cout << "Q";
-				
+				gui->ajouterTourCanonnier
 			}
 			if (GetKeyState(82) & 0x8000)
 			{
 				time = 1;
 				cout << "R";
-				
+				gui->ajouterTourSniper
 			}
 			if (GetKeyState(70) & 0x8000)
 			{
 				time = 1;
 				cout << "F";
-				
+				gui->ajouterTourNarvolt
 			}
 			if (time = 1)
 			{
