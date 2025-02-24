@@ -11,7 +11,7 @@ const int MAX_TIER = 5;
 class Tour: public Defenseur
 {
 	public:
-		Tour(int v, int d,float r, int x, int y, int p, int t, Carte* c);
+		Tour(int d,float r, int x, int y, int va, int p, int t, Carte* c);
 		~Tour();
 		int getPrix();
 		void setPrix(int p);
@@ -25,7 +25,6 @@ class Tour: public Defenseur
 		virtual bool ameliorerRange() = 0;
 		virtual bool ameliorerDegat() = 0;
 	private:
-		int vitesse;
 		int prix;
 		int tier;
 	
