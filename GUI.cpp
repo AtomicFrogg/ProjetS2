@@ -28,7 +28,7 @@ Dimension GUI::getCoordonneeJoueur()
 
 void GUI::moveJoueurUp(int y)
 {
-    if(getCoordonneeJoueur().y + 1 < HAUTEUR and getCoordonneeJoueur().y >= 0)
+    if(getCoordonneeJoueur().y + 1 < HAUTEUR && getCoordonneeJoueur().y >= 0)
     {
         int currX = getCoordonneeJoueur().x;
         int currY = getCoordonneeJoueur().y;
@@ -39,7 +39,7 @@ void GUI::moveJoueurUp(int y)
 
 void GUI::moveJoueurDown(int y)
 {
-    if (getCoordonneeJoueur().y < HAUTEUR and getCoordonneeJoueur().y > 0)
+    if (getCoordonneeJoueur().y < HAUTEUR && getCoordonneeJoueur().y > 0)
     {
         int currX = getCoordonneeJoueur().x;
         int currY = getCoordonneeJoueur().y;
@@ -49,7 +49,7 @@ void GUI::moveJoueurDown(int y)
 };
 void GUI::moveJoueurDroite(int x)
 {
-    if (getCoordonneeJoueur().x + 1 < LARGEUR and getCoordonneeJoueur().x >= 0)
+    if (getCoordonneeJoueur().x + 1 < LARGEUR && getCoordonneeJoueur().x >= 0)
     {
         int currX = getCoordonneeJoueur().x;
         int currY = getCoordonneeJoueur().y;
@@ -60,7 +60,7 @@ void GUI::moveJoueurDroite(int x)
 
 void GUI::moveJoueurGauche(int x)
 {
-    if (getCoordonneeJoueur().x < LARGEUR and getCoordonneeJoueur().x > 0)
+    if (getCoordonneeJoueur().x < LARGEUR && getCoordonneeJoueur().x > 0)
     {
         int currX = getCoordonneeJoueur().x;
         int currY = getCoordonneeJoueur().y;
@@ -84,7 +84,7 @@ void GUI::draw()
 
         for(n = 0; n < LARGEUR; n++)
         {            
-            if (getCoordonneeJoueur().x == n and getCoordonneeJoueur().y == m)
+            if (getCoordonneeJoueur().x == n && getCoordonneeJoueur().y == m)
             {
                 cout << "j";
             }
@@ -119,7 +119,7 @@ void GUI::draw()
             {
                 cout << "_";
             }
-            else if((n == 0 || n == LARGEUR - 1) and tableauDonnees[m][n].type == 0 and m != 0 and m != HAUTEUR - 1)
+            else if((n == 0 || n == LARGEUR - 1) && tableauDonnees[m][n].type == 0 && m != 0 && m != HAUTEUR - 1)
             {
                 cout << "|";
             }
@@ -205,7 +205,7 @@ bool GUI::retirerTour()
             {
                 for (int j = 0; j < LARGEUR; j++)
                 {
-                    if (tableauDonnees[i][j].index >= index and tableauDonnees[i][j].type >= 2)
+                    if (tableauDonnees[i][j].index >= index && tableauDonnees[i][j].type >= 2)
                     {
                         tableauDonnees[i][j].index = tableauDonnees[i][j].index - 1;
                     }

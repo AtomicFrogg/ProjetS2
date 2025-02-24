@@ -51,7 +51,7 @@ void TourBase1::attaquer()
 
 bool TourBase1::ameliorerRange()
 {
-	if(getTier() < MAX_TIER and this->map->getArgent() >= (200 * getRange()))
+	if(getTier() < MAX_TIER && this->map->getArgent() >= (200 * getRange()))
 	{
 		this->map->setArgent(this->map->getArgent() - (200 * getRange()));
 		setRange(getRange() + 1);
@@ -65,7 +65,7 @@ bool TourBase1::ameliorerRange()
 
 bool TourBase1::ameliorerDegat()
 {
-	if(getTier() < MAX_TIER and map->getArgent() >= (400 * getDegat()))
+	if(getTier() < MAX_TIER && map->getArgent() >= (400 * getDegat()))
 	{
 		this->map->setArgent(this->map->getArgent() - (400 * getDegat()));
 		setDegat(getDegat() * 2);

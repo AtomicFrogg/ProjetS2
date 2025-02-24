@@ -22,7 +22,7 @@ void Narvolt::attaquer()
 				this->attaque = false;
 				faireDegat(i);
 				int j = 1;
-				while (i >= j and sqrt(carre(map->getCoordonnee(i-j+1).x - map->getCoordonnee(i - j).x) + carre(map->getCoordonnee(i-j+1).y - map->getCoordonnee(i - j).y)) <= rangeElectricte and j > rebond)
+				while (i >= j && sqrt(carre(map->getCoordonnee(i-j+1).x - map->getCoordonnee(i - j).x) + carre(map->getCoordonnee(i-j+1).y - map->getCoordonnee(i - j).y)) <= rangeElectricte && j > rebond)
 				{
 					faireDegat(i);
 					j++;
@@ -46,7 +46,7 @@ void Narvolt::attaquer()
 bool Narvolt::ameliorerRange()
 {
 
-	if (getTier() < MAX_TIER and this->map->getArgent() >= (200 * getRange()))
+	if (getTier() < MAX_TIER && this->map->getArgent() >= (200 * getRange()))
 	{
 		this->map->setArgent(this->map->getArgent() - (200 * getRange()));
 		setRange(getRange() + 1);
@@ -59,7 +59,7 @@ bool Narvolt::ameliorerRange()
 
 	bool Narvolt::ameliorerDegat()
 	{
-		if (getTier() < MAX_TIER and map->getArgent() >= (400 * getDegat()))
+		if (getTier() < MAX_TIER && map->getArgent() >= (400 * getDegat()))
 		{
 			this->map->setArgent(this->map->getArgent() - (400 * getDegat()));
 			setDegat(getDegat() * 2);

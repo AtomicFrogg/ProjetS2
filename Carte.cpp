@@ -72,7 +72,7 @@ bool Carte::ajouterEnnemie(Ennemie* ptr)
 bool Carte::retirerEnnemie(int index)
 {
 	bool result = false;
-	if (index < this->tableauEnnemie.getTaille() and index > 0)
+	if (index < this->tableauEnnemie.getTaille() && index > 0)
 	{
 		tableauEnnemie.retirerEnnemie(index);
 		result = true;
