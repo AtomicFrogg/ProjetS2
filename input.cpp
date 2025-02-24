@@ -73,31 +73,19 @@ void Input::input(GUI* gui)
 			{
 				time = 1;
 				cout << "Q";
-<<<<<<< HEAD
 				gui->ajouterTourCanonnier;
-=======
-				gui->ajouterTourCanonnier
->>>>>>> origin/main
 			}
 			if (GetKeyState(82) & 0x8000)
 			{
 				time = 1;
 				cout << "R";
-<<<<<<< HEAD
 				gui->ajouterTourSniper;
-=======
-				gui->ajouterTourSniper
->>>>>>> origin/main
 			}
 			if (GetKeyState(70) & 0x8000)
 			{
 				time = 1;
 				cout << "F";
-<<<<<<< HEAD
 				gui->ajouterTourNarvolt;
-=======
-				gui->ajouterTourNarvolt
->>>>>>> origin/main
 			}
 			if (time = 1)
 			{
