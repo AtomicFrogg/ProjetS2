@@ -1,0 +1,8 @@
+build
+.vscode
+*.vcxproj*
+*.o
+Debug
+.qmake.stash
+.vs
+release

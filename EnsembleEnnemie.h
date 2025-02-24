@@ -1,14 +1,9 @@
 #pragma once
 #include <vector>
-#include "Enemie.h"
+#include "Ennemie.h"
 
-#ifndef BOOL
-#define BOOL
-const bool TRUE = 1;
-const bool FALSE = 0;
-#endif
 using namespace std;
-class EnsembleEnemie
+class EnsembleEnnemie
 {
 public:
 	//Dimension getPosition(int index);
@@ -18,10 +13,11 @@ public:
 	Dimension getCoordonnee(int index);
 	int getPosition(int index);
 	void setPosition(int index, int pos);
-	bool ajouterEnnemie(Enemie* mob);
+	bool ajouterEnnemie(Ennemie* mob);
 	bool retirerEnnemie(int index);
-	Enemie* getEnnemie(int index);
+	Ennemie* getEnnemie(int index);
+	int getVie(int index);
 private:
-	vector<Enemie*> tableau;
+	vector<Ennemie*> tableau;
 };
 

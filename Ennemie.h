@@ -2,11 +2,11 @@
 #include "dimension.h"
 //#include "Carte.h"
 
-class Enemie
+class Ennemie
 {
 	public:
-		Enemie(int v = 100, int vit = 1, int pos = 0, int r = 2);
-		virtual ~Enemie();
+		Ennemie(int v = 100, int vit = 1, int pos = 0, int r = 2);
+		virtual ~Ennemie();
 		int getVie();
 		int getVitesse();
 		int getPosition();
