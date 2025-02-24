@@ -1,5 +1,9 @@
 #include "Carte.h"
 
+
+Carte::Carte() {
+	reinitialiserEnnemie();
+}
 /*
 bool Carte::ajouterTour(Tour* ptr)
 {

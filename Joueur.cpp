@@ -10,7 +10,7 @@ Joueur::Joueur(string n){
 }
 
 Joueur::~Joueur(){
-    nom = null;
+    nom = "";
 }
 
 string Joueur::getNom(){
