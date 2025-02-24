@@ -17,7 +17,7 @@ class GUI
         void moveJoueurGauche(int x);
         Dimension getCoordonneeJoueur();
 
-        void draw(Dimension getCoordonneeJoueur(), const char joueur);
+        void draw(Donnees tableauDonnees[HAUTEUR][LARGEUR], const char joueur);
         bool ajouterTourBase();
         bool ajouterTourSniper();
         bool ajouterTourCanonnier();
