@@ -1,30 +1,30 @@
-#include "EnsembleEnemie.h"
+#include "EnsembleEnnemie.h"
 
-bool EnsembleEnemie::ajouterEnnemie(Enemie* mob)
+bool EnsembleEnnemie::ajouterEnnemie(Ennemie* mob)
 {
-	if (mob == nullptr) return FALSE;
+	if (mob == nullptr) return false;
 	tableau.push_back(mob);
-	return TRUE;
+	return true;
 }
 
-bool EnsembleEnemie::retirerEnnemie(int index)
+bool EnsembleEnnemie::retirerEnnemie(int index)
 {
 	if (index >= 0 and index < tableau.size())
 	{
 		delete tableau.at(index);
 		tableau.erase(tableau.begin() + index);
 		tableau.shrink_to_fit();
-		return TRUE;
+		return true;
 	}
 	else
 	{
-		return FALSE;
+		return false;
 	}
 }
 
 
 
-void EnsembleEnemie::reinitialiser()
+void EnsembleEnnemie::reinitialiser()
 {
 	for (int i = 0; i < getTaille(); i++)
 	{
@@ -33,33 +33,40 @@ void EnsembleEnemie::reinitialiser()
 	tableau.clear();
 }
 
-int EnsembleEnemie::getTaille()
+int EnsembleEnnemie::getTaille()
 {
 	return tableau.size();
 }
 
 
-Enemie* EnsembleEnemie::getEnnemie(int index)
+Ennemie* EnsembleEnnemie::getEnnemie(int index)
 {
-	return tableau.at(index);
+	if(index >= 0 && index < getTaille()) return tableau.at(index);
+	return nullptr;
 }
 
-int EnsembleEnemie::getPosition(int index)
+int EnsembleEnnemie::getPosition(int index)
 {
-	return getEnnemie(index)->getPosition();
+	if(index >= 0 && index < getTaille()) return getEnnemie(index)->getPosition();
+	return -1;
 }
 
-void EnsembleEnemie::setPosition(int index, int pos)
+void EnsembleEnnemie::setPosition(int index, int pos)
 {
-	getEnnemie(index)->setPosition(pos);
+	if(index >= 0 && index < getTaille()) getEnnemie(index)->setPosition(pos);
 }
 
-Dimension EnsembleEnemie::getCoordonnee(int index)
+Dimension EnsembleEnnemie::getCoordonnee(int index)
 {
-	return getEnnemie(index)->getCoordonnee();
+	if(index >= 0 && index < getTaille()) return getEnnemie(index)->getCoordonnee();
 }
 
-void EnsembleEnemie::setCoordonnee(int index, Dimension coord)
+void EnsembleEnnemie::setCoordonnee(int index, Dimension coord)
 {
-	getEnnemie(index)->setCoordonnee(coord);
+	if(index >= 0 && index < getTaille()) getEnnemie(index)->setCoordonnee(coord);
+}
+
+int EnsembleEnnemie::getVie(int index)
+{
+	return getEnnemie(index)->getVie();
 }
