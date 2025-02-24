@@ -19,90 +19,78 @@ void Input::input(GUI* gui)
 		while (1)
 		{
 			time = 0;
-			//W key
-			if (GetAsyncKeyState(87) & 0x8000)
+			if (GetKeyState(87) & 0x8000)
 			{
 				time = 1;
-				//cout << "W" ;
+				cout << "W" ;
 				gui->moveJoueurUp(1);
 
 			}
-			//A key
-			if (GetAsyncKeyState(65) & 0x8000)
+			if (GetKeyState(65) & 0x8000)
 			{
 				time = 1;
-				//cout << "A" ;
+				cout << "A" ;
 				gui->moveJoueurGauche(1);
 			}
-			//S key
-			if (GetAsyncKeyState(83) & 0x8000)
+			if (GetKeyState(83) & 0x8000)
 			{
 				time = 1;
-				//cout << "S" ;
+				cout << "S" ;
 				gui->moveJoueurDown(1);
 			}
-			//D key
-			if (GetAsyncKeyState(68) & 0x8000)
+			if (GetKeyState(68) & 0x8000)
 			{
 				time = 1;
-				//cout << "D";
+				cout << "D";
 				gui->moveJoueurDroite(1);
 			}
-			//Enter key
-			if (GetAsyncKeyState(13) & 0x8000)
+			if (GetKeyState(13) & 0x8000)
 			{
 				time = 1;
 				cout << "Enter";
 				
 			}
-			//Space key
-			if (GetAsyncKeyState(32) & 0x8000)
+			if (GetKeyState(32) & 0x8000)
 			{
 				time = 1;
 				cout << "Space";
 				
 			}
-			//Escape key
-			if (GetAsyncKeyState(27) & 0x8000)
+			if (GetKeyState(27) & 0x8000)
 			{
 				time = 1;
 				cout << "Esc";
-				break;
+				
 			}
-			//E key
-			if (GetAsyncKeyState(69) & 0x8000)
+			if (GetKeyState(69) & 0x8000)
 			{
 				time = 1;
 				cout << "E";
-				gui->ajouterTourBase();
+				gui->ajouterTourBase;
 				
 			}
-			//Q key
-			if (GetAsyncKeyState(81) & 0x8000)
+			if (GetKeyState(81) & 0x8000)
 			{
 				time = 1;
 				cout << "Q";
-				gui->ajouterTourCanonnier();
+				gui->ajouterTourCanonnier;
 			}
-			//R key
-			if (GetAsyncKeyState(82) & 0x8000)
+			if (GetKeyState(82) & 0x8000)
 			{
 				time = 1;
 				cout << "R";
-				gui->ajouterTourSniper();
+				gui->ajouterTourSniper;
 			}
-			//F key
-			if (GetAsyncKeyState(70) & 0x8000)
+			if (GetKeyState(70) & 0x8000)
 			{
 				time = 1;
 				cout << "F";
-				gui->ajouterTourNarvolt();
+				gui->ajouterTourNarvolt;
 			}
-			if (time == 1)
+			if (time = 1)
 			{
-				Sleep(150);
-				//gui->getJoueur()->afficher(cout);
-				gui->draw();
+				Sleep(100);
+
 			}
 			//cout << i << endl
 		}

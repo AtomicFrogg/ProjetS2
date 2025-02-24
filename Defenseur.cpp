@@ -1,12 +1,10 @@
 #include "Defenseur.h"
 using namespace std;
 
-Defenseur::Defenseur(int d, float r, int x, int y, int va) :range(r), degat(d), vitesseAttaque(va)
+Defenseur::Defenseur(int d,float r, int x, int y):range(r),degat(d)
 {
 	dim.x = x;
 	dim.y = y;
-	attaque = true;
-	compteurAttaque = 1;
 }
 
 Defenseur::~Defenseur()

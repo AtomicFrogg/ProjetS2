@@ -5,7 +5,7 @@
 
 
 int main(){
-	GUI *gui = new GUI();
+	GUI *gui;
 	Input test;
 	test.input(gui);
 	test.checkKey();

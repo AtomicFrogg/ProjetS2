@@ -7,7 +7,7 @@
 class TourBase1: public Tour
 {
 	public:
-		TourBase1(int d, float r, int x, int y, int va, int p, int t, Carte* c);
+		TourBase1(int v, int d, float r, int x, int y, int p, int t, Carte* c);
 		~TourBase1();
 		void attaquer();
 		bool ameliorerRange();

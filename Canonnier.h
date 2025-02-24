@@ -6,7 +6,7 @@
 class Canonnier : public Tour
 {
 public:
-	Canonnier( int d, float r, int x, int y, int va, int p, int t, Carte* c, float re);
+	Canonnier(int v, int d, float r, int x, int y, int p, int t, Carte* c, float re);
 	~Canonnier();
 	void attaquer();
 	bool ameliorerRange();

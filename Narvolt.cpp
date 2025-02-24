@@ -1,6 +1,6 @@
 #include "Narvolt.h"
 
-Narvolt::Narvolt(int d, float r, int x, int y,int va, int p, int t, Carte* c, int rb, float re) :Tour(d, r, x, y,va, p, t, c), rebond(rb), rangeElectricte(re)
+Narvolt::Narvolt(int v, int d, float r, int x, int y, int p, int t, Carte* c, int rb, float re) :Tour(v, d, r, x, y, p, t, c), rebond(rb), rangeElectricte(re)
 {
 }
 
@@ -27,14 +27,14 @@ void Narvolt::attaquer()
 					faireDegat(i);
 					j++;
 				}
-				setCompteurAttaque(getVitesseAttaque());
+			
 			}
 		}
 	}
 	else
 	{
 		setCompteurAttaque(getCompteurAttaque() - 1);
-		if (getCompteurAttaque() <= 0)
+		if (getCompteurAttaque() == 0)
 		{
 			attaque = true;
 		}
