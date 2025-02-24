@@ -1,30 +1,30 @@
-#include "EnsembleEnnemie.h"
+#include "EnsembleEnemie.h"
 
-bool EnsembleEnnemie::ajouterEnnemie(Ennemie* mob)
+bool EnsembleEnemie::ajouterEnnemie(Enemie* mob)
 {
-	if (mob == nullptr) return false;
+	if (mob == nullptr) return FALSE;
 	tableau.push_back(mob);
-	return true;
+	return TRUE;
 }
 
-bool EnsembleEnnemie::retirerEnnemie(int index)
+bool EnsembleEnemie::retirerEnnemie(int index)
 {
 	if (index >= 0 and index < tableau.size())
 	{
 		delete tableau.at(index);
 		tableau.erase(tableau.begin() + index);
 		tableau.shrink_to_fit();
-		return true;
+		return TRUE;
 	}
 	else
 	{
-		return false;
+		return FALSE;
 	}
 }
 
 
 
-void EnsembleEnnemie::reinitialiser()
+void EnsembleEnemie::reinitialiser()
 {
 	for (int i = 0; i < getTaille(); i++)
 	{
@@ -33,40 +33,33 @@ void EnsembleEnnemie::reinitialiser()
 	tableau.clear();
 }
 
-int EnsembleEnnemie::getTaille()
+int EnsembleEnemie::getTaille()
 {
 	return tableau.size();
 }
 
 
-Ennemie* EnsembleEnnemie::getEnnemie(int index)
+Enemie* EnsembleEnemie::getEnnemie(int index)
 {
-	if(index >= 0 && index < getTaille()) return tableau.at(index);
-	return nullptr;
+	return tableau.at(index);
 }
 
-int EnsembleEnnemie::getPosition(int index)
+int EnsembleEnemie::getPosition(int index)
 {
-	if(index >= 0 && index < getTaille()) return getEnnemie(index)->getPosition();
-	return -1;
+	return getEnnemie(index)->getPosition();
 }
 
-void EnsembleEnnemie::setPosition(int index, int pos)
+void EnsembleEnemie::setPosition(int index, int pos)
 {
-	if(index >= 0 && index < getTaille()) getEnnemie(index)->setPosition(pos);
+	getEnnemie(index)->setPosition(pos);
 }
 
-Dimension EnsembleEnnemie::getCoordonnee(int index)
+Dimension EnsembleEnemie::getCoordonnee(int index)
 {
-	if(index >= 0 && index < getTaille()) return getEnnemie(index)->getCoordonnee();
+	return getEnnemie(index)->getCoordonnee();
 }
 
-void EnsembleEnnemie::setCoordonnee(int index, Dimension coord)
+void EnsembleEnemie::setCoordonnee(int index, Dimension coord)
 {
-	if(index >= 0 && index < getTaille()) getEnnemie(index)->setCoordonnee(coord);
-}
-
-int EnsembleEnnemie::getVie(int index)
-{
-	return getEnnemie(index)->getVie();
+	getEnnemie(index)->setCoordonnee(coord);
 }

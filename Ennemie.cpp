@@ -1,34 +1,40 @@
-#include "Ennemie.h"
+#include "Enemie.h"
 
-Ennemie::Ennemie(int v, int vit, int pos, int r) :vie(v), vitesse(vit), position(pos), revenu(r)
+Enemie::Enemie(int v, int vit, int pos, int r) :vie(v), vitesse(vit), position(pos), revenu(r)
 {
 	coordonnee.x = 0;
 	coordonnee.y = 0;
 }
 
-Ennemie::~Ennemie()
+Enemie::~Enemie()
 {
 	//carte->setArgent(carte->getArgent + revenu);
 }
 
-int Ennemie::getVie()
+int Enemie::getVie()
 {
 	return vie;
 }
 
-int Ennemie::getVitesse()
+int Enemie::getVitesse()
 {
 	return vitesse;
 }
 
-int Ennemie::getPosition()
+int Enemie::getPosition()
 {
 	return position;
 }
 
-void Ennemie::setVie(int v)
+void Enemie::setPosition(int p) {
+	if (p > 0) {
+		position = p;
+	}
+}
+
+void Enemie::setVie(int v)
 {
-	if (v >= 0)
+	if (v > 0)
 	{
 		vie = v;
 	}
@@ -38,28 +44,31 @@ void Ennemie::setVie(int v)
 	}
 }
 
-void Ennemie::setVitesse(int v)
+void Enemie::setVitesse(int v)
 {
 	vitesse = v;
 }
 
-void Ennemie::setCoordonnee(Dimension coord)
+void Enemie::setCoordonnee(Dimension coord)
 {
 	coordonnee = coord;
 }
 
+void Enemie::accelerer() {
+	setPosition(getPosition() * vitesse);
+}
 
-Dimension Ennemie::getCoordonnee()
+Dimension Enemie::getCoordonnee()
 {
 	return coordonnee;
 }
 
-int Ennemie::getRevenu()
+int Enemie::getRevenu()
 {
 	return revenu;
 }
 
-void Ennemie::setRevenu(int r)
+void Enemie::setRevenu(int r)
 {
 	if (r >= 0)
 	{
