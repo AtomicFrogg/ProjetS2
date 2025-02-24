@@ -17,6 +17,7 @@ class Enemie
 		void setCoordonnee(Dimension coord);
 		void setRevenu(int r);
 		int getRevenu();
+		void accelerer();
 
 	private:
 		int vie;

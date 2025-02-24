@@ -9,10 +9,24 @@ using namespace std;
 int main()
 {
     Enemie *enem = new Enemie();
+    enem->setPosition(1);
+    Enemie* enem2 = new Enemie();
+    enem2->setPosition(3);
+    Enemie* enem3 = new Enemie();
+    enem3->setPosition(4);
+    Enemie* enem4 = new Enemie();
+    enem4->setPosition(5);
     Carte c;
     //ajouter un enemie
     c.getEnnemie()->ajouterEnnemie(enem);
-    cout << "la position est: " << c.getEnnemie()->getPosition(0);
+    c.getEnnemie()->ajouterEnnemie(enem2);
+    c.getEnnemie()->ajouterEnnemie(enem3);
+    c.getEnnemie()->ajouterEnnemie(enem4);
+    cout << "la position est: " << c.getEnnemie()->getPosition(0) << endl;
+    cout << "la position est: " << c.getEnnemie()->getPosition(1) << endl;
+    cout << "la position est: " << c.getEnnemie()->getPosition(2) << endl;
+    cout << "la position est: " << c.getEnnemie()->getPosition(3) << endl;
+
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

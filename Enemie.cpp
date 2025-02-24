@@ -54,6 +54,9 @@ void Enemie::setCoordonnee(Dimension coord)
 	coordonnee = coord;
 }
 
+void Enemie::accelerer() {
+	setPosition(getPosition() * vitesse);
+}
 
 Dimension Enemie::getCoordonnee()
 {

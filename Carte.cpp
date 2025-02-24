@@ -1,38 +1,46 @@
 #include "Carte.h"
 
-Carte::Carte(int v, int a):vie(v),argent(a)
-{
-	for (int i = 0; i < HAUTEUR; i++)
-	{
-		for (int j = 0; j < LARGEUR; j++) 
-		{
-			map[i][j] = 0;
-		}
-	}
+
+Carte::Carte() {
+	reinitialiserEnnemie();
 }
 /*
 bool Carte::ajouterTour(Tour* ptr)
 {
-	if(ptr == nullptr) return false;
+	if(ptr == nullptr) return FALSE;
 	tableauTour.ajouterTour(ptr);
-	return true;
+	return TRUE;
 }
 
 bool Carte::vendreTour(int index)
 {
-	if(index >= 0 && index < tableauTour.getTaille())
+	if(index >= 0 and index < tableauTour.getTaille())
 	{
 		this->setArgent(this->getArgent() - tableauTour.retirerTour(index));
-		return true;
+		return TRUE;
 	}
 	else
 	{
-		return false;
+		return FALSE;
 	}
 }
 */
 
 
+bool Carte::lancerVague(int index)
+{
+	int taille = tableauEnnemie.getTaille();
+	if (index <= taille) {
+		for (int i = 0;i < index;i++) {
+			tableauEnnemie.getEnnemie(i);
+		}
+		return true;
+	}
+	else {
+		return false;
+	}
+	
+}
 
 int Carte::getVie()
 {
@@ -62,11 +70,11 @@ void Carte::afficher(ostream& s)
 
 
 
-bool Carte::ajouterEnnemie(Ennemie* ptr)
+bool Carte::ajouterEnnemie(Enemie* ptr)
 {
-	if (ptr == nullptr) return false;
+	if (ptr == nullptr) return FALSE;
 	tableauEnnemie.ajouterEnnemie(ptr);
-	return true;
+	return TRUE;
 }
 
 bool Carte::retirerEnnemie(int index)
@@ -81,13 +89,13 @@ bool Carte::retirerEnnemie(int index)
 	return result;
 }
 
-EnsembleEnnemie* Carte::getEnnemie()
+EnsembleEnemie* Carte::getEnnemie()
 {
 	return &tableauEnnemie;
 }
 
 
-/*bool Carte::ajouterEnnemie(Ennemie* mob)
+/*bool Carte::ajouterEnnemie(Enemie* mob)
 {
 	return tableauEnnemie.ajouterEnnemie(mob);
 }*/
@@ -106,25 +114,4 @@ void Carte::reinitialiserEnnemie()
 int Carte::getTailleEnnemie()
 {
 	return tableauEnnemie.getTaille();
-}
-
-Dimension Carte::getCoordonnee(int index)
-{
-	if(index >= 0 && index < getTailleEnnemie()) return tableauEnnemie.getCoordonnee(index);
-	Dimension autre;
-	autre.x = -1;
-	autre.y = -1;
-	return autre;
-}
-
-int Carte::getVieEnnemie(int index)
-{
-	return getEnnemie()->getVie(index);
-}
-
-
-
-int carre(int x)
-{
-	return x * x;
 }
