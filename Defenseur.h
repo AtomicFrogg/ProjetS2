@@ -8,7 +8,7 @@ using namespace std;
 class Defenseur
 {
 	public:
-		Defenseur(int d = 1, float r = 1, int x = 0, int y = 0);
+		Defenseur(int d = 1, float r = 1, int x = 0, int y = 0, int va = 10);
 		virtual ~Defenseur();
 		virtual void attaquer() = 0;
 		void setPosition(int x, int y);

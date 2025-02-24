@@ -1,6 +1,6 @@
 #include "TourBase1.h"
 
-TourBase1::TourBase1(int v, int d,float r, int x, int y, int p, int t, Carte* c):Tour(v,d,r,x,y,p,t,c)
+TourBase1::TourBase1(int d,float r, int x, int y, int va, int p, int t, Carte* c):Tour(d,r,x,y,va,p,t,c)
 {}
 
 
