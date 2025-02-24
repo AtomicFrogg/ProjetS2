@@ -8,7 +8,7 @@ int main(){
 	GUI *gui = new GUI();
 	Input test;
 	test.input(gui);
-	test.checkKey();
+	//test.checkKey();
 //Test test; 
 //test.testEnsembleTour();
 	//vector<int> vecteur;

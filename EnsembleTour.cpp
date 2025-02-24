@@ -4,7 +4,7 @@ Tour* EnsembleTour::ajouterTour(Tour* nouvelleTour)
 {
 	if(nouvelleTour == nullptr) return nullptr;
 	tableau.push_back(nouvelleTour);
-	return getTour(getTaille());
+	return getTour(tableau.size()-1);
 }
 
 bool EnsembleTour::retirerTour(int index)

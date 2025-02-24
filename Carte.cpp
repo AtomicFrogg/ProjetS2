@@ -57,7 +57,7 @@ void Carte::setArgent(int a)
 
 void Carte::afficher(ostream& s)
 {
-
+	cout << "argent: " << getArgent() << " vie: " << getVie() << endl;
 }
 
 

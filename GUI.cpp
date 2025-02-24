@@ -2,7 +2,7 @@
 
 GUI::GUI()
 {
-    c = new Carte(100, 400);
+    c = new Carte(100, 10000);
     j = new Joueur(5, 1.5, 0, 0, 4, c, "Jacob");
     for (int i = 0; i < HAUTEUR; i++)
     {
@@ -76,6 +76,8 @@ void GUI::draw()
     {
         cout << endl;
     }
+    cout << "Argent: " << c->getArgent() << endl;
+    cout << "Vie: " << c->getVie() << endl;
     for(m = HAUTEUR - 1; m >= 0; m--)
     {
         cout << endl;
@@ -86,10 +88,7 @@ void GUI::draw()
             {
                 cout << "j";
             }
-            else if(m == 0 || m == HAUTEUR - 1)
-            {
-                cout << "_";
-            }
+
             //if(n == 0 || n == 29)
             //{
             //    cout << "|\n|";
@@ -116,6 +115,10 @@ void GUI::draw()
                 cout << "5";
 
             }
+            else if (m == 0 || m == HAUTEUR - 1)
+            {
+                cout << "_";
+            }
             else if((n == 0 || n == LARGEUR - 1) and tableauDonnees[m][n].type == 0 and m != 0 and m != HAUTEUR - 1)
             {
                 cout << "|";
@@ -137,7 +140,7 @@ bool GUI::ajouterTourBase()
     {
         getDonneesJoueur()->type = 2;
         getDonneesJoueur()->ptr = j->ajouterTourBase();
-        getDonneesJoueur()->index = j->getTaille();
+        getDonneesJoueur()->index = j->getTaille() - 1;
         return true;
     }
     else
@@ -152,7 +155,7 @@ bool GUI::ajouterTourSniper()
     {
         getDonneesJoueur()->type = 3;
         getDonneesJoueur()->ptr = j->ajouterTourSniper();
-        getDonneesJoueur()->index = j->getTaille();
+        getDonneesJoueur()->index = j->getTaille() - 1;
         return true;
     }
     else
@@ -167,7 +170,7 @@ bool GUI::ajouterTourCanonnier()
     {
         getDonneesJoueur()->type = 4;
         getDonneesJoueur()->ptr = j->ajouterTourCanonnier();
-        getDonneesJoueur()->index = j->getTaille();
+        getDonneesJoueur()->index = j->getTaille() - 1;
         return true;
     }
     else
@@ -182,7 +185,7 @@ bool GUI::ajouterTourNarvolt()
     {
         getDonneesJoueur()->type = 5;
         getDonneesJoueur()->ptr = j->ajouterTourNarvolt();
-        getDonneesJoueur()->index = j->getTaille();
+        getDonneesJoueur()->index = j->getTaille() - 1;
         return true;
     }
     else
@@ -236,4 +239,26 @@ Carte* GUI::getCarte()
 Joueur* GUI::getJoueur()
 {
     return j;
+}
+
+bool GUI::ameliorerRange()
+{
+    bool reussite = j->ameliorerRange(getDonneesJoueur()->index);
+    if (reussite == false)
+    {
+        cout << "Argent trop faible ou deja top tier";
+        return 0;
+    }
+    return 1;
+}
+
+bool GUI::ameliorerDegat()
+{
+    bool reussite = j->ameliorerDegat(getDonneesJoueur()->index);
+    if (reussite == false)
+    {
+        cout << "Argent trop faible ou deja top tier";
+        return 0;
+    }
+    return 1;
 }

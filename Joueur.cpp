@@ -146,3 +146,13 @@ Tour* Joueur::ajouterTourNarvolt()
 	Tour* newTour = new Narvolt( 20, 5, this->getPosition().x, this->getPosition().y, 15, 700, 0, map, 5, 5);
 	return ajouterTour(newTour);
 }
+
+bool Joueur::ameliorerRange(int index)
+{
+	return tableauTour.ameliorerRange(index);
+}
+
+bool Joueur::ameliorerDegat(int index)
+{
+	return tableauTour.ameliorerDegat(index);
+}

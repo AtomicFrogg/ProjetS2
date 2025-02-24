@@ -28,6 +28,8 @@ class Joueur: public Defenseur{
 		Tour* ajouterTourSniper();
 		Tour* ajouterTourCanonnier();
 		Tour* ajouterTourNarvolt();
+		bool ameliorerRange(int index);
+		bool ameliorerDegat(int index);
 		
 
 		bool reinitialiser();

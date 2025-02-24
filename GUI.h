@@ -24,6 +24,8 @@ class GUI
         bool ajouterTourNarvolt();
         bool retirerTour();
         Donnees* getDonneesJoueur();
+        bool ameliorerRange();
+        bool ameliorerDegat();
 
         Joueur* getJoueur();
         Carte* getCarte();
