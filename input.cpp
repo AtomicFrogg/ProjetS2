@@ -97,12 +97,19 @@ void Input::input(GUI* gui)
 				//Z key
 			if (GetAsyncKeyState(90) & 0x8000)
 			{
-				time = gui->ameliorerDegat() + 2;
+				if (gui->getDonneesJoueur()->type >= 2)
+				{
+					time = gui->ameliorerDegat() + 2;
+				}
 			}
 				//X key
 			if (GetAsyncKeyState(88) & 0x8000)
 			{
-				time = gui->ameliorerRange() + 2;
+				if (gui->getDonneesJoueur()->type >= 2)
+				{
+					time = gui->ameliorerRange() + 2;
+				}
+				
 			}
 			if (time >= 1)
 			{
