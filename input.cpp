@@ -21,7 +21,7 @@ void Input::input(GUI* gui)
 	case '2':
 		cout << "Vous avez choisi le clavier" << endl;
 
-		while (1)
+		while (!FIN)
 		{
 			time = 0;
 				//W key
