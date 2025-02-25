@@ -3,6 +3,7 @@
 #include "Tour.h"
 #include "Ennemie.h"
 #include "test.h"
+#include <thread>
 
 
 int main(){
