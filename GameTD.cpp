@@ -2,32 +2,17 @@
 #include "Tour.h"
 #include "Ennemie.h"
 #include "test.h"
+#include <thread>
 
 
 int main(){
-	GUI *gui = new GUI();
-	Input test;
-	test.input(gui);
+	GUI* gui = new GUI();
+	std::thread t1(&Input::input, gui);
 	//test.checkKey();
-//Test test; 
-//test.testEnsembleTour();
-	//vector<int> vecteur;
-	//for (int i = 0; i < 12; i++)
-	//{
-	//	vecteur.push_back(i);
-	//}
-	//cout << vecteur.size() << endl;
-	//cout << vecteur.at(1)<<endl;
-	//vecteur.erase(vecteur.begin() + 1);
-	//cout << vecteur.size() << endl;
-	//cout << vecteur.at(1) << endl;
+	
+				//METTRE LE JEU ICI
 
-
-
-
-	//for (int i = 0; i < vecteur.size(); i++)
-	//{
-	//	cout << vecteur.at(i) << endl;
-	//}
+	FIN = true;
+	t1.join();
 return 0;
 }

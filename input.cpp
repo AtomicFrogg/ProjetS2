@@ -20,7 +20,7 @@ void Input::input(GUI* gui)
 	case '2':
 		cout << "Vous avez choisi le clavier" << endl;
 
-		while (1)
+		while (!FIN)
 		{
 			time = 0;
 				//W key
@@ -28,29 +28,36 @@ void Input::input(GUI* gui)
 			{
 				time = 1;
 				//cout << "W" ;
+				unique_lock<mutex> playerLock(lockMutex);
 				gui->moveJoueurUp(1);
-
+				playerLock.unlock();
 			}
 				//A key
 			if (GetAsyncKeyState(65) & 0x8000)
 			{
 				time = 1;
 				//cout << "A" ;
+				unique_lock<mutex> playerLock(lockMutex);
 				gui->moveJoueurGauche(1);
+				playerLock.unlock();
 			}
 				//S key
 			if (GetAsyncKeyState(83) & 0x8000)
 			{
 				time = 1;
 				//cout << "S" ;
+				unique_lock<mutex> playerLock(lockMutex);
 				gui->moveJoueurDown(1);
+				playerLock.unlock();
 			}
 				//D key
 			if (GetAsyncKeyState(68) & 0x8000)
 			{
 				time = 1;
 				//cout << "D";
+				unique_lock<mutex> playerLock(lockMutex);
 				gui->moveJoueurDroite(1);
+				playerLock.unlock();
 			}
 				//Enter key
 			if (GetAsyncKeyState(13) & 0x8000)
@@ -77,26 +84,33 @@ void Input::input(GUI* gui)
 			if (GetAsyncKeyState(69) & 0x8000)
 			{
 				time = 1;
+				unique_lock<mutex> TourLock(lockMutex);
 				gui->ajouterTourBase();
-				
+				TourLock.unlock();
 			}
 				//Q key
 			if (GetAsyncKeyState(81) & 0x8000)
 			{
 				time = 1;
+				unique_lock<mutex> TourLock(lockMutex);
 				gui->ajouterTourCanonnier();
+				TourLock.unlock();
 			}
 				//R key
 			if (GetAsyncKeyState(82) & 0x8000)
 			{
 				time = 1;
+				unique_lock<mutex> TourLock(lockMutex);
 				gui->ajouterTourSniper();
+				TourLock.unlock();
 			}
 				//F key
 			if (GetAsyncKeyState(70) & 0x8000)
 			{
 				time = 1;
+				unique_lock<mutex> TourLock(lockMutex);
 				gui->ajouterTourNarvolt();
+				TourLock.unlock();
 			}
 				//Z key
 			if (GetAsyncKeyState(90) & 0x8000)
@@ -117,7 +131,7 @@ void Input::input(GUI* gui)
 			}
 			if (time >= 1)
 			{
-				Sleep(150);
+				this_thread::sleep_for(chrono::milliseconds(150));
 				//gui->getJoueur()->afficher(cout);
 				gui->draw();
 				if (time == 2)
