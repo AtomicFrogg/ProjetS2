@@ -29,36 +29,36 @@ void Input::input(GUI* gui)
 			{
 				time = 1;
 				//cout << "W" ;
-				unique_lock<mutex> playerLock(lockMutex);
+				
 				gui->moveJoueurUp(1);
-				playerLock.unlock();
+			
 			}
 				//A key
 			if (GetAsyncKeyState(65) & 0x8000)
 			{
 				time = 1;
 				//cout << "A" ;
-				unique_lock<mutex> playerLock(lockMutex);
+				
 				gui->moveJoueurGauche(1);
-				playerLock.unlock();
+				
 			}
 				//S key
 			if (GetAsyncKeyState(83) & 0x8000)
 			{
 				time = 1;
 				//cout << "S" ;
-				unique_lock<mutex> playerLock(lockMutex);
+				
 				gui->moveJoueurDown(1);
-				playerLock.unlock();
+			
 			}
 				//D key
 			if (GetAsyncKeyState(68) & 0x8000)
 			{
 				time = 1;
 				//cout << "D";
-				unique_lock<mutex> playerLock(lockMutex);
+				
 				gui->moveJoueurDroite(1);
-				playerLock.unlock();
+	
 			}
 				//Enter key
 			if (GetAsyncKeyState(13) & 0x8000)
