@@ -18,6 +18,8 @@ class GUI
         Dimension getCoordonneeJoueur();
 
         void draw();
+        void drawInfoTour();
+        void chooseMap(int choixMap);
         bool ajouterTourBase();
         bool ajouterTourSniper();
         bool ajouterTourCanonnier();

@@ -87,6 +87,10 @@ void GUI::draw()
             if (getCoordonneeJoueur().x == n && getCoordonneeJoueur().y == m)
             {
                 cout << "j";
+                if(tableauDonnees[m][n].type != 0 && tableauDonnees[m][n].type != 1)
+                {
+                    drawInfoTour();
+                }
             }
 
             //if(n == 0 || n == 29)
@@ -261,4 +265,54 @@ bool GUI::ameliorerDegat()
         return 0;
     }
     return 1;
+}
+
+void GUI::chooseMap(int choixMap)
+{
+    int m, n;
+    if(choixMap == 1)
+    {
+        m = 9;
+        for(n = 1; n <= 5; n++)
+        {
+            tableauDonnees[m][n].type = 1;
+        }
+        tableauDonnees[8][5].type = 1;
+        m = 7;
+        for(n = 5; n <= 12; n++)
+        {
+            tableauDonnees[m][n].type = 1;
+        }
+        tableauDonnees[8][12].type = 1;
+        tableauDonnees[9][12].type = 1;
+        m = 10;
+        for(n = 12; n <= 17; n++)
+        {
+            tableauDonnees[m][n].type = 1;
+        }
+        n = 17;
+        for(m = 10; m >= 4; m--)
+        {
+            tableauDonnees[m][n].type = 1;
+        }
+        m = 4;
+        for(n = 17; n <= 23; n++)
+        {
+            tableauDonnees[m][n].type = 1;
+        }
+        tableauDonnees[5][23].type = 1;
+        tableauDonnees[6][23].type = 1;
+        tableauDonnees[6][24].type = 1;
+        tableauDonnees[6][25].type = 1;
+        tableauDonnees[7][25].type = 1;
+        tableauDonnees[7][26].type = 1;
+        tableauDonnees[8][26].type = 1;
+        tableauDonnees[8][27].type = 1;
+        tableauDonnees[8][28].type = 1;
+    }
+}
+
+void GUI::drawInfoTour()
+{
+    //do later
 }

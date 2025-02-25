@@ -7,6 +7,10 @@ void Input::input(GUI* gui)
 	char peripherique;
 	cin >> peripherique;
 	int time;
+	cout << "Choisissez quelle carte vous désirez jouer:" << endl << "1: Facile";
+	int choixMap;
+	cin >> choixMap;
+	gui->chooseMap(choixMap);
 	switch (peripherique)
 	{
 	case '1':
