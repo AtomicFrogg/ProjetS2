@@ -140,8 +140,9 @@ void GUI::draw()
 
 bool GUI::ajouterTourBase()
 {
-    if (getDonneesJoueur()->type == 0)
+    if (getDonneesJoueur()->type == 0 && c->getArgent() >= 400)
     {
+        c->setArgent(c->getArgent() - 400);
         getDonneesJoueur()->type = 2;
         getDonneesJoueur()->ptr = j->ajouterTourBase();
         getDonneesJoueur()->index = j->getTaille() - 1;
@@ -155,8 +156,9 @@ bool GUI::ajouterTourBase()
 
 bool GUI::ajouterTourSniper()
 {
-    if (getDonneesJoueur()->type == 0)
+    if (getDonneesJoueur()->type == 0 && c->getArgent() >= 1200)
     {
+        c->setArgent(c->getArgent() - 1200);
         getDonneesJoueur()->type = 3;
         getDonneesJoueur()->ptr = j->ajouterTourSniper();
         getDonneesJoueur()->index = j->getTaille() - 1;
@@ -170,8 +172,9 @@ bool GUI::ajouterTourSniper()
 
 bool GUI::ajouterTourCanonnier()
 {
-    if (getDonneesJoueur()->type == 0)
+    if (getDonneesJoueur()->type == 0 && c->getArgent() >= 800)
     {
+        c->setArgent(c->getArgent() - 800);
         getDonneesJoueur()->type = 4;
         getDonneesJoueur()->ptr = j->ajouterTourCanonnier();
         getDonneesJoueur()->index = j->getTaille() - 1;
@@ -185,8 +188,9 @@ bool GUI::ajouterTourCanonnier()
 
 bool GUI::ajouterTourNarvolt()
 {
-    if (getDonneesJoueur()->type == 0)
+    if (getDonneesJoueur()->type == 0 && c->getArgent() >= 600)
     {
+        c->setArgent(c->getArgent() - 600);
         getDonneesJoueur()->type = 5;
         getDonneesJoueur()->ptr = j->ajouterTourNarvolt();
         getDonneesJoueur()->index = j->getTaille() - 1;

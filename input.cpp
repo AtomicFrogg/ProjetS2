@@ -1,6 +1,7 @@
 #include "Input.h"
 
 
+
 void Input::input(GUI* gui)
 {
 	cout << "Voulez-vous jouer manette ou clavier?" << endl << "1: Manette" << endl << "2: Clavier" << endl;
@@ -77,26 +78,37 @@ void Input::input(GUI* gui)
 			if (GetAsyncKeyState(69) & 0x8000)
 			{
 				time = 1;
+				std::mutex mutex;
+				mutex.lock();
 				gui->ajouterTourBase();
-				
+				mutex.unlock();
 			}
 				//Q key
 			if (GetAsyncKeyState(81) & 0x8000)
 			{
 				time = 1;
+				std::mutex mutex;
+				mutex.lock();
 				gui->ajouterTourCanonnier();
+				mutex.unlock();
 			}
 				//R key
 			if (GetAsyncKeyState(82) & 0x8000)
 			{
 				time = 1;
+				std::mutex mutex;
+				mutex.lock();
 				gui->ajouterTourSniper();
+				mutex.unlock();
 			}
 				//F key
 			if (GetAsyncKeyState(70) & 0x8000)
 			{
 				time = 1;
+				std::mutex mutex;
+				mutex.lock();
 				gui->ajouterTourNarvolt();
+				mutex.unlock();
 			}
 				//Z key
 			if (GetAsyncKeyState(90) & 0x8000)
