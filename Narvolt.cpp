@@ -1,6 +1,6 @@
 #include "Narvolt.h"
 
-Narvolt::Narvolt(int d, float r, int x, int y,int va, int p, int t, Carte* c, int rb, float re) :Tour(d, r, x, y,va, p, t, c), rebond(rb), rangeElectricte(re)
+Narvolt::Narvolt(int d, float r, int x, int y, int va, int p, int t, Carte* c, int rb, float re) :Tour(d, r, x, y, va, p, t, c), rebond(rb), rangeElectricte(re)
 {
 }
 
@@ -22,7 +22,7 @@ void Narvolt::attaquer()
 				this->attaque = false;
 				faireDegat(i);
 				int j = 1;
-				while (i >= j && sqrt(carre(map->getCoordonnee(i-j+1).x - map->getCoordonnee(i - j).x) + carre(map->getCoordonnee(i-j+1).y - map->getCoordonnee(i - j).y)) <= rangeElectricte && j > rebond)
+				while (i >= j && sqrt(carre(map->getCoordonnee(i - j + 1).x - map->getCoordonnee(i - j).x) + carre(map->getCoordonnee(i - j + 1).y - map->getCoordonnee(i - j).y)) <= rangeElectricte && j > rebond)
 				{
 					faireDegat(i);
 					j++;
@@ -57,16 +57,15 @@ bool Narvolt::ameliorerRange()
 	return false;
 }
 
-	bool Narvolt::ameliorerDegat()
+bool Narvolt::ameliorerDegat()
+{
+	if (getTier() < MAX_TIER && map->getArgent() >= (400 * getDegat()))
 	{
-		if (getTier() < MAX_TIER && map->getArgent() >= (400 * getDegat()))
-		{
-			this->map->setArgent(this->map->getArgent() - (400 * getDegat()));
-			setDegat(getDegat() * 2);
-			setTier(getTier() + 1);
+		this->map->setArgent(this->map->getArgent() - (400 * getDegat()));
+		setDegat(getDegat() * 2);
+		setTier(getTier() + 1);
 
-			return true;
-		}
-		return false;
+		return true;
 	}
-
+	return false;
+}

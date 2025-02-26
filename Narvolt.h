@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Tour.h"
 #include "Defenseur.h"
 
@@ -16,3 +15,4 @@ private:
 	int rebond;
 	float rangeElectricte;
 };
+

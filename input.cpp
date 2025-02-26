@@ -1,14 +1,12 @@
 #include "Input.h"
 
-
-
 void Input::input(GUI* gui)
 {
 	cout << "Voulez-vous jouer manette ou clavier?" << endl << "1: Manette" << endl << "2: Clavier" << endl;
 	char peripherique;
 	cin >> peripherique;
 	int time;
-	cout << "Choisissez quelle carte vous dÃ©sirez jouer:" << endl << "1: Facile";
+	cout << "Choisissez quelle carte vous désirez jouer:" << endl << "1: Facile";
 	int choixMap;
 	cin >> choixMap;
 	gui->chooseMap(choixMap);
@@ -24,64 +22,64 @@ void Input::input(GUI* gui)
 		while (!FIN)
 		{
 			time = 0;
-				//W key
+			//W key
 			if (GetAsyncKeyState(87) & 0x8000)
 			{
 				time = 1;
 				//cout << "W" ;
-				
+
 				gui->moveJoueurUp(1);
-			
+
 			}
-				//A key
+			//A key
 			if (GetAsyncKeyState(65) & 0x8000)
 			{
 				time = 1;
 				//cout << "A" ;
-				
+
 				gui->moveJoueurGauche(1);
-				
+
 			}
-				//S key
+			//S key
 			if (GetAsyncKeyState(83) & 0x8000)
 			{
 				time = 1;
 				//cout << "S" ;
-				
+
 				gui->moveJoueurDown(1);
-			
+
 			}
-				//D key
+			//D key
 			if (GetAsyncKeyState(68) & 0x8000)
 			{
 				time = 1;
 				//cout << "D";
-				
+
 				gui->moveJoueurDroite(1);
-	
+
 			}
-				//Enter key
+			//Enter key
 			if (GetAsyncKeyState(13) & 0x8000)
 			{
 				time = 1;
 				cout << "Enter";
-				
+
 			}
-				//Space key
+			//Space key
 			if (GetAsyncKeyState(32) & 0x8000)
 			{
 				time = 1;
 				cout << "Space";
-				
+
 			}
-				//Escape key
+			//Escape key
 			if (GetAsyncKeyState(27) & 0x8000)
 			{
 				time = 1;
 				cout << "Esc";
 				break;
 			}
-				//E key
+			//E key
 			if (GetAsyncKeyState(69) & 0x8000)
 			{
 				time = 1;
@@ -90,7 +88,7 @@ void Input::input(GUI* gui)
 				gui->ajouterTourBase();
 				mutex.unlock();
 			}
-				//Q key
+			//Q key
 			if (GetAsyncKeyState(81) & 0x8000)
 			{
 				time = 1;
@@ -99,7 +97,7 @@ void Input::input(GUI* gui)
 				gui->ajouterTourCanonnier();
 				mutex.unlock();
 			}
-				//R key
+			//R key
 			if (GetAsyncKeyState(82) & 0x8000)
 			{
 				time = 1;
@@ -108,7 +106,7 @@ void Input::input(GUI* gui)
 				gui->ajouterTourSniper();
 				mutex.unlock();
 			}
-				//F key
+			//F key
 			if (GetAsyncKeyState(70) & 0x8000)
 			{
 				time = 1;
@@ -117,7 +115,7 @@ void Input::input(GUI* gui)
 				gui->ajouterTourNarvolt();
 				mutex.unlock();
 			}
-				//Z key
+			//Z key
 			if (GetAsyncKeyState(90) & 0x8000)
 			{
 				if (gui->getDonneesJoueur()->type >= 2)
@@ -125,14 +123,14 @@ void Input::input(GUI* gui)
 					time = gui->ameliorerDegat() + 2;
 				}
 			}
-				//X key
+			//X key
 			if (GetAsyncKeyState(88) & 0x8000)
 			{
 				if (gui->getDonneesJoueur()->type >= 2)
 				{
 					time = gui->ameliorerRange() + 2;
 				}
-				
+
 			}
 			if (time >= 1)
 			{

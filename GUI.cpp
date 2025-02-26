@@ -20,6 +20,25 @@ GUI::~GUI()
     delete c;
     delete j;
 };
+//Definition des methodes pour les classes enemies
+
+void GUI::moveEnemies(int x, int y) {
+    c->moveEnemie(x, y);
+}
+void GUI::lancerVague(int index) {
+    c->lancerVague(index);
+}
+void GUI::attaqueEnemie() {
+    c->attaqueEnemie();
+}
+
+void GUI::ajouterEnemie(Ennemie* ptr) {
+    c->ajouterEnnemie(ptr);
+}
+
+void GUI::retirerEnemie(int index) {
+    c->retirerEnnemie(index);
+}
 
 Dimension GUI::getCoordonneeJoueur()
 {
@@ -28,7 +47,7 @@ Dimension GUI::getCoordonneeJoueur()
 
 void GUI::moveJoueurUp(int y)
 {
-    if(getCoordonneeJoueur().y + 1 < HAUTEUR && getCoordonneeJoueur().y >= 0)
+    if (getCoordonneeJoueur().y + 1 < HAUTEUR && getCoordonneeJoueur().y >= 0)
     {
         int currX = getCoordonneeJoueur().x;
         int currY = getCoordonneeJoueur().y;
@@ -78,16 +97,16 @@ void GUI::draw()
     }
     cout << "Argent: " << c->getArgent() << endl;
     cout << "Vie: " << c->getVie() << endl;
-    for(m = HAUTEUR - 1; m >= 0; m--)
+    for (m = HAUTEUR - 1; m >= 0; m--)
     {
         cout << endl;
 
-        for(n = 0; n < LARGEUR; n++)
-        {            
+        for (n = 0; n < LARGEUR; n++)
+        {
             if (getCoordonneeJoueur().x == n && getCoordonneeJoueur().y == m)
             {
                 cout << "j";
-                if(tableauDonnees[m][n].type != 0 && tableauDonnees[m][n].type != 1)
+                if (tableauDonnees[m][n].type != 0 && tableauDonnees[m][n].type != 1)
                 {
                     drawInfoTour();
                 }
@@ -98,19 +117,19 @@ void GUI::draw()
             //    cout << "|\n|";
             //}
 
-            else if(tableauDonnees[m][n].type == 1)
+            else if (tableauDonnees[m][n].type == 1)
             {
                 cout << "1";
             }
-            else if(tableauDonnees[m][n].type == 2)
+            else if (tableauDonnees[m][n].type == 2)
             {
                 cout << "2";
             }
-            else if(tableauDonnees[m][n].type == 3)
+            else if (tableauDonnees[m][n].type == 3)
             {
                 cout << "3";
             }
-            else if(tableauDonnees[m][n].type == 4)
+            else if (tableauDonnees[m][n].type == 4)
             {
                 cout << "4";
             }
@@ -123,11 +142,11 @@ void GUI::draw()
             {
                 cout << "_";
             }
-            else if((n == 0 || n == LARGEUR - 1) && tableauDonnees[m][n].type == 0 && m != 0 && m != HAUTEUR - 1)
+            else if ((n == 0 || n == LARGEUR - 1) && tableauDonnees[m][n].type == 0 && m != 0 && m != HAUTEUR - 1)
             {
                 cout << "|";
             }
-            else if(tableauDonnees[m][n].type == 0)
+            else if (tableauDonnees[m][n].type == 0)
             {
                 cout << " ";
             }
@@ -230,7 +249,7 @@ bool GUI::retirerTour()
     {
         return false;
     }
-   
+
 }
 
 
@@ -274,33 +293,33 @@ bool GUI::ameliorerDegat()
 void GUI::chooseMap(int choixMap)
 {
     int m, n;
-    if(choixMap == 1)
+    if (choixMap == 1)
     {
         m = 9;
-        for(n = 1; n <= 5; n++)
+        for (n = 1; n <= 5; n++)
         {
             tableauDonnees[m][n].type = 1;
         }
         tableauDonnees[8][5].type = 1;
         m = 7;
-        for(n = 5; n <= 12; n++)
+        for (n = 5; n <= 12; n++)
         {
             tableauDonnees[m][n].type = 1;
         }
         tableauDonnees[8][12].type = 1;
         tableauDonnees[9][12].type = 1;
         m = 10;
-        for(n = 12; n <= 17; n++)
+        for (n = 12; n <= 17; n++)
         {
             tableauDonnees[m][n].type = 1;
         }
         n = 17;
-        for(m = 10; m >= 4; m--)
+        for (m = 10; m >= 4; m--)
         {
             tableauDonnees[m][n].type = 1;
         }
         m = 4;
-        for(n = 17; n <= 23; n++)
+        for (n = 17; n <= 23; n++)
         {
             tableauDonnees[m][n].type = 1;
         }

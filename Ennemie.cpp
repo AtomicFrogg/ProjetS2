@@ -1,5 +1,6 @@
 #include "Ennemie.h"
 
+
 Ennemie::Ennemie(int v, int vit, int pos, int r) :vie(v), vitesse(vit), position(pos), revenu(r)
 {
 	coordonnee.x = 0;
@@ -26,11 +27,6 @@ int Ennemie::getPosition()
 	return position;
 }
 
-void Ennemie::setPosition(int p) {
-	if (p > 0) {
-		position = p;
-	}
-}
 
 void Ennemie::setVie(int v)
 {
@@ -44,11 +40,6 @@ void Ennemie::setVie(int v)
 	}
 }
 
-
-void Ennemie::setVitesse(int v)
-{
-	vitesse = v;
-}
 
 void Ennemie::setCoordonnee(Dimension coord)
 {
@@ -80,3 +71,4 @@ void Ennemie::setRevenu(int r)
 		revenu = -r;
 	}
 }
+

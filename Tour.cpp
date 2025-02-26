@@ -1,16 +1,15 @@
 #include "Tour.h"
-using namespace std;
 
-Tour::Tour(int d,float r, int x, int y, int va, int p, int t, Carte* c):Defenseur(d,r, x, y,va), prix(p),tier(t),map(c)
+Tour::Tour(int d, float r, int x, int y, int va, int p, int t, Carte* c) :Defenseur(d, r, x, y, va), prix(p), tier(t), map(c)
 {
 }
 
 Tour::~Tour()
 {
-	
+
 }
 
-void Tour::afficher(ostream &s)
+void Tour::afficher(ostream& s)
 {
 	s << "Tour (range = " << getRange() << ", Degat = " << getDegat() << ", x = " << getPosition().x << ", y = " << getPosition().y << ", cout = " << prix << ", tier = " << tier << ")" << endl;
 }
@@ -18,7 +17,7 @@ void Tour::afficher(ostream &s)
 
 void Tour::setTier(int t)
 {
-	if(t >= 0) tier = t;
+	if (t >= 0) tier = t;
 }
 
 int Tour::getTier()
@@ -33,12 +32,12 @@ int Tour::getPrix()
 
 void Tour::setPrix(int p)
 {
-	if(p >= 0) prix = p;
+	if (p >= 0) prix = p;
 }
 
 void Tour::setVitesse(int v)
 {
-	if(v >= 0) setVitesseAttaque(v);
+	if (v >= 0) setVitesseAttaque(v);
 }
 
 
@@ -63,9 +62,3 @@ bool Tour::faireDegat(int i)
 		return false;
 	}
 }
-
-
-
-
-
-

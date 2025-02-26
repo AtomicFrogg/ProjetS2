@@ -1,5 +1,4 @@
 #include "Defenseur.h"
-using namespace std;
 
 Defenseur::Defenseur(int d, float r, int x, int y, int va) :range(r), degat(d), vitesseAttaque(va)
 {
@@ -11,7 +10,7 @@ Defenseur::Defenseur(int d, float r, int x, int y, int va) :range(r), degat(d), 
 
 Defenseur::~Defenseur()
 {
-	
+
 }
 
 float Defenseur::getRange()
@@ -22,14 +21,14 @@ float Defenseur::getRange()
 
 void Defenseur::setRange(float r)
 {
-	if(r >= 0) range = r;
+	if (r >= 0) range = r;
 }
 
 
 void Defenseur::setPosition(int x, int y)
 {
-	if(x >= 0) dim.x = x;
-	if(y >= 0) dim.y = y;
+	if (x >= 0) dim.x = x;
+	if (y >= 0) dim.y = y;
 }
 
 Dimension Defenseur::getPosition()
@@ -37,7 +36,7 @@ Dimension Defenseur::getPosition()
 	return dim;
 }
 
-void Defenseur::afficher(ostream &s)
+void Defenseur::afficher(ostream& s)
 {
 	s << "Defenseur (range = " << range << ", x = " << dim.x << ", y = " << dim.y << ")" << endl;
 }

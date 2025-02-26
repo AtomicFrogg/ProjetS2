@@ -9,7 +9,7 @@ bool EnsembleEnnemie::ajouterEnnemie(Ennemie* mob)
 
 bool EnsembleEnnemie::retirerEnnemie(int index)
 {
-	if (index >= 0 && index < tableau.size())
+	if (index >= 0 and index < tableau.size())
 	{
 		delete tableau.at(index);
 		tableau.erase(tableau.begin() + index);
@@ -54,6 +54,15 @@ void EnsembleEnnemie::setPosition(int index, int pos)
 	getEnnemie(index)->setPosition(pos);
 }
 
+void EnsembleEnnemie::moveEnemie(int x, int y) {
+	Dimension d;
+	d.x = x;
+	d.y = y;
+	for (int i = 0;i < getTaille();i++) {
+		tableau[i]->setCoordonnee(d);
+	}
+}
+
 Dimension EnsembleEnnemie::getCoordonnee(int index)
 {
 	return getEnnemie(index)->getCoordonnee();
@@ -62,9 +71,4 @@ Dimension EnsembleEnnemie::getCoordonnee(int index)
 void EnsembleEnnemie::setCoordonnee(int index, Dimension coord)
 {
 	getEnnemie(index)->setCoordonnee(coord);
-}
-
-int EnsembleEnnemie::getVie(int index)
-{
-	return getEnnemie(index)->getVie();
 }

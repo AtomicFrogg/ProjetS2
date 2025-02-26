@@ -1,29 +1,28 @@
 #include "EnsembleTour.h"
-
 Tour* EnsembleTour::ajouterTour(Tour* nouvelleTour)
 {
-	if(nouvelleTour == nullptr) return nullptr;
+	if (nouvelleTour == nullptr) return nullptr;
 	tableau.push_back(nouvelleTour);
-	return getTour(tableau.size()-1);
+	return getTour(tableau.size() - 1);
 }
 
 bool EnsembleTour::retirerTour(int index)
 {
-	if(index >= 0 && index < tableau.size())
+	if (index >= 0 && index < tableau.size())
 	{
 		delete tableau.at(index);
 		tableau.erase(tableau.begin() + index);
 		return true;
 
 	}
-	else{
+	else {
 		return false;
 	}
 }
 
 bool EnsembleTour::reinitialiser()
 {
-	for(int i = 0; i < getTaille(); i++)
+	for (int i = 0; i < getTaille(); i++)
 	{
 		retirerTour(i);
 	}
@@ -46,7 +45,7 @@ void EnsembleTour::afficher(ostream& s)
 {
 	cout << "ENSEMBLE DE TOUR" << endl;
 	if (getTaille() != 0)
-	{ 
+	{
 		for (int i = 0; i < getTaille(); i++)
 		{
 			getTour(i)->afficher(s);
@@ -56,7 +55,7 @@ void EnsembleTour::afficher(ostream& s)
 	{
 		s << "Il n\'y a pas de tour" << endl;
 	}
-	
+
 }
 
 int EnsembleTour::getPrix(int index)
@@ -64,7 +63,7 @@ int EnsembleTour::getPrix(int index)
 	return getTour(index)->getPrix();
 }
 
-void EnsembleTour::setPrix(int index,int p)
+void EnsembleTour::setPrix(int index, int p)
 {
 	getTour(index)->setPrix(p);
 }
@@ -79,7 +78,7 @@ void EnsembleTour::setTier(int index, int t)
 	getTour(index)->setTier(t);
 }
 
-void EnsembleTour::setVitesse(int index,int v)
+void EnsembleTour::setVitesse(int index, int v)
 {
 	getTour(index)->setVitesse(v);
 }
@@ -107,14 +106,3 @@ bool EnsembleTour::ameliorerDegat(int index)
 {
 	return getTour(index)->ameliorerDegat();
 }
-
-
-
-
-
-
-
-
-
-
-

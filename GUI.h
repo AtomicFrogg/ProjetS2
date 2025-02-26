@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include "Joueur.h"
 #include "Carte.h"
@@ -7,35 +8,41 @@ using namespace std;
 
 class GUI
 {
-    public:
-        GUI();
-        ~GUI();
-    
-        void moveJoueurUp(int y);
-        void moveJoueurDown(int y);
-        void moveJoueurDroite(int x);
-        void moveJoueurGauche(int x);
-        Dimension getCoordonneeJoueur();
+public:
+    GUI();
+    ~GUI();
 
-        void draw();
-        void drawInfoTour();
-        void chooseMap(int choixMap);
-        bool ajouterTourBase();
-        bool ajouterTourSniper();
-        bool ajouterTourCanonnier();
-        bool ajouterTourNarvolt();
-        bool retirerTour();
-        Donnees* getDonneesJoueur();
-        bool ameliorerRange();
-        bool ameliorerDegat();
+    void moveJoueurUp(int y);
+    void moveJoueurDown(int y);
+    void moveJoueurDroite(int x);
+    void moveJoueurGauche(int x);
+    Dimension getCoordonneeJoueur();
 
-        Joueur* getJoueur();
-        Carte* getCarte();
-        
-    private:
-        Donnees tableauDonnees[HAUTEUR][LARGEUR];
-        Carte *c;
-        Joueur *j;
-        
+    //methodes relatives aux enemis
+    void moveEnemies(int x, int y);
+    void lancerVague(int index);
+    void attaqueEnemie();
+    void ajouterEnemie(Ennemie* ptr);
+    void retirerEnemie(int index);
+
+    void draw();
+    void drawInfoTour();
+    void chooseMap(int choixMap);
+    bool ajouterTourBase();
+    bool ajouterTourSniper();
+    bool ajouterTourCanonnier();
+    bool ajouterTourNarvolt();
+    bool retirerTour();
+    Donnees* getDonneesJoueur();
+    bool ameliorerRange();
+    bool ameliorerDegat();
+
+    Joueur* getJoueur();
+    Carte* getCarte();
+
+private:
+    Donnees tableauDonnees[HAUTEUR][LARGEUR];
+    Carte* c;
+    Joueur* j;
+
 };
-

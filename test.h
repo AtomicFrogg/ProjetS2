@@ -1,6 +1,4 @@
-#ifndef TEST_H
-#define TEST_H
-
+#pragma once
 #include "Joueur.h"
 #include "TourBase1.h"
 
@@ -14,9 +12,3 @@ public:
 	void testCarte();
 };
 
-
-
-
-
-
-#endif

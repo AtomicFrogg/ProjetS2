@@ -13,3 +13,5 @@ public:
 	static void input(GUI* gui);
 	int checkKey();
 };
+
+

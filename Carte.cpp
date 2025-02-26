@@ -1,10 +1,11 @@
 #include "Carte.h"
 
-Carte::Carte(int v, int a):vie(v),argent(a)
+
+Carte::Carte(int v, int a) :vie(v), argent(a)
 {
 	for (int i = 0; i < HAUTEUR; i++)
 	{
-		for (int j = 0; j < LARGEUR; j++) 
+		for (int j = 0; j < LARGEUR; j++)
 		{
 			map[i][j] = 0;
 		}
@@ -13,25 +14,47 @@ Carte::Carte(int v, int a):vie(v),argent(a)
 /*
 bool Carte::ajouterTour(Tour* ptr)
 {
-	if(ptr == nullptr) return false;
+	if(ptr == nullptr) return FALSE;
 	tableauTour.ajouterTour(ptr);
-	return true;
+	return TRUE;
 }
 
 bool Carte::vendreTour(int index)
 {
-	if(index >= 0 && index < tableauTour.getTaille())
+	if(index >= 0 and index < tableauTour.getTaille())
 	{
 		this->setArgent(this->getArgent() - tableauTour.retirerTour(index));
-		return true;
+		return TRUE;
 	}
 	else
 	{
-		return false;
+		return FALSE;
 	}
 }
 */
 
+
+bool Carte::lancerVague(int index)
+{
+	int i = 0;
+	if (index <= 0) {
+		return false;
+	}
+	else {
+		while (i < index) {
+			Ennemie* ptr = new EnnemieBaleine();
+			tableauEnnemie.ajouterEnnemie(ptr);
+			i++;
+			cout << "0" << endl;
+		}
+	}
+}
+
+void Carte::attaqueEnemie() {
+	for (int i = 0;i < tableauEnnemie.getTaille();i++) {
+		setVie(getVie() - tableauEnnemie.getEnnemie(i)->getDegat());
+	}
+}
 
 
 int Carte::getVie()
@@ -57,7 +80,9 @@ void Carte::setArgent(int a)
 
 void Carte::afficher(ostream& s)
 {
-	cout << "argent: " << getArgent() << " vie: " << getVie() << endl;
+	for (int i = 0;tableauEnnemie.getTaille();i++) {
+		s << "argent: " << tableauEnnemie.getEnnemie(i)->getRevenu() << " vie: " << tableauEnnemie.getEnnemie(i)->getVie() << endl;
+	}
 }
 
 
@@ -72,7 +97,7 @@ bool Carte::ajouterEnnemie(Ennemie* ptr)
 bool Carte::retirerEnnemie(int index)
 {
 	bool result = false;
-	if (index < this->tableauEnnemie.getTaille() && index > 0)
+	if (index < this->tableauEnnemie.getTaille() and index > 0)
 	{
 		tableauEnnemie.retirerEnnemie(index);
 		result = true;
@@ -87,7 +112,7 @@ EnsembleEnnemie* Carte::getEnnemie()
 }
 
 
-/*bool Carte::ajouterEnnemie(Ennemie* mob)
+/*bool Carte::ajouterEnnemie(Enemie* mob)
 {
 	return tableauEnnemie.ajouterEnnemie(mob);
 }*/
@@ -110,19 +135,21 @@ int Carte::getTailleEnnemie()
 
 Dimension Carte::getCoordonnee(int index)
 {
-	if(index >= 0 && index < getTailleEnnemie()) return tableauEnnemie.getCoordonnee(index);
+	if (index >= 0 && index < getTailleEnnemie()) return tableauEnnemie.getCoordonnee(index);
 	Dimension autre;
 	autre.x = -1;
 	autre.y = -1;
 	return autre;
 }
 
-int Carte::getVieEnnemie(int index)
-{
-	return getEnnemie()->getVie(index);
+void Carte::moveEnemie(int x, int y) {
+	tableauEnnemie.moveEnemie(x, y);
 }
 
-
+int Carte::getVieEnnemie(int index)
+{
+	return getEnnemie()->getEnnemie(index)->getVie();
+}
 
 int carre(int x)
 {
