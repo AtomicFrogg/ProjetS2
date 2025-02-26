@@ -5,31 +5,29 @@
 class Ennemie
 {
 public:
-	Ennemie(int v = 100, int vit = 1, int pos = 5, int r = 2,int d = 3);
+	Ennemie(int v = 100, int vit = 1, int r = 2);
 	virtual ~Ennemie();
 	int getVie();
 	int getVitesse();
 	int getPosition();
 	void setVie(int v);
-	void setVitesse(int v);
-	void setPosition(int p);
-	int getDegat();
+	virtual void setVitesse(int v) = 0;
+	virtual void setPosition(int p) = 0;
+	virtual int getDegat() = 0;
 	Dimension getCoordonnee();
 	void setCoordonnee(Dimension coord);
 	void setRevenu(int r);
 	int getRevenu();
 	void accelerer();
-	void gauche(int val);
-	void descendre(int val);
-	void monter(int val);
-	void deplacement();
+
+	bool deplacement();
 
 private:
 	Dimension coordonnee;
 protected:
 	int vie;
-	int position;
+	int position; // pos = 1 :top; pos = 2 : down; pos = 3: right; pos = 4: Left
 	int vitesse;
 	int revenu;
-	int degat;
+	int compteur;
 };

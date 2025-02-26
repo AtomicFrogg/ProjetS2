@@ -1,55 +1,28 @@
 #include "Ennemie.h"
 
 
-Ennemie::Ennemie(int v, int vit, int pos, int r,int d) :vie(v), vitesse(vit), position(pos), revenu(r),degat(d)
+Ennemie::Ennemie(int v, int vit, int r) :vie(v), vitesse(vit), revenu(r)
 {
+	position = 0;
+	compteur = 0;
 	coordonnee.x = 0;
 	coordonnee.y = 0;
 }
-
 
 Ennemie::~Ennemie()
 {
 	//carte->setArgent(carte->getArgent + revenu);
 }
 
-void Ennemie::gauche(int val) {
-	coordonnee.x += val;
-}
-void Ennemie::descendre(int val) {
-	coordonnee.y -= val;
-}
-void Ennemie::monter(int val) {
-	coordonnee.y += val;
-}
-
-void Ennemie::deplacement() {
-	//gauche
-	gauche(3);
-	//descendre
-	descendre(1);
-	//gauche
-	gauche(1);
-	//descendre
-	descendre(1);
-	//gauche
-	gauche(2);
-	//descendre
-	descendre(2);
-	//gauche
-	gauche(6);
-	//monter
-	monter(6);
-	gauche(5);
-	//descendre
-	descendre(3);
-	//gauche
-	gauche(7);
-	//monter
-	monter(2);
-	//gauche
-	gauche(5);
-	//gauche
+bool Ennemie::deplacement() {
+	if (compteur == 0) {
+		compteur = vitesse;
+		return true;
+	}
+	else {
+		compteur--;
+		return false;
+	}
 }
 
 int Ennemie::getVie()
@@ -112,16 +85,3 @@ void Ennemie::setRevenu(int r)
 	}
 }
 
-int Ennemie::getDegat() {
-	return degat;
-}
-void Ennemie::setPosition(int p) {
-	if (p > 0) {
-		position = p;
-	}
-}
-
-void Ennemie::setVitesse(int v)
-{
-	vitesse = v;
-}
