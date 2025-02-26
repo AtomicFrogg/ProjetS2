@@ -12,7 +12,7 @@ int main(){
 	thread t(&Input::input, gui);
 	//test.checkKey();
 
-
+	gui->lancerVague(1);
 		//Met ton code ici Ric
 
 

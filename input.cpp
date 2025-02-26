@@ -70,14 +70,14 @@ void Input::input(GUI* gui)
 			{
 				time = 1;
 				cout << "Space";
-
+				gui->getJoueur()->attaquerJoueur();
 			}
 			//Escape key
 			if (GetAsyncKeyState(27) & 0x8000)
 			{
 				time = 1;
 				cout << "Esc";
-				break;
+				FIN = true;
 			}
 			//E key
 			if (GetAsyncKeyState(69) & 0x8000)

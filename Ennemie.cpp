@@ -1,7 +1,7 @@
 #include "Ennemie.h"
 
 
-Ennemie::Ennemie(int v, int vit, int r) :vie(v), vitesse(vit), revenu(r)
+Ennemie::Ennemie(int v, int vit, int r, int d) :vie(v), vitesse(vit), revenu(r), degat(d)
 {
 	position = 0;
 	compteur = 0;
@@ -85,3 +85,16 @@ void Ennemie::setRevenu(int r)
 	}
 }
 
+int Ennemie::getDegat() {
+	return degat;
+}
+void Ennemie::setPosition(int p) {
+	if (p > 0) {
+		position = p;
+	}
+}
+
+void Ennemie::setVitesse(int v)
+{
+	vitesse = v;
+}

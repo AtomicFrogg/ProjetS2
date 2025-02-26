@@ -39,7 +39,7 @@ void GUI::moveEnemies() {
 }
 
 void GUI::lancerVague(int index) {
-    while (c->getVie() > 0 and c->getTailleEnnemie() > 0 and )
+    while (c->getVie() > 0 and c->getTailleEnnemie() > 0)
     {
         moveEnemies();
         j->attaquer();
