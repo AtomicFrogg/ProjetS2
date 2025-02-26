@@ -78,7 +78,12 @@ void Carte::afficher(ostream& s)
 	}
 }
 
-
+bool Carte::ajouterBaleine()
+{
+	Ennemie* newEnnemie = new Ennemie(200, 4, 200, 5);
+	ajouterEnnemie(newEnnemie);
+	return 1;
+}
 
 bool Carte::ajouterEnnemie(Ennemie* ptr)
 {

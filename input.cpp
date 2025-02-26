@@ -134,7 +134,7 @@ void Input::input(GUI* gui)
 			}
 			if (time >= 1)
 			{
-				this_thread::sleep_for(chrono::milliseconds(150));
+				Sleep(150);
 				//gui->getJoueur()->afficher(cout);
 				gui->draw();
 				if (time == 2)

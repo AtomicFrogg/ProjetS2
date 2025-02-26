@@ -1,8 +1,12 @@
 #pragma once
+#include <ctime>
+#include <Windows.h>
 #include <iostream>
 #include "Joueur.h"
 #include "Carte.h"
 #include "Donnees.h"
+
+
 
 using namespace std;
 

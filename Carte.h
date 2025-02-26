@@ -29,6 +29,7 @@ public:
 	void moveEnemie(int x, int y);
 	void deplacementEnemie();
 	void attaqueEnemie();
+	bool ajouterBaleine();
 
 	void reinitialiserEnnemie();
 	int getTailleEnnemie();

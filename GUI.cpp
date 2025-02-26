@@ -27,22 +27,30 @@ void GUI::moveEnemies() {
     {
       if (c->getEnnemie()->getEnnemie(index)->deplacement())
         {
-            int move = checkMove(index);
-            if (move >= 1 and move <= 4)
-            {
-                c->getEnnemie()->getEnnemie(index)->setCoordonnee();
-            }
-            
+          checkMove(index);
         }
     }
   
 }
 
 void GUI::lancerVague(int index) {
+    c->ajouterBaleine();
+    clock_t start;
+    cout << c->getVie() << endl;
+    cout << c->getTailleEnnemie() << endl;
     while (c->getVie() > 0 and c->getTailleEnnemie() > 0)
     {
+        start = clock();
         moveEnemies();
         j->attaquer();
+        int time = clock() - start;
+        cout << "time; " << time << endl;
+        if (time < 200)
+        {
+            Sleep(200-time);
+        }
+        draw();
+        cout << "Tick";
     }
 }
 
