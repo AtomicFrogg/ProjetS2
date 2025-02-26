@@ -23,12 +23,29 @@ GUI::~GUI()
 //Definition des methodes pour les classes enemies
 
 void GUI::moveEnemies() {
-    c->deplacementEnemie();
+    for (int index = 0; index < c->getTailleEnnemie(); index++)
+    {
+      if (c->getEnnemie()->getEnnemie(index)->deplacement())
+        {
+            int move = checkMove(index);
+            if (move >= 1 and move <= 4)
+            {
+                c->getEnnemie()->getEnnemie(index)->setCoordonnee();
+            }
+            
+        }
+    }
+  
 }
+
 void GUI::lancerVague(int index) {
-    c->lancerVague(index);
-    moveEnemies();
+    while (c->getVie() > 0 and c->getTailleEnnemie() > 0 and )
+    {
+        moveEnemies();
+        j->attaquer();
+    }
 }
+
 void GUI::attaqueEnemie() {
     c->attaqueEnemie();
 }
@@ -339,4 +356,55 @@ void GUI::chooseMap(int choixMap)
 void GUI::drawInfoTour()
 {
     //do later
+}
+
+int GUI::checkMove(int index)
+{
+    int pos = c->getEnnemie()->getEnnemie(index)->getPosition();
+    Dimension newPos;
+    if (pos != 1)
+    {
+        if (tableauDonnees[c->getCoordonnee(index).y + 1][c->getCoordonnee(index).x].type == 1) 
+        {
+            c->getEnnemie()->getEnnemie(index)->setPosition(2);
+            newPos.x = c->getCoordonnee(index).x;
+            newPos.y = c->getCoordonnee(index).y + 1;
+            c->getEnnemie()->getEnnemie(index)->setCoordonnee(newPos);
+            return 1;
+        }
+    }
+    if (pos != 2)
+    {
+        if (tableauDonnees[c->getCoordonnee(index).y - 1][c->getCoordonnee(index).x].type == 1) 
+        {
+            c->getEnnemie()->getEnnemie(index)->setPosition(1);
+            newPos.x = c->getCoordonnee(index).x;
+            newPos.y = c->getCoordonnee(index).y - 1;
+            c->getEnnemie()->getEnnemie(index)->setCoordonnee(newPos);
+            return 2;
+        }
+    }
+    if (pos != 3)
+    {
+        if (tableauDonnees[c->getCoordonnee(index).y][c->getCoordonnee(index).x + 1].type == 1) 
+        {
+            c->getEnnemie()->getEnnemie(index)->setPosition(4);
+            newPos.x = c->getCoordonnee(index).x + 1;
+            newPos.y = c->getCoordonnee(index).y;
+            c->getEnnemie()->getEnnemie(index)->setCoordonnee(newPos);
+            return 3;
+        }
+    }
+    if (pos != 4)
+    {
+        if (tableauDonnees[c->getCoordonnee(index).y][c->getCoordonnee(index).x - 1].type == 1)
+        {
+            c->getEnnemie()->getEnnemie(index)->setPosition(3);
+            newPos.x = c->getCoordonnee(index).x - 1;
+            newPos.y = c->getCoordonnee(index).y;
+            c->getEnnemie()->getEnnemie(index)->setCoordonnee(newPos);
+            return 4;
+        }
+    }
+    return -1;
 }

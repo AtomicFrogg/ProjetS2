@@ -39,6 +39,7 @@ public:
 
     Joueur* getJoueur();
     Carte* getCarte();
+    int checkMove(int index);
 
 private:
     Donnees tableauDonnees[HAUTEUR][LARGEUR];

@@ -39,18 +39,8 @@ void Carte::deplacementEnemie() {
 
 bool Carte::lancerVague(int index)
 {
-	int i = 0;
-	if (index <= 0) {
-		return false;
-	}
-	else {
-		while (i < index) {
-			Ennemie* ptr = new EnnemieBaleine();
-			tableauEnnemie.ajouterEnnemie(ptr);
-			i++;
-			cout << "0" << endl;
-		}
-	}
+	deplacementEnemie();
+	return 0;
 }
 
 void Carte::attaqueEnemie() {

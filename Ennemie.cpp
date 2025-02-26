@@ -1,11 +1,12 @@
 #include "Ennemie.h"
 
 
-Ennemie::Ennemie(int v, int vit, int pos, int r) :vie(v), vitesse(vit), position(pos), revenu(r)
+Ennemie::Ennemie(int v, int vit, int pos, int r,int d) :vie(v), vitesse(vit), position(pos), revenu(r),degat(d)
 {
 	coordonnee.x = 0;
 	coordonnee.y = 0;
 }
+
 
 Ennemie::~Ennemie()
 {
@@ -39,7 +40,6 @@ void Ennemie::deplacement() {
 	gauche(6);
 	//monter
 	monter(6);
-	//gauche
 	gauche(5);
 	//descendre
 	descendre(3);
@@ -49,6 +49,7 @@ void Ennemie::deplacement() {
 	monter(2);
 	//gauche
 	gauche(5);
+	//gauche
 }
 
 int Ennemie::getVie()
@@ -111,3 +112,16 @@ void Ennemie::setRevenu(int r)
 	}
 }
 
+int Ennemie::getDegat() {
+	return degat;
+}
+void Ennemie::setPosition(int p) {
+	if (p > 0) {
+		position = p;
+	}
+}
+
+void Ennemie::setVitesse(int v)
+{
+	vitesse = v;
+}
