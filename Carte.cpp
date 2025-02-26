@@ -33,6 +33,9 @@ bool Carte::vendreTour(int index)
 }
 */
 
+void Carte::deplacementEnemie() {
+	tableauEnnemie.deplacementEnemie();
+}
 
 bool Carte::lancerVague(int index)
 {
@@ -143,8 +146,10 @@ Dimension Carte::getCoordonnee(int index)
 }
 
 void Carte::moveEnemie(int x, int y) {
+
 	tableauEnnemie.moveEnemie(x, y);
 }
+
 
 int Carte::getVieEnnemie(int index)
 {

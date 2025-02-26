@@ -27,6 +27,7 @@ public:
 	bool ajouterEnnemie(Ennemie* ptr);
 	bool retirerEnnemie(int index);
 	void moveEnemie(int x, int y);
+	void deplacementEnemie();
 	void attaqueEnemie();
 
 	void reinitialiserEnnemie();

@@ -12,6 +12,45 @@ Ennemie::~Ennemie()
 	//carte->setArgent(carte->getArgent + revenu);
 }
 
+void Ennemie::gauche(int val) {
+	coordonnee.x += val;
+}
+void Ennemie::descendre(int val) {
+	coordonnee.y -= val;
+}
+void Ennemie::monter(int val) {
+	coordonnee.y += val;
+}
+
+void Ennemie::deplacement() {
+	//gauche
+	gauche(3);
+	//descendre
+	descendre(1);
+	//gauche
+	gauche(1);
+	//descendre
+	descendre(1);
+	//gauche
+	gauche(2);
+	//descendre
+	descendre(2);
+	//gauche
+	gauche(6);
+	//monter
+	monter(6);
+	//gauche
+	gauche(5);
+	//descendre
+	descendre(3);
+	//gauche
+	gauche(7);
+	//monter
+	monter(2);
+	//gauche
+	gauche(5);
+}
+
 int Ennemie::getVie()
 {
 	return vie;

@@ -19,6 +19,10 @@ public:
 	void setRevenu(int r);
 	int getRevenu();
 	void accelerer();
+	void gauche(int val);
+	void descendre(int val);
+	void monter(int val);
+	void deplacement();
 
 private:
 	Dimension coordonnee;

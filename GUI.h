@@ -19,7 +19,7 @@ public:
     Dimension getCoordonneeJoueur();
 
     //methodes relatives aux enemis
-    void moveEnemies(int x, int y);
+    void moveEnemies();
     void lancerVague(int index);
     void attaqueEnemie();
     void ajouterEnemie(Ennemie* ptr);

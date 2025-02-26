@@ -22,11 +22,12 @@ GUI::~GUI()
 };
 //Definition des methodes pour les classes enemies
 
-void GUI::moveEnemies(int x, int y) {
-    c->moveEnemie(x, y);
+void GUI::moveEnemies() {
+    c->deplacementEnemie();
 }
 void GUI::lancerVague(int index) {
     c->lancerVague(index);
+    moveEnemies();
 }
 void GUI::attaqueEnemie() {
     c->attaqueEnemie();

@@ -13,6 +13,7 @@ public:
 	void setCoordonnee(int index, Dimension coord);
 	Dimension getCoordonnee(int index);
 	void moveEnemie(int x, int y);
+	void deplacementEnemie();
 	int getPosition(int index);
 	void setPosition(int index, int pos);
 	bool ajouterEnnemie(Ennemie* mob);
