@@ -9,7 +9,6 @@ TourBase1::~TourBase1()
 {
 }
 
-//Yo le code ne fonctionne pas parce que c'est pas possible d'accéder aux éléments privés des autres classes
 
 void TourBase1::attaquer()
 {

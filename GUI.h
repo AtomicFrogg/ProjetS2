@@ -30,7 +30,7 @@ public:
     void retirerEnemie(int index);
 
     void draw();
-    void drawInfoTour();
+    void drawInfoTour(int typeTour, Defenseur* ptr);
     void chooseMap(int choixMap);
     bool ajouterTourBase();
     bool ajouterTourSniper();

@@ -143,10 +143,6 @@ void GUI::draw()
             if (getCoordonneeJoueur().x == n && getCoordonneeJoueur().y == m)
             {
                 cout << "j";
-                if (tableauDonnees[m][n].type != 0 && tableauDonnees[m][n].type != 1)
-                {
-                    drawInfoTour();
-                }
             }
 
             //if(n == 0 || n == 29)
@@ -188,6 +184,10 @@ void GUI::draw()
                 cout << " ";
             }
         }
+    }
+    if(tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type != 0 && tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type != 1)
+    {
+        drawInfoTour(tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type, tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].ptr);
     }
 }
 
@@ -373,9 +373,23 @@ void GUI::chooseMap(int choixMap)
     
 }
 
-void GUI::drawInfoTour()
+void GUI::drawInfoTour(int typeTour, Defenseur* ptr)
 {
-    //do later
+    switch (typeTour)
+    {
+    case 2:
+        cout << "Tour de Base: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$";
+        break;
+    case 3:
+        cout << "Sniper: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$";
+        break;
+    case 4:
+        cout << "Cannonier: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$";
+        break;
+    case 5:
+        cout << "Narvolt: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$";
+        break;
+    }
 }
 
 int GUI::checkMove(int index)
