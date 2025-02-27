@@ -63,21 +63,21 @@ void Input::input(GUI* gui)
 			if (GetAsyncKeyState(13) & 0x8000)
 			{
 				time = 1;
-				cout << "Enter";
+
 
 			}
 			//Space key
 			if (GetAsyncKeyState(32) & 0x8000)
 			{
 				time = 1;
-				cout << "Space";
+		
 				gui->getJoueur()->attaquerJoueur();
 			}
 			//Escape key
 			if (GetAsyncKeyState(27) & 0x8000)
 			{
 				time = 1;
-				cout << "Esc";
+	
 				FIN = true;
 			}
 			//E key
@@ -138,6 +138,7 @@ void Input::input(GUI* gui)
 				Sleep(150);
 				//gui->getJoueur()->afficher(cout);
 				gui->draw();
+
 				if (time == 2)
 				{
 					cout << "Impossible d'ameliorer" << endl;

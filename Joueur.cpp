@@ -93,7 +93,7 @@ void Joueur::attaquerJoueur()
 				int vie = (map->getVieEnnemie(i) - getDegat());
 				if (vie > 0)
 				{
-					map->setVie(vie);
+					map->getEnnemie()->getEnnemie(i)->setVie(vie);
 
 					setCompteurAttaque(getVitesseAttaque());
 					break;

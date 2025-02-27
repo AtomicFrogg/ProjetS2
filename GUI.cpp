@@ -461,11 +461,12 @@ int GUI::checkMove(int index)
         }
     }
     c->setVie(c->getVie() - c->getEnnemie()->getEnnemie(index)->getDegat());
+    c->retirerEnnemie(index);
     return -1;
 }
 
 
-GUI::drawControls()
+void GUI::drawControls()
 {
     cout << "Mouvement: W A S D" << endl << "Attaque du joueur: Space" << endl << endl << "Placer: " << endl << "Tour de Base: E" << endl << "Cannonier: Q" << endl << "Sniper: R" << endl << "Narvolt: F" << endl << endl << "Amelioration: " << endl << "Range: X" << endl << "Degat: Z" << endl << endl << "Terminer partie: Esc" << endl;
 }
