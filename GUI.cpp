@@ -168,6 +168,10 @@ void GUI::draw()
                     }
                 }
             }
+            else if(c->getTailleEnnemie() == 0 && tableauDonnees[m][n].type == 1)
+            {
+                cout << "1";
+            }
             else if (tableauDonnees[m][n].type == 2)
             {
                 cout << "2";
