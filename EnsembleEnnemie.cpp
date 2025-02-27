@@ -54,13 +54,13 @@ void EnsembleEnnemie::setPosition(int index, int pos)
 	getEnnemie(index)->setPosition(pos);
 }
 
-void EnsembleEnnemie::deplacementEnemie() {
+void EnsembleEnnemie::deplacementEnnemie() {
 	for (int i = 0;i < getTaille();i++) {
 		getEnnemie(i)->deplacement();
 	}
 }
 
-void EnsembleEnnemie::moveEnemie(int x, int y) {
+void EnsembleEnnemie::moveEnnemie(int x, int y) {
 	Dimension d;
 	d.x = x;
 	d.y = y;

@@ -23,11 +23,11 @@ public:
     Dimension getCoordonneeJoueur();
 
     //methodes relatives aux enemis
-    void moveEnemies();
+    void moveEnnemies();
     void lancerVague(int index);
-    void attaqueEnemie();
-    void ajouterEnemie(Ennemie* ptr);
-    void retirerEnemie(int index);
+    void attaqueEnnemie();
+    void ajouterEnnemie(Ennemie* ptr);
+    void retirerEnnemie(int index);
 
     void draw();
     void drawInfoTour(int typeTour, Defenseur* ptr);

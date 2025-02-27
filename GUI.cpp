@@ -20,9 +20,9 @@ GUI::~GUI()
     delete c;
     delete j;
 };
-//Definition des methodes pour les classes enemies
+//Definition des methodes pour les classes Ennemies
 
-void GUI::moveEnemies() {
+void GUI::moveEnnemies() {
     for (int index = 0; index < c->getTailleEnnemie(); index++)
     {
       if (c->getEnnemie()->getEnnemie(index)->deplacement())
@@ -51,29 +51,30 @@ void GUI::lancerVague(int index) {
     while (c->getVie() > 0 and c->getTailleEnnemie() > 0)
     {
         start = clock();
-        moveEnemies();
+        moveEnnemies();
         j->attaquer();
         int time = clock() - start;
         cout << "time; " << time << endl;
-        if (time < 200)
+        if (time < 700)
         {
-            Sleep(1000-time);
+            Sleep(700-time);
         }
         draw();
 
         cout << "Baleine :" << c->getCoordonnee(0).x;
+        cout << "vie: " << c->getEnnemie()->getEnnemie(0)->getVie();
     }
 }
 
-void GUI::attaqueEnemie() {
-    c->attaqueEnemie();
+void GUI::attaqueEnnemie() {
+    c->attaqueEnnemie();
 }
 
-void GUI::ajouterEnemie(Ennemie* ptr) {
+void GUI::ajouterEnnemie(Ennemie* ptr) {
     c->ajouterEnnemie(ptr);
 }
 
-void GUI::retirerEnemie(int index) {
+void GUI::retirerEnnemie(int index) {
     c->retirerEnnemie(index);
 }
 

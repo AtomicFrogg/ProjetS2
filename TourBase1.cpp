@@ -22,26 +22,16 @@ void TourBase1::attaquer()
 			if (distance < getRange())
 			{
 				this->attaque = false;
-				int vie = (map->getVieEnnemie(i) - getDegat());
-				if (vie > 0)
-				{
-					map->setVie(vie);
+				faireDegat(i);
+				int j = 1;
 
-					setCompteurAttaque(getVitesseAttaque());
-					break;
-				}
-				else
-				{
-					map->retirerEnnemie(i);
-					break;
-				}
 			}
 		}
 	}
 	else
 	{
 		setCompteurAttaque(getCompteurAttaque() - 1);
-		if (getCompteurAttaque() == 0)
+		if (getCompteurAttaque() <= 0)
 		{
 			attaque = true;
 		}

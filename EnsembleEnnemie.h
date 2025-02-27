@@ -12,8 +12,8 @@ public:
 	int getTaille();
 	void setCoordonnee(int index, Dimension coord);
 	Dimension getCoordonnee(int index);
-	void moveEnemie(int x, int y);
-	void deplacementEnemie();
+	void moveEnnemie(int x, int y);
+	void deplacementEnnemie();
 	int getPosition(int index);
 	void setPosition(int index, int pos);
 	bool ajouterEnnemie(Ennemie* mob);

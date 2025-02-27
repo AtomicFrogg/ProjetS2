@@ -124,13 +124,13 @@ void Joueur::attaquer()
 
 Tour* Joueur::ajouterTourBase()
 {
-	Tour* newTour = new TourBase1(15, 10, this->getPosition().x, this->getPosition().y, 20, 400, 0, map);
+	Tour* newTour = new TourBase1(15, 10, this->getPosition().x, this->getPosition().y, 2, 400, 0, map);
 	return ajouterTour(newTour);
 }
 
 Tour* Joueur::ajouterTourSniper()
 {
-	Tour* newTour = new TourBase1(50, 100, this->getPosition().x, this->getPosition().y, 50, 600, 0, map);
+	Tour* newTour = new TourBase1(50, 100, this->getPosition().x, this->getPosition().y, 4, 600, 0, map);
 	return ajouterTour(newTour);
 }
 

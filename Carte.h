@@ -26,9 +26,9 @@ public:
 	EnsembleEnnemie* getEnnemie();
 	bool ajouterEnnemie(Ennemie* ptr);
 	bool retirerEnnemie(int index);
-	void moveEnemie(int x, int y);
-	void deplacementEnemie();
-	void attaqueEnemie();
+	void moveEnnemie(int x, int y);
+	void deplacementEnnemie();
+	void attaqueEnnemie();
 	bool ajouterBaleine();
 	bool ajouterEspadon();
 	bool ajouterPerchaude();

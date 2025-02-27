@@ -33,17 +33,17 @@ bool Carte::vendreTour(int index)
 }
 */
 
-void Carte::deplacementEnemie() {
-	tableauEnnemie.deplacementEnemie();
+void Carte::deplacementEnnemie() {
+	tableauEnnemie.deplacementEnnemie();
 }
 
 bool Carte::lancerVague(int index)
 {
-	deplacementEnemie();
+	deplacementEnnemie();
 	return 0;
 }
 
-void Carte::attaqueEnemie() {
+void Carte::attaqueEnnemie() {
 	for (int i = 0;i < tableauEnnemie.getTaille();i++) {
 		setVie(getVie() - tableauEnnemie.getEnnemie(i)->getDegat());
 	}
@@ -124,7 +124,7 @@ EnsembleEnnemie* Carte::getEnnemie()
 }
 
 
-/*bool Carte::ajouterEnnemie(Enemie* mob)
+/*bool Carte::ajouterEnnemie(Ennemie* mob)
 {
 	return tableauEnnemie.ajouterEnnemie(mob);
 }*/
@@ -154,9 +154,9 @@ Dimension Carte::getCoordonnee(int index)
 	return autre;
 }
 
-void Carte::moveEnemie(int x, int y) {
+void Carte::moveEnnemie(int x, int y) {
 
-	tableauEnnemie.moveEnemie(x, y);
+	tableauEnnemie.moveEnnemie(x, y);
 }
 
 

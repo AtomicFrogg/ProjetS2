@@ -186,7 +186,6 @@ void Input::debutJeu()
 {
 	while (!debut)
 	{
-		cout << "a" << endl;
 		Sleep(100);
 	}
 }
