@@ -31,7 +31,7 @@ public:
 
     void draw();
     void drawControls();
-    void drawInfoTour(int typeTour, Defenseur* ptr);
+    void drawInfoTour(int typeTour, int index);
     void chooseMap(int choixMap);
     bool ajouterTourBase();
     bool ajouterTourSniper();

@@ -156,7 +156,7 @@ void GUI::draw()
             {
                 cout << "1";
             }
-            
+
             else if (tableauDonnees[m][n].type == 1)
             {
                 int i;
@@ -207,7 +207,7 @@ void GUI::draw()
     }
     if(tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type != 0 && tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type != 1)
     {
-        drawInfoTour(tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type, tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].ptr);
+        drawInfoTour(tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type, tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].index);
     }
 }
 
@@ -393,21 +393,22 @@ void GUI::chooseMap(int choixMap)
     
 }
 
-void GUI::drawInfoTour(int typeTour, Defenseur* ptr)
+void GUI::drawInfoTour(int typeTour, int index)
 {
+   Tour* ptr = j->getTour(index);
     switch (typeTour)
     {
     case 2:
-        cout << endl << "Tour de Base: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amelioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
+        cout << endl << "Tour de Base: " << endl << "Tier: " << ptr->getTier() << "Range: " << ptr->getRange() << endl << "Prix d'amelioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
         break;
     case 3:
-        cout << endl << "Sniper: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
+        cout << endl << "Sniper: " << endl << "Tier: " << ptr->getTier() << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
         break;
     case 4:
-        cout << endl << "Cannonier: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
+        cout << endl << "Cannonier: " << endl << "Tier: " << ptr->getTier() << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
         break;
     case 5:
-        cout << endl << "Narvolt: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
+        cout << endl << "Narvolt: " << endl << "Tier: " << ptr->getTier() << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
         break;
     }
 }
