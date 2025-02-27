@@ -5,6 +5,7 @@
 #include "EnnemieBaltimore.h"
 #include "EnnemieRequin.h"
 #include <iostream>
+#include <cstdlib>
 
 const int HAUTEUR = 15;
 const int LARGEUR = 30;
@@ -29,9 +30,10 @@ public:
 	void moveEnnemie(int x, int y);
 	void deplacementEnnemie();
 	void attaqueEnnemie();
-	bool ajouterBaleine();
-	bool ajouterEspadon();
-	bool ajouterPerchaude();
+	bool ajouterBaleine(int c);
+	bool ajouterEspadon(int c);
+	bool ajouterPerchaude(int c);
+	void debutEnnemie(int nbr);
 
 	void reinitialiserEnnemie();
 	int getTailleEnnemie();

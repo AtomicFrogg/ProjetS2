@@ -78,23 +78,23 @@ void Carte::afficher(ostream& s)
 	}
 }
 
-bool Carte::ajouterBaleine()
+bool Carte::ajouterBaleine(int c)
 {
-	Ennemie* newEnnemie = new Ennemie(400, 3, 500, 5);
+	Ennemie* newEnnemie = new Ennemie(400, 3, 500, c);
 	ajouterEnnemie(newEnnemie);
 	return 1;
 }
 
-bool Carte::ajouterPerchaude()
+bool Carte::ajouterPerchaude(int c)
 {
-	Ennemie* newEnnemie = new Ennemie(20, 1, 50, 5);
+	Ennemie* newEnnemie = new Ennemie(20, 1, 50, 5, c);
 	ajouterEnnemie(newEnnemie);
 	return 1;
 }
 
-bool Carte::ajouterEspadon()
+bool Carte::ajouterEspadon(int c)
 {
-	Ennemie* newEnnemie = new Ennemie(100, 2, 100, 5);
+	Ennemie* newEnnemie = new Ennemie(100, 2, 100, c);
 	ajouterEnnemie(newEnnemie);
 	return 1;
 }
@@ -171,3 +171,28 @@ int carre(int x)
 {
 	return x * x;
 }
+
+
+void Carte::debutEnnemie(int nbr)
+{
+	int alea;
+	for(int i = 0; i < 3 * nbr; i = i+3)
+	{
+		alea = rand() % 3;
+		switch (alea)
+		{
+		case 0:
+			ajouterBaleine(i);
+			break;
+		case 1:
+			ajouterEspadon(i);
+			break;
+		case 2:
+			ajouterPerchaude(i);
+			break;
+		default:
+			break;
+		}
+	}
+}
+

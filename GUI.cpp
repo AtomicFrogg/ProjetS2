@@ -34,8 +34,8 @@ void GUI::moveEnnemies() {
 }
 
 void GUI::lancerVague(int index) {
-    c->ajouterPerchaude();
 
+    c->debutEnnemie(10);
 
     Dimension coord;
     coord.x = 0;
@@ -54,7 +54,6 @@ void GUI::lancerVague(int index) {
         moveEnnemies();
         j->attaquer();
         int time = clock() - start;
-        cout << "time; " << time << endl;
         if (time < 700)
         {
             Sleep(700-time);
@@ -136,12 +135,18 @@ void GUI::draw()
     drawControls();
     cout << "Argent: " << c->getArgent() << endl;
     cout << "Vie: " << c->getVie() << endl;
+    bool affichageEnnemie;
     for (m = HAUTEUR - 1; m >= 0; m--)
     {
         cout << endl;
 
         for (n = 0; n < LARGEUR; n++)
         {
+            affichageEnnemie  = false;
+            for (int i = 0; i < c->getTailleEnnemie(); i++)
+            {
+                if (c->getCoordonnee(i).x == n and c->getCoordonnee(i).y == m) affichageEnnemie = true;
+            }
             if (getCoordonneeJoueur().x == n && getCoordonneeJoueur().y == m)
             {
                 cout << "j";
@@ -152,26 +157,14 @@ void GUI::draw()
             //    cout << "|\n|";
             //}
 
-            else if(c->getTailleEnnemie() == 0 && tableauDonnees[m][n].type == 1)
+            else if(affichageEnnemie && tableauDonnees[m][n].type == 1)
             {
-                cout << "1";
+                cout << "0";
             }
 
             else if (tableauDonnees[m][n].type == 1)
             {
-                int i;
-                for(i = 0; i < c->getTailleEnnemie(); i++)
-                {
-                    if(c->getEnnemie()->getEnnemie(i)->getCoordonnee().y == m && c->getEnnemie()->getEnnemie(i)->getCoordonnee().x == n)
-                    {
-                        cout << "0";
-                        continue;
-                    }
-                    else
-                    {
-                        cout << "1";
-                    }
-                }
+                cout << "1";
             }
             
             else if (tableauDonnees[m][n].type == 2)
