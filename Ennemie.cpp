@@ -1,10 +1,10 @@
 #include "Ennemie.h"
 
 
-Ennemie::Ennemie(int v, int vit, int r, int d) :vie(v), vitesse(vit), revenu(r), degat(d)
+Ennemie::Ennemie(int v, int vit, int r, int d, int cpt) :vie(v), vitesse(vit), revenu(r), degat(d)
 {
 	position = 0;
-	compteur = 0;
+	compteur = cpt;
 	coordonnee.x = 0;
 	coordonnee.y = 9;
 }
@@ -83,6 +83,10 @@ void Ennemie::setRevenu(int r)
 	{
 		revenu = -r;
 	}
+}
+
+int Ennemie::getEtat() {
+	return etat;
 }
 
 int Ennemie::getDegat() {

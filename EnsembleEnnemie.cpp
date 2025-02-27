@@ -55,6 +55,7 @@ void EnsembleEnnemie::setPosition(int index, int pos)
 }
 
 void EnsembleEnnemie::deplacementEnnemie() {
+
 	for (int i = 0;i < getTaille();i++) {
 		getEnnemie(i)->deplacement();
 	}
