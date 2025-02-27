@@ -30,6 +30,8 @@ public:
 	void deplacementEnemie();
 	void attaqueEnemie();
 	bool ajouterBaleine();
+	bool ajouterEspadon();
+	bool ajouterPerchaude();
 
 	void reinitialiserEnnemie();
 	int getTailleEnnemie();

@@ -35,6 +35,16 @@ void GUI::moveEnemies() {
 
 void GUI::lancerVague(int index) {
     c->ajouterBaleine();
+
+
+    Dimension coord;
+    coord.x = 0;
+    coord.y = 9;
+    for (int i = 0; i < c->getTailleEnnemie(); i++)
+    {
+        c->getEnnemie()->getEnnemie(i)->setCoordonnee(coord);
+    }    
+
     clock_t start;
     cout << c->getVie() << endl;
     cout << c->getTailleEnnemie() << endl;
@@ -47,10 +57,11 @@ void GUI::lancerVague(int index) {
         cout << "time; " << time << endl;
         if (time < 200)
         {
-            Sleep(200-time);
+            Sleep(1000-time);
         }
         draw();
-        cout << "Tick";
+
+        cout << "Baleine :" << c->getCoordonnee(0).x;
     }
 }
 
@@ -359,6 +370,7 @@ void GUI::chooseMap(int choixMap)
         tableauDonnees[8][27].type = 1;
         tableauDonnees[8][28].type = 1;
     }
+    
 }
 
 void GUI::drawInfoTour()
@@ -414,5 +426,7 @@ int GUI::checkMove(int index)
             return 4;
         }
     }
+    c->setVie(c->getVie() - c->getEnnemie()->getEnnemie(index)->getDegat());
     return -1;
 }
+

@@ -6,12 +6,12 @@
 #include <thread>
 
 
-int main(){
-	GUI *gui = new GUI();
+int main() {
+	GUI* gui = new GUI();
 	Input test;
 	thread t(&Input::input, gui);
 	//test.checkKey();
-
+	test.debutJeu();
 	gui->lancerVague(1);
 		//Met ton code ici Ric
 

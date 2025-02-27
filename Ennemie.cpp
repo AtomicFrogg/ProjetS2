@@ -6,7 +6,7 @@ Ennemie::Ennemie(int v, int vit, int r, int d) :vie(v), vitesse(vit), revenu(r),
 	position = 0;
 	compteur = 0;
 	coordonnee.x = 0;
-	coordonnee.y = 0;
+	coordonnee.y = 9;
 }
 
 Ennemie::~Ennemie()
