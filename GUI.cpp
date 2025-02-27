@@ -380,16 +380,16 @@ void GUI::drawInfoTour(int typeTour, Defenseur* ptr)
     switch (typeTour)
     {
     case 2:
-        cout << endl << "Tour de Base: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amelioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
+        cout << endl << "Tour de Base: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amelioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
         break;
     case 3:
-        cout << endl << "Sniper: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
+        cout << endl << "Sniper: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
         break;
     case 4:
-        cout << endl << "Cannonier: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
+        cout << endl << "Cannonier: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
         break;
     case 5:
-        cout << endl << "Narvolt: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
+        cout << endl << "Narvolt: " << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
         break;
     }
 }
