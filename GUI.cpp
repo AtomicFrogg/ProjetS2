@@ -399,7 +399,7 @@ void GUI::drawInfoTour(int typeTour, int index)
     switch (typeTour)
     {
     case 2:
-        cout << endl << "Tour de Base: " << endl << "Tier: " << ptr->getTier() << "Range: " << ptr->getRange() << endl << "Prix d'amelioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
+        cout << endl << "Tour de Base: " << endl << "Tier: " << ptr->getTier() << endl << "Range: " << ptr->getRange() << endl << "Prix d'amelioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
         break;
     case 3:
         cout << endl << "Sniper: " << endl << "Tier: " << ptr->getTier() << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
