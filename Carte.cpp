@@ -80,7 +80,21 @@ void Carte::afficher(ostream& s)
 
 bool Carte::ajouterBaleine()
 {
-	Ennemie* newEnnemie = new Ennemie(200, 4, 200, 5);
+	Ennemie* newEnnemie = new Ennemie(400, 3, 500, 5);
+	ajouterEnnemie(newEnnemie);
+	return 1;
+}
+
+bool Carte::ajouterPerchaude()
+{
+	Ennemie* newEnnemie = new Ennemie(20, 1, 50, 5);
+	ajouterEnnemie(newEnnemie);
+	return 1;
+}
+
+bool Carte::ajouterEspadon()
+{
+	Ennemie* newEnnemie = new Ennemie(100, 2, 100, 5);
 	ajouterEnnemie(newEnnemie);
 	return 1;
 }

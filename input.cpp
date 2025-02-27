@@ -10,6 +10,7 @@ void Input::input(GUI* gui)
 	int choixMap;
 	cin >> choixMap;
 	gui->chooseMap(choixMap);
+	debut = true;
 	switch (peripherique)
 	{
 	case '1':
@@ -178,4 +179,14 @@ int Input::checkKey()
 	}
 
 	return 0;
+}
+
+
+void Input::debutJeu()
+{
+	while (!debut)
+	{
+		cout << "a" << endl;
+		Sleep(100);
+	}
 }

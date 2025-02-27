@@ -45,6 +45,7 @@ public:
     Carte* getCarte();
     int checkMove(int index);
 
+
 private:
     Donnees tableauDonnees[HAUTEUR][LARGEUR];
     Carte* c;
