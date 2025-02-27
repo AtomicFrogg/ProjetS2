@@ -133,6 +133,7 @@ void GUI::draw()
     {
         cout << endl;
     }
+    drawControls();
     cout << "Argent: " << c->getArgent() << endl;
     cout << "Vie: " << c->getVie() << endl;
     for (m = HAUTEUR - 1; m >= 0; m--)
@@ -445,3 +446,8 @@ int GUI::checkMove(int index)
     return -1;
 }
 
+
+GUI::drawControls()
+{
+    cout << "Mouvement: W A S D" << endl << "Attaque du joueur: Space" << endl << endl << "Placer: " << endl << "Tour de Base: E" << endl << "Cannonier: Q" << endl << "Sniper: R" << endl << "Narvolt: F" << endl << endl << "Amelioration: " << endl << "Range: X" << endl << "Degat: Z" << endl << endl << "Terminer partie: Esc" << endl;
+}
