@@ -34,7 +34,7 @@ void GUI::moveEnnemies() {
 }
 
 void GUI::lancerVague(int index) {
-    c->ajouterBaleine();
+    c->ajouterPerchaude();
 
 
     Dimension coord;
@@ -61,8 +61,8 @@ void GUI::lancerVague(int index) {
         }
         draw();
 
-        cout << "Baleine :" << c->getCoordonnee(0).x;
-        cout << "vie: " << c->getEnnemie()->getEnnemie(0)->getVie();
+       /* cout << "Baleine :" << c->getCoordonnee(0).x;
+        cout << "vie: " << c->getEnnemie()->getEnnemie(0)->getVie();*/
     }
 }
 
