@@ -49,6 +49,7 @@ int Tour::getVitesse()
 bool Tour::faireDegat(int i)
 {
 	int vie = (map->getVieEnnemie(i) - getDegat());
+	cout << vie;
 	if (vie > 0)
 	{
 		map->getEnnemie()->getEnnemie(i)->setVie(vie);
@@ -58,6 +59,7 @@ bool Tour::faireDegat(int i)
 	}
 	else
 	{
+		cout << "HAAAAAAAAAAAAAAAAAAAAAAAAAA";
 		map->retirerEnnemie(i);
 		return false;
 	}

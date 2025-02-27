@@ -124,25 +124,25 @@ void Joueur::attaquer()
 
 Tour* Joueur::ajouterTourBase()
 {
-	Tour* newTour = new TourBase1(15, 10, this->getPosition().x, this->getPosition().y, 2, 400, 0, map);
+	Tour* newTour = new TourBase1(15, 10, this->getPosition().x, this->getPosition().y, 3, 400, 0, map);
 	return ajouterTour(newTour);
 }
 
 Tour* Joueur::ajouterTourSniper()
 {
-	Tour* newTour = new TourBase1(50, 100, this->getPosition().x, this->getPosition().y, 4, 600, 0, map);
+	Tour* newTour = new TourBase1(50, 100, this->getPosition().x, this->getPosition().y, 6, 600, 0, map);
 	return ajouterTour(newTour);
 }
 
 Tour* Joueur::ajouterTourCanonnier()
 {
-	Tour* newTour = new Canonnier(25, 8, this->getPosition().x, this->getPosition().y, 20, 500, 0, map, 1);
+	Tour* newTour = new Canonnier(25, 8, this->getPosition().x, this->getPosition().y, 4, 500, 0, map, 1);
 	return ajouterTour(newTour);
 }
 
 Tour* Joueur::ajouterTourNarvolt()
 {
-	Tour* newTour = new Narvolt(20, 10, this->getPosition().x, this->getPosition().y, 15, 700, 0, map, 5, 5);
+	Tour* newTour = new Narvolt(20, 10, this->getPosition().x, this->getPosition().y, 4, 700, 0, map, 5, 5);
 	return ajouterTour(newTour);
 }
 

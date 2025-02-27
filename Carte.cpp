@@ -109,9 +109,11 @@ bool Carte::ajouterEnnemie(Ennemie* ptr)
 bool Carte::retirerEnnemie(int index)
 {
 	bool result = false;
-	if (index < this->tableauEnnemie.getTaille() and index > 0)
+	if (index < this->tableauEnnemie.getTaille() and index >= 0)
 	{
+		setArgent(getArgent() + tableauEnnemie.getEnnemie(index)->getRevenu());
 		tableauEnnemie.retirerEnnemie(index);
+		
 		result = true;
 
 	}
