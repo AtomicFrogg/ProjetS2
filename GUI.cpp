@@ -155,15 +155,18 @@ void GUI::draw()
             else if (tableauDonnees[m][n].type == 1)
             {
                 int i;
-                for(i = 0, i < c->getTailleEnnemie; i++)
+                for(i = 0; i < c->getTailleEnnemie(); i++)
                 {
-                    if(c->getEnnemie()->getEnnemie(i)->getCoordonnee().y == m && c->getEnnemie()->getEnnemie()->getCoordonnee().x == n)
+                    if(c->getEnnemie()->getEnnemie(i)->getCoordonnee().y == m && c->getEnnemie()->getEnnemie(i)->getCoordonnee().x == n)
                     {
                         cout << "0";
                         continue;
                     }
+                    else
+                    {
+                        cout << "1";
+                    }
                 }
-                cout << "1";
             }
             else if (tableauDonnees[m][n].type == 2)
             {
