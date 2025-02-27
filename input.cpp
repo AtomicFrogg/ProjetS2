@@ -6,7 +6,7 @@ void Input::input(GUI* gui)
 	char peripherique;
 	cin >> peripherique;
 	int time;
-	cout << "Choisissez quelle carte vous d�sirez jouer:" << endl << "1: Facile";
+	cout << "Choisissez quelle carte vous d�sirez jouer:" << endl << "1: Facile" << endl;
 	int choixMap;
 	cin >> choixMap;
 	gui->chooseMap(choixMap);
