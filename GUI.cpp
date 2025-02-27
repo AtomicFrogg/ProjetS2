@@ -154,6 +154,11 @@ void GUI::draw()
 
             else if (tableauDonnees[m][n].type == 1)
             {
+                if(c->getEnnemie()->getEnnemie()->getCoordonnee().y == m && c->getEnnemie()->getEnnemie()->getCoordonnee().x == n)
+                {
+                    cout << "0";
+                    continue;
+                }
                 cout << "1";
             }
             else if (tableauDonnees[m][n].type == 2)

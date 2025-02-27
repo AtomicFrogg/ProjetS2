@@ -2,7 +2,7 @@
 #include "Tour.h"
 struct Donnees
 {
-	//0 = terrain
+	//0 = ennemi
 	//1 = chemin
 	//2 = tourBase
 	//3 = Sniper
