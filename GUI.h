@@ -5,7 +5,7 @@
 #include "Joueur.h"
 #include "Carte.h"
 #include "Donnees.h"
-
+static bool FINJEU = false;
 
 
 using namespace std;
@@ -41,6 +41,7 @@ public:
     Donnees* getDonneesJoueur();
     bool ameliorerRange();
     bool ameliorerDegat();
+    void setFin(bool etat);
 
     Joueur* getJoueur();
     Carte* getCarte();

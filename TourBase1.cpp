@@ -23,8 +23,6 @@ void TourBase1::attaquer()
 			{
 				this->attaque = false;
 				faireDegat(i);
-				int j = 1;
-
 			}
 		}
 	}

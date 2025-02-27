@@ -2,8 +2,8 @@
 
 GUI::GUI()
 {
-    c = new Carte(100, 10000);
-    j = new Joueur(5, 1.5, 0, 0, 4, c, "Jacob");
+    c = new Carte(1, 10000);
+    j = new Joueur(5, 5, 0, 0, 1, c, "Jacob");
     for (int i = 0; i < HAUTEUR; i++)
     {
         for (int j = 0; j < LARGEUR; j++)
@@ -35,7 +35,7 @@ void GUI::moveEnnemies() {
 
 void GUI::lancerVague(int index) {
 
-    c->debutEnnemie(10);
+    c->debutEnnemie(index);
 
     Dimension coord;
     coord.x = 0;
@@ -46,9 +46,7 @@ void GUI::lancerVague(int index) {
     }    
 
     clock_t start;
-    cout << c->getVie() << endl;
-    cout << c->getTailleEnnemie() << endl;
-    while (c->getVie() > 0 and c->getTailleEnnemie() > 0)
+    while (c->getVie() > 0 and c->getTailleEnnemie() > 0 and !FINJEU)
     {
         start = clock();
         moveEnnemies();
@@ -127,80 +125,96 @@ void GUI::moveJoueurGauche(int x)
 
 void GUI::draw()
 {
-    int m, n;
-    for (int i = 0; i < 30; i++)
+    if(c->getVie() > 0)
     {
-        cout << endl;
-    }
-    drawControls();
-    cout << "Argent: " << c->getArgent() << endl;
-    cout << "Vie: " << c->getVie() << endl;
-    bool affichageEnnemie;
-    for (m = HAUTEUR - 1; m >= 0; m--)
-    {
-        cout << endl;
-
-        for (n = 0; n < LARGEUR; n++)
+        int m, n;
+        for (int i = 0; i < 30; i++)
         {
-            affichageEnnemie  = false;
-            for (int i = 0; i < c->getTailleEnnemie(); i++)
-            {
-                if (c->getCoordonnee(i).x == n and c->getCoordonnee(i).y == m) affichageEnnemie = true;
-            }
-            if (getCoordonneeJoueur().x == n && getCoordonneeJoueur().y == m)
-            {
-                cout << "j";
-            }
+            cout << endl;
+        }
+        drawControls();
+        cout << "Argent: " << c->getArgent() << endl;
+        cout << "Vie: " << c->getVie() << endl;
+        bool affichageEnnemie;
+        for (m = HAUTEUR - 1; m >= 0; m--)
+        {
+            cout << endl;
 
-            //if(n == 0 || n == 29)
-            //{
-            //    cout << "|\n|";
-            //}
+            for (n = 0; n < LARGEUR; n++)
+            {
+                affichageEnnemie = false;
+                for (int i = 0; i < c->getTailleEnnemie(); i++)
+                {
+                    if (c->getCoordonnee(i).x == n and c->getCoordonnee(i).y == m) affichageEnnemie = true;
+                }
+                if (getCoordonneeJoueur().x == n && getCoordonneeJoueur().y == m)
+                {
+                    cout << "j";
+                }
 
-            else if(affichageEnnemie && tableauDonnees[m][n].type == 1)
-            {
-                cout << "0";
-            }
+                //if(n == 0 || n == 29)
+                //{
+                //    cout << "|\n|";
+                //}
 
-            else if (tableauDonnees[m][n].type == 1)
-            {
-                cout << "1";
-            }
-            
-            else if (tableauDonnees[m][n].type == 2)
-            {
-                cout << "2";
-            }
-            else if (tableauDonnees[m][n].type == 3)
-            {
-                cout << "3";
-            }
-            else if (tableauDonnees[m][n].type == 4)
-            {
-                cout << "4";
-            }
-            else if (tableauDonnees[m][n].type == 5)
-            {
-                cout << "5";
+                else if (affichageEnnemie && tableauDonnees[m][n].type == 1)
+                {
+                    cout << "0";
+                }
 
-            }
-            else if (m == 0 || m == HAUTEUR - 1)
-            {
-                cout << "_";
-            }
-            else if ((n == 0 || n == LARGEUR - 1) && tableauDonnees[m][n].type == 0 && m != 0 && m != HAUTEUR - 1)
-            {
-                cout << "|";
-            }
-            else if (tableauDonnees[m][n].type == 0)
-            {
-                cout << " ";
+                else if (tableauDonnees[m][n].type == 1)
+                {
+                    cout << "1";
+                }
+
+                else if (tableauDonnees[m][n].type == 2)
+                {
+                    cout << "2";
+                }
+                else if (tableauDonnees[m][n].type == 3)
+                {
+                    cout << "3";
+                }
+                else if (tableauDonnees[m][n].type == 4)
+                {
+                    cout << "4";
+                }
+                else if (tableauDonnees[m][n].type == 5)
+                {
+                    cout << "5";
+
+                }
+                else if (m == 0 || m == HAUTEUR - 1)
+                {
+                    cout << "_";
+                }
+                else if ((n == 0 || n == LARGEUR - 1) && tableauDonnees[m][n].type == 0 && m != 0 && m != HAUTEUR - 1)
+                {
+                    cout << "|";
+                }
+                else if (tableauDonnees[m][n].type == 0)
+                {
+                    cout << " ";
+                }
             }
         }
+        if (tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type != 0 && tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type != 1)
+        {
+            drawInfoTour(tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type, tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].index);
+        }
+        // cout << c->getEnnemie()->getEnnemie(0)->getVie();
     }
-    if(tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type != 0 && tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type != 1)
+    else
     {
-        drawInfoTour(tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].type, tableauDonnees[getCoordonneeJoueur().y][getCoordonneeJoueur().x].index);
+        for (int i = 0; i < c->getTailleEnnemie(); i++)
+        {
+            c->retirerEnnemie(i);
+        }
+        for (int i = 0; i < 30; i++)
+        {
+            cout << endl;
+        }
+        cout << "Partie perdue... Vous avez succombe(e)!";
     }
 }
 
@@ -395,13 +409,13 @@ void GUI::drawInfoTour(int typeTour, int index)
         cout << endl << "Tour de Base: " << endl << "Tier: " << ptr->getTier() << endl << "Range: " << ptr->getRange() << endl << "Prix d'amelioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
         break;
     case 3:
-        cout << endl << "Sniper: " << endl << "Tier: " << ptr->getTier() << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
+        cout << endl << "Sniper: " << endl << "Tier: " << ptr->getTier() << endl << "Range: " << ptr->getRange() << endl << "Prix d'amelioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
         break;
     case 4:
-        cout << endl << "Cannonier: " << endl << "Tier: " << ptr->getTier() << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
+        cout << endl << "Cannonier: " << endl << "Tier: " << ptr->getTier() << endl << "Range: " << ptr->getRange() << endl << "Prix d'amelioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
         break;
     case 5:
-        cout << endl << "Narvolt: " << endl << "Tier: " << ptr->getTier() << endl << "Range: " << ptr->getRange() << endl << "Prix d'amélioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
+        cout << endl << "Narvolt: " << endl << "Tier: " << ptr->getTier() << endl << "Range: " << ptr->getRange() << endl << "Prix d'amelioration: " << ptr->getRange() * 200 << "$" << endl << "Degat: " << ptr->getDegat() << endl << "Prix d'amelioration: " << ptr->getDegat() * 400 << "$";
         break;
     }
 }
@@ -463,4 +477,9 @@ int GUI::checkMove(int index)
 void GUI::drawControls()
 {
     cout << "Mouvement: W A S D" << endl << "Attaque du joueur: Space" << endl << endl << "Placer: " << endl << "Tour de Base: E" << endl << "Cannonier: Q" << endl << "Sniper: R" << endl << "Narvolt: F" << endl << endl << "Amelioration: " << endl << "Range: X" << endl << "Degat: Z" << endl << endl << "Terminer partie: Esc" << endl;
+}
+
+void GUI::setFin(bool etat)
+{
+    FINJEU = etat;
 }

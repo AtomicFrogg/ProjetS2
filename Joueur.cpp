@@ -91,12 +91,20 @@ void Joueur::attaquerJoueur()
 			{
 				this->attaque = false;
 				int vie = (map->getVieEnnemie(i) - getDegat());
-				if (vie > 0)
-				{
-					map->getEnnemie()->getEnnemie(i)->setVie(vie);
+				if (getCompteurAttaque() == 1) {
+					cout << vie;
+					if (vie > 0)
+					{
+						map->getEnnemie()->getEnnemie(i)->setVie(vie);
 
-					setCompteurAttaque(getVitesseAttaque());
-					break;
+						setCompteurAttaque(getVitesseAttaque());
+						break;
+					}
+					else
+					{
+						map->retirerEnnemie(i);
+						break;
+					}
 				}
 				else
 				{

@@ -66,7 +66,6 @@ bool Tour::faireDegat(int i)
 	}
 	else
 	{
-		cout << "HAAAAAAAAAAAAAAAAAAAAAAAAAA";
 		map->retirerEnnemie(i);
 		return false;
 	}

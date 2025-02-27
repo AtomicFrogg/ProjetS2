@@ -63,7 +63,15 @@ void Input::input(GUI* gui)
 			if (GetAsyncKeyState(13) & 0x8000)
 			{
 				time = 1;
-
+				bool enter = 0;
+				if (enter == 0)
+				{
+					enter = true;
+				}
+				if (gui->getCarte()->getTailleEnnemie() <= 0 and enter)
+				{
+					gui->setFin(false);
+				}
 
 			}
 			//Space key
@@ -79,6 +87,7 @@ void Input::input(GUI* gui)
 				time = 1;
 	
 				FIN = true;
+				gui->setFin(true);
 			}
 			//E key
 			if (GetAsyncKeyState(69) & 0x8000)

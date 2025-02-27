@@ -9,10 +9,11 @@
 int main() {
 	GUI* gui = new GUI();
 	Input test;
+
 	thread t(&Input::input, gui);
 	//test.checkKey();
 	test.debutJeu();
-	gui->lancerVague(1);
+	gui->lancerVague(10);
 		//Met ton code ici Ric
 
 
