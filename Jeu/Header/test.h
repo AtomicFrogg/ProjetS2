@@ -1,6 +1,6 @@
 #pragma once
 #include "Joueur.h"
-#include "TourBase1.h"
+#include "../../Tours/Header/TourBase1.h"
 
 class Test
 {

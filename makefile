@@ -1,32 +1,32 @@
-GameTD:GameTD.o Ennemie.o Tour.o EnsembleEnnemie.o EnsembleTour.o Carte.o test.o Defenseur.o 
+GameTD: GameTD.o Ennemie.o Tour.o EnsembleEnnemie.o EnsembleTour.o Carte.o test.o Defenseur.o 
 	g++ -o GameTD GameTD.o Ennemie.o Tour.o EnsembleEnnemie.o EnsembleTour.o Carte.o test.o Defenseur.o
 	
-GameTD.o:GameTD.cpp test.h Carte.h EnsembleEnnemie.h Ennemie.h EnsembleTour.h Tour.h dimension.h Defenseur.h
-	g++ -g -c GameTD.cpp
+GameTD.o: Jeu/Code/GameTD.cpp Jeu/Header/test.h Jeu/Header/Carte.h Ennemis/Header/EnsembleEnnemie.h Ennemis/Header/Ennemie.h Tours/Header/EnsembleTour.h Tours/Header/Tour.h Jeu/Header/dimension.h Tours/Header/Defenseur.h
+	g++ -g -c Jeu/Code/GameTD.cpp
 	
-Ennemie.o:Ennemie.cpp Ennemie.h 
-	g++ -g -c Ennemie.cpp
+Ennemie.o: Ennemis/Code/Ennemie.cpp Ennemis/Header/Ennemie.h
+	g++ -g -c Ennemis/Code/Ennemie.cpp
 	
-Tour.o:Tour.cpp Tour.h dimension.h Defenseur.h Carte.h EnsembleEnnemie.h Ennemie.h EnsembleTour.h
-	g++ -g -c Tour.cpp
+Tour.o: Tours/Code/Tour.cpp Tours/Header/Tour.h Jeu/Header/dimension.h Tours/Header/Defenseur.h Jeu/Header/Carte.h Ennemis/Header/EnsembleEnnemie.h Ennemis/Header/Ennemie.h Tours/Header/EnsembleTour.h
+	g++ -g -c Tours/Code/Tour.cpp
 	
-EnsembleEnnemie.o: EnsembleEnnemie.cpp EnsembleEnnemie.h Ennemie.h
-	g++ -g -c EnsembleEnnemie.cpp
+EnsembleEnnemie.o: Ennemis/Code/EnsembleEnnemie.cpp Ennemis/Header/EnsembleEnnemie.h Ennemis/Header/Ennemie.h
+	g++ -g -c Ennemis/Code/EnsembleEnnemie.cpp
 
-EnsembleTour.0: EnsembleTour.cpp EnsembleTour.h Tour.h dimension.h  Defenseur.h
-	g++ -g -c EnsembleTour.cpp
+EnsembleTour.0: Tours/Code/EnsembleTour.cpp Tours/Header/EnsembleTour.h Tours/Header/Tour.h Jeu/Header/dimension.h  Tours/Header/Defenseur.h
+	g++ -g -c Tours/Code/EnsembleTour.cpp
 	
-Carte.o: Carte.cpp Carte.h EnsembleEnnemie.h Ennemie.h EnsembleTour.h Tour.h dimension.h Defenseur.h
-	g++ -g -c Carte.cpp
+Carte.o: Jeu/Code/Carte.cpp Jeu/Header/Carte.h Ennemis/Header/EnsembleEnnemie.h Ennemis/HeaderEnnemie.h Tours/Header/EnsembleTour.h Tours/Header/Tour.h Jeu/Header/dimension.h Tours/Header/Defenseur.h
+	g++ -g -c Jeu/Code/Carte.cpp
 	
-test.o: test.cpp test.h Carte.h EnsembleEnnemie.h Ennemie.h EnsembleTour.h Tour.h dimension.h
-	g++ -g -c test.cpp
+test.o: Jeu/Code/test.cpp Jeu/Header/test.h Jeu/Header/Carte.h Ennemis/Header/EnsembleEnnemie.h Ennemis/Header/Ennemie.h Tours/Header/EnsembleTour.h Tours/Header/Tour.h Jeu/Header/dimension.h
+	g++ -g -c Jeu/Code/test.cpp
 
-Defenseur.o: Defenseur.cpp dimension.h Defenseur.h
-	g++ -g -c Defenseur.cpp
+Defenseur.o: Tours/Code/Defenseur.cpp Jeu/Header/dimension.h Tours/Header/Defenseur.h
+	g++ -g -c Tours/Code/Defenseur.cpp
 	
-Joueur.o: Joueur.cpp Joueur.h dimension.h Defenseur.h
-	g++ -g -c Joueur.cpp
+Joueur.o: Jeu/Code/Joueur.cpp Jeu/Header/Joueur.h Jeu/Header/dimension.h Tours/Header/Defenseur.h
+	g++ -g -c Jeu/Code/Joueur.cpp
 	
 clean:
 	rm -f *.o

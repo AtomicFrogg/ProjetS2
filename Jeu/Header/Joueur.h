@@ -1,10 +1,10 @@
 #pragma once
 #include <string.h>
-#include "Defenseur.h"
-#include "EnsembleTour.h"
-#include "TourBase1.h"
-#include "Canonnier.h"
-#include "Narvolt.h"
+#include "../../Tours/Header/Defenseur.h"
+#include "../../Tours/Header/EnsembleTour.h"
+#include "../../Tours/Header/TourBase1.h"
+#include "../../Tours/Header/Canonnier.h"
+#include "../../Tours/Header/Narvolt.h"
 
 
 class Joueur : public Defenseur {

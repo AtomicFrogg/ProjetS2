@@ -1,9 +1,9 @@
 #pragma once
-#include "EnsembleEnnemie.h"
-#include "Ennemie.h"
-#include "EnnemieBaleine.h"
-#include "EnnemieBaltimore.h"
-#include "EnnemieRequin.h"
+#include "../../Ennemis/Header/EnsembleEnnemie.h"
+#include "../../Ennemis/Header/Ennemie.h"
+#include "../../Ennemis/Header/EnnemieBaleine.h"
+#include "../../Ennemis/Header/EnnemieBaltimore.h"
+#include "../../Ennemis/Header/EnnemieRequin.h"
 #include <iostream>
 #include <cstdlib>
 
