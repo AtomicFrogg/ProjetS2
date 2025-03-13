@@ -1,5 +1,5 @@
 #pragma once
-#include "Tour.h"
+#include "../../Tours/Header/Tour.h"
 struct Donnees
 {
 	//0 = ennemi

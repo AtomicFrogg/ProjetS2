@@ -1,4 +1,4 @@
-#include "EnsembleEnnemie.h"
+#include "../Header/EnsembleEnnemie.h"
 
 bool EnsembleEnnemie::ajouterEnnemie(Ennemie* mob)
 {

@@ -1,8 +1,8 @@
 #include <thread>
-#include "Input.h"
-#include "Tour.h"
-#include "Ennemie.h"
-#include "test.h"
+#include "../Header/Input.h"
+#include "../../Tours/Header/Tour.h"
+#include "../../Ennemis/Header/Ennemie.h"
+#include "../Header/test.h"
 #include <thread>
 
 

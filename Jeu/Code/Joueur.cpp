@@ -1,4 +1,4 @@
-#include "Joueur.h"
+#include "../Header/Joueur.h"
 
 Joueur::Joueur(int d, float r, int x, int y, int va, Carte* c, string n) :map(c), Defenseur(d, r, x, y, va)
 {

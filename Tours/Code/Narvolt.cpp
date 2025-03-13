@@ -1,16 +1,14 @@
-#include "TourBase1.h"
+#include "../Header/Narvolt.h"
 
-TourBase1::TourBase1(int d, float r, int x, int y, int va, int p, int t, Carte* c) :Tour(d, r, x, y, va, p, t, c)
+Narvolt::Narvolt(int d, float r, int x, int y, int va, int p, int t, Carte* c, int rb, float re) :Tour(d, r, x, y, va, p, t, c), rebond(rb), rangeElectricte(re)
 {
 }
 
-
-TourBase1::~TourBase1()
+Narvolt::~Narvolt()
 {
 }
 
-
-void TourBase1::attaquer()
+void Narvolt::attaquer()
 {
 
 	if (attaque == true)
@@ -23,6 +21,13 @@ void TourBase1::attaquer()
 			{
 				this->attaque = false;
 				faireDegat(i);
+				int j = 1;
+				while (i >= j && sqrt(carre(map->getCoordonnee(i - j + 1).x - map->getCoordonnee(i - j).x) + carre(map->getCoordonnee(i - j + 1).y - map->getCoordonnee(i - j).y)) <= rangeElectricte && j > rebond)
+				{
+					faireDegat(i);
+					j++;
+				}
+				setCompteurAttaque(getVitesseAttaque());
 			}
 		}
 	}
@@ -38,8 +43,9 @@ void TourBase1::attaquer()
 }
 
 
-bool TourBase1::ameliorerRange()
+bool Narvolt::ameliorerRange()
 {
+
 	if (getTier() < MAX_TIER && this->map->getArgent() >= (200 * getRange()))
 	{
 		this->map->setArgent(this->map->getArgent() - (200 * getRange()));
@@ -51,8 +57,7 @@ bool TourBase1::ameliorerRange()
 	return false;
 }
 
-
-bool TourBase1::ameliorerDegat()
+bool Narvolt::ameliorerDegat()
 {
 	if (getTier() < MAX_TIER && map->getArgent() >= (400 * getDegat()))
 	{

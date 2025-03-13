@@ -1,4 +1,4 @@
-#include "Tour.h"
+#include "../Header/Tour.h"
 
 Tour::Tour(int d, float r, int x, int y, int va, int p, int t, Carte* c) :Defenseur(d, r, x, y, va), prix(p), tier(t), map(c)
 {

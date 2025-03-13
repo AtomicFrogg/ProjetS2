@@ -1,4 +1,4 @@
-#include "Carte.h"
+#include "../Header/Carte.h"
 
 
 Carte::Carte(int v, int a) :vie(v), argent(a)

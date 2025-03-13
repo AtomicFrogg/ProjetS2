@@ -1,7 +1,7 @@
 #pragma once
-#include "Carte.h"
+#include "../../Jeu/Header/Carte.h"
 #include "Defenseur.h"
-#include "dimension.h"
+#include "../../Jeu/Header/dimension.h"
 #include <iostream>
 #include <cmath>
 using namespace std;

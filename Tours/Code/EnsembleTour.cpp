@@ -1,4 +1,4 @@
-#include "EnsembleTour.h"
+#include "../Header/EnsembleTour.h"
 Tour* EnsembleTour::ajouterTour(Tour* nouvelleTour)
 {
 	if (nouvelleTour == nullptr) return nullptr;

@@ -1,5 +1,5 @@
 #pragma once
-#include "dimension.h"
+#include "../../Jeu/Header/dimension.h"
 //#include "Carte.h"
 
 class Ennemie

@@ -1,4 +1,4 @@
-#include "EnnemieBaleine.h"
+#include "../Header/EnnemieBaleine.h"
 
 EnnemieBaleine::EnnemieBaleine(int v, int vit, int pos, int r) 
 {
