@@ -1,8 +1,8 @@
 TEMPLATE     = vcapp
 TARGET       = GameTD
 CONFIG      += warn_on qt debug windows console
-HEADERS     += Carte.h Defenseur.h dimension.h Ennemie.h EnsembleEnnemie.h EnsembleTour.h Joueur.h test.h Tour.h TourBase1.h Narvolt.h Canonnier.h Input.h GUI.h Donnees.h
-SOURCES     += Carte.cpp Defenseur.cpp Ennemie.cpp EnsembleEnnemie.cpp EnsembleTour.cpp GameTD.cpp Joueur.cpp test.cpp Tour.cpp TourBase1.cpp Narvolt.cpp Canonnier.cpp Input.cpp GUI.cpp
-INCLUDEPATH += 
+HEADERS     += Jeu\Header\Carte.h Tours\Header\Defenseur.h Jeu\Header\dimension.h Ennemis\Header\Ennemie.h Ennemis\Header\EnsembleEnnemie.h Tours\Header\EnsembleTour.h Jeu\Header\Joueur.h Jeu\Header\test.h Tours\Header\Tour.h Tours\Header\TourBase1.h Tours\Header\Narvolt.h Tours\Header\Canonnier.h Jeu\Header\Input.h Jeu\Header\GUI.h Jeu\Header\Donnees.h
+SOURCES     += Jeu\Code\Carte.cpp Tours\Code\Defenseur.cpp Ennemis\Code\Ennemie.cpp Ennemis\Code\EnsembleEnnemie.cpp Tours\Code\EnsembleTour.cpp Jeu\Code\GameTD.cpp Jeu\Code\Joueur.cpp Jeu\Code\test.cpp Tours\Code\Tour.cpp Tours\Code\TourBase1.cpp Tours\Code\Narvolt.cpp Tours\Code\Canonnier.cpp Jeu\Code\Input.cpp Jeu\Code\GUI.cpp
+INCLUDEPATH +=
 LIBS        += 
 QT          += widgets
