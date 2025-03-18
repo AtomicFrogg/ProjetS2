@@ -14,7 +14,6 @@ int main() {
 	//test.checkKey();
 	test.debutJeu();
 	gui->lancerVague(10);
-		//Met ton code ici Ric
 
 
 	FIN = true;

@@ -15,19 +15,24 @@ void Input::input(GUI* gui)
 	cin >> choixMap;
 	gui->chooseMap(choixMap);
 	debut = true;
+	string com;
+	string raw_msg;
 	switch (peripherique)
 	{
 	case '1':
 		cout << "Vous avez choisi la manette" << endl;
+
+
+		// Initialisation du port de communication
+
+		//cout << "Entrer le port de communication du Arduino: ";
+		//cin >> com;
+		com = "com6";
+		arduino = new SerialPort(com.c_str(), BAUD);
+
 		while (!FIN)
 		{
-			string raw_msg;
 
-			// Initialisation du port de communication
-			string com;
-			cout << "Entrer le port de communication du Arduino: ";
-			cin >> com;
-			arduino = new SerialPort(com.c_str(), BAUD);
 
 			//const char com = "\\\\.\\COM3";
 			//SerialPort arduino = SerialPort("\\\\.\\COM3");
@@ -37,29 +42,21 @@ void Input::input(GUI* gui)
 			}
 
 			// Structure de donnees JSON pour envoie et reception
-			int led_state = 1;
-			int ledv_state = 1;
-			int ledy_state = 1;
 			json j_msg_send; //= "{\"ledr\",\"ledv\",\"ledy\"}";
 			json j_msg_rcv;
-
-			// Boucle pour tester la communication bidirectionnelle Arduino-PC
-			for (int i = 0; i < 500; i++) {
-				// Envoie message Arduino
-				j_msg_send["ledv"] = ledv_state;
-				j_msg_send["ledr"] = led_state;
-				j_msg_send["ledy"] = ledy_state;
+			cout << "haut gauche bas droite = " << j_msg_rcv["boutonUp"] << j_msg_rcv["boutonLeft"] << j_msg_rcv["boutonDown"] << j_msg_rcv["boutonRight"] << "\n";			// Boucle pour tester la communication bidirectionnelle Arduino-PC
+			
 
 				if (!SendToSerial(arduino, j_msg_send)) {
-					cerr << "Erreur lors de l'envoie du message. " << endl;
+					cout << "Erreur lors de l'envoie du message. " << endl;
 				}
 
 				// Reception message Arduino
 				j_msg_rcv.clear(); // effacer le message precedent
 				if (!RcvFromSerial(arduino, raw_msg)) {
-					cerr << "Erreur lors de la reception du message. " << endl;
+					cout << "Erreur lors de la reception du message. " << endl;
 				}
-
+				
 				// Impression du message de l'Arduino si valide
 				if (raw_msg.size() > 0) {
 					//cout << "raw_msg: " << raw_msg ;  // debug
@@ -73,11 +70,13 @@ void Input::input(GUI* gui)
 					cout << " test_boutonUp:" << boutonUp << " test_joystick:" << Direction_joystick << "\r";
 					time = 0;
 					//Haut
+					
 					if (Direction_joystick == 4)
 					{
 						time = 1;
 						//cout << "W" ;
-
+						std::mutex mutex;
+						mutex.lock();
 						gui->moveJoueurUp(1);
 
 					}
@@ -86,67 +85,74 @@ void Input::input(GUI* gui)
 					{
 						time = 1;
 						//cout << "A" ;
-
+						std::mutex mutex;
+						mutex.lock();
 						gui->moveJoueurGauche(1);
-
+						mutex.unlock();
 					}
 					//Bas key
 					if (Direction_joystick == 2)
 					{
 						time = 1;
 						//cout << "S" ;
-
+						std::mutex mutex;
+						mutex.lock();
 						gui->moveJoueurDown(1);
-
+						mutex.unlock();
 					}
 					//Droite key
 					if (Direction_joystick == 1)
 					{
 						time = 1;
 						//cout << "D";
-
+						std::mutex mutex;
+						mutex.lock();
 						gui->moveJoueurDroite(1);
-
+						mutex.unlock();
 					}
 					//Haut-Droite
 					if (Direction_joystick == 5)
 					{
 						time = 1;
 						//cout << "D";
-
+						std::mutex mutex;
+						mutex.lock();
 						gui->moveJoueurDroite(1);
 						gui->moveJoueurUp(1);
-
+						mutex.unlock();
 					}
 					//Bas-Droite
 					if (Direction_joystick == 6)
 					{
 						time = 1;
 						//cout << "D";
-
+						std::mutex mutex;
+						mutex.lock();
 						gui->moveJoueurDroite(1);
 						gui->moveJoueurDown(1);
-
+						mutex.unlock();
 					}
 					//Bas-Gauche
 					if (Direction_joystick == 7)
 					{
 						time = 1;
 						//cout << "D";
-
+						std::mutex mutex;
+						mutex.lock();
 						gui->moveJoueurGauche(1);
 						gui->moveJoueurDown(1);
-
+						mutex.unlock();
 					}
 					//Haut-Gauche
 					if (Direction_joystick == 8)
 					{
 						time = 1;
 						//cout << "";
-
+						std::mutex mutex;
+						mutex.lock();
 						gui->moveJoueurGauche(1);
 						gui->moveJoueurUp(1);
-
+						mutex.unlock();
 					}
 					//Down Button
 					if (j_msg_rcv["boutonDown"])
@@ -208,18 +214,9 @@ void Input::input(GUI* gui)
 							cout << "amelioration reussi" << endl;
 						}
 					}
-
-
-				}
-
-				//Changement de l'etat led
-				led_state = !led_state;
-				ledv_state = !ledv_state;
-				ledy_state = !ledy_state;
-				// Bloquer le fil pour environ 1 sec
-				Sleep(75); // 75ms
+					
 			}
-
+			Sleep(50);
 
 
 
