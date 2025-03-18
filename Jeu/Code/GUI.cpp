@@ -397,6 +397,54 @@ void GUI::chooseMap(int choixMap)
         tableauDonnees[8][27].type = 1;
         tableauDonnees[8][28].type = 1;
     }
+    else if(choixMap == 2)
+    {
+        m = 9;
+        for(n = 1; n < 7; n++)
+        {
+            tableauDonnees[m][n].type = 1;
+        }
+        m = 10;
+        for(n = 6; n < 9; n++)
+        {
+            tableauDonnees[m][n].type = 1;
+        }
+        m = 9;
+        for(n = 8; n < 16; n++)
+        {
+            tableauDonnees[m][n].type = 1;
+        }
+        n = 15
+        for(m = 9; m > 6; m--)
+        {
+            tableauDonnees[m][n].type == 1;
+        }
+        m = 7
+         for(n = 15; n < 20; n++)
+        {
+            tableauDonnees[m][n].type = 1;
+        }
+        n = 19;
+        for(m = 7; m < 11; m+)
+        {
+            tableauDonnees[m][n].type == 1;
+        }
+        m = 10;
+         for(n = 18; n < 26; n++)
+        {
+            tableauDonnees[m][n].type = 1;
+        }
+        n = 25;
+         for(m = 10; m > 2; m++)
+        {
+            tableauDonnees[m][n].type == 1;
+        }
+        m = 3;
+        for(n = 25; n < 29; n++)
+        {
+            tableauDonnees[m][n].type = 1;
+        }
+    }
     
 }
 
