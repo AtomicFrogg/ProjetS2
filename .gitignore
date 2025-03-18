@@ -6,3 +6,5 @@ Debug
 .qmake.stash
 .vs
 release
+.qtcreator
+AffichageQT/AffichageQT.pro.user
