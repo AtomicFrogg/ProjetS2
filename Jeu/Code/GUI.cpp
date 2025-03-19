@@ -2,8 +2,8 @@
 
 GUI::GUI()
 {
-    c = new Carte(1, 10000);
-    j = new Joueur(5, 5, 0, 0, 1, c, "Jacob");
+    c = new Carte(100, 10000);
+    j = new Joueur(20, 5, 0, 0, 1, c, "Jacob");
     for (int i = 0; i < HAUTEUR; i++)
     {
         for (int j = 0; j < LARGEUR; j++)

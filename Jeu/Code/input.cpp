@@ -3,14 +3,15 @@ static SerialPort* arduino; //doit etre un objet global!
 
 int boutonUp = 0;
 int  Direction_joystick = 0;
-int led_state = 1;
-int ledv_state = 1;
-int ledy_state = 1;
+int led_state = 0;
+int ledv_state = 0;
+int ledy_state = 0;
 int boutUp = 0;
 int boutDown = 0;
 int boutLeft = 0;
 int boutRight = 0;
 bool accel = false;
+int vie = 1;
 
 void Input::input(GUI* gui)
 {
@@ -55,8 +56,8 @@ void Input::input(GUI* gui)
 			}
 
 			// Structure de donnees JSON pour envoie et reception
-
-				if(int vie = gui->getCarte()->getVie() >= 66)
+			vie = gui->getCarte()->getVie();
+				if(vie >= 66)
 				{
 					ledv_state = 1;
 					ledy_state = 1;
@@ -70,6 +71,7 @@ void Input::input(GUI* gui)
 				}
 				else 
 				{
+					//cout << vie<<endl;
 					ledv_state = 0;
 					ledy_state = 0;
 					led_state = 1;
@@ -79,15 +81,18 @@ void Input::input(GUI* gui)
 				j_msg_send["ledy"] = ledy_state;
 				j_msg_send["argent"] = gui->getCarte()->getArgent();
 				j_msg_send["vie"] = gui->getCarte()->getVie();
-			
+				//cout << j_msg_send;
 				if (!SendToSerial(arduino, j_msg_send)){
 					cout << "Erreur lors de l'envoie du message. " << endl;
 				}
 
 				// Reception message Arduino
 				j_msg_rcv.clear(); // effacer le message precedent
-				if (!RcvFromSerial(arduino, raw_msg)) {
-					cout << "Erreur lors de la reception du message. " << endl;
+				if (arduino->isConnected())
+				{
+					if (!RcvFromSerial(arduino, raw_msg)) {
+						cout << "Erreur lors de la reception du message. " << endl;
+					}
 				}
 				
 				// Impression du message de l'Arduino si valide
@@ -241,7 +246,7 @@ void Input::input(GUI* gui)
 					accel = j_msg_rcv["accelero"];
 					if (accel)
 					{
-						cout << "POKEMON AU COMBAT" << endl;
+						//cout << "POKEMON AU COMBAT" << endl;
 						std::mutex mutex;
 						mutex.lock();
 						gui->getJoueur()->attaquerJoueur();
@@ -264,7 +269,7 @@ void Input::input(GUI* gui)
 					}
 					
 			}
-			Sleep(50);
+			Sleep(75);
 
 
 

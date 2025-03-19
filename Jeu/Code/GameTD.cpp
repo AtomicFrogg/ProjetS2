@@ -13,7 +13,7 @@ int main() {
 	thread t(&Input::input, gui);
 	//test.checkKey();
 	test.debutJeu();
-	gui->lancerVague(10);
+	gui->lancerVague(20);
 
 
 	FIN = true;
