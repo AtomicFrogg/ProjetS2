@@ -3,6 +3,14 @@ static SerialPort* arduino; //doit etre un objet global!
 
 int boutonUp = 0;
 int  Direction_joystick = 0;
+int led_state = 1;
+int ledv_state = 1;
+int ledy_state = 1;
+int boutUp = 0;
+int boutDown = 0;
+int boutLeft = 0;
+int boutRight = 0;
+bool accel = false;
 
 void Input::input(GUI* gui)
 {
@@ -15,13 +23,16 @@ void Input::input(GUI* gui)
 	cin >> choixMap;
 	gui->chooseMap(choixMap);
 	debut = true;
+	json j_msg_send;
+	json j_msg_rcv;
+
 	string com;
 	string raw_msg;
 	switch (peripherique)
 	{
 	case '1':
-		cout << "Vous avez choisi la manette" << endl;
 
+		cout << "Vous avez choisi la manette" << endl;
 
 		// Initialisation du port de communication
 
@@ -29,7 +40,9 @@ void Input::input(GUI* gui)
 		//cin >> com;
 		com = "com6";
 		arduino = new SerialPort(com.c_str(), BAUD);
-
+		//int led_state = 1;
+		//int ledv_state = 1;
+		//int ledy_state = 1;
 		while (!FIN)
 		{
 
@@ -42,12 +55,32 @@ void Input::input(GUI* gui)
 			}
 
 			// Structure de donnees JSON pour envoie et reception
-			json j_msg_send; //= "{\"ledr\",\"ledv\",\"ledy\"}";
-			json j_msg_rcv;
-			cout << "haut gauche bas droite = " << j_msg_rcv["boutonUp"] << j_msg_rcv["boutonLeft"] << j_msg_rcv["boutonDown"] << j_msg_rcv["boutonRight"] << "\n";			// Boucle pour tester la communication bidirectionnelle Arduino-PC
-			
 
-				if (!SendToSerial(arduino, j_msg_send)) {
+				if(int vie = gui->getCarte()->getVie() >= 66)
+				{
+					ledv_state = 1;
+					ledy_state = 1;
+					led_state = 1;
+				}
+				else if (vie >= 33)
+				{
+					ledv_state = 0;
+					ledy_state = 1;
+					led_state = 1;
+				}
+				else 
+				{
+					ledv_state = 0;
+					ledy_state = 0;
+					led_state = 1;
+				}
+				j_msg_send["ledv"] = ledv_state;
+				j_msg_send["ledr"] = led_state;
+				j_msg_send["ledy"] = ledy_state;
+				j_msg_send["argent"] = gui->getCarte()->getArgent();
+				j_msg_send["vie"] = gui->getCarte()->getVie();
+			
+				if (!SendToSerial(arduino, j_msg_send)){
 					cout << "Erreur lors de l'envoie du message. " << endl;
 				}
 
@@ -59,15 +92,17 @@ void Input::input(GUI* gui)
 				
 				// Impression du message de l'Arduino si valide
 				if (raw_msg.size() > 0) {
+					//cout << raw_msg.size() << "\n";
+					//cout  << raw_msg << "\n";			// Boucle pour tester la communication bidirectionnelle Arduino-PC
+
 					//cout << "raw_msg: " << raw_msg ;  // debug
 					// Transfert du message en json
 					j_msg_rcv = json::parse(raw_msg);
-					cout << "Message de l'Arduino: " << j_msg_rcv;
+					//cout << "Message de l'Arduino: " << j_msg_rcv;
 
 					//comment assigner valeur voir ci-dessous
-					boutonUp = j_msg_rcv["boutonUp"];
 					Direction_joystick = j_msg_rcv["joystick"];
-					cout << " test_boutonUp:" << boutonUp << " test_joystick:" << Direction_joystick << "\r";
+					//cout << " test_boutonUp:" << boutonUp << " test_joystick:" << Direction_joystick << "\r";
 					time = 0;
 					//Haut
 					
@@ -155,7 +190,8 @@ void Input::input(GUI* gui)
 						mutex.unlock();
 					}
 					//Down Button
-					if (j_msg_rcv["boutonDown"])
+					boutDown = j_msg_rcv["boutonDown"];
+					if (boutDown)
 					{
 						time = 1;
 						std::mutex mutex;
@@ -164,7 +200,8 @@ void Input::input(GUI* gui)
 						mutex.unlock();
 					}
 					//Up Button
-					if (j_msg_rcv["boutonUp"])
+					boutUp = j_msg_rcv["boutonUp"];
+					if (boutUp)
 					{
 						time = 1;
 						std::mutex mutex;
@@ -173,7 +210,8 @@ void Input::input(GUI* gui)
 						mutex.unlock();
 					}
 					//Left Button
-					if (j_msg_rcv["boutonLeft"])
+					boutLeft = j_msg_rcv["boutonLeft"];
+					if (boutLeft)
 					{
 						if (gui->getDonneesJoueur()->type >= 2)
 						{
@@ -187,7 +225,8 @@ void Input::input(GUI* gui)
 
 					}
 					//Right Button
-					if (j_msg_rcv["boutonRight"])
+					boutRight = j_msg_rcv["boutonRight"];
+					if (boutRight)
 					{
 						if (gui->getDonneesJoueur()->type >= 2)
 						{
@@ -197,6 +236,15 @@ void Input::input(GUI* gui)
 						std::mutex mutex;
 						mutex.lock();
 						gui->ajouterTourNarvolt();
+						mutex.unlock();
+					}
+					accel = j_msg_rcv["accelero"];
+					if (accel)
+					{
+						cout << "POKEMON AU COMBAT" << endl;
+						std::mutex mutex;
+						mutex.lock();
+						gui->getJoueur()->attaquerJoueur();
 						mutex.unlock();
 					}
 					if (time >= 1)

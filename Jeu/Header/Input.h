@@ -15,8 +15,6 @@ using json = nlohmann::json;
 /*------------------------------ Constantes ---------------------------------*/
 #define BAUD 115200           // Frequence de transmission serielle
 #define MSG_MAX_SIZE 1024   // Longueur maximale d'un message
-
-
 /*------------------------- Prototypes de fonctions -------------------------*/
 bool SendToSerial(SerialPort* arduino, json j_msg);
 bool RcvFromSerial(SerialPort* arduino, string& msg);

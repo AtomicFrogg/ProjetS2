@@ -414,18 +414,18 @@ void GUI::chooseMap(int choixMap)
         {
             tableauDonnees[m][n].type = 1;
         }
-        n = 15
+        n = 15;
         for(m = 9; m > 6; m--)
         {
             tableauDonnees[m][n].type == 1;
         }
-        m = 7
+        m = 7;
          for(n = 15; n < 20; n++)
         {
             tableauDonnees[m][n].type = 1;
         }
         n = 19;
-        for(m = 7; m < 11; m+)
+        for(m = 7; m < 11; m++)
         {
             tableauDonnees[m][n].type == 1;
         }
