@@ -6,3 +6,4 @@ SOURCES     += Jeu\Code\Carte.cpp Tours\Code\Defenseur.cpp Ennemis\Code\Ennemie.
 INCLUDEPATH +=
 LIBS        += 
 QT          += widgets
+RESSOURCES	+= image.qrc

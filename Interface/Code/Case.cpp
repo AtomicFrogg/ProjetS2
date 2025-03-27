@@ -2,17 +2,17 @@
 
 Case::Case(QWidget *parent, int type):QLabel(parent)
 {
-	this->setFixedSize(30, 30);
+	this->setFixedSize(100, 100);
 
 	switch (type)
 	{
 
 	case 0:
-		this->setPixmap(QPixmap("-1.png"));
+		this->setPixmap(QPixmap("Images/0.png"));
 		std::cout << "0";
 		break;
 	case 1:
-		this->setPixmap(QPixmap("../../Images/1.png"));
+		this->setPixmap(QPixmap("Images/1.png"));
 		std::cout << "1";
 		break;
 	case 2:
