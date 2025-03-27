@@ -12,7 +12,9 @@ Interface::Interface(GUI *gui)
 			layout->addWidget(image,i,j);
 		}
 	}
+	layout->setSpacing(0);
 	this->setLayout(layout);
+	
 }
 
 Interface::~Interface()
