@@ -3,20 +3,27 @@
 #include "../../Tours/Header/Tour.h"
 #include "../../Ennemis/Header/Ennemie.h"
 #include "../Header/test.h"
-#include <thread>
+#include <qapplication.h>
+#include <qpushbutton.h>
+#include "../../Interface/Header/Interface.h"
 
-
-int main() {
+int main(int argc, char* argv[]) {
 	GUI* gui = new GUI();
-	Input test;
+	QApplication app(argc, argv);
+	Interface window(gui);
+	window.show();
+	app.exec();
 
-	thread t(&Input::input, gui);
-	//test.checkKey();
-	test.debutJeu();
-	gui->lancerVague(20);
+	
+	//Input test;
+
+	//thread t(&Input::input, gui);
+	////test.checkKey();
+	//test.debutJeu();
+	//gui->lancerVague(40);
 
 
-	FIN = true;
-	t.join();
+	//FIN = true;
+	//t.join();
 return 0;
 }

@@ -417,7 +417,7 @@ void GUI::chooseMap(int choixMap)
         n = 15;
         for(m = 9; m > 6; m--)
         {
-            tableauDonnees[m][n].type == 1;
+            tableauDonnees[m][n].type = 1;
         }
         m = 7;
          for(n = 15; n < 20; n++)
@@ -427,7 +427,7 @@ void GUI::chooseMap(int choixMap)
         n = 19;
         for(m = 7; m < 11; m++)
         {
-            tableauDonnees[m][n].type == 1;
+            tableauDonnees[m][n].type = 1;
         }
         m = 10;
          for(n = 18; n < 26; n++)
@@ -435,9 +435,9 @@ void GUI::chooseMap(int choixMap)
             tableauDonnees[m][n].type = 1;
         }
         n = 25;
-         for(m = 10; m > 2; m++)
+         for(m = 10; m > 2; m--)
         {
-            tableauDonnees[m][n].type == 1;
+            tableauDonnees[m][n].type = 1;
         }
         m = 3;
         for(n = 25; n < 29; n++)
@@ -530,4 +530,9 @@ void GUI::drawControls()
 void GUI::setFin(bool etat)
 {
     FINJEU = etat;
+}
+
+Donnees* GUI::getDonnees(int x, int y)
+{
+    return &tableauDonnees[x][y];
 }

@@ -138,7 +138,7 @@ Tour* Joueur::ajouterTourBase()
 
 Tour* Joueur::ajouterTourSniper()
 {
-	Tour* newTour = new TourBase1(50, 100, this->getPosition().x, this->getPosition().y, 6, 600, 0, map);
+	Tour* newTour = new TourBase1(50, 100, this->getPosition().x, this->getPosition().y, 10, 600, 0, map);
 	return ajouterTour(newTour);
 }
 
@@ -150,7 +150,7 @@ Tour* Joueur::ajouterTourCanonnier()
 
 Tour* Joueur::ajouterTourNarvolt()
 {
-	Tour* newTour = new Narvolt(20, 10, this->getPosition().x, this->getPosition().y, 4, 700, 0, map, 5, 5);
+	Tour* newTour = new Narvolt(20, 10, this->getPosition().x, this->getPosition().y, 4, 700, 0, map, 2, 3);
 	return ajouterTour(newTour);
 }
 

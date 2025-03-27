@@ -42,7 +42,7 @@ public:
     bool ameliorerRange();
     bool ameliorerDegat();
     void setFin(bool etat);
-
+    Donnees* getDonnees(int x, int y);
     Joueur* getJoueur();
     Carte* getCarte();
     int checkMove(int index);
