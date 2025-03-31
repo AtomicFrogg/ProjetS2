@@ -9,6 +9,11 @@
 
 int main(int argc, char* argv[]) {
 	GUI* gui = new GUI();
+	/*
+
+		Question du début (Manette ou clavier, Map et APP7)
+
+	*/
 	QApplication app(argc, argv);
 	Interface window(gui);
 	window.show();

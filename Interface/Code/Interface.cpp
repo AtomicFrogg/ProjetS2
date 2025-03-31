@@ -8,10 +8,11 @@ Interface::Interface(GUI *gui)
 		for (int j = 0; j < LARGEUR; j++)
 		{
 			int type = gui->getDonnees(i, j)->type;
-			Case *image = new Case(this,type);
+			Case *image = new Case(this,type,gui,i,j);
 			layout->addWidget(image,i,j);
 		}
 	}
+	layout->setContentsMargins(0,0,0,0);
 	layout->setSpacing(0);
 	this->setLayout(layout);
 	
