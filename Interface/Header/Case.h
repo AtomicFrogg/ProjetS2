@@ -14,6 +14,12 @@ class Case: public QLabel
 		void ajouterCanonnier();
 		void ajouterSniper();
 		void ajouterTourBase();
+
+		void ajouterBaleine();
+		void ajouterSaumon();
+		void ajouterRequin();
+
+
 		void clearImage();
 
 	private:
