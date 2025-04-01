@@ -125,6 +125,8 @@ QLayout* QtApp7::validation() {
     QPushButton* annuler = new QPushButton("Annuler");
     layout->addWidget(ok, 1, 1);
     layout->addWidget(annuler, 1, 2);
+
+    QObject::connect(annuler, SIGNAL(clicked()), qApp, SLOT(quit()));
     return layout;
 }
 
