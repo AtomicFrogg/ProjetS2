@@ -11,10 +11,11 @@
 int main(int argc, char* argv[]) {
 	GUI* gui = new GUI();
 	/*
-
+	
 		Question du d�but (Manette ou clavier, Map et APP7)
 
 	*/
+	gui->chooseMap(2);
 	QApplication app(argc, argv);
 	Interface window(gui);
 	QtApp7 w;

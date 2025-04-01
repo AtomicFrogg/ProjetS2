@@ -5,7 +5,7 @@ Interface::Interface(GUI *gui)
 	layout = new QGridLayout;
 	for (int i = 0; i < HAUTEUR; i++)
 	{
-		for (int j = 0; j < LARGEUR; j++)
+		for (int j = 1; j < LARGEUR - 1; j++)
 		{
 			int type = gui->getDonnees(i, j)->type;
 
