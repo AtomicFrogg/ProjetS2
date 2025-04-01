@@ -6,14 +6,14 @@ Case::Case(QWidget *parent, int t, GUI* g, int posi, int posj):QLabel(parent)
 	gui = g;
 	i = posi;
 	j = posj;
+	image = new QLabel(this);
 	this->setFixedSize(CARRE, CARRE);
 	choixBackground(type);
-	image = new QLabel(this);
 }
 
 Case::~Case()
 {
-
+	delete image;
 }
 
 void Case::choixBackground(int type)
@@ -71,30 +71,26 @@ void Case::choixBackground(int type)
 
 void Case::ajouterNarvolt()
 {
-	clearImage();
 	image->setPixmap(QPixmap("Images/Narvolt.png").scaled(CARRE, CARRE));
 }
 
 void Case::ajouterCanonnier()
 {
-	clearImage();
 	image->setPixmap(QPixmap("Images/Canonnier.png").scaled(CARRE, CARRE));
 }
 
 void Case::ajouterSniper()
 {
-	clearImage();
 	image->setPixmap(QPixmap("Images/Sniper.png").scaled(CARRE, CARRE));
 }
 
 void Case::ajouterTourBase()
 {
-	clearImage();
 	image->setPixmap(QPixmap("Images/TourBase.png").scaled(CARRE, CARRE));
 }
 
 void Case::clearImage()
 {
-	delete image;
+	delete this->image;
 	image = new QLabel(this);
 }
