@@ -27,9 +27,9 @@ class QtApp7 : public QMainWindow
            QLayout* enemie();
             ~QtApp7();
 
-    public slots:
-        void reset1();
-        //void reset2();
+private:
+    Ui::QtApp7Class ui;
+};
 
         private:
             QRadioButton* manette;

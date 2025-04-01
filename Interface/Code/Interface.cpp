@@ -2,6 +2,7 @@
 
 Interface::Interface(GUI *gui)
 {
+	Case* image;
 	layout = new QGridLayout;
 	this->setFixedSize(1000, HAUTEUR*30);
 	for (int i = 0; i < HAUTEUR; i++)
@@ -10,7 +11,7 @@ Interface::Interface(GUI *gui)
 		{
 			int type = gui->getDonnees(i, j)->type;
 
-			Case *image = new Case(this,type,gui,i,j);
+			image = new Case(this,type,gui,i,j);
 			QLabel *image = new QLabel(this);
 			image->setFixedSize(30, 30);
 
