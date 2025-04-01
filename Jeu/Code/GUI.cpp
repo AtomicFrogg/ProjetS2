@@ -220,7 +220,6 @@ void GUI::draw()
 
 
 
-
 bool GUI::ajouterTourBase()
 {
     if (getDonneesJoueur()->type == 0 && c->getArgent() >= 400)

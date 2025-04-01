@@ -89,6 +89,11 @@ void Case::ajouterTourBase()
 	image->setPixmap(QPixmap("Images/TourBase.png").scaled(CARRE, CARRE));
 }
 
+void Case::ajouterJoueur()
+{
+	image->setPixmap(QPixmap("Images/Joueur.png").scaled(CARRE, CARRE));
+}
+
 void Case::clearImage()
 {
 	delete this->image;
