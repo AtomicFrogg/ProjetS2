@@ -85,14 +85,14 @@ bool Carte::ajouterBaleine(int c)
 	return 1;
 }
 
-bool Carte::ajouterPerchaude(int c)
+bool Carte::ajouterSaumon(int c)
 {
 	Ennemie* newEnnemie = new Ennemie(20, 1, 50, 5, c);
 	ajouterEnnemie(newEnnemie);
 	return 1;
 }
 
-bool Carte::ajouterEspadon(int c)
+bool Carte::ajouterRequin(int c)
 {
 	Ennemie* newEnnemie = new Ennemie(100, 2, 100, c);
 	ajouterEnnemie(newEnnemie);
@@ -185,10 +185,10 @@ void Carte::debutEnnemie(int nbr)
 			ajouterBaleine(i);
 			break;
 		case 1:
-			ajouterEspadon(i);
+			ajouterRequin(i);
 			break;
 		case 2:
-			ajouterPerchaude(i);
+			ajouterSaumon(i);
 			break;
 		default:
 			break;

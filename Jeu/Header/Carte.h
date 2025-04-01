@@ -28,8 +28,8 @@ public:
 	void deplacementEnnemie();
 	void attaqueEnnemie();
 	bool ajouterBaleine(int c);
-	bool ajouterEspadon(int c);
-	bool ajouterPerchaude(int c);
+	bool ajouterRequin(int c);
+	bool ajouterSaumon(int c);
 	void debutEnnemie(int nbr);
 
 	void reinitialiserEnnemie();
