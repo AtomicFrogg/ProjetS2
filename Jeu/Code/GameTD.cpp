@@ -6,17 +6,20 @@
 #include <qapplication.h>
 #include <qpushbutton.h>
 #include "../../Interface/Header/Interface.h"
+#include "../../Interface/Header/QtApp7.h"
 
 int main(int argc, char* argv[]) {
 	GUI* gui = new GUI();
 	/*
 	
-		Question du début (Manette ou clavier, Map et APP7)
+		Question du dï¿½but (Manette ou clavier, Map et APP7)
 
 	*/
 	gui->chooseMap(2);
 	QApplication app(argc, argv);
 	Interface window(gui);
+	QtApp7 w;
+    w.show();
 	window.show();
 	app.exec();
 

@@ -96,6 +96,7 @@ void Input::input(GUI* gui)
 				}
 				
 				// Impression du message de l'Arduino si valide
+				cout << "message " << raw_msg.size() << endl;
 				if (raw_msg.size() > 0) {
 					//cout << raw_msg.size() << "\n";
 					//cout  << raw_msg << "\n";			// Boucle pour tester la communication bidirectionnelle Arduino-PC
