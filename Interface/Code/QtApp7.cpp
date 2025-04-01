@@ -76,6 +76,7 @@ QTabWidget* QtApp7::Tours() {
     layout->addWidget(valider, 1, 1);
     layout->addWidget(reset, 1, 2);
 
+    QObject::connect(valider, SIGNAL(clicked()), this, SLOT(valider1()));
     QObject::connect(reset, SIGNAL(clicked()), this, SLOT(reset1()));
 
     vbox->addLayout(formulaire);
@@ -91,9 +92,9 @@ QTabWidget* QtApp7::Tours() {
     comboenemie->addItem("Poisson zombie");
     comboenemie->addItem("Neuci");
     comboenemie->addItem("Pieuvre");
-    le12 = new QLineEdit();
-    le13 = new QLineEdit();
-    le14 = new QLineEdit();
+    le12 = new QSpinBox();
+    le13 = new QSpinBox();
+    le14 = new QSpinBox();
     //organisation
     formulaire2->addRow("Type Enemie", comboenemie);
     formulaire2->addRow("Dommage", le12);
@@ -105,6 +106,9 @@ QTabWidget* QtApp7::Tours() {
 
     validation->setFixedSize(70, 30);
     annulation->setFixedSize(70, 30);
+
+    QObject::connect(validation, SIGNAL(clicked()), this, SLOT(valider2()));
+    QObject::connect(annulation, SIGNAL(clicked()), this, SLOT(reset2()));
 
     layout2->addWidget(validation, 1, 1);
     layout2->addWidget(annulation, 1, 2);
@@ -125,6 +129,7 @@ QLayout* QtApp7::enemie() {
     layout->addWidget(ok, 1, 1);
     layout->addWidget(annuler, 1, 2);
 
+    QObject::connect(ok, SIGNAL(clicked()), this, SLOT(soummission()));
     QObject::connect(annuler, SIGNAL(clicked()), qApp, SLOT(quit()));
     return layout;
 }
@@ -133,6 +138,90 @@ QLayout* QtApp7::enemie() {
 void QtApp7::reset1() {
     le1->setValue(0);
     le2->setValue(0);
+}
+
+void QtApp7::reset2() {
+    le12->setValue(0);
+    le13->setValue(0);
+    le14->setValue(0);
+}
+
+bool QtApp7::verification1() {
+    QString typeTour;
+    int  range, dommage;
+    typeTour = comboTours->currentText();
+    range = le1->value();
+    dommage = le2->value();
+    if (range < 10 || dommage < 10) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+void QtApp7::valider1() {
+    QString typeTour;
+    int  range, dommage;
+    typeTour = comboTours->currentText();
+    range = le1->value();
+    dommage = le2->value();
+
+    if (!verification1()) {
+        QMessageBox::warning(this, "Information Tour", "Ces valeurs sont trop basses pour debuter le jeu!!!");
+    }
+    else {
+        QMessageBox::information(this, "Information Tour", QString("Type Tour:%1<br/>").arg(typeTour) + QString("range:%1<br/>").arg(range) + QString("dommage:%1<br/>").arg(dommage));
+    }
+}
+
+bool QtApp7::verification2() {
+    QString typeEnemie;
+    result = false;
+    int  vitesse, vie, dommage;
+    typeEnemie = comboenemie->currentText();
+
+    dommage = le12->value();
+    vitesse = le13->value();
+    vie = le14->value();
+
+    if (dommage < 10 || vitesse < 10 || vie < 10) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+void QtApp7::valider2() {
+    QString typeEnemie;
+    int  vitesse, vie, dommage;
+    typeEnemie = comboenemie->currentText();
+
+    dommage = le12->value();
+    vitesse = le13->value();
+    vie = le14->value();
+
+    if (!verification2()) {
+        QMessageBox::warning(this, "Information Enemie", "Ces valeurs sont trop basses pour debuter le jeu!!!");
+    }
+    else {
+        QMessageBox::information(this, "Information Enemie", QString("Type Enemie:%1<br/>").arg(typeEnemie) + QString("dommage:%1<br/>").arg(dommage) + QString("vitesse:%1<br/>").arg(vitesse) + QString("vie:%1<br/>").arg(vie));
+    }
+}
+
+void QtApp7::soummission(){
+    if (!verification1() || !verification2()) {
+        QMessageBox::warning(this, "Information Generale", "Ces valeurs sont trop basses pour debuter le jeu!!!");
+    }
+    else{
+        if (manette->isChecked()) {
+            QMessageBox::information(this, "Information Generale", "Vous avez choisir la <strong>manette</strong> pour le jeu!!!");
+        }
+        else {
+            QMessageBox::information(this, "Information Generale", "Vous avez choisir le <strong>clavier</strong> pour le jeu!!!");
+        }
+    }
 }
 
 QtApp7::~QtApp7()

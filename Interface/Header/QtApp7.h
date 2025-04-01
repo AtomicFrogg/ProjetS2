@@ -25,11 +25,16 @@ class QtApp7 : public QMainWindow
            QLayout* outilJeu();
            QTabWidget* Tours();
            QLayout* enemie();
+           bool verification1();
+           bool verification2();
             ~QtApp7();
 
-private:
-    Ui::QtApp7Class ui;
-};
+    public slots:
+        void reset1();
+        void reset2();
+        void valider1();
+        void valider2();
+        void soummission();
 
         private:
             QRadioButton* manette;
@@ -48,4 +53,5 @@ private:
             QPushButton* annulation;
             QPushButton* ok;
             QPushButton* annuler;
+            bool result;
         };
