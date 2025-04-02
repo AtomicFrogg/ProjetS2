@@ -3,10 +3,11 @@
 #include <iostream>
 #include <../../Jeu/Header/GUI.h>
 #include <qobject.h>
+#include <string>
 const int CARRE = 30;
 class Case: public QLabel
 {
-//Q_OBJECT
+Q_OBJECT
 	public:
 		Case(QWidget* parent = nullptr, int t = 0, GUI* g = nullptr, int posi = 0, int posj = 0);
 		~Case();
@@ -24,7 +25,7 @@ class Case: public QLabel
 
 
 		void clearImage();
-
+		QLabel* getImage();
 	private:
 		GUI* gui;
 		int type;
