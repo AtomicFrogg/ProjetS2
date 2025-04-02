@@ -17,18 +17,16 @@ public:
 	QGridLayout* getLayout();
 	Case* getCase(int i, int j);
 public slots:
-	bool ajouterNarvolt(int i, int j);
-public slots:
+	bool ajouterNarvolt();
 	bool ajouterCanonnier();
-public slots:
-	bool ajouterSniper(int i, int j);
-public slots:
-	bool ajouterTourBase(int i, int j);
+	bool ajouterSniper();
+	bool ajouterTourBase();
 
 	bool ajouterBaleine(int i, int j);
 	bool ajouterSaumon(int i, int j);
 	bool ajouterRequin(int i, int j);
 private:
+	
 	QGridLayout* layout;
 	map<string, Case*> grille;
 	GUI* g;
