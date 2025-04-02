@@ -25,6 +25,7 @@ public slots:
 	bool ajouterBaleine(int i, int j);
 	bool ajouterSaumon(int i, int j);
 	bool ajouterRequin(int i, int j);
+	bool ajouterJoueur();
 private:
 	
 	QGridLayout* layout;

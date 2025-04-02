@@ -48,6 +48,11 @@ Interface::Interface(GUI *gui)
 	QObject::connect(TB, SIGNAL(clicked()), this, SLOT(ajouterTourBase()));
 	layout->addWidget(TB, 4, LARGEUR);
 
+	QPushButton* Jou = new QPushButton("Joueur");
+	Jou->setCursor(Qt::PointingHandCursor);
+	QObject::connect(Jou, SIGNAL(clicked()), this, SLOT(ajouterJoueur()));
+	layout->addWidget(Jou, 5, LARGEUR);
+
 	//QPushButton* quit = new QPushButton("QUITTER");
 	//quit->setCursor(Qt::PointingHandCursor);
 	//QObject::connect(quit, SIGNAL(clicked()), qApp, SLOT(quit()));
@@ -170,4 +175,14 @@ bool Interface::ajouterRequin(int i, int j) {
 
 
 	return true;
+}
+
+bool Interface::ajouterJoueur()
+{
+	int i = HAUTEUR - g->getJoueur()->getPosition().y;
+	int j = g->getCoordonneeJoueur().x;
+	if (i < 0 || i >= HAUTEUR || j < 1 || j > LARGEUR - 1) return false;
+	Case* grille = getCase(i, j);
+	grille->ajouterJoueur();
+	grille->show();
 }
