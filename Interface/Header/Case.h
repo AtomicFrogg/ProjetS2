@@ -4,7 +4,7 @@
 #include <../../Jeu/Header/GUI.h>
 #include <qobject.h>
 #include <string>
-const int CARRE = 30;
+const int CARRE = 40;
 class Case: public QLabel
 {
 Q_OBJECT
