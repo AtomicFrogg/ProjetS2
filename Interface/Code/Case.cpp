@@ -7,8 +7,8 @@ Case::Case(QWidget *parent, int t, GUI* g, int posi, int posj):QLabel(parent)
 	i = posi;
 	j = posj;
 	image = new QLabel(this);
-	this->setFixedSize(CARRE, CARRE);
 	choixBackground(type);
+	this->setFixedSize(CARRE, CARRE);
 }
 
 Case::~Case()
@@ -36,30 +36,37 @@ void Case::choixBackground(int type)
 
 	case 0:
 		this->setPixmap(QPixmap("Images/Grass.png").scaled(CARRE, CARRE));
+		cout << "1";
 		break;
 	case 1:
 		if (haut && bas)
 		{
+			cout << "2";
 			this->setPixmap(QPixmap("Images/Water1.png").scaled(CARRE, CARRE));
 		}
 		else if (droit && gauche)
 		{
+			cout << "3";
 			this->setPixmap(QPixmap("Images/Water.png").scaled(CARRE, CARRE));
 		}
 		else if (gauche && haut)
 		{
+			cout << "4";
 			this->setPixmap(QPixmap("Images/WaterCoin4.png").scaled(CARRE, CARRE));
 		}
 		else if (droit && haut)
 		{
+			cout << "5";
 			this->setPixmap(QPixmap("Images/WaterCoin1.png").scaled(CARRE, CARRE));
 		}
 		else if (droit && bas)
 		{
+			cout << "6";
 			this->setPixmap(QPixmap("Images/WaterCoin2.png").scaled(CARRE, CARRE));
 		}
 		else if (gauche && bas)
 		{
+			cout << "7";
 			this->setPixmap(QPixmap("Images/WaterCoin3.png").scaled(CARRE, CARRE));
 		}
 		break;

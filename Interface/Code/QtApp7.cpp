@@ -1,4 +1,4 @@
-#include "QtApp7.h"
+#include "../Header/QtApp7.h"
 
 QtApp7::QtApp7() : QMainWindow()
 {
