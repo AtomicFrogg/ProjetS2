@@ -5,7 +5,6 @@
 #include "Joueur.h"
 #include "Carte.h"
 #include "Donnees.h"
-#include "../../Interface/Header/Interface.h"
 static bool FINJEU = false;
 
 

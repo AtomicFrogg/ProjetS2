@@ -1,7 +1,7 @@
 #pragma once
 #include <qlabel.h>
 #include <iostream>
-#include <../../Jeu/Header/GUI.h>
+#include "../../Jeu/Header/GUI.h"
 #include <qobject.h>
 #include <string>
 const int CARRE = 40;
