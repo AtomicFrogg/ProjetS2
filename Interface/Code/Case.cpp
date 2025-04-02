@@ -7,8 +7,17 @@ Case::Case(QWidget *parent, int t, GUI* g, int posi, int posj):QLabel(parent)
 	i = posi;
 	j = posj;
 	image = new QLabel(this);
-	this->setFixedSize(CARRE, CARRE);
 	choixBackground(type);
+	this->setFixedSize(CARRE, CARRE);
+
+	string nom = "Case";
+	nom += std::to_string(i);
+	nom.append(";");
+	nom += std::to_string(j);
+
+	this->setObjectName(nom);
+	QString mot = this->objectName();
+	cout << mot.toStdString();
 }
 
 Case::~Case()
@@ -36,30 +45,37 @@ void Case::choixBackground(int type)
 
 	case 0:
 		this->setPixmap(QPixmap("Images/Grass.png").scaled(CARRE, CARRE));
+
 		break;
 	case 1:
 		if (haut && bas)
 		{
+
 			this->setPixmap(QPixmap("Images/Water1.png").scaled(CARRE, CARRE));
 		}
 		else if (droit && gauche)
 		{
+
 			this->setPixmap(QPixmap("Images/Water.png").scaled(CARRE, CARRE));
 		}
 		else if (gauche && haut)
 		{
+
 			this->setPixmap(QPixmap("Images/WaterCoin4.png").scaled(CARRE, CARRE));
 		}
 		else if (droit && haut)
 		{
+	
 			this->setPixmap(QPixmap("Images/WaterCoin1.png").scaled(CARRE, CARRE));
 		}
 		else if (droit && bas)
 		{
+
 			this->setPixmap(QPixmap("Images/WaterCoin2.png").scaled(CARRE, CARRE));
 		}
 		else if (gauche && bas)
 		{
+
 			this->setPixmap(QPixmap("Images/WaterCoin3.png").scaled(CARRE, CARRE));
 		}
 		break;
@@ -111,4 +127,9 @@ void Case::clearImage()
 {
 	delete this->image;
 	image = new QLabel(this);
+}
+
+QLabel* Case::getImage()
+{
+	return image;
 }
