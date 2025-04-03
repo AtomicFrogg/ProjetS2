@@ -123,7 +123,7 @@ void GUI::moveJoueurGauche(int x)
     }
 };
 
-void GUI::draw()
+/*void GUI::draw()
 {
     if(c->getVie() > 0)
     {
@@ -217,7 +217,7 @@ void GUI::draw()
         cout << "Partie perdue... Vous avez succombe(e)!";
     }
 }
-
+*/
 
 
 bool GUI::ajouterTourBase()

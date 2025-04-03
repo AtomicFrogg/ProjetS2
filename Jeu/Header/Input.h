@@ -5,6 +5,7 @@
 #include <mutex>
 #include "GUI.h"
 #include "../../Interface/Header/Interface.h"
+#include "AutreInterface.h"
 #include <mutex>
 static bool FIN = false;
 static bool debut = false;
@@ -28,7 +29,7 @@ bool RcvFromSerial(SerialPort* arduino, string& msg);
 class Input {
 public:
 
-	static void input(GUI* gui);
+	static void input(GUI* gui, AutreInterface* window);
 	int checkKey();
 	void debutJeu();
 };
