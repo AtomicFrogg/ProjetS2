@@ -26,7 +26,8 @@ public slots:
 	bool ajouterSaumon(int i, int j);
 	bool ajouterRequin(int i, int j);
 private:
-	
+	QVBoxLayout* VboxBoutton;
+	QHBoxLayout* Hbox;
 	QGridLayout* layout;
 	map<string, Case*> grille;
 	GUI* g;

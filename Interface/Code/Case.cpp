@@ -17,7 +17,6 @@ Case::Case(QWidget *parent, int t, GUI* g, int posi, int posj):QLabel(parent)
 
 	this->setObjectName(nom);
 	QString mot = this->objectName();
-	cout << mot.toStdString();
 }
 
 Case::~Case()
