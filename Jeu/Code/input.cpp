@@ -253,7 +253,7 @@ void Input::input(GUI* gui, Application* window)
 					{
 						Sleep(150);
 						//gui->getJoueur()->afficher(cout);
-						gui->draw();
+						//gui->draw();
 
 						if (time == 2)
 						{
@@ -403,7 +403,7 @@ void Input::input(GUI* gui, Application* window)
 			{
 				Sleep(150);
 				//gui->getJoueur()->afficher(cout);
-				gui->draw();
+				//gui->draw();
 
 				if (time == 2)
 				{
@@ -418,7 +418,7 @@ void Input::input(GUI* gui, Application* window)
 		}
 		break;
 	default:
-		input(gui);
+		input(gui,window);
 		break;
 	}
 }

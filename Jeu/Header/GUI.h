@@ -29,7 +29,7 @@ public:
     void ajouterEnnemie(Ennemie* ptr);
     void retirerEnnemie(int index);
 
-    void draw();
+    //void draw();
     void drawControls();
     void drawInfoTour(int typeTour, int index);
     void chooseMap(int choixMap);

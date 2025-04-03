@@ -1,6 +1,6 @@
 #include "../Header/Application.h"
 
-Application::Application(GUI* g)
+Application::Application(GUI* g,int argc, char* argv[]):QApplication(argc,argv)
 {
     window = new Interface(g);
 }
@@ -10,7 +10,7 @@ Application::~Application()
     delete window;
 }
 
-Application::getInterface()
+Interface * Application::getInterface()
 {
     return window;
 }

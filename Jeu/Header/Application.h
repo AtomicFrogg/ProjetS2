@@ -4,8 +4,8 @@
 class Application: public QApplication
 {
 	public:
-		AutreInterface(GUI* g);
-		~AutreInterface();
+		Application(GUI* g,int argc,char *argv[]);
+		~Application();
 		Interface* getInterface();
 
 	private:

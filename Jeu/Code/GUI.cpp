@@ -56,7 +56,7 @@ void GUI::lancerVague(int index) {
         {
             Sleep(700-time);
         }
-        draw();
+        //draw();
 
        /* cout << "Baleine :" << c->getCoordonnee(0).x;
         cout << "vie: " << c->getEnnemie()->getEnnemie(0)->getVie();*/

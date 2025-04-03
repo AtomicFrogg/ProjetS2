@@ -5,7 +5,7 @@
 #include <mutex>
 #include "GUI.h"
 #include "../../Interface/Header/Interface.h"
-#include "AutreInterface.h"
+#include "Application.h"
 #include <mutex>
 static bool FIN = false;
 static bool debut = false;
