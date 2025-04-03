@@ -18,12 +18,13 @@ Q_OBJECT
 		void ajouterCanonnier();
 		void ajouterSniper();
 		void ajouterTourBase();
-		void ajouterJoueur();
 
+		void ajouterJoueur();
+		void clearJoueur();
 		void ajouterBaleine();
 		void ajouterSaumon();
 		void ajouterRequin();
-
+		
 
 		void clearImage();
 		QLabel* getImage();
