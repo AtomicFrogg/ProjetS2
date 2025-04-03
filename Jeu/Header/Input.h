@@ -4,6 +4,7 @@
 #include <thread>
 #include <mutex>
 #include "GUI.h"
+#include "../../Interface/Header/Interface.h"
 #include <mutex>
 static bool FIN = false;
 static bool debut = false;

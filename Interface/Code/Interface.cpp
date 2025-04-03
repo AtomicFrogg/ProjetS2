@@ -87,6 +87,7 @@ bool Interface::ajouterNarvolt() {
 	{
 		return false;
 	}
+	//clearJoueur();
 	int i = HAUTEUR - g->getCoordonneeJoueur().y;
 	int j = g->getCoordonneeJoueur().x;
 
@@ -105,6 +106,7 @@ bool Interface::ajouterCanonnier() {
 	{
 		return false;
 	}
+	//clearJoueur();
 	int i =HAUTEUR - g->getCoordonneeJoueur().y;
 	int j = g->getCoordonneeJoueur().x;
 
@@ -121,6 +123,7 @@ bool Interface::ajouterSniper() {
 	{
 		return false;
 	}
+	//clearJoueur();
 	int i = HAUTEUR - g->getCoordonneeJoueur().y;
 	int j = g->getCoordonneeJoueur().x;
 
@@ -138,6 +141,7 @@ bool Interface::ajouterTourBase() {
 	{
 		return false;
 	}
+	//clearJoueur();
 	int i = HAUTEUR - g->getCoordonneeJoueur().y;
 	int j = g->getCoordonneeJoueur().x;
 
@@ -193,6 +197,16 @@ bool Interface::ajouterRequin(int i, int j) {
 	return true;
 }
 
+bool Interface::clearJoueur()
+{
+	int i = HAUTEUR - g->getJoueur()->getPosition().y;
+	int j = g->getCoordonneeJoueur().x;
+	if (i < 0 || i >= HAUTEUR || j < 1 || j > LARGEUR - 1) return false;
+	Case* grille = getCase(i, j);
+	grille->clearImage();
+	grille->show();
+}
+
 bool Interface::ajouterJoueur()
 {
 	int i = HAUTEUR - g->getJoueur()->getPosition().y;
@@ -201,4 +215,42 @@ bool Interface::ajouterJoueur()
 	Case* grille = getCase(i, j);
 	grille->ajouterJoueur();
 	grille->show();
+}
+
+bool Interface::frontMoveJoueur(int d)
+{
+	clearJoueur();
+	switch (d)
+	{
+	case 1:
+		g->moveJoueurDroite(1);
+	case 2:
+		g->moveJoueurDown(1);
+	case 3:
+		g->moveJoueurGauche(1);
+	case 4:
+		g->moveJoueurUp(1);
+	case 5:
+		g->moveJoueurUp(1);
+		g->moveJoueurDroite(1);
+	case 6:
+		g->moveJoueurDown(1);
+		g->moveJoueurDroite(1);
+	case 7:
+		g->moveJoueurDown(1);
+		g->moveJoueurGauche(1);
+	case 8:
+		g->moveJoueurUp(1);
+		g->moveJoueurGauche(1);
+	case 9:
+		g->moveJoueurUp(1);
+	case 10:
+		g->moveJoueurGauche(1);
+	case 11:
+		g->moveJoueurDown(1);
+	case 12:
+		g->moveJoueurDroite(1);
+	}
+	ajouterJoueur();
+	return true;
 }
