@@ -67,10 +67,6 @@ Interface::Interface(GUI *gui)
 	QObject::connect(Jou, SIGNAL(clicked()), this, SLOT(ajouterJoueur()));
 	layout->addWidget(Jou, 5, LARGEUR);
 
-	//QPushButton* quit = new QPushButton("QUITTER");
-	//quit->setCursor(Qt::PointingHandCursor);
-	//QObject::connect(quit, SIGNAL(clicked()), qApp, SLOT(quit()));
-	//layout->addWidget(quit, HAUTEUR, 1);
 	QPushButton* quit = new QPushButton("QUITTER");
 	quit->setCursor(Qt::PointingHandCursor);
 	quit->setFixedSize(sizeX, sizeY-50);
