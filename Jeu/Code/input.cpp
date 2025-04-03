@@ -13,7 +13,7 @@ int boutRight = 0;
 bool accel = false;
 int vie = 1;
 
-void Input::input(GUI* gui, AutreInterface* window)
+void Input::input(GUI* gui, Application* window)
 {
 	cout << "Voulez-vous jouer manette ou clavier?" << endl << "1: Manette" << endl << "2: Clavier" << endl;
 	char peripherique;
