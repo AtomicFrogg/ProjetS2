@@ -29,7 +29,8 @@ public slots:
 	bool ajouterJoueur();
 	bool frontMoveJoueur(int d);
 private:
-	
+	QVBoxLayout* VboxBoutton;
+	QHBoxLayout* Hbox;
 	QGridLayout* layout;
 	map<string, Case*> grille;
 	GUI* g;
