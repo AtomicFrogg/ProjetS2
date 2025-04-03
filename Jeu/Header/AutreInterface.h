@@ -1,15 +1,13 @@
 #include <qapplication.h>
 #include "../../Interface/Header/Interface.h"
 
-class AutreInterface: public QApplication
+class AutreInterface : public QApplication
 {
-   QObject
-   AutreInterface(GUI* g);
-   ~AutreInterface();
+	public:
+		AutreInterface(GUI* g);
+		~AutreInterface();
+		Interface* getInterface();
 
-   public:
-   bool getInterface();
-
-   private:
-   Interface* window(g);
-}
+	private:
+		Interface* window;
+};

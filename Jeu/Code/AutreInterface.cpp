@@ -1,6 +1,6 @@
 #include "../Header/AutreInterface.h"
 
-AutreInterface::AutreInterface(GUI* g)
+AutreInterface::AutreInterface(GUI* g):QApplication()
 {
     window = new Interface(g);
 }
@@ -10,7 +10,7 @@ AutreInterface::~AutreInterface()
     delete window;
 }
 
-AutreInterface::getInterface()
+Interface* AutreInterface::getInterface()
 {
     return window;
 }
