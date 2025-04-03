@@ -1,7 +1,7 @@
 #include <qapplication.h>
 #include "../../Interface/Header/Interface.h"
 
-class AutreInterface : public QApplication
+class Application: public QApplication
 {
 	public:
 		AutreInterface(GUI* g);

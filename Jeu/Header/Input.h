@@ -29,7 +29,7 @@ bool RcvFromSerial(SerialPort* arduino, string& msg);
 class Input {
 public:
 
-	static void input(GUI* gui, AutreInterface* window);
+	static void input(GUI* gui, Application* window);
 	int checkKey();
 	void debutJeu();
 };
