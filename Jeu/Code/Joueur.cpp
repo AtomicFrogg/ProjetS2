@@ -3,6 +3,25 @@
 Joueur::Joueur(int d, float r, int x, int y, int va, Carte* c, string n) :map(c), Defenseur(d, r, x, y, va)
 {
 	setNom(n);
+	DonneesTourBase.degat = 15;
+	DonneesTourBase.range = 10;
+	DonneesTourBase.prix = 400;
+	DonneesTourBase.vitesseAttaque = 5;
+
+	DonneesSniper.degat = 50;
+	DonneesSniper.range = 100;
+	DonneesSniper.prix = 600;
+	DonneesSniper.vitesseAttaque = 10;
+
+	DonneesCanonnier.degat = 25;
+	DonneesCanonnier.range = 8;
+	DonneesCanonnier.prix = 500;
+	DonneesCanonnier.vitesseAttaque = 6;
+
+	DonneesNarvolt.degat = 10;
+	DonneesNarvolt.range = 10;
+	DonneesNarvolt.prix = 500;
+	DonneesNarvolt.vitesseAttaque = 4;
 }
 
 Joueur::~Joueur() {
@@ -132,25 +151,25 @@ void Joueur::attaquer()
 
 Tour* Joueur::ajouterTourBase()
 {
-	Tour* newTour = new TourBase1(15, 10, this->getPosition().x, this->getPosition().y, 3, 400, 0, map);
+	Tour* newTour = new TourBase1(DonneesTourBase.degat, DonneesTourBase.range , this->getPosition().x, this->getPosition().y, DonneesTourBase.vitesseAttaque, DonneesTourBase.prix, 0, map);
 	return ajouterTour(newTour);
 }
 
 Tour* Joueur::ajouterTourSniper()
 {
-	Tour* newTour = new TourBase1(50, 100, this->getPosition().x, this->getPosition().y, 10, 600, 0, map);
+	Tour* newTour = new TourBase1(DonneesSniper.degat, DonneesSniper.range, this->getPosition().x, this->getPosition().y, DonneesSniper.vitesseAttaque, DonneesSniper.prix, 0, map);
 	return ajouterTour(newTour);
 }
 
 Tour* Joueur::ajouterTourCanonnier()
 {
-	Tour* newTour = new Canonnier(25, 8, this->getPosition().x, this->getPosition().y, 4, 500, 0, map, 1);
+	Tour* newTour = new Canonnier(DonneesCanonnier.degat, DonneesCanonnier.range, this->getPosition().x, this->getPosition().y, DonneesCanonnier.vitesseAttaque, DonneesCanonnier.prix, 0, map, 1);
 	return ajouterTour(newTour);
 }
 
 Tour* Joueur::ajouterTourNarvolt()
 {
-	Tour* newTour = new Narvolt(20, 10, this->getPosition().x, this->getPosition().y, 4, 700, 0, map, 2, 3);
+	Tour* newTour = new Narvolt(DonneesNarvolt.degat, DonneesNarvolt.range, this->getPosition().x, this->getPosition().y, DonneesNarvolt.vitesseAttaque, DonneesNarvolt.prix, 0, map, 2, 3);
 	return ajouterTour(newTour);
 }
 

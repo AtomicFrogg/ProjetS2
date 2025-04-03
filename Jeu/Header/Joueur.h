@@ -5,6 +5,7 @@
 #include "../../Tours/Header/TourBase1.h"
 #include "../../Tours/Header/Canonnier.h"
 #include "../../Tours/Header/Narvolt.h"
+#include "DonneesTours.h"
 
 
 class Joueur : public Defenseur {
@@ -13,6 +14,8 @@ private:
 	string nom;
 	EnsembleTour tableauTour;
 	Carte* map;
+
+
 public:
 	Joueur(int d, float r, int x, int y, int va, Carte* c, string n);
 	~Joueur();
@@ -41,5 +44,10 @@ public:
 	void setTier(int index, int t);
 	void setVitesse(int index, int v);
 	int getVitesse(int index);
+
+	DonneesTours DonneesNarvolt;
+	DonneesTours DonneesCanonnier;
+	DonneesTours DonneesSniper;
+	DonneesTours DonneesTourBase;
 };
 

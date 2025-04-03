@@ -1,7 +1,8 @@
 #include "../Header/QtApp7.h"
 
-QtApp7::QtApp7() : QMainWindow()
+QtApp7::QtApp7(GUI* g) : QMainWindow()
 {
+    gui = g;
     this->setFixedSize(600, 600);
     //QMenu* menuFichier = menuBar()->addMenu("&Fichier");
 
@@ -58,8 +59,9 @@ QTabWidget* QtApp7::Tours() {
     //page tours
     comboTours = new QComboBox(tours);
     comboTours->addItem("Narvolt");
-    comboTours->addItem("Marteau");
-    comboTours->addItem("Clou");
+    comboTours->addItem("Canonnier");
+    comboTours->addItem("Sniper");
+    comboTours->addItem("Tour de base");
     le1 = new QSpinBox();
     le2 = new QSpinBox();
     //organisation
@@ -89,9 +91,9 @@ QTabWidget* QtApp7::Tours() {
     QGridLayout* layout2 = new QGridLayout();
     QVBoxLayout* vbox2 = new QVBoxLayout();
     comboenemie = new QComboBox(enemies);
-    comboenemie->addItem("Poisson zombie");
-    comboenemie->addItem("Neuci");
-    comboenemie->addItem("Pieuvre");
+    comboenemie->addItem("Requin");
+    comboenemie->addItem("Baleine");
+    comboenemie->addItem("Saumon");
     le12 = new QSpinBox();
     le13 = new QSpinBox();
     le14 = new QSpinBox();
@@ -172,6 +174,31 @@ void QtApp7::valider1() {
     }
     else {
         QMessageBox::information(this, "Information Tour", QString("Type Tour:%1<br/>").arg(typeTour) + QString("range:%1<br/>").arg(range) + QString("dommage:%1<br/>").arg(dommage));
+        if (typeTour == "Tour de base")
+        {
+            gui->getJoueur()->DonneesTourBase.degat = dommage;
+            gui->getJoueur()->DonneesTourBase.prix = prix;
+            gui->getJoueur()->DonneesTourBase.range = range;
+            gui->getJoueur()->DonneesTourBase.vitesseAttaque = vitesseAttaque;
+        }else if (typeTour == "Narvolt")
+        {
+            gui->getJoueur()->DonneesNarvolt.degat = dommage;
+            gui->getJoueur()->DonneesNarvolt.prix = prix;
+            gui->getJoueur()->DonneesNarvolt.range = range;
+            gui->getJoueur()->DonneesNarvolt.vitesseAttaque = vitesseAttaque;
+        }else if (typeTour == "Canonnier")
+        {
+            gui->getJoueur()->DonneesCanonnier.degat = dommage;
+            gui->getJoueur()->DonneesCanonnier.prix = prix;
+            gui->getJoueur()->DonneesCanonnier.range = range;
+            gui->getJoueur()->DonneesCanonnier.vitesseAttaque = vitesseAttaque;
+        }else if (typeTour == "Sniper")
+        {
+            gui->getJoueur()->DonneesSniper.degat = dommage;
+            gui->getJoueur()->DonneesSniper.prix = prix;
+            gui->getJoueur()->DonneesSniper.range = range;
+            gui->getJoueur()->DonneesSniper.vitesseAttaque = vitesseAttaque;
+        }
     }
 }
 
@@ -207,6 +234,28 @@ void QtApp7::valider2() {
     }
     else {
         QMessageBox::information(this, "Information Enemie", QString("Type Enemie:%1<br/>").arg(typeEnemie) + QString("dommage:%1<br/>").arg(dommage) + QString("vitesse:%1<br/>").arg(vitesse) + QString("vie:%1<br/>").arg(vie));
+        if (typeEnemie == "Baleine")
+        {
+            gui->Baleine.vie = vie;
+            gui->Baleine.degat = dommage;
+            gui->Baleine.revenu = revenu;
+            gui->Baleine.vitesse = vitesse;
+        }else if (typeEnemie == "Requin")
+        {
+            gui->Requin.vie = vie;
+            gui->Requin.degat = dommage;
+            gui->Requin.revenu = revenu;
+            gui->Requin.vitesse = vitesse;
+        }else if (typeEnemie == "Saumon")
+        {
+            gui->Saumon.vie = vie;
+            gui->Saumon.degat = dommage;
+            gui->Saumon.revenu = revenu;
+            gui->Saumon.vitesse = vitesse;
+        }
+        else {
+            QMessageBox::critical(this, "Erreur","Erreur selection ennemie");
+        }
     }
 }
 
@@ -221,6 +270,7 @@ void QtApp7::soummission(){
         else {
             QMessageBox::information(this, "Information Generale", "Vous avez choisir le <strong>clavier</strong> pour le jeu!!!");
         }
+        this->close();
     }
 }
 

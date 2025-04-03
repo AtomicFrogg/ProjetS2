@@ -7,6 +7,7 @@
 #include <qpushbutton.h>
 #include "../../Interface/Header/Interface.h"
 #include "../../Interface/Header/QtApp7.h"
+#include "../../Jeu/Header/Application.h"
 #include "qfile.h"
 
 int main(int argc, char* argv[]) {
@@ -19,18 +20,15 @@ int main(int argc, char* argv[]) {
 		Question du d�but (Manette ou clavier, Map et APP7)
 
 	*/
-	gui->chooseMap(2);
-	QApplication app(argc, argv);
-	Interface window(gui);
-	QtApp7 w;
-		
+	Application app(gui,argc, argv);
+
+
 	QFile file("Interface/Code/style.qss");
 	file.open(QFile::ReadOnly);
 	QString styleSheet{ QLatin1String(file.readAll()) };
 	app.setStyleSheet(styleSheet);
 
-    w.show();
-	window.show();
+
 	app.exec();
 
 	

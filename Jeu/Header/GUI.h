@@ -5,6 +5,8 @@
 #include "Joueur.h"
 #include "Carte.h"
 #include "Donnees.h"
+#include "DonneesEnnemies.h"
+#include "DonneesTours.h"
 static bool FINJEU = false;
 
 
@@ -48,9 +50,15 @@ public:
     int checkMove(int index);
 
 
+    DonneesEnnemies Requin;
+    DonneesEnnemies Saumon;
+    DonneesEnnemies Baleine;
+
+
 private:
     Donnees tableauDonnees[HAUTEUR][LARGEUR];
     Carte* c;
     Joueur* j;
 
+   
 };

@@ -15,13 +15,14 @@
 #include <QtWidgets/QSpinBox>
 #include "qapplication.h"
 #include "qmessagebox.h"
+#include "../../Jeu/Header/GUI.h"
 
 class QtApp7 : public QMainWindow
 {
     Q_OBJECT
 
         public:
-            QtApp7();
+           QtApp7(GUI* g);
            QLayout* outilJeu();
            QTabWidget* Tours();
            QLayout* enemie();
@@ -37,6 +38,7 @@ class QtApp7 : public QMainWindow
         void soummission();
 
         private:
+            GUI* gui;
             QRadioButton* manette;
             QRadioButton* clavier;
             QTabWidget* onglets;

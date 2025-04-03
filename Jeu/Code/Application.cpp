@@ -2,8 +2,9 @@
 
 Application::Application(GUI* g,int argc, char* argv[]):QApplication(argc,argv)
 {
-    window = new Interface(g);
     firstWindow = new QtApp7();
+    window = new Interface(g);
+    firstWindow->show();
 }
 
 Application::~Application()
