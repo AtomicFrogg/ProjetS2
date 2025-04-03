@@ -83,6 +83,10 @@ Case* Interface::getCase(int i, int j)
 }
 
 bool Interface::ajouterNarvolt() {
+	if (!g->ajouterTourNarvolt())
+	{
+		return false;
+	}
 	int i = HAUTEUR - g->getCoordonneeJoueur().y;
 	int j = g->getCoordonneeJoueur().x;
 
@@ -97,6 +101,10 @@ bool Interface::ajouterNarvolt() {
 }
 
 bool Interface::ajouterCanonnier() {
+	if (!g->ajouterTourCanonnier())
+	{
+		return false;
+	}
 	int i =HAUTEUR - g->getCoordonneeJoueur().y;
 	int j = g->getCoordonneeJoueur().x;
 
@@ -109,6 +117,10 @@ bool Interface::ajouterCanonnier() {
 }
 
 bool Interface::ajouterSniper() {
+	if (!g->ajouterTourSniper())
+	{
+		return false;
+	}
 	int i = HAUTEUR - g->getCoordonneeJoueur().y;
 	int j = g->getCoordonneeJoueur().x;
 
@@ -122,6 +134,10 @@ bool Interface::ajouterSniper() {
 }
 
 bool Interface::ajouterTourBase() {
+	if (!g->ajouterTourBase())
+	{
+		return false;
+	}
 	int i = HAUTEUR - g->getCoordonneeJoueur().y;
 	int j = g->getCoordonneeJoueur().x;
 
