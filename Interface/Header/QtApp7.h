@@ -1,4 +1,4 @@
-#pragma once
+ #pragma once
 
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
@@ -26,6 +26,9 @@ class QtApp7 : public QMainWindow
            QLayout* outilJeu();
            QTabWidget* Tours();
            QLayout* enemie();
+           void tourW();
+           void enemieW();
+           void joueurW();
            bool verification1();
            bool verification2();
             ~QtApp7();
@@ -42,18 +45,16 @@ class QtApp7 : public QMainWindow
             QRadioButton* manette;
             QRadioButton* clavier;
             QTabWidget* onglets;
-            QComboBox* comboTours;
+            QComboBox* comboWidgets;
             QSpinBox* le1;
             QSpinBox* le2;
+            QSpinBox* le3;
+            QSpinBox* le4;
             QPushButton* valider;
             QPushButton* reset;
-            QComboBox* comboenemie;
-            QSpinBox* le12;
-            QSpinBox* le13;
-            QSpinBox* le14;
-            QPushButton* validation;
-            QPushButton* annulation;
-            QPushButton* ok;
-            QPushButton* annuler;
+            QFormLayout* formulaire;
+            QWidget* enemies;
+            QWidget* tours;
+            QWidget* Joueur;
             bool result;
         };
