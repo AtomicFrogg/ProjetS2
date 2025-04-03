@@ -7,8 +7,12 @@
 #include <qpushbutton.h>
 #include "../../Interface/Header/Interface.h"
 #include "../../Interface/Header/QtApp7.h"
+#include "qfile.h"
 
 int main(int argc, char* argv[]) {
+
+
+	
 	GUI* gui = new GUI();
 	/*
 	
@@ -19,6 +23,12 @@ int main(int argc, char* argv[]) {
 	QApplication app(argc, argv);
 	Interface window(gui);
 	QtApp7 w;
+		
+	QFile file("Interface/Code/style.qss");
+	file.open(QFile::ReadOnly);
+	QString styleSheet{ QLatin1String(file.readAll()) };
+	app.setStyleSheet(styleSheet);
+
     w.show();
 	window.show();
 	app.exec();

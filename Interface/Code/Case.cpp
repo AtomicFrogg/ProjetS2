@@ -7,6 +7,7 @@ Case::Case(QWidget *parent, int t, GUI* g, int posi, int posj):QLabel(parent)
 	i = posi;
 	j = posj;
 	image = new QLabel(this);
+	
 	choixBackground(type);
 	this->setFixedSize(CARRE, CARRE);
 
@@ -120,13 +121,41 @@ void Case::ajouterBaleine()
 void Case::ajouterJoueur()
 {
 	image->setPixmap(QPixmap("Images/Joueur.png").scaled(CARRE, CARRE));
+	this->show();
 }
 
 void Case::clearImage()
 {
 	delete this->image;
 	image = new QLabel(this);
+	this->show();
 }
+
+void Case::clearJoueur()
+{
+	int type = gui->getDonneesJoueur()->type;
+	switch (type)
+	{
+	case 2:
+		ajouterTourBase();
+		break;
+	case 3:
+		ajouterSniper();
+		break;
+	case 4:
+		ajouterCanonnier();
+		break;
+	case 5:
+		ajouterNarvolt();
+		break;
+	default:
+		clearImage();
+		break;
+	}
+	this->show();
+}
+
+
 
 QLabel* Case::getImage()
 {

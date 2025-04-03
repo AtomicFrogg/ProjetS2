@@ -73,10 +73,18 @@ Interface::Interface(GUI *gui)
 	QObject::connect(quit, SIGNAL(clicked()), qApp, SLOT(quit()));
 	VboxBoutton->addWidget(quit, 7);
 
+	QPushButton* up = new QPushButton("up");
+	up->setCursor(Qt::PointingHandCursor);
+	up->setFixedSize(sizeX, sizeY - 50);
+	QObject::connect(up, SIGNAL(clicked()), this, SLOT(joueurUp()));
+	VboxBoutton->addWidget(up, 8);
+
+
 	Hbox->addLayout(layout, 0);
 	Hbox->addLayout(VboxBoutton, 1);
 	this->setLayout(Hbox);
 
+	ajouterJoueur();
 }
 
 Interface::~Interface()
@@ -121,16 +129,18 @@ bool Interface::ajouterNarvolt() {
 bool Interface::ajouterCanonnier() {
 	if (!g->ajouterTourCanonnier())
 	{
+		QMessageBox::information(this, "NON", "claude");
 		return false;
 	}
 	//clearJoueur();
 	int i =HAUTEUR - g->getCoordonneeJoueur().y;
 	int j = g->getCoordonneeJoueur().x;
-
 	if (i < 0 || i >= HAUTEUR || j < 1 || j > LARGEUR - 1) return false;
 	Case* grille = getCase(i, j);
 	grille->ajouterCanonnier();
 	grille->show();
+
+	
 
 	return true;
 }
@@ -220,7 +230,7 @@ bool Interface::clearJoueur()
 	int j = g->getCoordonneeJoueur().x;
 	if (i < 0 || i >= HAUTEUR || j < 1 || j > LARGEUR - 1) return false;
 	Case* grille = getCase(i, j);
-	grille->clearImage();
+	grille->clearJoueur();
 	grille->show();
 }
 
@@ -269,5 +279,41 @@ bool Interface::frontMoveJoueur(int d)
 		g->moveJoueurDroite(1);
 	}
 	ajouterJoueur();
+	return true;
+}
+
+bool Interface::joueurUp()
+{
+	clearJoueur();
+	g->moveJoueurUp(1);
+	ajouterJoueur();
+	
+	return true;
+}
+
+bool Interface::joueurDown()
+{
+	clearJoueur();
+	g->moveJoueurDown(1);
+	ajouterJoueur();
+
+	return true;
+}
+
+bool Interface::joueurGauche()
+{
+	clearJoueur();
+	g->moveJoueurGauche(1);
+	ajouterJoueur();
+
+	return true;
+}
+
+bool Interface::joueurDroite()
+{
+	clearJoueur();
+	g->moveJoueurDroite(1);
+	ajouterJoueur();
+
 	return true;
 }

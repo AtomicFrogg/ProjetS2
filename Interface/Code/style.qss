@@ -1,0 +1,6 @@
+QLabel#Joueur{
+    border: 4px solid blue;
+}
+
+
+

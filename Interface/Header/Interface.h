@@ -28,6 +28,11 @@ public slots:
 	bool clearJoueur();
 	bool ajouterJoueur();
 	bool frontMoveJoueur(int d);
+
+	bool joueurUp();
+	bool joueurDown();
+	bool joueurGauche();
+	bool joueurDroite();
 private:
 	QVBoxLayout* VboxBoutton;
 	QHBoxLayout* Hbox;
