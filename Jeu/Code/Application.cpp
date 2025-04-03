@@ -1,16 +1,16 @@
-#include "../Header/AutreInterface.h"
+#include "../Header/Application.h"
 
-AutreInterface::AutreInterface(GUI* g):QApplication()
+Application::Application(GUI* g)
 {
     window = new Interface(g);
 }
 
-AutreInterface::~AutreInterface()
+Application::~Application()
 {
     delete window;
 }
 
-Interface* AutreInterface::getInterface()
+Application::getInterface()
 {
     return window;
 }
