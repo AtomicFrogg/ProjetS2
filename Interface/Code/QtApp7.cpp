@@ -135,10 +135,12 @@ void QtApp7::joueurW() {
     le21 = new QSpinBox();
     le22 = new QSpinBox();
     le23 = new QSpinBox();
+    le24 = new QSpinBox();
     //organisation
     formulaire->addRow("Vie", le21);
     formulaire->addRow("Dommage", le22);
     formulaire->addRow("Range", le23);
+    formulaire->addRow("Argent", le24);
     //BOUTTON
     valider = new QPushButton("Valider");
     reset = new QPushButton("Reset");
@@ -146,8 +148,8 @@ void QtApp7::joueurW() {
     valider->setFixedSize(70, 30);
     reset->setFixedSize(70, 30);
 
-    QObject::connect(valider, SIGNAL(clicked()), this, SLOT(valider2()));
-    QObject::connect(reset, SIGNAL(clicked()), this, SLOT(reset2()));
+    QObject::connect(valider, SIGNAL(clicked()), this, SLOT(valider3()));
+    QObject::connect(reset, SIGNAL(clicked()), this, SLOT(reset3()));
 
     layout2->addWidget(valider, 1, 1);
     layout2->addWidget(reset, 1, 2);
@@ -319,6 +321,43 @@ void QtApp7::valider2() {
         cout << gui->Requin.vie<< "\n";
         cout << gui->Requin.revenu<< "\n";
     }
+}
+
+void QtApp7::valider3() {
+    int  range, dommage, vie, argent;
+    vie = le21->value();
+    dommage = le22->value();
+    range = le23->value();
+    argent = le24->value();
+
+
+
+    if (!verification3()) {
+        QMessageBox::warning(this, "Information Tour", "Ces valeurs sont trop basses pour debuter le jeu!!!");
+    }
+    else {
+        QMessageBox::information(this, "Information Tour", QString("range:%1<br/>").arg(range) + QString("dommage:%1<br/>").arg(dommage));
+
+        gui->getJoueur()->setDegat(dommage);
+        gui->getJoueur()->setRange(range);
+        gui->getCarte()->setVie(vie);
+        gui->getCarte()->setArgent(argent);
+
+        cout << gui->getJoueur()->getDegat() << endl;
+        cout << gui->getJoueur()->getRange() << endl;
+        cout << gui->getCarte()->getVie() << endl;
+        cout << gui->getCarte()->getArgent() << endl;
+    }
+}
+
+bool QtApp7::verification3()
+{
+    return 1;
+}
+
+void QtApp7::reset3()
+{
+
 }
 
 void QtApp7::soummission(){

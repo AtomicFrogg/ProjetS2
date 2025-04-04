@@ -31,13 +31,17 @@ class QtApp7 : public QMainWindow
            void joueurW();
            bool verification1();
            bool verification2();
+           bool verification3();
+
             ~QtApp7();
 
     public slots:
         void reset1();
         void reset2();
+        void reset3();
         void valider1();
         void valider2();
+        void valider3();
         void soummission();
 
         private:
@@ -59,6 +63,7 @@ class QtApp7 : public QMainWindow
             QSpinBox* le21;
             QSpinBox* le22;
             QSpinBox* le23;
+            QSpinBox* le24;
             QPushButton* valider;
             QPushButton* reset;
             QFormLayout* formulaire;
