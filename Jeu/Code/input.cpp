@@ -118,7 +118,7 @@ void Input::input(GUI* gui, Application* window)
 						//cout << "W" ;
 						std::mutex mutex;
 						mutex.lock();
-						window->getInterface()->frontMoveJoueur(4);
+						window->getApp()->getInterface()->frontMoveJoueur(4);
 
 					}
 					//Gauche key
@@ -128,7 +128,7 @@ void Input::input(GUI* gui, Application* window)
 						//cout << "A" ;
 						std::mutex mutex;
 						mutex.lock();
-						window->getInterface()->frontMoveJoueur(3);
+						window->getApp()->getInterface()->frontMoveJoueur(3);
 						mutex.unlock();
 					}
 					//Bas key
@@ -138,7 +138,7 @@ void Input::input(GUI* gui, Application* window)
 						//cout << "S" ;
 						std::mutex mutex;
 						mutex.lock();
-						window->getInterface()->frontMoveJoueur(2);
+						window->getApp()->getInterface()->frontMoveJoueur(2);
 						mutex.unlock();
 					}
 					//Droite key
@@ -148,7 +148,7 @@ void Input::input(GUI* gui, Application* window)
 						//cout << "D";
 						std::mutex mutex;
 						mutex.lock();
-						window->getInterface()->frontMoveJoueur(1);
+						window->getApp()->getInterface()->frontMoveJoueur(1);
 						mutex.unlock();
 					}
 					//Haut-Droite
@@ -158,7 +158,7 @@ void Input::input(GUI* gui, Application* window)
 						//cout << "D";
 						std::mutex mutex;
 						mutex.lock();
-						window->getInterface()->frontMoveJoueur(5);
+						window->getApp()->getInterface()->frontMoveJoueur(5);
 						mutex.unlock();
 					}
 					//Bas-Droite
@@ -168,7 +168,7 @@ void Input::input(GUI* gui, Application* window)
 						//cout << "D";
 						std::mutex mutex;
 						mutex.lock();
-						window->getInterface()->frontMoveJoueur(6);
+						window->getApp()->getInterface()->frontMoveJoueur(6);
 						mutex.unlock();
 					}
 					//Bas-Gauche
@@ -178,7 +178,7 @@ void Input::input(GUI* gui, Application* window)
 						//cout << "D";
 						std::mutex mutex;
 						mutex.lock();
-						window->getInterface()->frontMoveJoueur(7);
+						window->getApp()->getInterface()->frontMoveJoueur(7);
 						mutex.unlock();
 					}
 					//Haut-Gauche
@@ -188,7 +188,7 @@ void Input::input(GUI* gui, Application* window)
 						//cout << "";
 						std::mutex mutex;
 						mutex.lock();
-						window->getInterface()->frontMoveJoueur(8);
+						window->getApp()->getInterface()->frontMoveJoueur(8);
 						mutex.unlock();
 					}
 					//Down Button
@@ -286,7 +286,7 @@ void Input::input(GUI* gui, Application* window)
 				time = 1;
 				//cout << "W" ;
 
-				window->getInterface()->frontMoveJoueur(9);
+				window->getApp()->getInterface()->frontMoveJoueur(9);
 
 			}
 			//A key
@@ -295,7 +295,7 @@ void Input::input(GUI* gui, Application* window)
 				time = 1;
 				//cout << "A" ;
 
-				window->getInterface()->frontMoveJoueur(10);
+				window->getApp()->getInterface()->frontMoveJoueur(10);
 
 			}
 			//S key
@@ -304,7 +304,7 @@ void Input::input(GUI* gui, Application* window)
 				time = 1;
 				//cout << "S" ;
 
-				window->getInterface()->frontMoveJoueur(11);
+				window->getApp()->getInterface()->frontMoveJoueur(11);
 
 			}
 			//D key
@@ -313,7 +313,7 @@ void Input::input(GUI* gui, Application* window)
 				time = 1;
 				//cout << "D";
 
-				window->getInterface()->frontMoveJoueur(12);
+				window->getApp()->getInterface()->frontMoveJoueur(12);
 
 			}
 			//Enter key

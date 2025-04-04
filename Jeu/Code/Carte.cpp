@@ -80,7 +80,7 @@ void Carte::afficher(ostream& s)
 
 bool Carte::ajouterBaleine(int c)
 {
-	Ennemie* newEnnemie = new Ennemie(400, 3, 500, c);
+	Ennemie* newEnnemie = new Ennemie(400, 3, 500, 10,c);
 	ajouterEnnemie(newEnnemie);
 	return 1;
 }
@@ -94,7 +94,7 @@ bool Carte::ajouterSaumon(int c)
 
 bool Carte::ajouterRequin(int c)
 {
-	Ennemie* newEnnemie = new Ennemie(100, 2, 100, c);
+	Ennemie* newEnnemie = new Ennemie(100, 2, 100, 20,c);
 	ajouterEnnemie(newEnnemie);
 	return 1;
 }

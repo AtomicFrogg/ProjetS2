@@ -54,9 +54,7 @@ public:
     void setNumCarte(int numero);
     int getNumCarte();
 
-    DonneesEnnemies Requin;
-    DonneesEnnemies Saumon;
-    DonneesEnnemies Baleine;
+
 
 
 private:

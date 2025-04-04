@@ -1,8 +1,10 @@
 #include "../Header/QtApp7.h"
 
-QtApp7::QtApp7(GUI* g) : QMainWindow()
+QtApp7::QtApp7(GUI* g):QMainWindow()
 {
+    
     gui = g;
+    
     this->setFixedSize(600, 600);
     //QMenu* menuFichier = menuBar()->addMenu("&Fichier");
 
@@ -335,30 +337,30 @@ void QtApp7::valider2() {
         QMessageBox::information(this, "Information Enemie", QString("Type Enemie:%1<br/>").arg(typeEnemie) + QString("dommage:%1<br/>").arg(dommage) + QString("vitesse:%1<br/>").arg(vitesse) + QString("vie:%1<br/>").arg(vie));
         if (typeEnemie == "Baleine")
         {
-            gui->Baleine.vie = vie;
-            gui->Baleine.degat = dommage;
-            gui->Baleine.revenu = revenu;
-            gui->Baleine.vitesse = vitesse;
+            gui->getCarte()->Baleine.vie = vie;
+            gui->getCarte()->Baleine.degat = dommage;
+            gui->getCarte()->Baleine.revenu = revenu;
+            gui->getCarte()->Baleine.vitesse = vitesse;
         }else if (typeEnemie == "Requin")
         {
-            gui->Requin.vie = vie;
-            gui->Requin.degat = dommage;
-            gui->Requin.revenu = revenu;
-            gui->Requin.vitesse = vitesse;
+            gui->getCarte()->Requin.vie = vie;
+            gui->getCarte()->Requin.degat = dommage;
+            gui->getCarte()->Requin.revenu = revenu;
+            gui->getCarte()->Requin.vitesse = vitesse;
         }else if (typeEnemie == "Saumon")
         {
-            gui->Saumon.vie = vie;
-            gui->Saumon.degat = dommage;
-            gui->Saumon.revenu = revenu;
-            gui->Saumon.vitesse = vitesse;
+            gui->getCarte()->Saumon.vie = vie;
+            gui->getCarte()->Saumon.degat = dommage;
+            gui->getCarte()->Saumon.revenu = revenu;
+            gui->getCarte()->Saumon.vitesse = vitesse;
         }
         else {
             QMessageBox::critical(this, "Erreur","Erreur selection ennemie");
         }
-        cout << gui->Requin.degat<< "\n";
-        cout << gui->Requin.vitesse<< "\n";
-        cout << gui->Requin.vie<< "\n";
-        cout << gui->Requin.revenu<< "\n";
+        cout << gui->getCarte()->Requin.degat<< "\n";
+        cout << gui->getCarte()->Requin.vitesse<< "\n";
+        cout << gui->getCarte()->Requin.vie<< "\n";
+        cout << gui->getCarte()->Requin.revenu<< "\n";
     }
 }
 
@@ -382,10 +384,10 @@ void QtApp7::valider3() {
         gui->getCarte()->setVie(vie);
         gui->getCarte()->setArgent(argent);
 
-        cout << gui->getJoueur()->getDegat() << endl;
-        cout << gui->getJoueur()->getRange() << endl;
-        cout << gui->getCarte()->getVie() << endl;
-        cout << gui->getCarte()->getArgent() << endl;
+        //cout << gui->getJoueur()->getDegat() << endl;
+        //cout << gui->getJoueur()->getRange() << endl;
+        //cout << gui->getCarte()->getVie() << endl;
+        //cout << gui->getCarte()->getArgent() << endl;
     }
 }
 
@@ -430,10 +432,18 @@ void QtApp7::soummission(){
         gui->setNumCarte(2);
         QMessageBox::information(this, "Information Generale", "Vous avez choisir la <strong>carte 2</strong> pour le jeu!!!");
     }
-
+    int num = gui->getNumCarte();
+    gui->chooseMap(num);
+    jeu = new Interface(gui);
+    jeu->show();
     this->close();
-    
 }
 
 QtApp7::~QtApp7()
 {}
+
+
+Interface* QtApp7::getInterface()
+{
+    return jeu;
+}

@@ -16,6 +16,7 @@
 #include "qapplication.h"
 #include "qmessagebox.h"
 #include "../../Jeu/Header/GUI.h"
+#include "../../Interface/Header/Interface.h"
 
 class QtApp7 : public QMainWindow
 {
@@ -32,6 +33,7 @@ class QtApp7 : public QMainWindow
            bool verification1();
            bool verification2();
            bool verification3();
+           Interface* getInterface();
 
             ~QtApp7();
 
@@ -73,4 +75,6 @@ class QtApp7 : public QMainWindow
             QWidget* tours;
             QWidget* Joueur;
             bool result;
+            Interface* jeu;
+
         };

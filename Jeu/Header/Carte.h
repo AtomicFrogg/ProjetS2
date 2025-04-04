@@ -3,6 +3,7 @@
 #include "../../Ennemis/Header/Ennemie.h"
 #include <iostream>
 #include <cstdlib>
+#include "DonneesEnnemies.h"
 
 const int HAUTEUR = 15;
 const int LARGEUR = 30;
@@ -39,6 +40,10 @@ public:
 
 
 	int getVieEnnemie(int index);
+
+	DonneesEnnemies Requin;
+	DonneesEnnemies Saumon;
+	DonneesEnnemies Baleine;
 
 private:
 	int map[HAUTEUR][LARGEUR];
