@@ -34,6 +34,7 @@ public slots:
 	bool joueurGauche();
 	bool joueurDroite();
 	bool MenuDroite();
+	bool lancerVague();
 private:
 	QVBoxLayout* VboxBoutton;
 	QHBoxLayout* Hbox;

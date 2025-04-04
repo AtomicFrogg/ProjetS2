@@ -35,16 +35,17 @@ Interface::Interface(GUI *gui)
 
 	Hbox->setContentsMargins(0, 0, 0, 0);
 	Hbox->addLayout(layout, 0);
-	if(!g->getManette)
+	if(!g->getManette())
 	{
 		MenuDroite();
 		Hbox->addLayout(VboxBoutton, 1);
 	}
 	
 	QPushButton* Vague = new QPushButton("Lancer Vague");
-	TB->setCursor(Qt::PointingHandCursor);
-	TB->setFixedSize(130, 100);
-	QObject::connect(Vague, SIGNAL(clicked()), g, SLOT(lancerVague(40)));
+	Vague->setCursor(Qt::PointingHandCursor);
+	Vague->setFixedSize(130, 100);
+
+	QObject::connect(Vague, SIGNAL(clicked()), this, SLOT(lancerVague()));
 	VboxBoutton->addWidget(Vague, 0);
 	this->setLayout(Hbox);
 
@@ -282,7 +283,7 @@ bool Interface::joueurDroite()
 	return true;
 }
 
-bool InterfaceL::MenuDroite()
+bool Interface::MenuDroite()
 {
 	int sizeX = 130;
 	int sizeY = 100;
@@ -326,5 +327,11 @@ bool InterfaceL::MenuDroite()
 	up->setFixedSize(sizeX, sizeY - 50);
 	QObject::connect(up, SIGNAL(clicked()), this, SLOT(joueurUp()));
 	VboxBoutton->addWidget(up, 7);
+	return true;
+}
 
+bool Interface::lancerVague()
+{
+	g->lancer(40);
+	return true;
 }

@@ -35,10 +35,10 @@ void GUI::moveEnnemies() {
   
 }
 
-bool GUI::lancerVague(int index) {
+bool GUI::lancer(int index) {
     if(!FINJEU)
     {
-        return false
+        return false;
     }
     else
     {

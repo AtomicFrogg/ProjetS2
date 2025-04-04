@@ -7,6 +7,7 @@
 #include "Donnees.h"
 #include "DonneesEnnemies.h"
 #include "DonneesTours.h"
+
 static bool FINJEU = false;
 
 
@@ -14,7 +15,7 @@ using namespace std;
 
 class GUI
 {
-    Q_OBJECT
+
 public:
     GUI();
     ~GUI();
@@ -27,7 +28,6 @@ public:
 
     //methodes relatives aux enemis
     void moveEnnemies();
-    void lancerVague(int index);
     void attaqueEnnemie();
     void ajouterEnnemie(Ennemie* ptr);
     void retirerEnnemie(int index);
@@ -54,16 +54,13 @@ public:
     bool getManette();
     void setNumCarte(int numero);
     int getNumCarte();
+    bool lancer(int index);
 
-<<<<<<< Updated upstream
     DonneesEnnemies Requin;
     DonneesEnnemies Saumon;
     DonneesEnnemies Baleine;
 
-public slots:
-    bool lancerVague(int index);
-=======
->>>>>>> Stashed changes
+   
 
 private:
     Donnees tableauDonnees[HAUTEUR][LARGEUR];
