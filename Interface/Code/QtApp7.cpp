@@ -220,20 +220,63 @@ QLayout* QtApp7::ennemie() {
 
 //definition des slots
 void QtApp7::reset1() {
+    gui = new GUI();
     QString typeTour = comboTours->currentText();
-    //if()
-    le1->setValue(0);
-    le2->setValue(0);
-    le3->setValue(0);
-    le4->setValue(0);
+    if (typeTour == "Tour de base") {
+        le1->setValue(gui->getJoueur()->DonneesTourBase.range);
+        le2->setValue(gui->getJoueur()->DonneesTourBase.degat);
+        le3->setValue(gui->getJoueur()->DonneesTourBase.prix);
+        le4->setValue(gui->getJoueur()->DonneesTourBase.vitesseAttaque);
+    }else if (typeTour == "Narvolt") {
+        le1->setValue(gui->getJoueur()->DonneesNarvolt.range);
+        le2->setValue(gui->getJoueur()->DonneesNarvolt.degat);
+        le3->setValue(gui->getJoueur()->DonneesNarvolt.prix);
+        le4->setValue(gui->getJoueur()->DonneesNarvolt.vitesseAttaque);
+    }else if (typeTour == "Canonnier") {
+        le1->setValue(gui->getJoueur()->DonneesCanonnier.range);
+        le2->setValue(gui->getJoueur()->DonneesCanonnier.degat);
+        le3->setValue(gui->getJoueur()->DonneesCanonnier.prix);
+        le4->setValue(gui->getJoueur()->DonneesCanonnier.vitesseAttaque);
+    }
+    else {
+        le1->setValue(gui->getJoueur()->DonneesSniper.range);
+        le2->setValue(gui->getJoueur()->DonneesSniper.degat);
+        le3->setValue(gui->getJoueur()->DonneesSniper.prix);
+        le4->setValue(gui->getJoueur()->DonneesSniper.vitesseAttaque);
+    }
+    
 }
 
 void QtApp7::reset2() {
+    gui = new GUI();
+    QString typeTour = comboennemie->currentText();
+    if (typeTour == "Requin") {
+        le11->setValue(gui->getCarte()->Requin.degat);
+        le12->setValue(gui->getCarte()->Requin.vitesse);
+        le13->setValue(gui->getCarte()->Requin.vie);
+        le14->setValue(gui->getCarte()->Requin.revenu);
+    }
+    else if (typeTour == "Saumon") {
+        le11->setValue(gui->getCarte()->Saumon.degat);
+        le12->setValue(gui->getCarte()->Saumon.vitesse);
+        le13->setValue(gui->getCarte()->Saumon.vie);
+        le14->setValue(gui->getCarte()->Saumon.revenu);
+    }
+    else {
+        le11->setValue(gui->getCarte()->Baleine.degat);
+        le12->setValue(gui->getCarte()->Baleine.vitesse);
+        le13->setValue(gui->getCarte()->Baleine.vie);
+        le14->setValue(gui->getCarte()->Baleine.revenu);
+    }
+}
 
-    le11->setValue(0);
-    le12->setValue(0);
-    le13->setValue(0);
-    le14->setValue(0);
+void QtApp7::reset3()
+{
+    gui = new GUI();
+    le21->setValue(gui->getCarte()->getVie());
+    le22->setValue(gui->getJoueur()->getDegat());
+    le23->setValue(gui->getJoueur()->getRange());
+    le24->setValue(gui->getCarte()->getArgent());
 }
 
 bool QtApp7::verification1() {
@@ -335,30 +378,30 @@ void QtApp7::valider2() {
         QMessageBox::information(this, "Information Enemie", QString("Type Enemie:%1<br/>").arg(typeEnemie) + QString("dommage:%1<br/>").arg(dommage) + QString("vitesse:%1<br/>").arg(vitesse) + QString("vie:%1<br/>").arg(vie));
         if (typeEnemie == "Baleine")
         {
-            gui->Baleine.vie = vie;
-            gui->Baleine.degat = dommage;
-            gui->Baleine.revenu = revenu;
-            gui->Baleine.vitesse = vitesse;
+            gui->getCarte()->Baleine.vie = vie;
+            gui->getCarte()->Baleine.degat = dommage;
+            gui->getCarte()->Baleine.revenu = revenu;
+            gui->getCarte()->Baleine.vitesse = vitesse;
         }else if (typeEnemie == "Requin")
         {
-            gui->Requin.vie = vie;
-            gui->Requin.degat = dommage;
-            gui->Requin.revenu = revenu;
-            gui->Requin.vitesse = vitesse;
+            gui->getCarte()->Requin.vie = vie;
+            gui->getCarte()->Requin.degat = dommage;
+            gui->getCarte()->Requin.revenu = revenu;
+            gui->getCarte()->Requin.vitesse = vitesse;
         }else if (typeEnemie == "Saumon")
         {
-            gui->Saumon.vie = vie;
-            gui->Saumon.degat = dommage;
-            gui->Saumon.revenu = revenu;
-            gui->Saumon.vitesse = vitesse;
+            gui->getCarte()->Saumon.vie = vie;
+            gui->getCarte()->Saumon.degat = dommage;
+            gui->getCarte()->Saumon.revenu = revenu;
+            gui->getCarte()->Saumon.vitesse = vitesse;
         }
         else {
             QMessageBox::critical(this, "Erreur","Erreur selection ennemie");
         }
-        cout << gui->Requin.degat<< "\n";
-        cout << gui->Requin.vitesse<< "\n";
-        cout << gui->Requin.vie<< "\n";
-        cout << gui->Requin.revenu<< "\n";
+        cout << gui->getCarte()->Requin.degat<< "\n";
+        cout << gui->getCarte()->Requin.vitesse<< "\n";
+        cout << gui->getCarte()->Requin.vie<< "\n";
+        cout << gui->getCarte()->Requin.revenu<< "\n";
     }
 }
 
@@ -406,10 +449,6 @@ bool QtApp7::verification3()
     }
 }
 
-void QtApp7::reset3()
-{
-
-}
 
 void QtApp7::soummission(){
    

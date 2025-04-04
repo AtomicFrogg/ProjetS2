@@ -32,6 +32,7 @@ class QtApp7 : public QMainWindow
            bool verification1();
            bool verification2();
            bool verification3();
+           void valeurInitialeTour(GUI *c);
 
             ~QtApp7();
 
@@ -46,6 +47,7 @@ class QtApp7 : public QMainWindow
 
         private:
             GUI* gui;
+            Carte* c;
             QRadioButton* manette;
             QRadioButton* clavier;
             QRadioButton* carte1;

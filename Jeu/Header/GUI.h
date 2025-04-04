@@ -55,12 +55,15 @@ public:
     void setNumCarte(int numero);
     int getNumCarte();
 
+<<<<<<< Updated upstream
     DonneesEnnemies Requin;
     DonneesEnnemies Saumon;
     DonneesEnnemies Baleine;
 
 public slots:
     bool lancerVague(int index);
+=======
+>>>>>>> Stashed changes
 
 private:
     Donnees tableauDonnees[HAUTEUR][LARGEUR];

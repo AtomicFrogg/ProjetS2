@@ -3,6 +3,7 @@
 #include "../../Ennemis/Header/Ennemie.h"
 #include <iostream>
 #include <cstdlib>
+#include "DonneesEnnemies.h"
 
 const int HAUTEUR = 15;
 const int LARGEUR = 30;
@@ -36,7 +37,9 @@ public:
 	int getTailleEnnemie();
 
 	Dimension getCoordonnee(int index);
-
+	DonneesEnnemies Requin;
+	DonneesEnnemies Saumon;
+	DonneesEnnemies Baleine;
 
 	int getVieEnnemie(int index);
 
