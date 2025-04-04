@@ -14,6 +14,7 @@ using namespace std;
 
 class GUI
 {
+    Q_OBJECT
 public:
     GUI();
     ~GUI();
@@ -58,6 +59,8 @@ public:
     DonneesEnnemies Saumon;
     DonneesEnnemies Baleine;
 
+public slots:
+    bool lancerVague(int index);
 
 private:
     Donnees tableauDonnees[HAUTEUR][LARGEUR];
