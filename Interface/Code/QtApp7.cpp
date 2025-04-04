@@ -372,7 +372,19 @@ void QtApp7::valider3() {
 
 bool QtApp7::verification3()
 {
-    return 1;
+    int vie, dommage, range, argent;
+
+    vie = le21->value();
+    dommage = le22->value();
+    range = le23->value();
+    argent = le24->value();
+
+    if (dommage < 1 || vie < 1 || range < 1 || argent < 1) {
+        return false;
+    }
+    else {
+        return true;
+    }
 }
 
 void QtApp7::reset3()
