@@ -37,10 +37,6 @@ public:
 	int getTailleEnnemie();
 
 	Dimension getCoordonnee(int index);
-	DonneesEnnemies Requin;
-	DonneesEnnemies Saumon;
-	DonneesEnnemies Baleine;
-
 	int getVieEnnemie(int index);
 
 	DonneesEnnemies Requin;
