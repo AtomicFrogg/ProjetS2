@@ -62,6 +62,12 @@ void QtApp7::tourW() {
     le2 = new QSpinBox();
     le3 = new QSpinBox();
     le4 = new QSpinBox();
+
+    //definition de la taille des spinBox
+    le1->setMaximum(9999);
+    le2->setMaximum(9999);
+    le3->setMaximum(9999);
+    le4->setMaximum(9999);
     //organisation
     formulaire->addRow("Type tour", comboTours);
     formulaire->addRow("Range", le1);
@@ -101,6 +107,11 @@ void QtApp7::ennemieW() {
     le12 = new QSpinBox();
     le13 = new QSpinBox();
     le14 = new QSpinBox();
+    //definition de la taille des spinBox
+    le11->setMaximum(9999);
+    le12->setMaximum(9999);
+    le13->setMaximum(9999);
+    le14->setMaximum(9999);
     //organisation
     formulaire->addRow("Type ennemie", comboennemie);
     formulaire->addRow("Dommage", le11);
@@ -135,7 +146,10 @@ void QtApp7::joueurW() {
     le21 = new QSpinBox();
     le22 = new QSpinBox();
     le23 = new QSpinBox();
-    le24 = new QSpinBox();
+    //definition de la taille des spinBox
+    le21->setMaximum(9999);
+    le22->setMaximum(9999);
+    le23->setMaximum(9999);
     //organisation
     formulaire->addRow("Vie", le21);
     formulaire->addRow("Dommage", le22);
@@ -187,14 +201,20 @@ QLayout* QtApp7::ennemie() {
 
 //definition des slots
 void QtApp7::reset1() {
-    le1->setValue(0);
-    le2->setValue(0);
-}
-
-void QtApp7::reset2() {
+    QString typeTour = comboTours->currentText();
+    //if()
     le1->setValue(0);
     le2->setValue(0);
     le3->setValue(0);
+    le4->setValue(0);
+}
+
+void QtApp7::reset2() {
+
+    le11->setValue(0);
+    le12->setValue(0);
+    le13->setValue(0);
+    le14->setValue(0);
 }
 
 bool QtApp7::verification1() {
