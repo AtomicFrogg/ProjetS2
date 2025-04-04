@@ -3,6 +3,21 @@
 
 Carte::Carte(int v, int a) :vie(v), argent(a)
 {
+	Requin.vie = 400;
+	Requin.vitesse = 1;
+	Requin.revenu = 2;
+	Requin.degat = 3;
+
+	Saumon.vie = 400;
+	Saumon.vitesse = 1;
+	Saumon.revenu = 2;
+	Saumon.degat = 3;
+
+	Baleine.vie = 400;
+	Baleine.vitesse = 1;
+	Baleine.revenu = 2;
+	Baleine.degat = 3;
+
 	for (int i = 0; i < HAUTEUR; i++)
 	{
 		for (int j = 0; j < LARGEUR; j++)

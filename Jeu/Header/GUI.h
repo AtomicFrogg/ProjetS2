@@ -7,6 +7,7 @@
 #include "Donnees.h"
 #include "DonneesEnnemies.h"
 #include "DonneesTours.h"
+
 static bool FINJEU = false;
 
 
@@ -14,6 +15,7 @@ using namespace std;
 
 class GUI
 {
+
 public:
     GUI();
     ~GUI();
@@ -26,7 +28,6 @@ public:
 
     //methodes relatives aux enemis
     void moveEnnemies();
-    void lancerVague(int index);
     void attaqueEnnemie();
     void ajouterEnnemie(Ennemie* ptr);
     void retirerEnnemie(int index);
@@ -53,9 +54,11 @@ public:
     bool getManette();
     void setNumCarte(int numero);
     int getNumCarte();
+    bool lancer(int index);
 
 
 
+   
 
 private:
     Donnees tableauDonnees[HAUTEUR][LARGEUR];

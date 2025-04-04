@@ -34,54 +34,19 @@ Interface::Interface(GUI *gui)
 	layout->setSpacing(0);
 
 	Hbox->setContentsMargins(0, 0, 0, 0);
-	int sizeX = 150;
-	int sizeY = 120;
-	QPushButton* TB = new QPushButton("Tour de Base");
-	TB->setCursor(Qt::PointingHandCursor);
-	TB->setFixedSize(sizeX,sizeY);
-	QObject::connect(TB, SIGNAL(clicked()), this, SLOT(ajouterTourBase()));
-	VboxBoutton->addWidget(TB, 0);
-
-	QPushButton *Canon = new QPushButton("Canonnier");
-	Canon->setCursor(Qt::PointingHandCursor);
-	Canon->setFixedSize(sizeX,sizeY);
-	QObject::connect(Canon, SIGNAL(clicked()), this, SLOT(ajouterCanonnier()));
-	VboxBoutton->addWidget(Canon, 1);
-
-	QPushButton* Narv = new QPushButton("Narvolt");
-	Narv->setFixedSize(sizeX, sizeY);
-	Narv->setCursor(Qt::PointingHandCursor);
-	QObject::connect(Narv, SIGNAL(clicked()), this, SLOT(ajouterNarvolt()));
-	VboxBoutton->addWidget(Narv, 2);
-
-	QPushButton* Sni = new QPushButton("Sniper");
-	Sni->setFixedSize(sizeX, sizeY);
-	Sni->setCursor(Qt::PointingHandCursor);
-	QObject::connect(Sni, SIGNAL(clicked()), this, SLOT(ajouterSniper()));
-	VboxBoutton->addWidget(Sni, 3);
-
-	
-
-	QPushButton* Jou = new QPushButton("Joueur");
-	Jou->setCursor(Qt::PointingHandCursor);
-	QObject::connect(Jou, SIGNAL(clicked()), this, SLOT(ajouterJoueur()));
-	layout->addWidget(Jou, 5, LARGEUR);
-
-	QPushButton* quit = new QPushButton("QUITTER");
-	quit->setCursor(Qt::PointingHandCursor);
-	quit->setFixedSize(sizeX, sizeY-50);
-	QObject::connect(quit, SIGNAL(clicked()), qApp, SLOT(quit()));
-	VboxBoutton->addWidget(quit, 7);
-
-	QPushButton* up = new QPushButton("up");
-	up->setCursor(Qt::PointingHandCursor);
-	up->setFixedSize(sizeX, sizeY - 50);
-	QObject::connect(up, SIGNAL(clicked()), this, SLOT(joueurUp()));
-	VboxBoutton->addWidget(up, 8);
-
-
 	Hbox->addLayout(layout, 0);
-	Hbox->addLayout(VboxBoutton, 1);
+	if(!g->getManette())
+	{
+		MenuDroite();
+		Hbox->addLayout(VboxBoutton, 1);
+	}
+	
+	QPushButton* Vague = new QPushButton("Lancer Vague");
+	Vague->setCursor(Qt::PointingHandCursor);
+	Vague->setFixedSize(130, 100);
+
+	QObject::connect(Vague, SIGNAL(clicked()), this, SLOT(lancerVague()));
+	VboxBoutton->addWidget(Vague, 0);
 	this->setLayout(Hbox);
 
 	ajouterJoueur();
@@ -315,5 +280,58 @@ bool Interface::joueurDroite()
 	g->moveJoueurDroite(1);
 	ajouterJoueur();
 
+	return true;
+}
+
+bool Interface::MenuDroite()
+{
+	int sizeX = 130;
+	int sizeY = 100;
+	QPushButton* TB = new QPushButton("Tour de Base");
+	TB->setCursor(Qt::PointingHandCursor);
+	TB->setFixedSize(sizeX,sizeY);
+	QObject::connect(TB, SIGNAL(clicked()), this, SLOT(ajouterTourBase()));
+	VboxBoutton->addWidget(TB, 1);
+
+	QPushButton *Canon = new QPushButton("Canonnier");
+	Canon->setCursor(Qt::PointingHandCursor);
+	Canon->setFixedSize(sizeX,sizeY);
+	QObject::connect(Canon, SIGNAL(clicked()), this, SLOT(ajouterCanonnier()));
+	VboxBoutton->addWidget(Canon, 2);
+
+	QPushButton* Narv = new QPushButton("Narvolt");
+	Narv->setFixedSize(sizeX, sizeY);
+	Narv->setCursor(Qt::PointingHandCursor);
+	QObject::connect(Narv, SIGNAL(clicked()), this, SLOT(ajouterNarvolt()));
+	VboxBoutton->addWidget(Narv, 3);
+
+	QPushButton* Sni = new QPushButton("Sniper");
+	Sni->setFixedSize(sizeX, sizeY);
+	Sni->setCursor(Qt::PointingHandCursor);
+	QObject::connect(Sni, SIGNAL(clicked()), this, SLOT(ajouterSniper()));
+	VboxBoutton->addWidget(Sni, 4);
+
+	QPushButton* Jou = new QPushButton("Joueur");
+	Jou->setCursor(Qt::PointingHandCursor);
+	QObject::connect(Jou, SIGNAL(clicked()), this, SLOT(ajouterJoueur()));
+	layout->addWidget(Jou, 5, LARGEUR);
+
+	QPushButton* quit = new QPushButton("QUITTER");
+	quit->setCursor(Qt::PointingHandCursor);
+	quit->setFixedSize(sizeX, sizeY-50);
+	QObject::connect(quit, SIGNAL(clicked()), qApp, SLOT(quit()));
+	VboxBoutton->addWidget(quit, 6);
+
+	QPushButton* up = new QPushButton("up");
+	up->setCursor(Qt::PointingHandCursor);
+	up->setFixedSize(sizeX, sizeY - 50);
+	QObject::connect(up, SIGNAL(clicked()), this, SLOT(joueurUp()));
+	VboxBoutton->addWidget(up, 7);
+	return true;
+}
+
+bool Interface::lancerVague()
+{
+	g->lancer(40);
 	return true;
 }

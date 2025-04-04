@@ -35,31 +35,36 @@ void GUI::moveEnnemies() {
   
 }
 
-void GUI::lancerVague(int index) {
-
-    c->debutEnnemie(index);
-
-    Dimension coord;
-    coord.x = 0;
-    coord.y = 9;
-    for (int i = 0; i < c->getTailleEnnemie(); i++)
+bool GUI::lancer(int index) {
+    if(!FINJEU)
     {
-        c->getEnnemie()->getEnnemie(i)->setCoordonnee(coord);
-    }    
-
-    clock_t start;
-    while (c->getVie() > 0 and c->getTailleEnnemie() > 0 and !FINJEU)
+        return false;
+    }
+    else
     {
-        start = clock();
-        moveEnnemies();
-        j->attaquer();
-        int time = clock() - start;
-        if (time < 700)
+        c->debutEnnemie(index);
+        Dimension coord;
+        coord.x = 0;
+        coord.y = 9;
+        for (int i = 0; i < c->getTailleEnnemie(); i++)
         {
-            Sleep(700-time);
+            c->getEnnemie()->getEnnemie(i)->setCoordonnee(coord);
+        }    
+        clock_t start;
+        while (c->getVie() > 0 and c->getTailleEnnemie() > 0 and !FINJEU)
+        {
+            start = clock();
+            moveEnnemies();
+            j->attaquer();
+            int time = clock() - start;
+            if (time < 700)
+            {
+                Sleep(700-time);
+            }
         }
+        setFin(true);
+        return true;
         //draw();
-
        /* cout << "Baleine :" << c->getCoordonnee(0).x;
         cout << "vie: " << c->getEnnemie()->getEnnemie(0)->getVie();*/
     }
