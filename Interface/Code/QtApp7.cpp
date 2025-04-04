@@ -22,7 +22,7 @@ QtApp7::QtApp7(GUI* g) : QMainWindow()
     QVBoxLayout* vil = new QVBoxLayout();
     vil->addLayout(outilJeu());
     vil->addWidget(Tours());
-    vil->addLayout(enemie());
+    vil->addLayout(ennemie());
     zoneCentrale->setLayout(vil);
     setCentralWidget(zoneCentrale);
 }
@@ -63,7 +63,7 @@ void QtApp7::tourW() {
     le3 = new QSpinBox();
     le4 = new QSpinBox();
     //organisation
-    formulaire->addRow("Type tour", comboWidgets);
+    formulaire->addRow("Type tour", comboTours);
     formulaire->addRow("Range", le1);
     formulaire->addRow("Dommage", le2);
     formulaire->addRow("Prix", le3);
@@ -86,26 +86,27 @@ void QtApp7::tourW() {
     tours->setLayout(vbox);
 }
 
-void QtApp7::enemieW() {
-    enemies = new QWidget();
+void QtApp7::ennemieW() {
+    ennemies = new QWidget();
 
-    //page enemies
+    //page ennemies
     formulaire = new QFormLayout();
     QGridLayout* layout2 = new QGridLayout();
     QVBoxLayout* vbox2 = new QVBoxLayout();
-    comboenemie = new QComboBox(enemies);
-    comboenemie->addItem("Poisson zombie");
-    comboenemie->addItem("Neuci");
-    comboenemie->addItem("Pieuvre");
+    comboennemie = new QComboBox(ennemies);
+    comboennemie->addItem("Requin");
+    comboennemie->addItem("Saumon");
+    comboennemie->addItem("Baleine");
+    le11 = new QSpinBox();
     le12 = new QSpinBox();
     le13 = new QSpinBox();
     le14 = new QSpinBox();
     //organisation
-    formulaire->addRow("Type enemie", comboWidgets);
-    formulaire->addRow("Dommage", le1);
-    formulaire->addRow("Vitesse", le2);
-    formulaire->addRow("Vie", le3);
-    formulaire->addRow("Prix", le4);
+    formulaire->addRow("Type ennemie", comboennemie);
+    formulaire->addRow("Dommage", le11);
+    formulaire->addRow("Vitesse", le12);
+    formulaire->addRow("Vie", le13);
+    formulaire->addRow("Revenu", le14);
     //BOUTTON
     valider = new QPushButton("Valider");
     reset = new QPushButton("Reset");
@@ -121,7 +122,7 @@ void QtApp7::enemieW() {
 
     vbox2->addLayout(formulaire);
     vbox2->addLayout(layout2);
-    enemies->setLayout(vbox2);
+    ennemies->setLayout(vbox2);
 }
 
 void QtApp7::joueurW() {
@@ -131,13 +132,13 @@ void QtApp7::joueurW() {
     formulaire = new QFormLayout();
     QGridLayout* layout2 = new QGridLayout();
     QVBoxLayout* vbox2 = new QVBoxLayout();
-    le1 = new QSpinBox();
-    le2 = new QSpinBox();
-    le3 = new QSpinBox();
+    le21 = new QSpinBox();
+    le22 = new QSpinBox();
+    le23 = new QSpinBox();
     //organisation
-    formulaire->addRow("Vie", le1);
-    formulaire->addRow("Dommage", le2);
-    formulaire->addRow("Range", le3);
+    formulaire->addRow("Vie", le21);
+    formulaire->addRow("Dommage", le22);
+    formulaire->addRow("Range", le23);
     //BOUTTON
     valider = new QPushButton("Valider");
     reset = new QPushButton("Reset");
@@ -160,17 +161,17 @@ QTabWidget* QtApp7::Tours() {
     onglets = new QTabWidget(this);
     onglets->setGeometry(30, 20, 240, 160);
 
-    enemieW();
+    ennemieW();
     tourW();
     joueurW();
 
     onglets->addTab(tours, "Tours");
-    onglets->addTab(enemies, "Enemies");
+    onglets->addTab(ennemies, "Enemies");
     onglets->addTab(Joueur, "Joueurs");
     return onglets;
 }
 
-QLayout* QtApp7::enemie() {
+QLayout* QtApp7::ennemie() {
     QGridLayout* layout = new QGridLayout();
     valider = new QPushButton("Ok");
     reset = new QPushButton("Annuler");
@@ -196,11 +197,14 @@ void QtApp7::reset2() {
 
 bool QtApp7::verification1() {
     QString typeTour;
-    int  range, dommage;
-    typeTour = comboWidgets->currentText();
+    int  range, dommage,prix,vitesseAttaque;
+    typeTour = comboTours->currentText();
     range = le1->value();
     dommage = le2->value();
-    if (range > 0 || dommage > 0) {
+    prix = le3->value();
+    vitesseAttaque = le4->value();
+
+    if (range <= 0 || dommage <= 0 || prix < 0 || vitesseAttaque <= 0) {
         return false;
     }
     else {
@@ -210,10 +214,12 @@ bool QtApp7::verification1() {
 
 void QtApp7::valider1() {
     QString typeTour;
-    int  range, dommage;
-    typeTour = comboWidgets->currentText();
+    int  range, dommage,prix,vitesseAttaque;
+    typeTour = comboTours->currentText();
     range = le1->value();
     dommage = le2->value();
+    vitesseAttaque = le4->value();
+    prix = le3->value();
 
     if (!verification1()) {
         QMessageBox::warning(this, "Information Tour", "Ces valeurs sont trop basses pour debuter le jeu!!!");
@@ -245,20 +251,25 @@ void QtApp7::valider1() {
             gui->getJoueur()->DonneesSniper.range = range;
             gui->getJoueur()->DonneesSniper.vitesseAttaque = vitesseAttaque;
         }
+        cout << gui->getJoueur()->DonneesNarvolt.range << "\n";
+        cout << gui->getJoueur()->DonneesNarvolt.degat<<"\n";
+        cout << gui->getJoueur()->DonneesNarvolt.prix << "\n";
+        cout << gui->getJoueur()->DonneesNarvolt.vitesseAttaque << "\n";
     }
 }
 
 bool QtApp7::verification2() {
     QString typeEnemie;
     result = false;
-    int  vitesse, vie, dommage;
-    typeEnemie = comboWidgets->currentText();
+    int  vitesse, vie, dommage,revenu;
+    typeEnemie = comboennemie->currentText();
 
-    dommage = le1->value();
-    vitesse = le2->value();
-    vie = le3->value();
+    dommage = le11->value();
+    vitesse = le12->value();
+    vie = le13->value();
+    revenu = le14->value();
 
-    if (dommage < 10 || vitesse < 10 || vie < 10) {
+    if (dommage < 1 || vitesse < 1 || vie < 1 || revenu < 0) {
         return false;
     }
     else {
@@ -268,12 +279,13 @@ bool QtApp7::verification2() {
 
 void QtApp7::valider2() {
     QString typeEnemie;
-    int  vitesse, vie, dommage;
-    typeEnemie = comboWidgets->currentText();
+    int  vitesse, vie, dommage,revenu;
+    typeEnemie = comboennemie->currentText();
 
-    dommage = le1->value();
-    vitesse = le2->value();
-    vie = le3->value();
+    dommage = le11->value();
+    vitesse = le12->value();
+    vie = le13->value();
+    revenu = le14->value();
 
     if (!verification2()) {
         QMessageBox::warning(this, "Information Enemie", "Ces valeurs sont trop basses pour debuter le jeu!!!");
@@ -302,6 +314,10 @@ void QtApp7::valider2() {
         else {
             QMessageBox::critical(this, "Erreur","Erreur selection ennemie");
         }
+        cout << gui->Requin.degat<< "\n";
+        cout << gui->Requin.vitesse<< "\n";
+        cout << gui->Requin.vie<< "\n";
+        cout << gui->Requin.revenu<< "\n";
     }
 }
 
