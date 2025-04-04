@@ -2,6 +2,8 @@
 
 GUI::GUI()
 {
+    manette = false;
+    numCarte = 1;
     c = new Carte(100, 10000);
     j = new Joueur(20, 5, 10, 10, 1, c, "Jacob");
     for (int i = 0; i < HAUTEUR; i++)
@@ -534,4 +536,24 @@ void GUI::setFin(bool etat)
 Donnees* GUI::getDonnees(int x, int y)
 {
     return &tableauDonnees[x][y];
+}
+
+void GUI::setManette(bool estcemanette)
+{
+    manette = estcemanette;
+}
+
+bool GUI::getManette()
+{
+    return manette;
+}
+
+void GUI::setNumCarte(int numero)
+{
+    numCarte = numero;
+}
+
+int GUI::getNumCarte()
+{
+    return numCarte;
 }

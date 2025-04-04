@@ -48,6 +48,8 @@ class QtApp7 : public QMainWindow
             GUI* gui;
             QRadioButton* manette;
             QRadioButton* clavier;
+            QRadioButton* carte1;
+            QRadioButton* carte2;
             QTabWidget* onglets;
             QComboBox* comboWidgets;
             QComboBox* comboTours;

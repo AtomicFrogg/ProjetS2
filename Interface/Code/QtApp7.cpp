@@ -28,7 +28,7 @@ QtApp7::QtApp7(GUI* g) : QMainWindow()
 }
 
 QLayout* QtApp7::outilJeu() {
-    QGroupBox* outilJeu = new QGroupBox("instrument", this);
+    QGroupBox* outilJeu = new QGroupBox("Peripherique", this);
     QGridLayout* layout = new QGridLayout();
 
     manette = new QRadioButton("manette");
@@ -42,6 +42,23 @@ QLayout* QtApp7::outilJeu() {
     outilJeu->setGeometry(300, 300, 150, 150);
     outilJeu->setLayout(verticale);
     layout->addWidget(outilJeu, 0, 0);
+
+    QGroupBox* map = new QGroupBox("Choix de cartes", this);
+    carte1 = new QRadioButton("Carte #1");
+    carte2 = new QRadioButton("Carte #2");
+
+    carte1->setChecked(true);
+    QVBoxLayout* carteV = new QVBoxLayout;
+    carteV->addWidget(carte1);
+    carteV->addWidget(carte2);
+
+
+    map->setGeometry(300, 300, 150, 150);
+    map->setLayout(carteV);
+    layout->addWidget(map, 1, 0);
+    
+
+
     return layout;
 }
 
@@ -146,10 +163,12 @@ void QtApp7::joueurW() {
     le21 = new QSpinBox();
     le22 = new QSpinBox();
     le23 = new QSpinBox();
+    le24 = new QSpinBox();
     //definition de la taille des spinBox
     le21->setMaximum(9999);
     le22->setMaximum(9999);
     le23->setMaximum(9999);
+    le24->setMaximum(9999);
     //organisation
     formulaire->addRow("Vie", le21);
     formulaire->addRow("Dommage", le22);
@@ -393,18 +412,27 @@ void QtApp7::reset3()
 }
 
 void QtApp7::soummission(){
-    if (!verification1() || !verification2()) {
-        QMessageBox::warning(this, "Information Generale", "Ces valeurs sont trop basses pour debuter le jeu!!!");
+   
+    if (manette->isChecked()) {
+        QMessageBox::information(this, "Information Generale", "Vous avez choisir la <strong>manette</strong> pour le jeu!!!");
+        gui->setManette(true);
     }
-    else{
-        if (manette->isChecked()) {
-            QMessageBox::information(this, "Information Generale", "Vous avez choisir la <strong>manette</strong> pour le jeu!!!");
-        }
-        else {
-            QMessageBox::information(this, "Information Generale", "Vous avez choisir le <strong>clavier</strong> pour le jeu!!!");
-        }
-        this->close();
+    else {
+        QMessageBox::information(this, "Information Generale", "Vous avez choisir le <strong>clavier</strong> pour le jeu!!!");
+        gui->setManette(false);
     }
+    if (carte1->isChecked()){
+        gui->setNumCarte(1);
+        QMessageBox::information(this, "Information Generale", "Vous avez choisir la <strong>carte 1</strong> pour le jeu!!!");
+    }
+    else if (carte2->isChecked())
+    {
+        gui->setNumCarte(2);
+        QMessageBox::information(this, "Information Generale", "Vous avez choisir la <strong>carte 2</strong> pour le jeu!!!");
+    }
+
+    this->close();
+    
 }
 
 QtApp7::~QtApp7()

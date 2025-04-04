@@ -49,6 +49,10 @@ public:
     Carte* getCarte();
     int checkMove(int index);
 
+    void setManette(bool estcemanette);
+    bool getManette();
+    void setNumCarte(int numero);
+    int getNumCarte();
 
     DonneesEnnemies Requin;
     DonneesEnnemies Saumon;
@@ -59,6 +63,6 @@ private:
     Donnees tableauDonnees[HAUTEUR][LARGEUR];
     Carte* c;
     Joueur* j;
-
-   
+    bool manette;
+    int numCarte;
 };
