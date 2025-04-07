@@ -254,7 +254,7 @@ bool Interface::afficherEnnemi()
 	int count, type, i, j;
 	for(count = 0; count <= g->getCarte()->getTailleEnnemie(); count++)
 	{
-		type = g->getCarte()->getEnnemie()->getEnnemie(count)->type;
+		type = g->getCarte()->getEnnemie()->getEnnemie(count)->getType();
 		i = g->getCarte()->getEnnemie()->getEnnemie(count)->getCoordonnee().y;
 		j = g->getCarte()->getEnnemie()->getEnnemie(count)->getCoordonnee().x;
 		Case* grille = getCase(i, j);
@@ -441,6 +441,7 @@ bool Interface::MenuDroite()
 
 bool Interface::lancerVague()
 {
+	int index = 40;
 	if(!FINJEU)
     {
         return false;

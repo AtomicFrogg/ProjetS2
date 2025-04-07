@@ -19,6 +19,7 @@ public:
 	void setCoordonnee(Dimension coord);
 	void setRevenu(int r);
 	int getRevenu();
+	int getType();
 	void accelerer();
 
 	bool deplacement();

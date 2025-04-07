@@ -102,3 +102,8 @@ void Ennemie::setVitesse(int v)
 {
 	vitesse = v;
 }
+
+int Ennemie::getType()
+{
+	return type;
+}
