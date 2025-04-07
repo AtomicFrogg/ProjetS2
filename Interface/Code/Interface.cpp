@@ -203,45 +203,64 @@ bool Interface::ajouterTourBase() {
 
 
 bool Interface::ajouterBaleine(int i, int j) {
-	g->getJoueur()->setPosition(10, 13);
-	i = HAUTEUR - g->getCoordonneeJoueur().y;
-	j = g->getCoordonneeJoueur().x;
-
 	if (i < 0 || i >= HAUTEUR || j < 1 || j > LARGEUR - 1) return false;
 	Case* grille = getCase(i, j);
 	grille->ajouterBaleine();
 	grille->show();
-
-
 	return true;
 }
 
 bool Interface::ajouterSaumon(int i, int j) {
-	g->getJoueur()->setPosition(10, 13);
-	i = HAUTEUR - g->getCoordonneeJoueur().y;
-	j = g->getCoordonneeJoueur().x;
-
 	if (i < 0 || i >= HAUTEUR || j < 1 || j > LARGEUR - 1) return false;
 	Case* grille = getCase(i, j);
 	grille->ajouterSaumon();
 	grille->show();
-
-
 	return true;
 }
 
 bool Interface::ajouterRequin(int i, int j) {
-	g->getJoueur()->setPosition(10, 13);
-	i = HAUTEUR - g->getCoordonneeJoueur().y;
-	j = g->getCoordonneeJoueur().x;
-
 	if (i < 0 || i >= HAUTEUR || j < 1 || j > LARGEUR - 1) return false;
 	Case* grille = getCase(i, j);
 	grille->ajouterRequin();
 	grille->show();
-
-
 	return true;
+}
+
+bool Interface::ajouterEnnemi(int type, int i, int j)
+{
+	if(type == 1)
+	{
+		ajouterSaumon(i, j);
+		return true;
+	}
+	elif(type == 2)
+	{
+		ajouterRequin(i, j);
+		return true;
+	}
+	elif(type == 3)
+	{
+		ajouterBaleine(i, j);
+		return true
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool Interface::afficherEnnemi()
+{
+	int count, type, i, j;
+	for(count = 0; count <= g->getCarte()->getTailleEnnemie; count++)
+	{
+		type = g->getCarte()->getEnnemie()->getEnnemie()->type;
+		i = g->getCarte()->getEnnemie()->getEnnemie()->getCoordonnee().y;
+		j = g->getCarte()->getEnnemie()->getEnnemie()-getCoordonnee().x;
+		Case* grille = getCase(i, j);
+		grille->clearImage();
+		ajouterEnnemi(type, i, j);
+	}
 }
 
 bool Interface::clearJoueur()
@@ -422,7 +441,39 @@ bool Interface::MenuDroite()
 
 bool Interface::lancerVague()
 {
-	g->lancer(40);
+	if(!FINJEU)
+    {
+        return false;
+    }
+    else
+    {
+        g->getCarte()->debutEnnemie(index);
+        Dimension coord;
+        coord.x = 0;
+        coord.y = 9;
+        for (int i = 0; i < g->getCarte()->getTailleEnnemie(); i++)
+        {
+            g->getCarte()->getEnnemie()->getEnnemie(i)->setCoordonnee(coord);
+        }    
+        clock_t start;
+        while (g->getCarte()->getVie() > 0 and g->getCarte()->getTailleEnnemie() > 0 and !FINJEU)
+        {
+            start = clock();
+			afficherEnnemi();
+            g->moveEnnemies();
+            g->getJoueur()->attaquer();
+            int time = clock() - start;
+            if (time < 700)
+            {
+                Sleep(700-time);
+            }
+        }
+        g->setFin(true);
+        return true;
+        //draw();
+       /* cout << "Baleine :" << c->getCoordonnee(0).x;
+        cout << "vie: " << c->getEnnemie()->getEnnemie(0)->getVie();*/
+    }
 	return true;
 }
 
@@ -475,7 +526,7 @@ void Interface::input(GUI* gui, Interface* interf)
 			//const char com = "\\\\.\\COM3";
 			//SerialPort arduino = SerialPort("\\\\.\\COM3");
 			if (!arduino->isConnected()) {
-				//QMessageBox::information(interf, "Erreur", "La manette n'est pas connectée");
+				//QMessageBox::information(interf, "Erreur", "La manette n'est pas connectï¿½e");
 				//cerr << "Impossible de se connecter au port " << string(com) << ". Fermeture du programme!" << endl;
 			}
 

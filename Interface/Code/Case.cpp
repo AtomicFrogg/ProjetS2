@@ -115,19 +115,19 @@ void Case::ajouterTourBase()
 
 void Case::ajouterSaumon()
 {
-	image->setPixmap(QPixmap("Images/TourBase.png").scaled(CARRE, CARRE));
+	image->setPixmap(QPixmap("Images/Saumon.png").scaled(CARRE, CARRE));
 	image->show();
 	this->show();
 }
 void Case::ajouterRequin()
 {
-	image->setPixmap(QPixmap("Images/TourBase.png").scaled(CARRE, CARRE));
+	image->setPixmap(QPixmap("Images/Requin.png").scaled(CARRE, CARRE));
 	image->show();
 	this->show();
 }
 void Case::ajouterBaleine()
 {
-	image->setPixmap(QPixmap("Images/TourBase.png").scaled(CARRE, CARRE));
+	image->setPixmap(QPixmap("Images/Baleine.png").scaled(CARRE, CARRE));
 	image->show();
 	this->show();
 }

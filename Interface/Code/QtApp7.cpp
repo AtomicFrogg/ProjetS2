@@ -475,6 +475,7 @@ void QtApp7::soummission(){
     gui->chooseMap(num);
     jeu = new Interface(gui);
     jeu->show();
+    jeu->move(0,0);
     this->close();
 }
 

@@ -102,7 +102,7 @@ bool Carte::ajouterBaleine(int c)
 
 bool Carte::ajouterSaumon(int c)
 {
-	Ennemie* newEnnemie = new Ennemie(20, 1, 50, 5, c, 1);
+	Ennemie* newEnnemie = new Ennemie(20, 1, 50, 5, c, 1); 
 	ajouterEnnemie(newEnnemie);
 	return 1;
 }

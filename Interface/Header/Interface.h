@@ -11,7 +11,8 @@
 #include "qobject.h"
 #include "qmessagebox.h"
 #include <QKeyEvent>
-
+#include <ctime>
+#include <iostream>
 
 
 #include <iostream>
@@ -51,6 +52,8 @@ public slots:
 	bool ajouterBaleine(int i, int j);
 	bool ajouterSaumon(int i, int j);
 	bool ajouterRequin(int i, int j);
+	bool ajouterEnnemi();
+	bool afficherEnnemi();
 	bool clearJoueur();
 	bool ajouterJoueur();
 	bool frontMoveJoueur(int d);
