@@ -3,6 +3,7 @@
 
 Ennemie::Ennemie(int v, int vit, int r, int d, int cpt, int type) :vie(v), vitesse(vit), revenu(r), degat(d), type(type)
 {
+	etat = 0;
 	position = 0;
 	compteur = cpt;
 	coordonnee.x = 0;

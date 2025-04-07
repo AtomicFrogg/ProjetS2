@@ -4,7 +4,7 @@ Case::Case(QWidget *parent, int t, GUI* g, int posi, int posj):QLabel(parent)
 {
 	type = t;
 	gui = g;
-	i = posi;
+	i = HAUTEUR-posi;
 	j = posj;
 	image = new QLabel(this);
 	
@@ -35,9 +35,9 @@ void Case::choixBackground(int type)
 	if (j <= 1) gauche = 1;
 	else gauche = gui->getDonnees(i, j - 1)->type == 1;
 	if (i <= 0) bas = 0;
-	else bas = gui->getDonnees(i + 1, j)->type == 1;
+	else bas = gui->getDonnees(i - 1, j)->type == 1;
 	if (i >= HAUTEUR) haut = 0;
-	else haut = gui->getDonnees(i - 1, j)->type == 1;
+	else haut = gui->getDonnees(i + 1, j)->type == 1;
 	if (j >= LARGEUR - 2) droit = 1;
 	else droit = gui->getDonnees(i, j + 1)->type == 1;
 	switch (type)

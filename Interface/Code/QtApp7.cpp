@@ -474,6 +474,7 @@ void QtApp7::soummission(){
     int num = gui->getNumCarte();
     gui->chooseMap(num);
     jeu = new Interface(gui);
+    jeu->move(0, 0);
     jeu->show();
     jeu->move(0,0);
     this->close();

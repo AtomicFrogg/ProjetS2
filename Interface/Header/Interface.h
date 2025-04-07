@@ -67,9 +67,9 @@ public slots:
 
 	void keyPressEvent(QKeyEvent* event) override;
 
-	static void input(GUI* gui, Interface* interf);
-	int checkKey();
-	void debutJeu();
+
+	void manette2key(int key);
+	void manetteInput();
 private:
 	QVBoxLayout* VboxBoutton;
 	QHBoxLayout* Hbox;
