@@ -441,35 +441,44 @@ bool Interface::MenuDroite()
 
 bool Interface::lancerVague()
 {
+	std::cout << "Je me suis rendu a lancer vague"
 	int index = 40;
 	if(!FINJEU)
     {
+		std::cout << "oops FINJEU est false"
         return false;
     }
     else
     {
+		std::cout << "on est dans le else de lancer vague"
         g->getCarte()->debutEnnemie(index);
         Dimension coord;
         coord.x = 0;
         coord.y = 9;
+		std::cout << "un"
         for (int i = 0; i < g->getCarte()->getTailleEnnemie(); i++)
         {
             g->getCarte()->getEnnemie()->getEnnemie(i)->setCoordonnee(coord);
+			std::cout << "deux"
         }    
         clock_t start;
-        while (g->getCarte()->getVie() > 0 and g->getCarte()->getTailleEnnemie() > 0 and !FINJEU)
+		std::cout << "trois"
+        while (g->getCarte()->getVie() > 0 and g->getCarte()->getTailleEnnemie() > 0 and FINJEU)
         {
+			std::cout << "quatre"
             start = clock();
 			afficherEnnemi();
             g->moveEnnemies();
             g->getJoueur()->attaquer();
             int time = clock() - start;
+			std::cout << "cinq"
             if (time < 700)
             {
                 Sleep(700-time);
             }
         }
         g->setFin(true);
+		std::cout << "six"
         return true;
         //draw();
        /* cout << "Baleine :" << c->getCoordonnee(0).x;
