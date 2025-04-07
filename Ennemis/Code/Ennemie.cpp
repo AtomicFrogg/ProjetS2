@@ -1,7 +1,7 @@
 #include "../Header/Ennemie.h"
 
 
-Ennemie::Ennemie(int v, int vit, int r, int d, int cpt) :vie(v), vitesse(vit), revenu(r), degat(d)
+Ennemie::Ennemie(int v, int vit, int r, int d, int cpt, int type) :vie(v), vitesse(vit), revenu(r), degat(d), type(type)
 {
 	position = 0;
 	compteur = cpt;
