@@ -8,7 +8,7 @@
 #include "DonneesEnnemies.h"
 #include "DonneesTours.h"
 
-static bool FINJEU = false;
+static bool FINJEU = true;
 
 
 using namespace std;
