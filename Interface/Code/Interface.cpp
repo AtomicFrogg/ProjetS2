@@ -252,7 +252,7 @@ bool Interface::ajouterEnnemi(int type, int i, int j)
 bool Interface::afficherEnnemi()
 {
 	int count, type, i, j;
-	for(count = 0; count <= g->getCarte()->getTailleEnnemie(); count++)
+	for(count = 0; count < g->getCarte()->getTailleEnnemie(); count++)
 	{
 		type = g->getCarte()->getEnnemie()->getEnnemie(count)->getType();
 		i = g->getCarte()->getEnnemie()->getEnnemie(count)->getCoordonnee().y;
@@ -455,30 +455,31 @@ bool Interface::lancerVague()
         Dimension coord;
         coord.x = 0;
         coord.y = 9;
-		std::cout << "un";
+		std::cout << "un" << endl;
         for (int i = 0; i < g->getCarte()->getTailleEnnemie(); i++)
         {
             g->getCarte()->getEnnemie()->getEnnemie(i)->setCoordonnee(coord);
-			std::cout << "deux";
+			std::cout << "deux" << endl;
         }    
         clock_t start;
-		std::cout << "trois";
+		std::cout << "trois" << endl;
         while (g->getCarte()->getVie() > 0 && g->getCarte()->getTailleEnnemie() > 0 && FINJEU)
         {
 			std::cout << "quatre";
+			std::endl;
             start = clock();
 			afficherEnnemi();
             g->moveEnnemies();
             g->getJoueur()->attaquer();
             int time = clock() - start;
-			std::cout << "cinq";
+			std::cout << "cinq" << endl;
             if (time < 700)
             {
                 Sleep(700-time);
             }
         }
         g->setFin(true);
-		std::cout << "six";
+		std::cout << "six" << endl;
         return true;
         //draw();
        /* cout << "Baleine :" << c->getCoordonnee(0).x;
