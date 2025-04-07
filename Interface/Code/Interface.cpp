@@ -463,7 +463,7 @@ bool Interface::lancerVague()
         }    
         clock_t start;
 		std::cout << "trois"
-        while (g->getCarte()->getVie() > 0 and g->getCarte()->getTailleEnnemie() > 0 and FINJEU)
+        while (g->getCarte()->getVie() > 0 && g->getCarte()->getTailleEnnemie() > 0 && FINJEU)
         {
 			std::cout << "quatre"
             start = clock();
