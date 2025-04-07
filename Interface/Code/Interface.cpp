@@ -252,11 +252,11 @@ bool Interface::ajouterEnnemi(int type, int i, int j)
 bool Interface::afficherEnnemi()
 {
 	int count, type, i, j;
-	for(count = 0; count <= g->getCarte()->getTailleEnnemie; count++)
+	for(count = 0; count <= g->getCarte()->getTailleEnnemie(); count++)
 	{
-		type = g->getCarte()->getEnnemie()->getEnnemie()->type;
-		i = g->getCarte()->getEnnemie()->getEnnemie()->getCoordonnee().y;
-		j = g->getCarte()->getEnnemie()->getEnnemie()-getCoordonnee().x;
+		type = g->getCarte()->getEnnemie()->getEnnemie(count)->type;
+		i = g->getCarte()->getEnnemie()->getEnnemie(count)->getCoordonnee().y;
+		j = g->getCarte()->getEnnemie()->getEnnemie(count)->getCoordonnee().x;
 		Case* grille = getCase(i, j);
 		grille->clearImage();
 		ajouterEnnemi(type, i, j);
