@@ -88,46 +88,60 @@ void Case::choixBackground(int type)
 void Case::ajouterNarvolt()
 {
 	image->setPixmap(QPixmap("Images/Narvolt.png").scaled(CARRE, CARRE));
+	image->show();
+	this->show();
 }
 
 void Case::ajouterCanonnier()
 {
 	image->setPixmap(QPixmap("Images/Canonnier.png").scaled(CARRE, CARRE));
+	image->show();
+	this->show();
 }
 
 void Case::ajouterSniper()
 {
 	image->setPixmap(QPixmap("Images/Sniper.png").scaled(CARRE, CARRE));
+	image->show();
+	this->show();
 }
 
 void Case::ajouterTourBase()
 {
 	image->setPixmap(QPixmap("Images/TourBase.png").scaled(CARRE, CARRE));
+	image->show();
+	this->show();
 }
 
 void Case::ajouterSaumon()
 {
 	image->setPixmap(QPixmap("Images/TourBase.png").scaled(CARRE, CARRE));
+	image->show();
+	this->show();
 }
 void Case::ajouterRequin()
 {
 	image->setPixmap(QPixmap("Images/TourBase.png").scaled(CARRE, CARRE));
+	image->show();
+	this->show();
 }
 void Case::ajouterBaleine()
 {
 	image->setPixmap(QPixmap("Images/TourBase.png").scaled(CARRE, CARRE));
+	image->show();
+	this->show();
 }
 
 void Case::ajouterJoueur()
 {
 	image->setPixmap(QPixmap("Images/Joueur.png").scaled(CARRE, CARRE));
+	image->show();
 	this->show();
 }
 
 void Case::clearImage()
 {
-	delete this->image;
-	image = new QLabel(this);
+	image->hide();
 	this->show();
 }
 

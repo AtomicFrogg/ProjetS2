@@ -486,3 +486,8 @@ Interface* QtApp7::getInterface()
 {
     return jeu;
 }
+
+void QtApp7::valeurInitialeTour(GUI* c)
+{
+
+}

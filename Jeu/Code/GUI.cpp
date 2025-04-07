@@ -105,7 +105,7 @@ bool GUI::moveJoueurUp(int y)
 
 void GUI::moveJoueurDown(int y)
 {
-    if (getCoordonneeJoueur().y < HAUTEUR && getCoordonneeJoueur().y > 0)
+    if (getCoordonneeJoueur().y <= HAUTEUR && getCoordonneeJoueur().y > 0)
     {
         int currX = getCoordonneeJoueur().x;
         int currY = getCoordonneeJoueur().y;
@@ -370,6 +370,7 @@ void GUI::chooseMap(int choixMap)
     int m, n;
     if (choixMap == 1)
     {
+        tableauDonnees[15][5].type = 0;
         m = 9;
         for (n = 1; n <= 5; n++)
         {

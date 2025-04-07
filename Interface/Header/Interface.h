@@ -1,4 +1,7 @@
 #pragma once
+#define WIN32_LEAN_AND_MEAN t
+#include <Windows.h>
+#include <thread>
 #include <qwidget.h>
 #include <qgridlayout.h>
 #include "../../Jeu/Header/GUI.h"
@@ -7,6 +10,29 @@
 #include "qapplication.h"
 #include "qobject.h"
 #include "qmessagebox.h"
+#include <QKeyEvent>
+
+
+
+#include <iostream>
+#include <mutex>
+static bool FIN = false;
+static bool debut = false;
+#include "../../includeJson/serial/SerialPort.hpp"
+#include "../../includeJson/json.hpp"
+
+
+/*------------------------------ Constantes ---------------------------------*/
+#define BAUD 115200           // Frequence de transmission serielle
+#define MSG_MAX_SIZE 1024   // Longueur maximale d'un message
+/*------------------------- Prototypes de fonctions -------------------------*/
+bool SendToSerial(SerialPort* arduino, nlohmann::json j_msg);
+bool RcvFromSerial(SerialPort* arduino, string& msg);
+
+
+/*---------------------------- Variables globales ---------------------------*/
+
+
 class Interface: public QWidget
 {
 Q_OBJECT
@@ -35,11 +61,18 @@ public slots:
 	bool joueurDroite();
 	bool MenuDroite();
 	bool lancerVague();
+
+	void keyPressEvent(QKeyEvent* event) override;
+
+	static void input(GUI* gui, Interface* interf);
+	int checkKey();
+	void debutJeu();
 private:
 	QVBoxLayout* VboxBoutton;
 	QHBoxLayout* Hbox;
 	QGridLayout* layout;
 	map<string, Case*> grille;
 	GUI* g;
+	std::thread* threadInput;
 };
 
