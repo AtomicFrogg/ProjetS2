@@ -46,7 +46,7 @@ Interface::Interface(GUI *gui)
 	Vague->setCursor(Qt::PointingHandCursor);
 	Vague->setFixedSize(130, 100);
 
-	QObject::connect(Vague, SIGNAL(clicked()), this, SLOT(manetteInput()));
+	QObject::connect(Vague, SIGNAL(clicked()), this, SLOT(lancerVague()));
 	VboxBoutton->addWidget(Vague, 0);
 	this->setLayout(Hbox);
 
@@ -443,44 +443,44 @@ bool Interface::MenuDroite()
 
 bool Interface::lancerVague()
 {
-	std::cout << "Je me suis rendu a lancer vague"
+	std::cout << "Je me suis rendu a lancer vague";
 	int index = 40;
 	if(!FINJEU)
     {
-		std::cout << "oops FINJEU est false"
+		std::cout << "oops FINJEU est false";
         return false;
     }
     else
     {
-		std::cout << "on est dans le else de lancer vague"
+		std::cout << "on est dans le else de lancer vague";
         g->getCarte()->debutEnnemie(index);
         Dimension coord;
         coord.x = 0;
         coord.y = 9;
-		std::cout << "un"
+		std::cout << "un";
         for (int i = 0; i < g->getCarte()->getTailleEnnemie(); i++)
         {
             g->getCarte()->getEnnemie()->getEnnemie(i)->setCoordonnee(coord);
-			std::cout << "deux"
+			std::cout << "deux";
         }    
         clock_t start;
-		std::cout << "trois"
+		std::cout << "trois";
         while (g->getCarte()->getVie() > 0 && g->getCarte()->getTailleEnnemie() > 0 && FINJEU)
         {
-			std::cout << "quatre"
+			std::cout << "quatre";
             start = clock();
 			afficherEnnemi();
             g->moveEnnemies();
             g->getJoueur()->attaquer();
             int time = clock() - start;
-			std::cout << "cinq"
+			std::cout << "cinq";
             if (time < 700)
             {
                 Sleep(700-time);
             }
         }
         g->setFin(true);
-		std::cout << "six"
+		std::cout << "six";
         return true;
         //draw();
        /* cout << "Baleine :" << c->getCoordonnee(0).x;
@@ -658,7 +658,8 @@ void Interface::manetteInput()
 				//std::cout << "W" ;
 				std::mutex mutex;
 				mutex.lock();
-				this->frontMoveJoueur(4);
+				manette2key(0x57);
+				mutex.unlock();
 
 			}
 			//Gauche key
@@ -668,7 +669,7 @@ void Interface::manetteInput()
 				//std::cout << "A" ;
 				std::mutex mutex;
 				mutex.lock();
-				this->frontMoveJoueur(3);
+				manette2key(0x41);
 				mutex.unlock();
 			}
 			//Bas key
@@ -678,7 +679,7 @@ void Interface::manetteInput()
 				//std::cout << "S" ;
 				std::mutex mutex;
 				mutex.lock();
-				this->frontMoveJoueur(2);
+				manette2key(0x53);
 				mutex.unlock();
 			}
 			//Droite key
@@ -688,7 +689,7 @@ void Interface::manetteInput()
 				//std::cout << "D";
 				std::mutex mutex;
 				mutex.lock();
-				this->frontMoveJoueur(1);
+				manette2key(0x44);
 				mutex.unlock();
 			}
 			//Haut-Droite
