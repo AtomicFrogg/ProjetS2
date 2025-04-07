@@ -247,6 +247,7 @@ bool Interface::ajouterEnnemi(int type, int i, int j)
 	{
 		return false;
 	}
+	this->show();
 }
 
 bool Interface::afficherEnnemi()
