@@ -52,13 +52,13 @@ Interface::Interface(GUI *gui)
 
 	ajouterJoueur();
 
-	//threadInput = new std::thread(&Interface::input, gui, this);
+	threadVague = new std::thread(&Interface::lancerVague, gui, this);
 }
 
 Interface::~Interface()
 {
-	//threadInput->join();
-	//delete threadInput;
+	threadVague->join();
+	delete threadVague;
 	delete layout;
 }
 
