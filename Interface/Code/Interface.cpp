@@ -252,7 +252,7 @@ bool Interface::ajouterEnnemi(int type, int i, int j)
 bool Interface::afficherEnnemi()
 {
 	int count, type, i, j;
-	for(count = 0; count <= g->getCarte()->getTailleEnnemie(); count++)
+	for(count = 0; count < g->getCarte()->getTailleEnnemie(); count++)
 	{
 		type = g->getCarte()->getEnnemie()->getEnnemie(count)->getType();
 		i = g->getCarte()->getEnnemie()->getEnnemie(count)->getCoordonnee().y;
