@@ -257,8 +257,6 @@ bool Interface::afficherEnnemi()
 		type = g->getCarte()->getEnnemie()->getEnnemie(count)->getType();
 		i = g->getCarte()->getEnnemie()->getEnnemie(count)->getCoordonnee().y;
 		j = g->getCarte()->getEnnemie()->getEnnemie(count)->getCoordonnee().x;
-		Case* grille = getCase(i, j);
-		grille->clearImage();
 		ajouterEnnemi(type, i, j);
 		this->show();
 	}
