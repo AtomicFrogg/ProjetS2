@@ -24,7 +24,7 @@ Interface::Interface(GUI *gui)
 			nom += std::to_string(i);
 			nom.append(";");	
 			nom += std::to_string(j);
-
+			cout << nom << endl;
 			grille[nom] = image;
 			layout->addWidget(image,i,j);
 		}
@@ -203,10 +203,10 @@ bool Interface::ajouterJoueur()
 {
 	int i = HAUTEUR - g->getJoueur()->getPosition().y;
 	int j = g->getCoordonneeJoueur().x;
-	if (i < 0 || i >= HAUTEUR || j < 1 || j > LARGEUR - 1) return false;
+	if (i < 0 || i > HAUTEUR || j < 1 || j > LARGEUR - 1) return false;
 	Case* grille = getCase(i, j);
 	grille->ajouterJoueur();
-	grille->show();
+	return true;
 }
 
 bool Interface::frontMoveJoueur(int d)
@@ -216,32 +216,46 @@ bool Interface::frontMoveJoueur(int d)
 	{
 	case 1:
 		g->moveJoueurDroite(1);
+		break;
 	case 2:
 		g->moveJoueurDown(1);
+		break;
 	case 3:
 		g->moveJoueurGauche(1);
+		break;
 	case 4:
 		g->moveJoueurUp(1);
+		break;
 	case 5:
 		g->moveJoueurUp(1);
 		g->moveJoueurDroite(1);
+		break;
 	case 6:
 		g->moveJoueurDown(1);
 		g->moveJoueurDroite(1);
+		break;
 	case 7:
 		g->moveJoueurDown(1);
 		g->moveJoueurGauche(1);
+		break;
 	case 8:
 		g->moveJoueurUp(1);
 		g->moveJoueurGauche(1);
+		break;
 	case 9:
 		g->moveJoueurUp(1);
+		break;
 	case 10:
 		g->moveJoueurGauche(1);
+		break;
 	case 11:
 		g->moveJoueurDown(1);
+		break;
 	case 12:
 		g->moveJoueurDroite(1);
+		break;
+	default:
+		break;
 	}
 	ajouterJoueur();
 	return true;
@@ -249,11 +263,16 @@ bool Interface::frontMoveJoueur(int d)
 
 bool Interface::joueurUp()
 {
-	clearJoueur();
-	g->moveJoueurUp(1);
-	ajouterJoueur();
-	
-	return true;
+	if (g->getCoordonneeJoueur().y < HAUTEUR)
+	{
+		clearJoueur();
+		cout << g->getCoordonneeJoueur().y << endl;
+		if (!g->moveJoueurUp(1)) cout << "allo";
+		ajouterJoueur();
+		cout << g->getCoordonneeJoueur().y << endl;
+		return true;
+	}
+	return false;
 }
 
 bool Interface::joueurDown()

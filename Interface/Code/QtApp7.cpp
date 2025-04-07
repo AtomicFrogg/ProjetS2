@@ -35,7 +35,7 @@ QLayout* QtApp7::outilJeu() {
 
     manette = new QRadioButton("manette");
     clavier = new QRadioButton("clavier");
-    manette->setChecked(true);
+    clavier->setChecked(true);
 
     QVBoxLayout* verticale = new QVBoxLayout;
     verticale->addWidget(manette);
@@ -455,21 +455,21 @@ bool QtApp7::verification3()
 void QtApp7::soummission(){
    
     if (manette->isChecked()) {
-        QMessageBox::information(this, "Information Generale", "Vous avez choisir la <strong>manette</strong> pour le jeu!!!");
+        //QMessageBox::information(this, "Information Generale", "Vous avez choisir la <strong>manette</strong> pour le jeu!!!");
         gui->setManette(true);
     }
     else {
-        QMessageBox::information(this, "Information Generale", "Vous avez choisir le <strong>clavier</strong> pour le jeu!!!");
+        //QMessageBox::information(this, "Information Generale", "Vous avez choisir le <strong>clavier</strong> pour le jeu!!!");
         gui->setManette(false);
     }
     if (carte1->isChecked()){
         gui->setNumCarte(1);
-        QMessageBox::information(this, "Information Generale", "Vous avez choisir la <strong>carte 1</strong> pour le jeu!!!");
+        //QMessageBox::information(this, "Information Generale", "Vous avez choisir la <strong>carte 1</strong> pour le jeu!!!");
     }
     else if (carte2->isChecked())
     {
         gui->setNumCarte(2);
-        QMessageBox::information(this, "Information Generale", "Vous avez choisir la <strong>carte 2</strong> pour le jeu!!!");
+        //QMessageBox::information(this, "Information Generale", "Vous avez choisir la <strong>carte 2</strong> pour le jeu!!!");
     }
     int num = gui->getNumCarte();
     gui->chooseMap(num);

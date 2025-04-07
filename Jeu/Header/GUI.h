@@ -20,7 +20,7 @@ public:
     GUI();
     ~GUI();
 
-    void moveJoueurUp(int y);
+    bool moveJoueurUp(int y);
     void moveJoueurDown(int y);
     void moveJoueurDroite(int x);
     void moveJoueurGauche(int x);

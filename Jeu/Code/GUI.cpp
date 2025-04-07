@@ -87,14 +87,19 @@ Dimension GUI::getCoordonneeJoueur()
     return j->getPosition();
 };
 
-void GUI::moveJoueurUp(int y)
+bool GUI::moveJoueurUp(int y)
 {
-    if (getCoordonneeJoueur().y + 1 < HAUTEUR && getCoordonneeJoueur().y >= 0)
+    if (getCoordonneeJoueur().y < HAUTEUR && getCoordonneeJoueur().y >= 0)
     {
         int currX = getCoordonneeJoueur().x;
         int currY = getCoordonneeJoueur().y;
         int newY = currY + y;
         j->setPosition(currX, newY);
+        return 1;
+    }
+    else
+    {
+        return 0;
     }
 };
 
