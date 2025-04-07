@@ -73,30 +73,27 @@ void Interface::keyPressEvent(QKeyEvent *event)
 	{
 		time = 1;
 		//std::cout << "W" ;
-		std::mutex mutex;
-		mutex.lock();
+		
 		this->joueurUp();
-		mutex.unlock();
+		
 	}
 	//A key
 	if (key == 65)
 	{
 		time = 1;
 		//std::cout << "A" ;
-		std::mutex mutex;
-		mutex.lock();
+		
 		this->joueurGauche();
-		mutex.unlock();
+		
 	}
 	//S key
 	if (key == 83)
 	{
 		time = 1;
 		//std::cout << "S" ;
-		std::mutex mutex;
-		mutex.lock();
+		
 		this->joueurDown();
-		mutex.unlock();
+		
 
 	}
 	//D key
@@ -104,12 +101,38 @@ void Interface::keyPressEvent(QKeyEvent *event)
 	{
 		time = 1;
 		//std::cout << "D";
-		std::mutex mutex;
-		mutex.lock();
+	
 		this->joueurDroite();
-		mutex.unlock();
+	
 	}
-
+	if (key == 49)
+	{
+		ajouterTourBase();
+	}
+	if (key == 50)
+	{
+		ajouterNarvolt();
+	}
+	if (key == 51)
+	{
+		ajouterCanonnier();
+	}
+	if (key == 52)
+	{
+		ajouterSniper();
+	}
+	if (key == 69)
+	{
+		g->ameliorerRange();
+	}
+	if (key == 81)
+	{
+		g->ameliorerDegat();
+	}
+	if (key == 70)
+	{
+		g->getJoueur()->attaquerJoueur();
+	}
 }
 
 QGridLayout* Interface::getLayout()
@@ -466,7 +489,6 @@ bool Interface::lancerVague()
         while (g->getCarte()->getVie() > 0 && g->getCarte()->getTailleEnnemie() > 0 && FINJEU)
         {
 			std::cout << "quatre";
-			std::endl;
             start = clock();
 			afficherEnnemi();
             g->moveEnnemies();
@@ -655,10 +677,9 @@ void Interface::manetteInput()
 			{
 				time = 1;
 				//std::cout << "W" ;
-				std::mutex mutex;
-				mutex.lock();
+			
 				manette2key(0x57);
-				mutex.unlock();
+			
 
 			}
 			//Gauche key
@@ -666,90 +687,80 @@ void Interface::manetteInput()
 			{
 				time = 1;
 				//std::cout << "A" ;
-				std::mutex mutex;
-				mutex.lock();
+		
 				manette2key(0x41);
-				mutex.unlock();
+			
 			}
 			//Bas key
 			if (Direction_joystick == 2)
 			{
 				time = 1;
 				//std::cout << "S" ;
-				std::mutex mutex;
-				mutex.lock();
+		
 				manette2key(0x53);
-				mutex.unlock();
+			
 			}
 			//Droite key
 			if (Direction_joystick == 1)
 			{
 				time = 1;
 				//std::cout << "D";
-				std::mutex mutex;
-				mutex.lock();
+			
 				manette2key(0x44);
-				mutex.unlock();
+			
 			}
 			//Haut-Droite
 			if (Direction_joystick == 5)
 			{
 				time = 1;
-				//std::cout << "D";
-				std::mutex mutex;
-				mutex.lock();
-				this->frontMoveJoueur(5);
-				mutex.unlock();
+				//std::cout << "DH";
+				manette2key(0x44);
+				manette2key(0x57);
+	
+			
 			}
 			//Bas-Droite
 			if (Direction_joystick == 6)
 			{
 				time = 1;
-				//std::cout << "D";
-				std::mutex mutex;
-				mutex.lock();
-				this->frontMoveJoueur(6);
-				mutex.unlock();
+				//std::cout << "DB";
+			
+				manette2key(0x44);
+				manette2key(0x53);
+			
 			}
 			//Bas-Gauche
 			if (Direction_joystick == 7)
 			{
 				time = 1;
-				//std::cout << "D";
-				std::mutex mutex;
-				mutex.lock();
-				this->frontMoveJoueur(7);
-				mutex.unlock();
+				//std::cout << "GB";
+			
+				manette2key(0x41);
+				manette2key(0x53);
+				
 			}
 			//Haut-Gauche
 			if (Direction_joystick == 8)
 			{
 				time = 1;
-				//std::cout << "";
-				std::mutex mutex;
-				mutex.lock();
-				this->frontMoveJoueur(8);
-				mutex.unlock();
+				//std::cout << "GH";
+			
+				manette2key(0x57);
+				manette2key(0x41);
+			
 			}
 			//Down Button
 			boutDown = j_msg_rcv["boutonDown"];
 			if (boutDown)
 			{
-				time = 1;
-				std::mutex mutex;
-				mutex.lock();
-				g->ajouterTourBase();
-				mutex.unlock();
+				manette2key(0x31);
+				
 			}
 			//Up Button
 			boutUp = j_msg_rcv["boutonUp"];
 			if (boutUp)
 			{
-				time = 1;
-				std::mutex mutex;
-				mutex.lock();
-				g->ajouterTourCanonnier();
-				mutex.unlock();
+				manette2key(0x32);
 			}
 			//Left Button
 			boutLeft = j_msg_rcv["boutonLeft"];
@@ -757,13 +768,12 @@ void Interface::manetteInput()
 			{
 				if (g->getDonneesJoueur()->type >= 2)
 				{
-					time = g->ameliorerDegat() + 2;
+					manette2key(0x45);
 				}
-				time = 1;
-				std::mutex mutex;
-				mutex.lock();
-				g->ajouterTourSniper();
-				mutex.unlock();
+				else
+				{
+					manette2key(0x33);
+				}
 
 			}
 			//Right Button
@@ -772,22 +782,18 @@ void Interface::manetteInput()
 			{
 				if (g->getDonneesJoueur()->type >= 2)
 				{
-					time = g->ameliorerRange() + 2;
+					manette2key(0x51);
 				}
-				time = 1;
-				std::mutex mutex;
-				mutex.lock();
-				g->ajouterTourNarvolt();
-				mutex.unlock();
+				else
+				{
+					manette2key(0x34);
+				}
 			}
 			accel = j_msg_rcv["accelero"];
 			if (accel)
 			{
 				//std::cout << "POKEMON AU COMBAT" << endl;
-				std::mutex mutex;
-				mutex.lock();
-				g->getJoueur()->attaquerJoueur();
-				mutex.unlock();
+				manette2key(0x46);
 			}
 			if (time >= 1)
 			{
