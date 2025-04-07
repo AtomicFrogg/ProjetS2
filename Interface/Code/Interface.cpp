@@ -455,27 +455,26 @@ bool Interface::lancerVague()
         Dimension coord;
         coord.x = 0;
         coord.y = 9;
-		std::cout << "un";
-		std::endl;
+		std::cout << "un" << endl;
         for (int i = 0; i < g->getCarte()->getTailleEnnemie(); i++)
         {
             g->getCarte()->getEnnemie()->getEnnemie(i)->setCoordonnee(coord);
-			std::cout << "deux";
+			std::cout << "deux" << endl;
 			std::endl;
         }    
         clock_t start;
-		std::cout << "trois";
+		std::cout << "trois" << endl;
 		std::endl;
         while (g->getCarte()->getVie() > 0 && g->getCarte()->getTailleEnnemie() > 0 && FINJEU)
         {
-			std::cout << "quatre";
+			std::cout << "quatre" << endl;
 			std::endl;
             start = clock();
 			afficherEnnemi();
             g->moveEnnemies();
             g->getJoueur()->attaquer();
             int time = clock() - start;
-			std::cout << "cinq";
+			std::cout << "cinq" << endl;
 			std::endl;
             if (time < 700)
             {
@@ -483,7 +482,7 @@ bool Interface::lancerVague()
             }
         }
         g->setFin(true);
-		std::cout << "six";
+		std::cout << "six" << endl;
 		std::endl;
         return true;
         //draw();
