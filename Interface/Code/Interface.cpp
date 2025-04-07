@@ -233,12 +233,12 @@ bool Interface::ajouterEnnemi(int type, int i, int j)
 		ajouterSaumon(i, j);
 		return true;
 	}
-	elif(type == 2)
+	else if(type == 2)
 	{
 		ajouterRequin(i, j);
 		return true;
 	}
-	elif(type == 3)
+	else if(type == 3)
 	{
 		ajouterBaleine(i, j);
 		return true

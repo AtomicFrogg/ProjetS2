@@ -52,7 +52,7 @@ public slots:
 	bool ajouterBaleine(int i, int j);
 	bool ajouterSaumon(int i, int j);
 	bool ajouterRequin(int i, int j);
-	bool ajouterEnnemi();
+	bool ajouterEnnemi(int type, int i, int j);
 	bool afficherEnnemi();
 	bool clearJoueur();
 	bool ajouterJoueur();
