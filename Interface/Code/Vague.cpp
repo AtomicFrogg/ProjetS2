@@ -30,6 +30,7 @@ void Vague::lancerVague() {
             emit afficherEnnemi();
             g->moveEnnemies();
             g->getJoueur()->attaquer();
+            emit updateStatus();
             int time = clock() - start;
             if (time < 700)
             {
