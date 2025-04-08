@@ -168,8 +168,10 @@ void Case::clearJoueur()
 	}
 	this->show();
 }
+//affichage de la vague d'enemies dans le jeu
+void Case::affichageVague() {
 
-
+}
 
 QLabel* Case::getImage()
 {
