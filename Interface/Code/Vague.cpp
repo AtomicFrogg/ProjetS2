@@ -2,7 +2,7 @@
 
 Vague::Vague(GUI* g):gui(g)
 {
-
+    g = new GUI();
 }
 
 Vague::~Vague()
@@ -14,11 +14,8 @@ void Vague::lancerVague() {
     int index = 40;
     if (FINJEU)
     {
-        qDebug() << "a";
-        gui->setFin(false);
-        qDebug() << "b";
         gui->getCarte()->debutEnnemie(index);
-        qDebug() << "c";
+        gui->setFin(false);
         Dimension coord;
         coord.x = 0;
         coord.y = 9;
