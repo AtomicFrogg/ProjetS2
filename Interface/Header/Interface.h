@@ -14,6 +14,7 @@
 #include <ctime>
 #include <iostream>
 #include "qThreadInput.h"
+#include "Vague.h"
 #include <QThread>
 
 
@@ -62,5 +63,6 @@ private:
 	GUI* g;
 	QThread* threadInput;
 	std::thread* threadVague;
+	Vague v;
 };
 
