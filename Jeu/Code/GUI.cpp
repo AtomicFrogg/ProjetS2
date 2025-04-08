@@ -36,8 +36,9 @@ void GUI::moveEnnemies() {
 }
 
 bool GUI::lancer(int index) {
-    if(!FINJEU)
+    if(FINJEU)
     {
+        cout << "je suis finir" << endl;
         return false;
     }
     else
@@ -68,6 +69,11 @@ bool GUI::lancer(int index) {
        /* cout << "Baleine :" << c->getCoordonnee(0).x;
         cout << "vie: " << c->getEnnemie()->getEnnemie(0)->getVie();*/
     }
+}
+
+//affichage des enemies
+void GUI::affichageEnemie() {
+
 }
 
 void GUI::attaqueEnnemie() {

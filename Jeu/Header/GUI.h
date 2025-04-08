@@ -7,6 +7,7 @@
 #include "Donnees.h"
 #include "DonneesEnnemies.h"
 #include "DonneesTours.h"
+#include "qmessagebox.h"
 
 static bool FINJEU = true;
 
@@ -55,7 +56,7 @@ public:
     void setNumCarte(int numero);
     int getNumCarte();
     bool lancer(int index);
-
+    void affichageEnemie();
 
 
    

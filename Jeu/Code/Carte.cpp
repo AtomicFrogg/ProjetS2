@@ -191,7 +191,7 @@ int carre(int x)
 void Carte::debutEnnemie(int nbr)
 {
 	int alea;
-	for(int i = 0; i < 3 * nbr; i = i+3)
+	for(int i = 0; i < 3 * nbr; i += 3)
 	{
 		alea = rand() % 3;
 		switch (alea)

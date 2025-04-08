@@ -48,12 +48,16 @@ Interface::Interface(GUI *gui)
 	else
 	{
 
-		//création du thread pour la manette
+		//crï¿½ation du thread pour la manette
 		InputThread* fonctionInput = new InputThread(gui);
+		Vague* fonctionVague = new Vague(g);
+		threadVague = new QThread();
 		threadInput = new QThread();
 		fonctionInput->moveToThread(threadInput);
+		fonctionVague->moveToThread(threadVague);
 		connect(threadInput, &QThread::started, fonctionInput, &InputThread::process);
-		connect(fonctionInput, &InputThread::finished, threadInput, &QThread::quit);
+		connect(threadVague, &QThread::started, fonctionVague, &InputThread::lancerVague);
+		connect(fonctionVague, &InputThread::finished, threadInput, &QThread::quit);
 		connect(fonctionInput, &InputThread::finished, fonctionInput, &InputThread::deleteLater);
 		connect(threadInput, &QThread::finished, threadInput, &QThread::deleteLater);
 		threadInput->start();
@@ -500,49 +504,14 @@ bool Interface::MenuDroite()
 
 bool Interface::lancerVague()
 {
-	std::cout << "Je me suis rendu a lancer vague";
-	int index = 40;
 	if(!FINJEU)
-    {
-		std::cout << "oops FINJEU est false";
-        return false;
-    }
-    else
-    {
-		std::cout << "on est dans le else de lancer vague";
-        g->getCarte()->debutEnnemie(index);
-        Dimension coord;
-        coord.x = 0;
-        coord.y = 9;
-		//std::cout << "un" << endl;
-        for (int i = 0; i < g->getCarte()->getTailleEnnemie(); i++)
-        {
-            g->getCarte()->getEnnemie()->getEnnemie(i)->setCoordonnee(coord);
-			//std::cout << "deux" << endl;
-        }    
-        clock_t start;
-		//std::cout << "trois" << endl;
-        while (g->getCarte()->getVie() > 0 && g->getCarte()->getTailleEnnemie() > 0 && FINJEU)
-        {
-			//std::cout << "quatre" << endl;
-            start = clock();
-			afficherEnnemi();
-            g->moveEnnemies();
-            g->getJoueur()->attaquer();
-            int time = clock() - start;
-			//std::cout << "cinq" << endl;
-            if (time < 700)
-            {
-                Sleep(700-time);
-            }
-        }
-        g->setFin(true);
-		//std::cout << "six" << endl;
-        return true;
-        //draw();
-       /* cout << "Baleine :" << c->getCoordonnee(0).x;
-        cout << "vie: " << c->getEnnemie()->getEnnemie(0)->getVie();*/
-    }
+	{
+		return false;
+	}
+	else
+	{
+		threadVague->start();
+	}
 	return true;
 }
 
@@ -560,7 +529,7 @@ void Interface::afficher()
 		int prixRange = g->getJoueur()->getTour(index)->getRange() * 200;
 		int prixDegat = g->getJoueur()->getTour(index)->getDegat() * 400;
 
-		msg = QString::fromLatin1("<strong>AMÉLIORATION: <\strong> <br\><br\><br\>PRIX RANGE : %1 $<br\>PRIX DÉGAT: %2 $").arg(prixRange).arg(prixDegat);
+		msg = QString::fromLatin1("<strong>AMï¿½LIORATION: <\strong> <br\><br\><br\>PRIX RANGE : %1 $<br\>PRIX Dï¿½GAT: %2 $").arg(prixRange).arg(prixDegat);
 
 	}
 	else

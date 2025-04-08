@@ -24,6 +24,7 @@ Q_OBJECT
 		void ajouterBaleine();
 		void ajouterSaumon();
 		void ajouterRequin();
+		void affichageVague();
 		
 
 		void clearImage();
