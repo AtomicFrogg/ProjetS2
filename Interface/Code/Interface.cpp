@@ -11,7 +11,7 @@ Interface::Interface(GUI *gui)
 	VboxBoutton = new QVBoxLayout;
 	prixTours = new QLabel;
 	status = new QLabel;
-
+	
 
 	this->setFixedHeight(590);
 

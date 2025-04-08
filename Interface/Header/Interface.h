@@ -68,6 +68,7 @@ private:
 	GUI* g;
 	QThread* threadInput;
 	QThread* threadVague;
-	Vague v;
+	QLabel* prixTours;
+	QLabel* status;
 };
 
