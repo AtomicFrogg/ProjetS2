@@ -47,29 +47,33 @@ Interface::Interface(GUI *gui)
 	}
 	else
 	{
-
 		//cr�ation du thread pour la manette
 		InputThread* fonctionInput = new InputThread(gui);
-		Vague* fonctionVague = new Vague(g);
-		threadVague = new QThread();
-		threadInput = new QThread();
+		threadInput = new QThread;
 		fonctionInput->moveToThread(threadInput);
-		fonctionVague->moveToThread(threadVague);
 		QObject::connect(threadInput, &QThread::started, fonctionInput, &InputThread::process);
-		QObject::connect(threadVague, &QThread::started, fonctionVague, &Vague::lancerVague);
 		QObject::connect(fonctionInput, &InputThread::finished, fonctionInput, &QThread::deleteLater);
 		QObject::connect(fonctionInput, &InputThread::finished, threadInput, &InputThread::deleteLater);
-		QObject::connect(threadVague, &QThread::finished, fonctionVague, &QThread::deleteLater);
-		QObject::connect(threadVague,&QThread::finished, threadVague, &QThread::deleteLater);
-		QObject::connect(fonctionVague, &Vague::afficherEnnemi, this, &Interface::afficherEnnemi);
-		QObject::connect(fonctionVague, &Vague::updateStatus, this, &Interface::afficherStatus);
-
+		QObject::connect(fonctionInput, &InputThread::finished, threadInput, &QThread::quit);
+		
 		threadInput->start();
 
 
 		//threadInput = new std::thread{ &Interface::manetteInput, g};
 	}
-	
+
+	//creation du thread pour lancer vague
+	Vague* fonctionVague = new Vague(g);
+	threadVague = new QThread;
+	fonctionVague->moveToThread(threadVague);
+	QObject::connect(threadVague, &QThread::started, fonctionVague, &Vague::lancerVague);
+	QObject::connect(fonctionVague, &Vague::finished, threadVague, &QThread::quit);
+	QObject::connect(fonctionVague, &Vague::finished, fonctionVague, &QThread::deleteLater);
+	QObject::connect(fonctionVague, &Vague::finished, threadVague, &QThread::deleteLater);
+	QObject::connect(fonctionVague, &Vague::afficherEnnemi, this, &Interface::afficherEnnemi);
+	QObject::connect(fonctionVague, &Vague::updateStatus, this, &Interface::afficherStatus);
+
+
 	QPushButton* Vague = new QPushButton("Lancer Vague");
 	Vague->setCursor(Qt::PointingHandCursor);
 	Vague->setFixedSize(130, 100);
@@ -174,6 +178,7 @@ void Interface::keyPressEvent(QKeyEvent *event)
 	}
 	afficher();
 	afficherStatus();
+	afficherEnnemi();
 }
 
 QGridLayout* Interface::getLayout()
@@ -515,7 +520,24 @@ bool Interface::lancerVague()
 	}
 	else
 	{
-		threadVague->start();
+		try
+		{
+			threadVague->start();
+		}
+		catch (const std::exception&)
+		{
+			Vague* fonctionVague = new Vague(g);
+			threadVague = new QThread;
+			fonctionVague->moveToThread(threadVague);
+			QObject::connect(threadVague, &QThread::started, fonctionVague, &Vague::lancerVague);
+			QObject::connect(fonctionVague, &Vague::finished, threadVague, &QThread::quit);
+			QObject::connect(fonctionVague, &Vague::finished, fonctionVague, &QThread::deleteLater);
+			QObject::connect(fonctionVague, &Vague::finished, threadVague, &QThread::deleteLater);
+			QObject::connect(fonctionVague, &Vague::afficherEnnemi, this, &Interface::afficherEnnemi);
+			QObject::connect(fonctionVague, &Vague::updateStatus, this, &Interface::afficherStatus);
+			threadVague->start();
+		}
+		
 	}
 	return true;
 }

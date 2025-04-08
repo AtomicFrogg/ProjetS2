@@ -14,7 +14,7 @@ class Vague: public QObject
 public slots:
 		void lancerVague();
 	private:
-		GUI* g;
+		GUI* gui;
 signals:
 	void finished();
 signals:
