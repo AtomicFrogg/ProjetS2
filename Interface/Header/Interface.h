@@ -16,6 +16,7 @@
 #include "qThreadInput.h"
 #include "Vague.h"
 #include <QThread>
+#include "Vague.h"
 
 
 
@@ -34,12 +35,12 @@ public slots:
 	bool ajouterCanonnier();
 	bool ajouterSniper();
 	bool ajouterTourBase();
+	bool afficherEnnemi();
 
 	bool ajouterBaleine(int i, int j);
 	bool ajouterSaumon(int i, int j);
 	bool ajouterRequin(int i, int j);
 	bool ajouterEnnemi(int type, int i, int j);
-	bool afficherEnnemi();
 	bool clearJoueur();
 	bool ajouterJoueur();
 	bool frontMoveJoueur(int d);

@@ -46,14 +46,18 @@ Interface::Interface(GUI *gui)
 	else
 	{
 		InputThread* fonctionInput = new InputThread(gui);
+		Vague* fonctionVague = new Vague(g);
+		threadVague = new QThread();
 		threadInput = new QThread();
-
 		fonctionInput->moveToThread(threadInput);
+		fonctionVague->moveToThread(threadVague);
 		connect(threadInput, &QThread::started, fonctionInput, &InputThread::process);
-		connect(fonctionInput, &InputThread::finished, threadInput, &QThread::quit);
+		connect(threadVague, &QThread::started, fonctionVague, &InputThread::lancerVague);
+		connect(fonctionVague, &InputThread::finished, threadInput, &QThread::quit);
 		connect(fonctionInput, &InputThread::finished, fonctionInput, &InputThread::deleteLater);
 		connect(threadInput, &QThread::finished, threadInput, &QThread::deleteLater);
-
+		connect(threadVague, &Vague::afficherEnnemi, this, SLOT(afficherEnnemi()));
+		connect(threadVague, &QThread::finished, threadVague, &QThread::deletelater);
 		threadInput->start();
 
 
@@ -485,7 +489,14 @@ bool Interface::MenuDroite()
 
 bool Interface::lancerVague()
 {
-	v.lancerVague();
+	if(!FINJEU)
+	{
+		return false;
+	}
+	else
+	{
+		threadVague->start();
+	}
 	return true;
 }
 

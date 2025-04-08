@@ -1,19 +1,19 @@
 #pragma once
-#include "qthread.h"
 #include "qdebug.h"
-#include "../../Jeu/Header/GUI.h"
 #include <iostream>
 #include <istream>
+#include "../../Jeu/Header/GUI.h"
 
 using namespace std;
-class Vague:public QObject
+class Vague: public QObject
 {
 	Q_OBJECT
 public :
-	Vague();
+	Vague(GUI* g);
+	~Vague();
 	bool lancerVague();
-	bool afficherEnnemi();
-private:
-	GUI *g;
+
+signals:
+	void afficherEnnemi();
 };
 
