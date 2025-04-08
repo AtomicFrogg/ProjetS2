@@ -13,25 +13,10 @@
 #include <QKeyEvent>
 #include <ctime>
 #include <iostream>
+#include "qThreadInput.h"
+#include <QThread>
 
 
-#include <iostream>
-#include <mutex>
-static bool FIN = false;
-static bool debut = false;
-#include "../../includeJson/serial/SerialPort.hpp"
-#include "../../includeJson/json.hpp"
-
-
-/*------------------------------ Constantes ---------------------------------*/
-#define BAUD 115200           // Frequence de transmission serielle
-#define MSG_MAX_SIZE 1024   // Longueur maximale d'un message
-/*------------------------- Prototypes de fonctions -------------------------*/
-bool SendToSerial(SerialPort* arduino, nlohmann::json j_msg);
-bool RcvFromSerial(SerialPort* arduino, string& msg);
-
-
-/*---------------------------- Variables globales ---------------------------*/
 
 
 class Interface: public QWidget
@@ -67,15 +52,15 @@ public slots:
 
 	void keyPressEvent(QKeyEvent* event) override;
 
-
-	void manette2key(int key);
-	void manetteInput();
+signals:
+	void finJeu();
 private:
 	QVBoxLayout* VboxBoutton;
 	QHBoxLayout* Hbox;
 	QGridLayout* layout;
 	map<string, Case*> grille;
 	GUI* g;
-	std::thread* threadInput;
+	QThread* threadInput;
+	std::thread* threadVague;
 };
 
