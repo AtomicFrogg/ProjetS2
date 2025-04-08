@@ -15,6 +15,7 @@
 #include <iostream>
 #include "qThreadInput.h"
 #include <QThread>
+#include <QString>
 
 
 
@@ -49,6 +50,9 @@ public slots:
 	bool joueurDroite();
 	bool MenuDroite();
 	bool lancerVague();
+	void afficher();
+	void afficherStatus();
+	void afficherErreurTour();
 
 	void keyPressEvent(QKeyEvent* event) override;
 
@@ -62,5 +66,7 @@ private:
 	GUI* g;
 	QThread* threadInput;
 	std::thread* threadVague;
+	QLabel* prixTours;
+	QLabel* status;
 };
 
