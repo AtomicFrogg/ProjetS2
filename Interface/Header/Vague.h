@@ -1,14 +1,16 @@
 #pragma once
-#include "qthread.h"
 #include "qdebug.h"
 #include <iostream>
 #include <istream>
+#include "../../Jeu/Header/GUI.h"
 
 using namespace std;
-class Vague:public QThread
+class Vague: public QObject
 {
 	Q_OBJECT
 public :
+	Vague(GUI* g);
+	~Vague();
 	bool lancerVague();
 protected:
 	void run() override {
@@ -17,5 +19,8 @@ protected:
 			QThread::sleep(1);
 		}
 	}
+
+signals:
+	void afficherEnnemi();
 };
 
