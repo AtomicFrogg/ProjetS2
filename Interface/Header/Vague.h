@@ -7,12 +7,16 @@
 using namespace std;
 class Vague: public QObject
 {
-	Q_OBJECT
-public :
-	Vague(GUI* g);
-	~Vague();
-	bool lancerVague();
-
+		Q_OBJECT
+	public :
+		Vague(GUI *g);
+		~Vague();
+public slots:
+		void lancerVague();
+	private:
+		GUI* g;
+signals:
+	void finished();
 signals:
 	void afficherEnnemi();
 };

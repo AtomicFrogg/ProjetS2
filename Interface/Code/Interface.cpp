@@ -51,17 +51,16 @@ Interface::Interface(GUI *gui)
 		threadInput = new QThread();
 		fonctionInput->moveToThread(threadInput);
 		fonctionVague->moveToThread(threadVague);
-		connect(threadInput, &QThread::started, fonctionInput, &InputThread::process);
-		connect(threadVague, &QThread::started, fonctionVague, &InputThread::lancerVague);
-		connect(fonctionVague, &InputThread::finished, threadInput, &QThread::quit);
-		connect(fonctionInput, &InputThread::finished, fonctionInput, &InputThread::deleteLater);
-		connect(threadInput, &QThread::finished, threadInput, &QThread::deleteLater);
-		connect(threadVague, &Vague::afficherEnnemi, this, SLOT(afficherEnnemi()));
-		connect(threadVague, &QThread::finished, threadVague, &QThread::deletelater);
+		QObject::connect(threadInput, &QThread::started, fonctionInput, &InputThread::process);
+		QObject::connect(threadVague, &QThread::started, fonctionVague, &Vague::lancerVague);
+		QObject::connect(fonctionInput, &InputThread::finished, fonctionInput, &QThread::deleteLater);
+		QObject::connect(fonctionInput, &InputThread::finished, threadInput, &InputThread::deleteLater);
+		QObject::connect(threadVague, &QThread::finished, fonctionVague, &QThread::deleteLater);
+		QObject::connect(threadVague,&QThread::finished, threadVague, &QThread::deleteLater);
+		QObject::connect(fonctionVague, &Vague::afficherEnnemi, this, &Interface::afficherEnnemi);
+
 		threadInput->start();
 
-
-		//threadInput = new std::thread{ &Interface::manetteInput, g};
 	}
 	
 	QPushButton* Vague = new QPushButton("Lancer Vague");

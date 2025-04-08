@@ -10,13 +10,9 @@ Vague::~Vague()
 
 }
 
-bool Vague::lancerVague() {
+void Vague::lancerVague() {
     int index = 40;
-    if (!FINJEU)
-    {
-        return false;
-    }
-    else
+    if (FINJEU)
     {
         g->setFin(false);
         g->getCarte()->debutEnnemie(index);
@@ -41,10 +37,9 @@ bool Vague::lancerVague() {
             }
         }
         g->setFin(true);
-        return true;
         //draw();
        /* cout << "Baleine :" << c->getCoordonnee(0).x;
         cout << "vie: " << c->getEnnemie()->getEnnemie(0)->getVie();*/
     }
-    return true;
+    emit finished();
 }

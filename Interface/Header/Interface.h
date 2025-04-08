@@ -63,7 +63,7 @@ private:
 	map<string, Case*> grille;
 	GUI* g;
 	QThread* threadInput;
-	std::thread* threadVague;
+	QThread* threadVague;
 	Vague v;
 };
 
