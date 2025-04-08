@@ -9,11 +9,13 @@ Interface::Interface(GUI *gui)
 	layout = new QGridLayout;
 	Hbox = new QHBoxLayout;
 	VboxBoutton = new QVBoxLayout;
+	prixTours = new QLabel;
+	status = new QLabel;
 
-	//this->showFullScreen();
+
 	this->setFixedHeight(590);
 
-	for (int i = 0; i < HAUTEUR; i++)
+	for (int i = 1; i < HAUTEUR ; i++)
 	{
 		for (int j = 1; j < LARGEUR - 1; j++)
 		{
@@ -40,11 +42,13 @@ Interface::Interface(GUI *gui)
 	Hbox->addLayout(layout, 0);
 	if(!g->getManette())
 	{
-		MenuDroite();
+		//MenuDroite();
 		Hbox->addLayout(VboxBoutton, 1);
 	}
 	else
 	{
+
+		//cr�ation du thread pour la manette
 		InputThread* fonctionInput = new InputThread(gui);
 		Vague* fonctionVague = new Vague(g);
 		threadVague = new QThread();
@@ -61,18 +65,29 @@ Interface::Interface(GUI *gui)
 
 		threadInput->start();
 
+
+		//threadInput = new std::thread{ &Interface::manetteInput, g};
 	}
 	
 	QPushButton* Vague = new QPushButton("Lancer Vague");
 	Vague->setCursor(Qt::PointingHandCursor);
 	Vague->setFixedSize(130, 100);
 
+	afficherStatus();
+	VboxBoutton->addWidget(status,0);
+
+	prixTours->setMinimumWidth(150);
+	VboxBoutton->addWidget(prixTours,1);
+
 	QObject::connect(Vague, SIGNAL(clicked()), this, SLOT(lancerVague()));
-	VboxBoutton->addWidget(Vague, 0);
+	VboxBoutton->addWidget(Vague, 2);
+	
+	
+
 	this->setLayout(Hbox);
 
 	ajouterJoueur();
-	
+	afficher();
 	//threadVague = new std::thread(&Interface::lancerVague, gui, this);
 }
 
@@ -126,7 +141,7 @@ void Interface::keyPressEvent(QKeyEvent *event)
 		//std::cout << "D";
 	
 		this->joueurDroite();
-	
+		
 	}
 	if (key == 49)
 	{
@@ -156,6 +171,8 @@ void Interface::keyPressEvent(QKeyEvent *event)
 	{
 		g->getJoueur()->attaquerJoueur();
 	}
+	afficher();
+	afficherStatus();
 }
 
 QGridLayout* Interface::getLayout()
@@ -176,6 +193,7 @@ Case* Interface::getCase(int i, int j)
 bool Interface::ajouterNarvolt() {
 	if (!g->ajouterTourNarvolt())
 	{
+		afficherErreurTour();
 		return false;
 	}
 	//clearJoueur();
@@ -195,7 +213,7 @@ bool Interface::ajouterNarvolt() {
 bool Interface::ajouterCanonnier() {
 	if (!g->ajouterTourCanonnier())
 	{
-		QMessageBox::information(this, "NON", "claude");
+		afficherErreurTour();
 		return false;
 	}
 	//clearJoueur();
@@ -214,6 +232,7 @@ bool Interface::ajouterCanonnier() {
 bool Interface::ajouterSniper() {
 	if (!g->ajouterTourSniper())
 	{
+		afficherErreurTour();
 		return false;
 	}
 	//clearJoueur();
@@ -232,6 +251,7 @@ bool Interface::ajouterSniper() {
 bool Interface::ajouterTourBase() {
 	if (!g->ajouterTourBase())
 	{
+		afficherErreurTour();
 		return false;
 	}
 	//clearJoueur();
@@ -324,7 +344,7 @@ bool Interface::ajouterJoueur()
 {
 	int i = HAUTEUR - g->getJoueur()->getPosition().y;
 	int j = g->getCoordonneeJoueur().x;
-	if (i < 0 || i > HAUTEUR || j < 1 || j > LARGEUR - 1)
+	if (i < 0 || i > HAUTEUR - 1 || j < 1 || j > LARGEUR - 1)
 	{
 		qDebug() << "HAAAA";
 		return false;
@@ -395,7 +415,7 @@ bool Interface::joueurUp()
 		std::cout << g->getCoordonneeJoueur().y << endl;
 		if (!g->moveJoueurUp(1)) std::cout << "allo";
 		ajouterJoueur();
-		std::cout << g->getCoordonneeJoueur().y << endl;
+		//std::cout << g->getCoordonneeJoueur().y << endl;
 		return true;
 	}
 	return false;
@@ -501,4 +521,45 @@ bool Interface::lancerVague()
 
 
 
+void Interface::afficher()
+{
+	
+	bool type;
+	QString msg = "";
+	if (g->getDonneesJoueur()->type >= 2)
+	{
 
+		int index = g->getDonneesJoueur()->index;
+		int prixRange = g->getJoueur()->getTour(index)->getRange() * 200;
+		int prixDegat = g->getJoueur()->getTour(index)->getDegat() * 400;
+
+		msg = QString::fromLatin1("<strong>AM�LIORATION: <\strong> <br\><br\><br\>PRIX RANGE : %1 $<br\>PRIX D�GAT: %2 $").arg(prixRange).arg(prixDegat);
+
+	}
+	else
+	{
+		int prixTourBase = g->getJoueur()->DonneesTourBase.prix;
+		int prixSniper = g->getJoueur()->DonneesSniper.prix;
+		int prixCanonnier = g->getJoueur()->DonneesCanonnier.prix;
+		int prixNarvolt = g->getJoueur()->DonneesNarvolt.prix;
+		msg = QString::fromLatin1("<strong>PRIX:<\strong> <br\><br\><br\>TOUR BASE : %1 $<br\>CANONNIER : %2 $<br\>NARVOLT : %3 $<br\>SNIPER : %4 $").arg(prixTourBase).arg(prixCanonnier).arg(prixNarvolt).arg(prixSniper);
+
+	}
+
+	prixTours->setText(msg);
+	prixTours->show();
+}
+
+void Interface::afficherStatus()
+{
+	int vie = g->getCarte()->getVie();
+	int argent = g->getCarte()->getArgent();
+	QString msg = QString::fromLatin1("<strong>VIE : <\strong>%1 <br\><strong>ARGENT : <\strong>%2").arg(vie).arg(argent);
+	status->setText(msg);
+}
+
+void Interface::afficherErreurTour()
+{
+	QString msg = QString::fromLatin1("EMPLACEMENT INVALIDE");
+	status->setText(msg);
+}

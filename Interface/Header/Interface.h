@@ -17,6 +17,7 @@
 #include "Vague.h"
 #include <QThread>
 #include "Vague.h"
+#include <QString>
 
 
 
@@ -51,6 +52,9 @@ public slots:
 	bool joueurDroite();
 	bool MenuDroite();
 	bool lancerVague();
+	void afficher();
+	void afficherStatus();
+	void afficherErreurTour();
 
 	void keyPressEvent(QKeyEvent* event) override;
 

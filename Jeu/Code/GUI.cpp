@@ -376,11 +376,11 @@ void GUI::chooseMap(int choixMap)
     int m, n;
     if (choixMap == 1)
     {
-        tableauDonnees[15][5].type = 0;
-        tableauDonnees[15][4].type = 0;
-        tableauDonnees[15][3].type = 0;
-        tableauDonnees[15][2].type = 0;
-        tableauDonnees[15][1].type = 0;
+        tableauDonnees[14][5].type = 0;
+        tableauDonnees[14][4].type = 0;
+        tableauDonnees[14][3].type = 0;
+        tableauDonnees[14][2].type = 0;
+        tableauDonnees[14][1].type = 0;
         m = 9;
         for (n = 1; n <= 5; n++)
         {
