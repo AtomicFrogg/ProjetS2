@@ -62,6 +62,7 @@ Interface::Interface(GUI *gui)
 		QObject::connect(threadVague, &QThread::finished, fonctionVague, &QThread::deleteLater);
 		QObject::connect(threadVague,&QThread::finished, threadVague, &QThread::deleteLater);
 		QObject::connect(fonctionVague, &Vague::afficherEnnemi, this, &Interface::afficherEnnemi);
+		QObject::connect(fonctionVague, &Vague::updateStatus, this, &Interface::afficherStatus);
 
 		threadInput->start();
 
