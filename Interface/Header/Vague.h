@@ -19,6 +19,7 @@ signals:
 	void finished();
 signals:
 	void afficherEnnemi();
+signals:
 	void updateStatus();
 };
 
