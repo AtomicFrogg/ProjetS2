@@ -5,7 +5,7 @@ GUI::GUI()
     manette = false;
     numCarte = 1;
     c = new Carte(100, 10000);
-    j = new Joueur(20, 5, 10, 10, 1, c, "Jacob");
+    j = new Joueur(20, 3, 10, 10, 1, c, "Jacob");
     for (int i = 0; i < HAUTEUR; i++)
     {
         for (int j = 0; j < LARGEUR; j++)
