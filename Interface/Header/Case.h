@@ -29,6 +29,8 @@ Q_OBJECT
 
 		void clearImage();
 		QLabel* getImage();
+
+		int getType();
 	private:
 		GUI* gui;
 		int type;

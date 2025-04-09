@@ -4,17 +4,17 @@ Joueur::Joueur(int d, float r, int x, int y, int va, Carte* c, string n) :map(c)
 {
 	setNom(n);
 	DonneesTourBase.degat = 15;
-	DonneesTourBase.range = 10;
+	DonneesTourBase.range = 8;
 	DonneesTourBase.prix = 400;
 	DonneesTourBase.vitesseAttaque = 5;
 
 	DonneesSniper.degat = 50;
-	DonneesSniper.range = 100;
+	DonneesSniper.range = 15;
 	DonneesSniper.prix = 600;
 	DonneesSniper.vitesseAttaque = 10;
 
 	DonneesCanonnier.degat = 25;
-	DonneesCanonnier.range = 8;
+	DonneesCanonnier.range = 5;
 	DonneesCanonnier.prix = 500;
 	DonneesCanonnier.vitesseAttaque = 6;
 

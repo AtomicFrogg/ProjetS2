@@ -30,8 +30,17 @@ void Vague::lancerVague() {
         while (gui->getCarte()->getVie() > 0 && gui->getCarte()->getTailleEnnemie() > 0 && FINJEU)
         {
             start = clock();
-            emit afficherEnnemi();
-            gui->moveEnnemies();
+            CLEAR = false;
+            emit clearEnnemi();
+            for (int index = 0; index < gui->getCarte()->getTailleEnnemie(); index++)
+            {
+                if (gui->getCarte()->getEnnemie()->getEnnemie(index)->deplacement())
+                {
+                    
+                    gui->checkMove(index);
+                    emit afficherEnnemi(index);
+                }
+            }
             gui->getJoueur()->attaquer();
             emit updateStatus();
             int time = clock() - start;
