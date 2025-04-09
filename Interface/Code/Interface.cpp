@@ -301,7 +301,11 @@ bool Interface::ajouterRequin(int i, int j) {
 
 bool Interface::ajouterEnnemi(int type, int i, int j)
 {
-	if(type == 1)
+	if (g->getCoordonneeJoueur().x == j and g->getCoordonneeJoueur().y == HAUTEUR - i)
+	{
+		ajouterJoueur();
+	}
+	else if(type == 1)
 	{
 		ajouterSaumon(i, j);
 		return true;
@@ -347,7 +351,7 @@ bool Interface::clearEnnemi()
 			Case* grille = getCase(i, j);
 			if (grille->getType() == 1)
 			{
-				grille->clearImage();
+				if(g->getCoordonneeJoueur().x != j and g->getCoordonneeJoueur().y != i) grille->clearImage();
 			}
 		}
 	}

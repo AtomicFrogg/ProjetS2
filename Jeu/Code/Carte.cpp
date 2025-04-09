@@ -3,20 +3,20 @@
 
 Carte::Carte(int v, int a) :vie(v), argent(a)
 {
-	Requin.vie = 400;
-	Requin.vitesse = 1;
-	Requin.revenu = 2;
-	Requin.degat = 3;
+	Requin.vie = 2000;
+	Requin.vitesse = 2;
+	Requin.revenu = 200;
+	Requin.degat = 5;
 
-	Saumon.vie = 400;
+	Saumon.vie = 1000;
 	Saumon.vitesse = 1;
-	Saumon.revenu = 2;
-	Saumon.degat = 3;
+	Saumon.revenu = 100;
+	Saumon.degat = 1;
 
-	Baleine.vie = 400;
-	Baleine.vitesse = 1;
-	Baleine.revenu = 2;
-	Baleine.degat = 3;
+	Baleine.vie = 4000;
+	Baleine.vitesse = 2;
+	Baleine.revenu = 500;
+	Baleine.degat = 10;
 
 	for (int i = 0; i < HAUTEUR; i++)
 	{
@@ -95,21 +95,21 @@ void Carte::afficher(ostream& s)
 
 bool Carte::ajouterBaleine(int c)
 {
-	Ennemie* newEnnemie = new Ennemie(400, 3, 500, 10, c, 3);
+	Ennemie* newEnnemie = new Ennemie(Baleine.vie, Baleine.vitesse, Baleine.revenu, Baleine.degat, c, 3);
 	ajouterEnnemie(newEnnemie);
 	return 1;
 }
 
 bool Carte::ajouterSaumon(int c)
 {
-	Ennemie* newEnnemie = new Ennemie(20, 1, 50, 5, c, 1); 
+	Ennemie* newEnnemie = new Ennemie(Saumon.vie, Saumon.vitesse, Saumon.revenu, Saumon.degat, c, 1);
 	ajouterEnnemie(newEnnemie);
 	return 1;
 }
 
 bool Carte::ajouterRequin(int c)
 {
-	Ennemie* newEnnemie = new Ennemie(100, 2, 100, 20, c, 2);
+	Ennemie* newEnnemie = new Ennemie(Requin.vie, Requin.vitesse, Requin.revenu, Requin.degat, c, 2);
 	ajouterEnnemie(newEnnemie);
 	return 1;
 }

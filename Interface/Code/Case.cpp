@@ -156,12 +156,50 @@ void Case::clearImage()
 void Case::clearJoueur()
 {
 	int type = gui->getDonneesJoueur()->type;
+	int i, j;
+	bool fin = false;
 	switch (type)
 	{
 	case 1:
-		for (int index = 0; index < gui->getCarte()->getTailleEnnemie(); index++)
+		try
 		{
+			for (int index = 0; index < gui->getCarte()->getTailleEnnemie(); index++)
+			{
+				if (gui->getCarte()->getEnnemie()->getEnnemie(index)->getCoordonnee().x == gui->getCoordonneeJoueur().x && gui->getCarte()->getEnnemie()->getEnnemie(index)->getCoordonnee().y == gui->getCoordonneeJoueur().y)
+				{
+					type = gui->getCarte()->getEnnemie()->getEnnemie(index)->getType();
+					switch (type)
+					{
+					case 1:
+						//saumon
+						ajouterSaumon();
+						fin = true;
+						break;
 
+					case 2:
+						//requin
+						ajouterRequin();
+						fin = true;
+						break;
+					case 3:
+						//baleine
+						ajouterRequin();
+						fin = true;
+						break;
+					default:
+						break;
+					}
+					break;
+				}
+			}
+			if (!fin)
+			{
+				clearImage();
+			}
+		}
+		catch (const std::exception)
+		{
+			clearImage();
 		}
 		break;
 	case 2:
