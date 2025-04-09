@@ -108,6 +108,7 @@ Interface::~Interface()
 
 void Interface::keyPressEvent(QKeyEvent *event)
 {
+	bool pressed = false;
 	int key;
 	key = event->key();
 	cout << "key = " << key<<endl;
@@ -119,11 +120,12 @@ void Interface::keyPressEvent(QKeyEvent *event)
 		//std::cout << "W" ;
 		
 		this->joueurUp();
-		
+		pressed = 1;
 	}
 	//A key
 	if (key == 65)
 	{
+		pressed = 1;
 		time = 1;
 		//std::cout << "A" ;
 		
@@ -133,6 +135,7 @@ void Interface::keyPressEvent(QKeyEvent *event)
 	//S key
 	if (key == 83)
 	{
+		pressed = 1;
 		time = 1;
 		//std::cout << "S" ;
 		
@@ -143,6 +146,7 @@ void Interface::keyPressEvent(QKeyEvent *event)
 	//D key
 	if (key == 68)
 	{
+		pressed = 1;
 		time = 1;
 		//std::cout << "D";
 	
@@ -151,35 +155,46 @@ void Interface::keyPressEvent(QKeyEvent *event)
 	}
 	if (key == 49)
 	{
+		pressed = 1;
 		ajouterTourBase();
 	}
 	if (key == 50)
 	{
+		pressed = 1;
 		ajouterNarvolt();
 	}
 	if (key == 51)
 	{
+		pressed = 1;
 		ajouterCanonnier();
 	}
 	if (key == 52)
 	{
+		pressed = 1;
 		ajouterSniper();
 	}
 	if (key == 69)
 	{
+		pressed = 1;
 		if(g->getDonneesJoueur()->type >= 2) g->ameliorerRange();
 	}
 	if (key == 81)
 	{
+		pressed = 1;
 		if (g->getDonneesJoueur()->type >= 2) g->ameliorerDegat();
 	}
 	if (key == 70)
 	{
-		g->getJoueur()->attaquerJoueur();
+
+		lancerVague();
+		//g->getJoueur()->attaquerJoueur();
 	}
-	afficher();
-	afficherStatus();
-	//afficherEnnemi();
+	if (pressed = 1)
+	{
+		pressed = 1;
+		afficher();
+		afficherStatus();
+	}
 }
 
 QGridLayout* Interface::getLayout()
