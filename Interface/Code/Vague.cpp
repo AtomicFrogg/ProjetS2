@@ -11,7 +11,9 @@ Vague::~Vague()
 }
 
 void Vague::lancerVague() {
-    int index = 40;
+    int index;
+    if (qte <= 0) index = 1;
+    else index = qte;
     if (FINJEU)
     {
         qDebug() << "a";

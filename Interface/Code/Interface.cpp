@@ -4,6 +4,7 @@
 
 Interface::Interface(GUI *gui)
 {
+	qte = 0;
 	g = gui;
 	Case* image;
 	layout = new QGridLayout;
@@ -55,7 +56,8 @@ Interface::Interface(GUI *gui)
 		QObject::connect(fonctionInput, &InputThread::finished, fonctionInput, &QThread::deleteLater);
 		QObject::connect(fonctionInput, &InputThread::finished, threadInput, &InputThread::deleteLater);
 		QObject::connect(fonctionInput, &InputThread::finished, threadInput, &QThread::quit);
-		
+		QObject::connect(fonctionInput, SIGNAL(nbrMuon(int)), threadInput, SLOT(actualiserMuons(int)) );
+
 		threadInput->start();
 
 
@@ -94,6 +96,9 @@ Interface::Interface(GUI *gui)
 
 	ajouterJoueur();
 	afficher();
+
+
+	
 	//threadVague = new std::thread(&Interface::lancerVague, gui, this);
 }
 
@@ -634,4 +639,9 @@ void Interface::afficherErreurTour()
 {
 	QString msg = QString::fromLatin1("EMPLACEMENT INVALIDE");
 	status->setText(msg);
+}
+
+void Interface::actualiserMuons(int muons)
+{
+	qte = muons;
 }

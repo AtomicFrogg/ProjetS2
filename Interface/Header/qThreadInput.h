@@ -35,6 +35,8 @@ public slots:
 
 signals:
 	void finished();
+signals:
+	void nbrMuon(int);
 
 private:
 	GUI* gui;

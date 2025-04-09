@@ -13,6 +13,7 @@ int boutLeft = 0;
 int boutRight = 0;
 bool accel = false;
 int vie = 1;
+bool muon = true;
 
 InputThread::InputThread(GUI* g)
 {
@@ -79,6 +80,9 @@ void InputThread::process()
 		j_msg_send["ledy"] = ledy_state;
 		j_msg_send["argent"] = gui->getCarte()->getArgent();
 		j_msg_send["vie"] = gui->getCarte()->getVie();
+		j_msg_send["muon"] = muon;
+		muon = false;
+
 		//std::cout << j_msg_send;
 		if (!SendToSerial(arduino, j_msg_send)) {
 			std::cout << "Erreur lors de l'envoie du message. " << endl;
@@ -230,6 +234,7 @@ void InputThread::process()
 			if (accel)
 			{
 				//std::cout << "POKEMON AU COMBAT" << endl;
+				emit nbrMuon(j_msg_rcv["muon"]);
 				manette2key(0x46);
 				
 			}
