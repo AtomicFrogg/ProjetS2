@@ -58,7 +58,7 @@ public slots:
 	void afficherErreurTour();
 	bool clearEnnemi();
 
-	void keyPressEvent(QKeyEvent* event) override;
+	void keyPressEvent (QKeyEvent* event) override;
 
 signals:
 	void finJeu();

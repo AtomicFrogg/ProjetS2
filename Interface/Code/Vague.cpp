@@ -15,7 +15,7 @@ void Vague::lancerVague() {
     if (FINJEU)
     {
         qDebug() << "a";
-        gui->setFin(false);
+        FINJEU = false;
         qDebug() << "b";
         gui->getCarte()->debutEnnemie(index);
         qDebug() << "c";
@@ -27,7 +27,7 @@ void Vague::lancerVague() {
             gui->getCarte()->getEnnemie()->getEnnemie(i)->setCoordonnee(coord);
         }
         clock_t start;
-        while (gui->getCarte()->getVie() > 0 && gui->getCarte()->getTailleEnnemie() > 0 && FINJEU)
+        while (gui->getCarte()->getVie() > 0 && gui->getCarte()->getTailleEnnemie() > 0 && !FINJEU)
         {
             start = clock();
             CLEAR = false;
@@ -44,12 +44,12 @@ void Vague::lancerVague() {
             gui->getJoueur()->attaquer();
             emit updateStatus();
             int time = clock() - start;
-            if (time < 700)
+            if (time < 1000)
             {
-                Sleep(700 - time);
+                Sleep(1000 - time);
             }
         }
-        gui->setFin(true);
+        FINJEU = true;
         //draw();
        /* cout << "Baleine :" << c->getCoordonnee(0).x;
         cout << "vie: " << c->getEnnemie()->getEnnemie(0)->getVie();*/

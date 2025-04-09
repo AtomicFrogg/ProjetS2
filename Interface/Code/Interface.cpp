@@ -463,7 +463,7 @@ bool Interface::frontMoveJoueur(int d)
 
 bool Interface::joueurUp()
 {
-	if (g->getCoordonneeJoueur().y < HAUTEUR)
+	if (g->getCoordonneeJoueur().y < HAUTEUR - 1)
 	{
 		clearJoueur();
 		std::cout << g->getCoordonneeJoueur().y << endl;

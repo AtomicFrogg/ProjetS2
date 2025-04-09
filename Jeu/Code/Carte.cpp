@@ -8,7 +8,7 @@ Carte::Carte(int v, int a) :vie(v), argent(a)
 	Requin.revenu = 200;
 	Requin.degat = 5;
 
-	Saumon.vie = 1000;
+	Saumon.vie = 9991000;
 	Saumon.vitesse = 1;
 	Saumon.revenu = 100;
 	Saumon.degat = 1;
