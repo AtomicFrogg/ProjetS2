@@ -18,9 +18,10 @@
 #include <QThread>
 #include "Vague.h"
 #include <QString>
+#include <QException>
 
 
-
+static bool FIRSTTIME = true;
 
 class Interface: public QWidget
 {
@@ -36,7 +37,7 @@ public slots:
 	bool ajouterCanonnier();
 	bool ajouterSniper();
 	bool ajouterTourBase();
-	bool afficherEnnemi();
+	bool afficherEnnemi(int index);
 
 	bool ajouterBaleine(int i, int j);
 	bool ajouterSaumon(int i, int j);
@@ -55,6 +56,7 @@ public slots:
 	void afficher();
 	void afficherStatus();
 	void afficherErreurTour();
+	bool clearEnnemi();
 
 	void keyPressEvent(QKeyEvent* event) override;
 

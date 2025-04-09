@@ -3,6 +3,7 @@
 #include <iostream>
 #include <istream>
 #include "../../Jeu/Header/GUI.h"
+static bool CLEAR;
 
 using namespace std;
 class Vague: public QObject
@@ -18,8 +19,11 @@ public slots:
 signals:
 	void finished();
 signals:
-	void afficherEnnemi();
+	void afficherEnnemi(int);
 signals:
 	void updateStatus();
+signals:
+	void clearEnnemi();
+
 };
 

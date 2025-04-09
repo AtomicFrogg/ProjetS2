@@ -70,8 +70,9 @@ Interface::Interface(GUI *gui)
 	QObject::connect(fonctionVague, &Vague::finished, threadVague, &QThread::quit);
 	QObject::connect(fonctionVague, &Vague::finished, fonctionVague, &QThread::deleteLater);
 	QObject::connect(fonctionVague, &Vague::finished, threadVague, &QThread::deleteLater);
-	QObject::connect(fonctionVague, &Vague::afficherEnnemi, this, &Interface::afficherEnnemi);
+	QObject::connect(fonctionVague, SIGNAL(afficherEnnemi(int)), this, SLOT(afficherEnnemi(int)));
 	QObject::connect(fonctionVague, &Vague::updateStatus, this, &Interface::afficherStatus);
+	QObject::connect(fonctionVague, SIGNAL(clearEnnemi()), this, SLOT(clearEnnemi()));
 
 
 	QPushButton* Vague = new QPushButton("Lancer Vague");
@@ -178,7 +179,7 @@ void Interface::keyPressEvent(QKeyEvent *event)
 	}
 	afficher();
 	afficherStatus();
-	afficherEnnemi();
+	//afficherEnnemi();
 }
 
 QGridLayout* Interface::getLayout()
@@ -322,7 +323,7 @@ bool Interface::ajouterEnnemi(int type, int i, int j)
 	this->show();
 }
 
-bool Interface::afficherEnnemi()
+bool Interface::afficherEnnemi(int index)
 {
 	int count, type, i, j;
 	for(count = 0; count < g->getCarte()->getTailleEnnemie(); count++)
@@ -330,9 +331,37 @@ bool Interface::afficherEnnemi()
 		type = g->getCarte()->getEnnemie()->getEnnemie(count)->getType();
 		i = g->getCarte()->getEnnemie()->getEnnemie(count)->getCoordonnee().y;
 		j = g->getCarte()->getEnnemie()->getEnnemie(count)->getCoordonnee().x;
-		ajouterEnnemi(type, i, j);
+		ajouterEnnemi(type, HAUTEUR - i, j);
+		//cout << j << endl;
 		this->show();
 	}
+	return 1;
+}
+
+bool Interface::clearEnnemi()
+{
+	for (int i = 1; i < HAUTEUR; i++)
+	{
+		for (int j = 1; j < LARGEUR - 1; j++)
+		{
+			Case* grille = getCase(i, j);
+			if (grille->getType() == 1)
+			{
+				grille->clearImage();
+			}
+		}
+	}
+	//int type, i, j;
+	//type = g->getCarte()->getEnnemie()->getEnnemie(index)->getType();
+	//i = g->getCarte()->getEnnemie()->getEnnemie(index)->getCoordonnee().y;
+	//j = g->getCarte()->getEnnemie()->getEnnemie(index)->getCoordonnee().x;
+	//if (j > 0 and j < LARGEUR)
+	//{
+	//	cout << j << endl;
+	//	Case* caseeee = getCase(HAUTEUR - i , j);
+	//	caseeee->choixBackground(0);
+	//	caseeee->show();
+	//}
 	return 1;
 }
 
@@ -520,11 +549,12 @@ bool Interface::lancerVague()
 	}
 	else
 	{
-		try
+		if(FIRSTTIME)
 		{
 			threadVague->start();
+			FIRSTTIME = false;
 		}
-		catch (const std::exception&)
+		else
 		{
 			Vague* fonctionVague = new Vague(g);
 			threadVague = new QThread;

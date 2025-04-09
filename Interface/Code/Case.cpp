@@ -80,6 +80,7 @@ void Case::choixBackground(int type)
 		}
 		break;
 	default:
+
 		cout << "NOPE\n";
 		break;
 	}
@@ -141,8 +142,15 @@ void Case::ajouterJoueur()
 
 void Case::clearImage()
 {
-	image->hide();
-	this->show();
+
+	if (image != nullptr)
+	{
+		image->hide();
+		this->show();
+	}else
+	{
+		cout << "0" << endl;
+	}
 }
 
 void Case::clearJoueur()
@@ -150,6 +158,12 @@ void Case::clearJoueur()
 	int type = gui->getDonneesJoueur()->type;
 	switch (type)
 	{
+	case 1:
+		for (int index = 0; index < gui->getCarte()->getTailleEnnemie(); index++)
+		{
+
+		}
+		break;
 	case 2:
 		ajouterTourBase();
 		break;
@@ -176,4 +190,9 @@ void Case::affichageVague() {
 QLabel* Case::getImage()
 {
 	return image;
+}
+
+int Case::getType()
+{
+	return type;
 }
