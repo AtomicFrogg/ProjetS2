@@ -57,6 +57,8 @@ public:
     int getNumCarte();
     bool lancer(int index);
     void affichageEnemie();
+    int getVague();
+    void vaguePlusUn();
 
 
    
@@ -67,4 +69,5 @@ private:
     Joueur* j;
     bool manette;
     int numCarte;
+    int vague;
 };
