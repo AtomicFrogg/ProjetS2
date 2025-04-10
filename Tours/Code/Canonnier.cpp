@@ -22,6 +22,7 @@ void Canonnier::attaquer()
 			{
 				this->attaque = false;
 				faireDegat(i);
+				setCompteurAttaque(getVitesseAttaque());
 				int j = 1;
 				while (i >= j and sqrt(carre(map->getCoordonnee(i).x - map->getCoordonnee(i - j).x) + carre(map->getCoordonnee(i).y - map->getCoordonnee(i - j).y)) <= rangeExplosion)
 				{

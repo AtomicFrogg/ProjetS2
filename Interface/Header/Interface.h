@@ -23,6 +23,7 @@
 
 static bool FIRSTTIME = true;
 
+
 class Interface: public QWidget
 {
 Q_OBJECT
@@ -57,8 +58,9 @@ public slots:
 	void afficherStatus();
 	void afficherErreurTour();
 	bool clearEnnemi();
+	void actualiserMuons(int muons);
 
-	void keyPressEvent(QKeyEvent* event) override;
+	void keyPressEvent (QKeyEvent* event) override;
 
 signals:
 	void finJeu();

@@ -476,7 +476,8 @@ void QtApp7::soummission(){
     jeu = new Interface(gui);
     jeu->move(0, 0);
     jeu->show();
-    jeu->move(0,0);
+    Musique* son = new Musique("Muse/Sons/", "MainTheme.wav", true);
+    son->play();
     this->close();
 }
 

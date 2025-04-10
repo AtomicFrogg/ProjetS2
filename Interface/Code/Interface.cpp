@@ -4,6 +4,7 @@
 
 Interface::Interface(GUI *gui)
 {
+	qte = 0;
 	g = gui;
 	Case* image;
 	layout = new QGridLayout;
@@ -32,6 +33,7 @@ Interface::Interface(GUI *gui)
 			std::cout << nom << endl;
 			grille[nom] = image;
 			layout->addWidget(image,i,j);
+			
 		}
 	}
 	
@@ -40,10 +42,11 @@ Interface::Interface(GUI *gui)
 
 	Hbox->setContentsMargins(0, 0, 0, 0);
 	Hbox->addLayout(layout, 0);
+	Hbox->addLayout(VboxBoutton, 1);
 	if(!g->getManette())
 	{
 		//MenuDroite();
-		Hbox->addLayout(VboxBoutton, 1);
+		
 	}
 	else
 	{
@@ -55,7 +58,8 @@ Interface::Interface(GUI *gui)
 		QObject::connect(fonctionInput, &InputThread::finished, fonctionInput, &QThread::deleteLater);
 		QObject::connect(fonctionInput, &InputThread::finished, threadInput, &InputThread::deleteLater);
 		QObject::connect(fonctionInput, &InputThread::finished, threadInput, &QThread::quit);
-		
+		QObject::connect(fonctionInput, SIGNAL(nbrMuon(int)), this, SLOT(actualiserMuons(int)) );
+
 		threadInput->start();
 
 
@@ -94,6 +98,9 @@ Interface::Interface(GUI *gui)
 
 	ajouterJoueur();
 	afficher();
+
+
+	
 	//threadVague = new std::thread(&Interface::lancerVague, gui, this);
 }
 
@@ -463,7 +470,7 @@ bool Interface::frontMoveJoueur(int d)
 
 bool Interface::joueurUp()
 {
-	if (g->getCoordonneeJoueur().y < HAUTEUR)
+	if (g->getCoordonneeJoueur().y < HAUTEUR - 1)
 	{
 		clearJoueur();
 		std::cout << g->getCoordonneeJoueur().y << endl;
@@ -568,13 +575,16 @@ bool Interface::lancerVague()
 	}
 	else
 	{
+		
 		if(FIRSTTIME)
 		{
 			threadVague->start();
 			FIRSTTIME = false;
+			cout << "oui";
 		}
 		else
 		{
+			cout << "non";
 			Vague* fonctionVague = new Vague(g);
 			threadVague = new QThread;
 			fonctionVague->moveToThread(threadVague);
@@ -584,6 +594,7 @@ bool Interface::lancerVague()
 			QObject::connect(fonctionVague, &Vague::finished, threadVague, &QThread::deleteLater);
 			QObject::connect(fonctionVague, &Vague::afficherEnnemi, this, &Interface::afficherEnnemi);
 			QObject::connect(fonctionVague, &Vague::updateStatus, this, &Interface::afficherStatus);
+			QObject::connect(fonctionVague, SIGNAL(clearEnnemi()), this, SLOT(clearEnnemi()));
 			threadVague->start();
 		}
 		
@@ -626,12 +637,19 @@ void Interface::afficherStatus()
 {
 	int vie = g->getCarte()->getVie();
 	int argent = g->getCarte()->getArgent();
-	QString msg = QString::fromLatin1("<strong>VIE : <\strong>%1 <br\><strong>ARGENT : <\strong>%2").arg(vie).arg(argent);
+	int vag = g->getVague();
+	QString msg = QString::fromLatin1("<strong>VIE : <\strong>%1 <br\><strong>ARGENT : <\strong>%2<br\><strong>VAGUE : <\strong>%3").arg(vie).arg(argent).arg(vag);
 	status->setText(msg);
 }
 
 void Interface::afficherErreurTour()
 {
-	QString msg = QString::fromLatin1("EMPLACEMENT INVALIDE");
+	QString msg = QString::fromLatin1("EMPLACEMENT INVALIDE");	
 	status->setText(msg);
+}
+
+void Interface::actualiserMuons(int muons)
+{
+	qte = muons;
+	cout << qte;
 }

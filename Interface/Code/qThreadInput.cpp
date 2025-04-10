@@ -13,6 +13,8 @@ int boutLeft = 0;
 int boutRight = 0;
 bool accel = false;
 int vie = 1;
+bool muon = true;
+int qteMuon = 0;
 
 InputThread::InputThread(GUI* g)
 {
@@ -79,6 +81,9 @@ void InputThread::process()
 		j_msg_send["ledy"] = ledy_state;
 		j_msg_send["argent"] = gui->getCarte()->getArgent();
 		j_msg_send["vie"] = gui->getCarte()->getVie();
+		//j_msg_send["muon"] = muon;
+		muon = false;
+
 		//std::cout << j_msg_send;
 		if (!SendToSerial(arduino, j_msg_send)) {
 			std::cout << "Erreur lors de l'envoie du message. " << endl;
@@ -94,7 +99,7 @@ void InputThread::process()
 		}
 
 		// Impression du message de l'Arduino si valide
-		std::cout << "message " << raw_msg.size() << endl;
+		//std::cout << "message " << raw_msg.size() << endl;
 		if (raw_msg.size() > 0) {
 			//std::cout << raw_msg.size() << "\n";
 			//std::cout  << raw_msg << "\n";			// Boucle pour tester la communication bidirectionnelle Arduino-PC
@@ -109,7 +114,7 @@ void InputThread::process()
 			//std::cout << " test_boutonUp:" << boutonUp << " test_joystick:" << Direction_joystick << "\r";
 			time = 0;
 			//Haut
-
+			qteMuon = j_msg_rcv["muon"];
 			if (Direction_joystick == 4)
 			{
 				time = 1;
@@ -230,7 +235,8 @@ void InputThread::process()
 			if (accel)
 			{
 				//std::cout << "POKEMON AU COMBAT" << endl;
-				manette2key(0x46);
+				/*emit nbrMuon(qteMuon);
+				manette2key(0x46);*/
 				
 			}
 			if (time >= 1)
@@ -247,9 +253,11 @@ void InputThread::process()
 				{
 					std::cout << "amelioration reussi" << endl;
 				}
+				
 			}
 
 		}
+		cout << j_msg_rcv["muon"];
 		Sleep(100);
 
 

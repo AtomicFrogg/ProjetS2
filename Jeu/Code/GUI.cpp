@@ -2,9 +2,10 @@
 
 GUI::GUI()
 {
+    vague = 0;
     manette = false;
     numCarte = 1;
-    c = new Carte(100, 10000);
+    c = new Carte(100, 3000);
     j = new Joueur(20, 3, 10, 10, 1, c, "Jacob");
     for (int i = 0; i < HAUTEUR; i++)
     {
@@ -240,9 +241,9 @@ void GUI::moveJoueurGauche(int x)
 
 bool GUI::ajouterTourBase()
 {
-    if (getDonneesJoueur()->type == 0 && c->getArgent() >= 400)
+    if (getDonneesJoueur()->type == 0 && c->getArgent() >= j->DonneesTourBase.prix)
     {
-        c->setArgent(c->getArgent() - 400);
+        c->setArgent(c->getArgent() - j->DonneesTourBase.prix);
         getDonneesJoueur()->type = 2;
         getDonneesJoueur()->ptr = j->ajouterTourBase();
         getDonneesJoueur()->index = j->getTaille() - 1;
@@ -256,9 +257,9 @@ bool GUI::ajouterTourBase()
 
 bool GUI::ajouterTourSniper()
 {
-    if (getDonneesJoueur()->type == 0 && c->getArgent() >= 1200)
+    if (getDonneesJoueur()->type == 0 && c->getArgent() >= j->DonneesSniper.prix)
     {
-        c->setArgent(c->getArgent() - 1200);
+        c->setArgent(c->getArgent() - j->DonneesSniper.prix);
         getDonneesJoueur()->type = 3;
         getDonneesJoueur()->ptr = j->ajouterTourSniper();
         getDonneesJoueur()->index = j->getTaille() - 1;
@@ -272,9 +273,9 @@ bool GUI::ajouterTourSniper()
 
 bool GUI::ajouterTourCanonnier()
 {
-    if (getDonneesJoueur()->type == 0 && c->getArgent() >= 800)
+    if (getDonneesJoueur()->type == 0 && c->getArgent() >= j->DonneesCanonnier.prix)
     {
-        c->setArgent(c->getArgent() - 800);
+        c->setArgent(c->getArgent() - j->DonneesCanonnier.prix);
         getDonneesJoueur()->type = 4;
         getDonneesJoueur()->ptr = j->ajouterTourCanonnier();
         getDonneesJoueur()->index = j->getTaille() - 1;
@@ -288,9 +289,9 @@ bool GUI::ajouterTourCanonnier()
 
 bool GUI::ajouterTourNarvolt()
 {
-    if (getDonneesJoueur()->type == 0 && c->getArgent() >= 600)
+    if (getDonneesJoueur()->type == 0 && c->getArgent() >= j->DonneesNarvolt.prix)
     {
-        c->setArgent(c->getArgent() - 600);
+        c->setArgent(c->getArgent() - j->DonneesNarvolt.prix);
         getDonneesJoueur()->type = 5;
         getDonneesJoueur()->ptr = j->ajouterTourNarvolt();
         getDonneesJoueur()->index = j->getTaille() - 1;
@@ -539,7 +540,7 @@ int GUI::checkMove(int index)
         }
     }
     c->setVie(c->getVie() - c->getEnnemie()->getEnnemie(index)->getDegat());
-    c->retirerEnnemie(index);
+    //c->retirerEnnemie(index);
     return -1;
 }
 
@@ -577,4 +578,14 @@ void GUI::setNumCarte(int numero)
 int GUI::getNumCarte()
 {
     return numCarte;
+}
+
+int GUI::getVague()
+{
+    return vague;
+}
+
+void GUI::vaguePlusUn()
+{
+    vague = vague + 1;
 }

@@ -4,6 +4,7 @@
 #include <istream>
 #include "../../Jeu/Header/GUI.h"
 static bool CLEAR;
+static int qte = 0;
 
 using namespace std;
 class Vague: public QObject

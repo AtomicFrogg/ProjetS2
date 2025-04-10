@@ -9,15 +9,15 @@
 #include "../../Interface/Header/QtApp7.h"
 #include "../../Jeu/Header/Application.h"
 #include "qfile.h"
-#include "../../Muse/Musique.h"
+
 
 int main(int argc, char* argv[]) {
 
 
 	
 	GUI* gui = new GUI();
-	Musique* son = new Musique("Muse/Sons/", "MainTheme.wav", true);
-	son->play();
+	//Musique* son = new Musique("Muse/Sons/", "MainTheme.wav", true);
+	//son->play();
 
 	Application app(gui,argc, argv);
 

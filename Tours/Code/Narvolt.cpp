@@ -21,10 +21,11 @@ void Narvolt::attaquer()
 			{
 				this->attaque = false;
 				faireDegat(i);
+				setCompteurAttaque(getVitesseAttaque());
 				int j = 1;
 				while (i >= j && sqrt(carre(map->getCoordonnee(i - j + 1).x - map->getCoordonnee(i - j).x) + carre(map->getCoordonnee(i - j + 1).y - map->getCoordonnee(i - j).y)) <= rangeElectricte && j > rebond)
 				{
-					faireDegat(i);
+					if ( i - j >= 0) faireDegat(i);
 					j++;
 				}
 				setCompteurAttaque(getVitesseAttaque());

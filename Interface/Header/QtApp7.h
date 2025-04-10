@@ -17,6 +17,7 @@
 #include "qmessagebox.h"
 #include "../../Jeu/Header/GUI.h"
 #include "../../Interface/Header/Interface.h"
+#include "../../Muse/Musique.h"
 
 class QtApp7 : public QMainWindow
 {
