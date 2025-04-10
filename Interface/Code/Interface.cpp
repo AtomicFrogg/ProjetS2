@@ -589,6 +589,7 @@ bool Interface::lancerVague()
 			QObject::connect(fonctionVague, &Vague::finished, threadVague, &QThread::deleteLater);
 			QObject::connect(fonctionVague, &Vague::afficherEnnemi, this, &Interface::afficherEnnemi);
 			QObject::connect(fonctionVague, &Vague::updateStatus, this, &Interface::afficherStatus);
+			QObject::connect(fonctionVague, SIGNAL(clearEnnemi()), this, SLOT(clearEnnemi()));
 			threadVague->start();
 		}
 		
@@ -631,7 +632,8 @@ void Interface::afficherStatus()
 {
 	int vie = g->getCarte()->getVie();
 	int argent = g->getCarte()->getArgent();
-	QString msg = QString::fromLatin1("<strong>VIE : <\strong>%1 <br\><strong>ARGENT : <\strong>%2").arg(vie).arg(argent);
+	int vag = g->getVague();
+	QString msg = QString::fromLatin1("<strong>VIE : <\strong>%1 <br\><strong>ARGENT : <\strong>%2<br\><strong>VAGUE : <\strong>%3").arg(vie).arg(argent).arg(vag);
 	status->setText(msg);
 }
 

@@ -12,6 +12,8 @@ Vague::~Vague()
 
 void Vague::lancerVague() {
     int index;
+    gui->vaguePlusUn();
+    cout << gui->getVague();
     if (qte <= 0) index = 1;
     else index = qte;
     if (FINJEU)

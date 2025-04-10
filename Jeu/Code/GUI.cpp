@@ -2,6 +2,7 @@
 
 GUI::GUI()
 {
+    vague = 0;
     manette = false;
     numCarte = 1;
     c = new Carte(100, 1000);
@@ -577,4 +578,14 @@ void GUI::setNumCarte(int numero)
 int GUI::getNumCarte()
 {
     return numCarte;
+}
+
+int GUI::getVague()
+{
+    return vague;
+}
+
+void GUI::vaguePlusUn()
+{
+    vague = vague + 1;
 }
