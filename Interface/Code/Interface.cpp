@@ -33,6 +33,7 @@ Interface::Interface(GUI *gui)
 			std::cout << nom << endl;
 			grille[nom] = image;
 			layout->addWidget(image,i,j);
+			
 		}
 	}
 	
@@ -41,10 +42,11 @@ Interface::Interface(GUI *gui)
 
 	Hbox->setContentsMargins(0, 0, 0, 0);
 	Hbox->addLayout(layout, 0);
+	Hbox->addLayout(VboxBoutton, 1);
 	if(!g->getManette())
 	{
 		//MenuDroite();
-		Hbox->addLayout(VboxBoutton, 1);
+		
 	}
 	else
 	{
@@ -56,7 +58,7 @@ Interface::Interface(GUI *gui)
 		QObject::connect(fonctionInput, &InputThread::finished, fonctionInput, &QThread::deleteLater);
 		QObject::connect(fonctionInput, &InputThread::finished, threadInput, &InputThread::deleteLater);
 		QObject::connect(fonctionInput, &InputThread::finished, threadInput, &QThread::quit);
-		QObject::connect(fonctionInput, SIGNAL(nbrMuon(int)), threadInput, SLOT(actualiserMuons(int)) );
+		QObject::connect(fonctionInput, SIGNAL(nbrMuon(int)), this, SLOT(actualiserMuons(int)) );
 
 		threadInput->start();
 
@@ -573,13 +575,16 @@ bool Interface::lancerVague()
 	}
 	else
 	{
+		
 		if(FIRSTTIME)
 		{
 			threadVague->start();
 			FIRSTTIME = false;
+			cout << "oui";
 		}
 		else
 		{
+			cout << "non";
 			Vague* fonctionVague = new Vague(g);
 			threadVague = new QThread;
 			fonctionVague->moveToThread(threadVague);
@@ -639,11 +644,12 @@ void Interface::afficherStatus()
 
 void Interface::afficherErreurTour()
 {
-	QString msg = QString::fromLatin1("EMPLACEMENT INVALIDE");
+	QString msg = QString::fromLatin1("EMPLACEMENT INVALIDE");	
 	status->setText(msg);
 }
 
 void Interface::actualiserMuons(int muons)
 {
 	qte = muons;
+	cout << qte;
 }

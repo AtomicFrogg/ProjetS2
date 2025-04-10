@@ -9,14 +9,14 @@ Joueur::Joueur(int d, float r, int x, int y, int va, Carte* c, string n) :map(c)
 	DonneesTourBase.vitesseAttaque = 3;
 
 	DonneesSniper.degat = 100;
-	DonneesSniper.range = 10;
+	DonneesSniper.range = 1;
 	DonneesSniper.prix = 1400;
 	DonneesSniper.vitesseAttaque = 10;
 
-	DonneesCanonnier.degat = 25;
+	DonneesCanonnier.degat = 250;
 	DonneesCanonnier.range = 5;
 	DonneesCanonnier.prix = 800;
-	DonneesCanonnier.vitesseAttaque = 6;
+	DonneesCanonnier.vitesseAttaque = 1;
 
 	DonneesNarvolt.degat = 10;
 	DonneesNarvolt.range = 8;

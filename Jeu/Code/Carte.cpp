@@ -4,18 +4,18 @@
 Carte::Carte(int v, int a) :vie(v), argent(a)
 {
 	Requin.vie = 50;
-	Requin.vitesse = 2;
-	Requin.revenu = 20;
+	Requin.vitesse = 1;
+	Requin.revenu = 50;
 	Requin.degat = 5;
 
 	Saumon.vie = 20;
 	Saumon.vitesse = 1;
-	Saumon.revenu = 10;
+	Saumon.revenu = 30;
 	Saumon.degat = 1;
 
 	Baleine.vie = 100;
-	Baleine.vitesse = 5;
-	Baleine.revenu = 100;
+	Baleine.vitesse = 1;
+	Baleine.revenu = 200;
 	Baleine.degat = 10;
 
 	for (int i = 0; i < HAUTEUR; i++)

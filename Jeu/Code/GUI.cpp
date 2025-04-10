@@ -5,7 +5,7 @@ GUI::GUI()
     vague = 0;
     manette = false;
     numCarte = 1;
-    c = new Carte(100, 1000);
+    c = new Carte(100, 3000);
     j = new Joueur(20, 3, 10, 10, 1, c, "Jacob");
     for (int i = 0; i < HAUTEUR; i++)
     {
@@ -540,7 +540,7 @@ int GUI::checkMove(int index)
         }
     }
     c->setVie(c->getVie() - c->getEnnemie()->getEnnemie(index)->getDegat());
-    c->retirerEnnemie(index);
+    //c->retirerEnnemie(index);
     return -1;
 }
 

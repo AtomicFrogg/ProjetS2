@@ -10,16 +10,19 @@ Vague::~Vague()
 
 }
 
-void Vague::lancerVague() {
+void Vague::lancerVague() 
+{
     int index;
     gui->vaguePlusUn();
     cout << gui->getVague();
-    if (qte <= 0) index = 1;
+
+    if (qte <= 0) index = 40;
     else index = qte;
     if (FINJEU)
     {
-        qDebug() << "a";
         FINJEU = false;
+        qDebug() << "a";
+
         qDebug() << "b";
         gui->getCarte()->debutEnnemie(index);
         qDebug() << "c";
@@ -33,6 +36,7 @@ void Vague::lancerVague() {
         clock_t start;
         while (gui->getCarte()->getVie() > 0 && gui->getCarte()->getTailleEnnemie() > 0 && !FINJEU)
         {
+            //cout << "MUON:" << qte;
             start = clock();
             CLEAR = false;
             emit clearEnnemi();
@@ -40,7 +44,7 @@ void Vague::lancerVague() {
             {
                 if (gui->getCarte()->getEnnemie()->getEnnemie(index)->deplacement())
                 {
-                    
+
                     gui->checkMove(index);
                     emit afficherEnnemi(index);
                 }
@@ -53,10 +57,12 @@ void Vague::lancerVague() {
                 Sleep(1000 - time);
             }
         }
-        FINJEU = true;
+        
+    }
+    FINJEU = true;
         //draw();
        /* cout << "Baleine :" << c->getCoordonnee(0).x;
         cout << "vie: " << c->getEnnemie()->getEnnemie(0)->getVie();*/
-    }
+    
     emit finished();
 }
